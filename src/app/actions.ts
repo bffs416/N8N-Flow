@@ -1,10 +1,11 @@
-
 'use server';
 
 import {extractKeyWorkflowInfo} from '@/ai/flows/extract-key-workflow-info';
 import {identifySimilarWorkflows} from '@/ai/flows/identify-similar-workflows';
 import {generateUseCaseExamples} from '@/ai/flows/generate-use-case-examples';
 import type {Workflow} from '@/types';
+import fs from 'fs';
+import path from 'path';
 
 // Helper to find the next available index for a workflow
 function getNextIndex(workflows: Workflow[]): number {
@@ -136,5 +137,23 @@ export async function runSimilarityAnalysis(
   } catch (error) {
     console.error('Error in runSimilarityAnalysis:', error);
     throw new Error('Failed to run similarity analysis.');
+  }
+}
+
+export async function saveWorkflowsToFile(workflows: Workflow[]): Promise<{success: boolean; error?: string}> {
+  try {
+    // Sanitize workflows to remove optional 'content' property if it exists
+    const sanitizedWorkflows = workflows.map(({ content, ...wf }) => wf);
+    
+    const filePath = path.join(process.cwd(), 'src', 'lib', 'pre-analyzed-workflows.json');
+    const fileContent = JSON.stringify(sanitizedWorkflows, null, 2);
+    
+    fs.writeFileSync(filePath, fileContent, 'utf-8');
+    
+    return { success: true };
+  } catch (error) {
+    console.error('Failed to save workflows to file:', error);
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred.';
+    return { success: false, error: errorMessage };
   }
 }

@@ -6,7 +6,7 @@ import type {Workflow} from '@/types';
 import {PageHeader} from '@/components/page-header';
 import {FileUploader} from '@/components/file-uploader';
 import {WorkflowList} from '@/components/workflow-list';
-import {analyzeSingleWorkflow, runSimilarityAnalysis} from '@/app/actions';
+import {analyzeSingleWorkflow, runSimilarityAnalysis, saveWorkflowsToFile} from '@/app/actions';
 import {useToast} from '@/hooks/use-toast';
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {UploadCloud} from 'lucide-react';
@@ -23,13 +23,13 @@ export default function Home() {
   const [isSimilarityRunning, setIsSimilarityRunning] = useState(false);
   const [progress, setProgress] = useState({current: 0, total: 0});
   const [searchQuery, setSearchQuery] = useState('');
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
   const {toast} = useToast();
 
   // Load workflows from pre-analyzed file on initial render
   useEffect(() => {
     try {
-      // Always load the pre-analyzed workflows on initial load for consistency
       setWorkflows(preAnalyzedWorkflows as Workflow[]);
     } catch (error) {
       console.error('Failed to load pre-analyzed workflows', error);
@@ -71,6 +71,7 @@ export default function Home() {
 
     // Use a copy of the current workflows to add new ones
     let processedWorkflows: Workflow[] = [...workflows];
+    let newWorkflowsAdded = false;
 
     // Process files one by one
     for (let i = 0; i < files.length; i++) {
@@ -81,6 +82,7 @@ export default function Home() {
         
         // Add the new workflow to our temporary list
         processedWorkflows.push(newWorkflow);
+        newWorkflowsAdded = true;
 
         // Update progress and state
         setProgress(p => ({...p, current: i + 1}));
@@ -99,6 +101,9 @@ export default function Home() {
 
     // Set all workflows at once after the loop
     setWorkflows(processedWorkflows);
+    if(newWorkflowsAdded){
+      setHasUnsavedChanges(true);
+    }
     
     setIsProcessing(false);
 
@@ -137,19 +142,28 @@ export default function Home() {
 
 
   const handleClearWorkflows = () => {
-    setWorkflows([]);
-    try {
-      localStorage.setItem(WORKFLOWS_STORAGE_KEY, '[]');
+    // Instead of clearing completely, we reset to the initial state
+    setWorkflows(preAnalyzedWorkflows as Workflow[]);
+    setHasUnsavedChanges(false);
+    toast({
+      title: 'Flujos de trabajo restablecidos',
+      description: 'La lista ha vuelto a su estado inicial.',
+    });
+  };
+
+  const handleSaveChanges = async () => {
+    const result = await saveWorkflowsToFile(workflows);
+    if (result.success) {
+      setHasUnsavedChanges(false);
       toast({
-        title: 'Flujos de trabajo eliminados',
-        description:
-          'Todos los flujos de trabajo analizados han sido eliminados.',
+        title: '¡Guardado!',
+        description: 'Los flujos de trabajo han sido guardados permanentemente.',
       });
-    } catch (error) {
+    } else {
       toast({
         variant: 'destructive',
-        title: 'Error al limpiar',
-        description: 'No se pudieron eliminar los flujos de trabajo.',
+        title: 'Error al Guardar',
+        description: result.error || 'No se pudieron guardar los cambios en el archivo.',
       });
     }
   };
@@ -178,6 +192,8 @@ export default function Home() {
       <PageHeader
         onClear={handleClearWorkflows}
         hasWorkflows={workflows.length > 0}
+        onSave={handleSaveChanges}
+        hasUnsavedChanges={hasUnsavedChanges}
       />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-8">

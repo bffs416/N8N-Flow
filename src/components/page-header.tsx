@@ -1,7 +1,7 @@
 import React from 'react';
 import { N8nInsightsLogo } from './icons';
 import { Button } from './ui/button';
-import { Trash2, UploadCloud, Link as LinkIcon } from 'lucide-react';
+import { Trash2, UploadCloud, Link as LinkIcon, Save } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,10 +18,12 @@ import Link from 'next/link';
 interface PageHeaderProps {
   onClear: () => void;
   hasWorkflows: boolean;
+  onSave: () => void;
+  hasUnsavedChanges: boolean;
 }
 
 
-export const PageHeader = ({ onClear, hasWorkflows }: PageHeaderProps) => {
+export const PageHeader = ({ onClear, hasWorkflows, onSave, hasUnsavedChanges }: PageHeaderProps) => {
   return (
     <header className="border-b bg-card sticky top-0 z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,25 +41,25 @@ export const PageHeader = ({ onClear, hasWorkflows }: PageHeaderProps) => {
             </Button>
             {hasWorkflows && (
               <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" onClick={() => alert('Funcionalidad no implementada.')} disabled>
-                    <UploadCloud className="h-4 w-4 mr-2" />
-                    Cargar a Supabase
+                <Button variant="outline" size="sm" onClick={onSave} disabled={!hasUnsavedChanges}>
+                    <Save className="h-4 w-4 mr-2" />
+                    Guardar Cambios
                 </Button>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
                     <Button variant="outline" size="sm">
                       <Trash2 className="h-4 w-4 mr-2" />
-                      Limpiar todo
+                      Restablecer
                     </Button>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle>¿Estás absolutamente seguro?</AlertDialogTitle>
+                      <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
                       <AlertDialogDescription>
-                        Esta acción no se puede deshacer. Se eliminarán permanentemente todos los flujos de trabajo analizados de tu almacenamiento local.
+                        Esta acción no se puede deshacer. Se restablecerá la lista de flujos a su estado original, perdiendo los nuevos análisis no guardados.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
-    <AlertDialogFooter>
+                    <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
                       <AlertDialogAction onClick={onClear}>Continuar</AlertDialogAction>
                     </AlertDialogFooter>
