@@ -1,0 +1,36 @@
+-- Tabla para almacenar los flujos de trabajo analizados
+CREATE TABLE public.workflows (
+    id TEXT PRIMARY KEY NOT NULL,
+    "displayId" INTEGER,
+    "fileName" TEXT,
+    "flowName" TEXT,
+    "mainArea" TEXT,
+    "secondaryAreas" JSONB,
+    "mainFunction" TEXT,
+    "automationDestinations" JSONB,
+    "dataOrigins" JSONB,
+    "keyNodes" JSONB,
+    complexity TEXT,
+    "shortDescription" TEXT,
+    "useCaseExamples" JSONB,
+    similarities JSONB,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Habilitar Row Level Security (RLS) para la tabla. Es una buena práctica de seguridad en Supabase.
+ALTER TABLE public.workflows ENABLE ROW LEVEL SECURITY;
+
+-- Política de seguridad: Permitir el acceso público de solo lectura (anon) a todos los registros.
+-- Esto permite que cualquier persona con la clave anónima pueda leer los datos.
+CREATE POLICY "Enable read access for all users"
+ON public.workflows
+FOR SELECT
+USING (true);
+
+-- Política de seguridad: Permitir a los usuarios anónimos (con la clave anon) insertar y actualizar registros.
+-- Esto es necesario para que la función `upsert` desde la aplicación funcione.
+CREATE POLICY "Enable insert and update for anonymous users"
+ON public.workflows
+FOR ALL
+USING (true)
+WITH CHECK (true);
