@@ -9,8 +9,8 @@ import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js'
 
-// Omit 'displayId' as it will be assigned on the client
-type AnalyzedWorkflowData = Omit<Workflow, 'displayId'>;
+// This is the data structure returned by the analysis, before it gets a final numeric ID
+type AnalyzedWorkflowData = Omit<Workflow, 'id'>;
 
 
 export async function analyzeSingleWorkflow(
@@ -33,7 +33,7 @@ export async function analyzeSingleWorkflow(
 
 
     const newWorkflowData: AnalyzedWorkflowData = {
-      id: `${file.fileName}-${Date.now()}`,
+      workflow_uuid: `${file.fileName}-${Date.now()}`,
       fileName: file.fileName,
       flowName: aiInfo.flowName || 'N/A',
       mainArea: aiInfo.mainArea || 'N/A',
@@ -59,23 +59,22 @@ export async function runSimilarityAnalysis(
   allWorkflows: Workflow[]
 ): Promise<Workflow[]> {
   try {
-    // Create a fresh copy to avoid mutations and ensure order is preserved.
-    const workflows = JSON.parse(JSON.stringify(allWorkflows)) as Workflow[];
+    // Create a fresh copy to avoid mutations
+    const workflows: Workflow[] = JSON.parse(JSON.stringify(allWorkflows));
     
-    // Create a map for quick lookups by ID
+    // Create a map for quick lookups by UUID
     const workflowMap = new Map<string, Workflow>(
-      workflows.map(wf => [wf.id, wf])
+      workflows.map(wf => [wf.workflow_uuid, wf])
     );
     
-    // Clear old similarities before re-calculating for all workflows
+    // Clear old similarities
     workflows.forEach(wf => (wf.similarities = []));
 
-    // Run similarity check only if there is more than one workflow
     if (workflows.length > 1) {
-      
       const workflowDescriptions = workflows.map(wf => {
         return `
           ID: ${wf.id}
+          UUID: ${wf.workflow_uuid}
           Nombre del Flujo: ${wf.flowName}
           Descripción: ${wf.shortDescription}
           Función Principal: ${wf.mainFunction}
@@ -96,12 +95,12 @@ export async function runSimilarityAnalysis(
             const wf1 = workflows[result.workflow1Index];
             const wf2 = workflows[result.workflow2Index];
 
-            if (wf1 && wf2 && wf1.id !== wf2.id) {
+            if (wf1 && wf2 && wf1.workflow_uuid !== wf2.workflow_uuid) {
               
               if (!wf1.similarities.some(s => s.workflowId === wf2.id)) {
                 wf1.similarities.push({
                   workflowId: wf2.id,
-                  workflowName: `#${wf2.displayId} - ${wf2.flowName}`,
+                  workflowName: `#${wf2.id} - ${wf2.flowName}`,
                   score: result.similarityScore,
                   reason: result.reason,
                 });
@@ -109,7 +108,7 @@ export async function runSimilarityAnalysis(
               if (!wf2.similarities.some(s => s.workflowId === wf1.id)) {
                 wf2.similarities.push({
                   workflowId: wf1.id,
-                  workflowName: `#${wf1.displayId} - ${wf1.flowName}`,
+                  workflowName: `#${wf1.id} - ${wf1.flowName}`,
                   score: result.similarityScore,
                   reason: result.reason,
                 });
@@ -130,7 +129,6 @@ export async function runSimilarityAnalysis(
 
 export async function saveWorkflowsToFile(workflows: Workflow[]): Promise<{success: boolean; error?: string}> {
   try {
-    // Sanitize workflows to remove optional 'content' property if it exists
     const sanitizedWorkflows = workflows.map(({ content, ...wf }) => wf);
     
     const filePath = path.join(process.cwd(), 'src', 'lib', 'pre-analyzed-workflows.json');
@@ -157,10 +155,10 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
     
-    // Sanitize workflows for Supabase (e.g., ensure no undefined values, correct types)
-    const sanitizedWorkflows = workflows.map(({ content, ...wf }) => ({
+    // Sanitize workflows for Supabase
+    const sanitizedWorkflows = workflows.map(({ content, id, ...wf }) => ({
         ...wf,
-        // Supabase might prefer 'null' over 'undefined' for JSON fields
+        // Supabase expects 'null' over 'undefined' for JSON fields
         secondaryAreas: wf.secondaryAreas || [],
         automationDestinations: wf.automationDestinations || [],
         dataOrigins: wf.dataOrigins || [],
@@ -169,11 +167,12 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
         similarities: wf.similarities || [],
     }));
 
-    // Example: Inserting into a table named 'workflows'
-    // You must create this table in your Supabase project first.
+    // Upsert into the 'workflows' table.
+    // It will match rows based on 'workflow_uuid' and create/update them.
+    // Supabase will automatically handle the auto-incrementing 'id' primary key.
     const { data, error } = await supabase
       .from('workflows')
-      .upsert(sanitizedWorkflows, { onConflict: 'id' }); // 'id' should be the primary key
+      .upsert(sanitizedWorkflows, { onConflict: 'workflow_uuid' });
 
     if (error) {
       throw error;

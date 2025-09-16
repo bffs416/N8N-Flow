@@ -1,15 +1,15 @@
 export type Similarity = {
-  workflowId: string;
+  workflowId: number; // Changed from string to number
   workflowName: string;
   score: number;
   reason: string;
 };
 
 export type Workflow = {
-  id: string;
-  displayId: number; // For enumeration
+  id: number; // This will be the numeric, auto-incrementing ID
+  workflow_uuid: string; // A stable unique identifier for client-side logic
   fileName: string;
-  content?: string; // Made optional to support pre-analyzed workflows
+  content?: string;
   flowName: string;
   mainArea: string;
   secondaryAreas: string[];

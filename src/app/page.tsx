@@ -26,12 +26,14 @@ export default function Home() {
 
   useEffect(() => {
     try {
-      const workflowsWithDisplayId = (preAnalyzedWorkflows as any[]).map((wf, index) => ({
+      // Assign sequential numeric IDs
+      const workflowsWithNumericId = (preAnalyzedWorkflows as any[]).map((wf, index) => ({
         ...wf,
-        displayId: wf.displayId || index + 1,
+        id: wf.id || index + 1,
+        workflow_uuid: wf.workflow_uuid || `pre-analyzed-${index + 1}`
       }));
-      setWorkflows(workflowsWithDisplayId);
-      setInitialWorkflows(workflowsWithDisplayId); // Guardar el estado inicial
+      setWorkflows(workflowsWithNumericId);
+      setInitialWorkflows(workflowsWithNumericId);
     } catch (error) {
       console.error('Failed to load pre-analyzed workflows', error);
       toast({
@@ -44,11 +46,11 @@ export default function Home() {
     }
   }, [toast]);
 
-  const getNextDisplayId = (currentWorkflows: Workflow[]): number => {
+  const getNextId = (currentWorkflows: Workflow[]): number => {
     if (currentWorkflows.length === 0) {
       return 1;
     }
-    const maxId = Math.max(...currentWorkflows.map(wf => wf.displayId || 0));
+    const maxId = Math.max(...currentWorkflows.map(wf => wf.id || 0));
     return maxId + 1;
   };
 
@@ -65,8 +67,6 @@ export default function Home() {
         description: `Analizando ${files.length} nuevo(s) flujo(s).`,
     });
 
-    let nextId = getNextDisplayId(workflows);
-
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
         setAnalysisProgress(prev => ({ ...prev, current: i + 1 }));
@@ -74,8 +74,8 @@ export default function Home() {
         try {
             const analyzedData = await analyzeSingleWorkflow(file);
             setWorkflows(prevWorkflows => {
-               const newId = getNextDisplayId(prevWorkflows);
-               return [...prevWorkflows, { ...analyzedData, displayId: newId }];
+               const newId = getNextId(prevWorkflows);
+               return [...prevWorkflows, { ...analyzedData, id: newId }];
             });
             setHasUnsavedChanges(true);
         } catch (e) {
@@ -99,7 +99,7 @@ export default function Home() {
 
 
   const handleClearWorkflows = () => {
-    setWorkflows(initialWorkflows); // Restablecer al estado inicial guardado
+    setWorkflows(initialWorkflows);
     setHasUnsavedChanges(false);
     toast({
       title: 'Flujos de trabajo restablecidos',
@@ -113,7 +113,7 @@ export default function Home() {
     setIsLoading(false);
     if (result.success) {
       setHasUnsavedChanges(false);
-      setInitialWorkflows(workflows); // Actualizar el estado inicial al guardar
+      setInitialWorkflows(workflows);
       toast({
         title: '¡Guardado!',
         description: 'Los flujos de trabajo han sido guardados permanentemente.',
@@ -156,24 +156,24 @@ export default function Home() {
   const handleSendToForm = async () => {
     setIsLoading(true);
     toast({
-      title: 'Enviando datos...',
-      description: 'Enviando flujos de trabajo al formulario.',
+      title: 'Enviando datos a Supabase...',
+      description: 'Enviando flujos de trabajo a la base de datos.',
     });
     try {
       const result = await sendToSupabase(workflows);
       if (result.success) {
         toast({
           title: '¡Éxito!',
-          description: 'Los datos de los flujos de trabajo han sido enviados correctamente.',
+          description: 'Los datos de los flujos de trabajo han sido enviados correctamente a Supabase.',
         });
       } else {
         throw new Error(result.error);
       }
     } catch (error) {
-      console.error('Failed to send to form:', error);
+      console.error('Failed to send to Supabase:', error);
       toast({
         variant: 'destructive',
-        title: 'Error al Enviar',
+        title: 'Error al Enviar a Supabase',
         description: error instanceof Error ? error.message : 'No se pudieron enviar los datos.',
       });
     } finally {
@@ -186,7 +186,7 @@ export default function Home() {
 
     const query = searchQuery.toLowerCase();
     return workflows.filter(wf => 
-      (wf.displayId && `#${wf.displayId}`.includes(query)) ||
+      (wf.id && `#${wf.id}`.includes(query)) ||
       wf.flowName.toLowerCase().includes(query) ||
       wf.shortDescription.toLowerCase().includes(query) ||
       wf.mainArea.toLowerCase().includes(query) ||

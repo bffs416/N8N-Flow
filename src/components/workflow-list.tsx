@@ -68,7 +68,7 @@ const InfoRow = ({ icon, label, children }: { icon: React.ReactNode, label: stri
     </div>
 );
 
-const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (id: string) => void }) => {
+const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (id: number) => void }) => {
   const [openAccordion, setOpenAccordion] = useState('');
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -123,7 +123,7 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
               {/* Main Info */}
               <div className="flex-grow">
                   <div className='flex items-start gap-3'>
-                      <span className="text-xl font-bold text-primary w-8 text-center">#{workflow.displayId}</span>
+                      <span className="text-xl font-bold text-primary w-8 text-center">#{workflow.id}</span>
                       <div className="flex-grow">
                         <div className='flex items-center gap-2'>
                           {workflow.fileName.endsWith('.json') ? <FileJson className="h-5 w-5 text-accent" /> : <FileText className="h-5 w-5 text-accent" />}
@@ -213,7 +213,7 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[625px]">
                       <DialogHeader>
-                        <DialogTitle>Análisis de Similitud para #{workflow.displayId} - {workflow.flowName}</DialogTitle>
+                        <DialogTitle>Análisis de Similitud para #{workflow.id} - {workflow.flowName}</DialogTitle>
                       </DialogHeader>
                       <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto px-2">
                         {sortedSimilarities
@@ -279,7 +279,7 @@ export function WorkflowList({
 }) {
   const { toast } = useToast();
 
-  const handleDeleteWorkflow = (idToDelete: string) => {
+  const handleDeleteWorkflow = (idToDelete: number) => {
     const updatedWorkflows = workflows
       .filter(wf => wf.id !== idToDelete)
       .map(wf => ({
@@ -313,7 +313,7 @@ export function WorkflowList({
           ? `\n\n    🤝 𝗦𝗜𝗠𝗜𝗟𝗜𝗧𝗨𝗗𝗘𝗦\n${wf.similarities.map(s => `       - Se parece a ${s.workflowName} (${Math.round(s.score * 100)}%): ${s.reason}`).join('\n')}`
           : '';
 
-        return `//======= 𝗙𝗟𝗨𝗝𝗢 #${wf.displayId}: #️⃣ ${wf.flowName.toUpperCase()} =======//
+        return `//======= 𝗙𝗟𝗨𝗝𝗢 #${wf.id}: #️⃣ ${wf.flowName.toUpperCase()} =======//
 
     📌 𝗗𝗘𝗦𝗖𝗥𝗜𝗣𝗖𝗜𝗢́𝗡 𝗚𝗘𝗡𝗘𝗥𝗔𝗟
        ${wf.shortDescription}
@@ -401,7 +401,7 @@ ${separator}`;
           </Card>
         )}
         {workflows.map((workflow) => (
-             <WorkflowCard key={workflow.id} workflow={workflow} onDelete={handleDeleteWorkflow} />
+             <WorkflowCard key={workflow.workflow_uuid} workflow={workflow} onDelete={handleDeleteWorkflow} />
         ))}
     </div>
   );
