@@ -73,14 +73,11 @@ export default function Home() {
   ) => {
     if (files.length === 0) return;
 
-    // Clear pre-loaded workflows if user uploads files for the first time
-    const isInitialUpload = workflows.every(wf => wf.content === "Contenido original no disponible para flujos precargados.");
-    const initialWorkflows = isInitialUpload ? [] : workflows;
-
     setIsProcessing(true);
     setProgress({current: 0, total: files.length});
 
-    let processedWorkflows: Workflow[] = [...initialWorkflows];
+    const initialWorkflows = [...workflows];
+    let processedWorkflows: Workflow[] = [...workflows];
 
     // Process files one by one
     for (let i = 0; i < files.length; i++) {
