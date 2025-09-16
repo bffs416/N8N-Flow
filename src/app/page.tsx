@@ -61,54 +61,79 @@ export default function Home() {
     
     toast({
         title: 'Análisis en progreso...',
-        description: `Analizando ${files.length} nuevo(s) flujo(s).`,
+        description: `Analizando ${files.length} nuevo(s) flujo(s). Esto puede tardar un momento.`,
     });
 
-    let newWorkflowsCount = 0;
-    
-    // Process files one by one to update UI immediately
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      setAnalysisProgress(prev => ({ ...prev, current: i + 1 }));
-      try {
-        const analyzedData = await analyzeSingleWorkflow(file);
-        
-        // Use a functional update for `setWorkflows` to get the latest state
-        setWorkflows(prevWorkflows => {
-            const newWorkflow: Workflow = {
-              ...analyzedData,
-              displayId: getNextDisplayId(prevWorkflows),
-            };
-            return [...prevWorkflows, newWorkflow];
-        });
+    const newlyAnalyzed: Workflow[] = [];
 
-        setHasUnsavedChanges(true);
-        newWorkflowsCount++;
-      } catch (e) {
-        console.error(e);
+    // Step 1: Analyze all new files individually and in parallel
+    await Promise.all(files.map(async (file, i) => {
+        setAnalysisProgress(prev => ({ ...prev, current: i + 1 }));
+        try {
+            const analyzedData = await analyzeSingleWorkflow(file);
+            newlyAnalyzed.push({
+                ...analyzedData,
+                displayId: 0, // Temporary ID, will be set sequentially later
+            });
+        } catch (e) {
+            console.error(e);
+            toast({
+                variant: 'destructive',
+                title: `Falló el Análisis para ${file.fileName}`,
+                description: e instanceof Error ? e.message : 'Error inesperado.',
+            });
+        }
+    }));
+    
+    if (newlyAnalyzed.length === 0) {
+        setIsLoading(false);
+        setAnalysisProgress({ total: 0, current: 0 });
         toast({
-          variant: 'destructive',
-          title: `Falló el Análisis para ${file.fileName}`,
-          description: e instanceof Error ? e.message : 'Error inesperado.',
+            variant: 'destructive',
+            title: 'Análisis Finalizado',
+            description: `No se agregaron nuevos flujos válidos.`,
         });
-      }
+        return;
+    }
+
+    // Step 2: Assign sequential displayIds and add to the main list
+    let finalWorkflows: Workflow[] = [];
+    setWorkflows(prevWorkflows => {
+        let nextId = getNextDisplayId(prevWorkflows);
+        const workflowsWithProperIds = newlyAnalyzed.map(wf => ({
+            ...wf,
+            displayId: nextId++,
+        }));
+        finalWorkflows = [...prevWorkflows, ...workflowsWithProperIds];
+        return finalWorkflows;
+    });
+
+    setHasUnsavedChanges(true);
+    
+    // Step 3: Run similarity analysis on the complete list
+    toast({
+        title: 'Análisis de Similitud en Progreso',
+        description: 'Comparando todos los flujos para encontrar similitudes.',
+    });
+    
+    try {
+        const updatedWithSimilarities = await runSimilarityAnalysis(finalWorkflows);
+        setWorkflows(updatedWithSimilarities);
+        toast({
+            title: '¡Análisis Completo!',
+            description: `Se agregaron ${newlyAnalyzed.length} flujo(s) y se calcularon las similitudes.`,
+        });
+    } catch (error) {
+        console.error('Failed to run similarity analysis', error);
+        toast({
+            variant: 'destructive',
+            title: 'Error en Análisis de Similitud',
+            description: 'No se pudo completar la comparación de flujos.',
+        });
     }
     
     setIsLoading(false);
     setAnalysisProgress({ total: 0, current: 0 });
-
-    if (newWorkflowsCount > 0) {
-      toast({
-        title: 'Análisis Completo',
-        description: `Se agregaron ${newWorkflowsCount} de ${files.length} flujo(s).`,
-      });
-    } else {
-       toast({
-        variant: 'destructive',
-        title: 'Análisis Finalizado',
-        description: `No se agregaron nuevos flujos válidos.`,
-      });
-    }
   };
 
 

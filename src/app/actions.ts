@@ -73,11 +73,9 @@ export async function runSimilarityAnalysis(
     // Run similarity check only if there is more than one workflow
     if (workflows.length > 1) {
       
-      // EXPLANATION: This is where we build the "profile" for each workflow to send to the AI.
-      // We combine multiple pieces of information into a single text description.
-      // This gives the AI a richer context to find meaningful similarities.
       const workflowDescriptions = workflows.map(wf => {
         return `
+          ID: ${wf.id}
           Nombre del Flujo: ${wf.flowName}
           Descripción: ${wf.shortDescription}
           Función Principal: ${wf.mainFunction}
@@ -87,35 +85,29 @@ export async function runSimilarityAnalysis(
           Nodos Clave: ${wf.keyNodes.join(', ')}
         `.trim();
       });
-      // END EXPLANATION
 
-      // We send the array of comprehensive descriptions to the AI for analysis.
       const similarityResults = await identifySimilarWorkflows({
         workflowDescriptions: workflowDescriptions,
       });
 
       if (similarityResults) {
         similarityResults.forEach(result => {
-          // Only process pairs with a meaningful similarity score
           if (result.similarityScore > 0.5) {
             const wf1 = workflows[result.workflow1Index];
             const wf2 = workflows[result.workflow2Index];
 
             if (wf1 && wf2 && wf1.id !== wf2.id) {
-              const wf1FromMap = workflowMap.get(wf1.id)!;
-              const wf2FromMap = workflowMap.get(wf2.id)!;
-
-              // Check for existence before adding to prevent duplicates
-              if (!wf1FromMap.similarities.some(s => s.workflowId === wf2.id)) {
-                wf1FromMap.similarities.push({
+              
+              if (!wf1.similarities.some(s => s.workflowId === wf2.id)) {
+                wf1.similarities.push({
                   workflowId: wf2.id,
                   workflowName: `#${wf2.displayId} - ${wf2.flowName}`,
                   score: result.similarityScore,
                   reason: result.reason,
                 });
               }
-              if (!wf2FromMap.similarities.some(s => s.workflowId === wf1.id)) {
-                wf2FromMap.similarities.push({
+              if (!wf2.similarities.some(s => s.workflowId === wf1.id)) {
+                wf2.similarities.push({
                   workflowId: wf1.id,
                   workflowName: `#${wf1.displayId} - ${wf1.flowName}`,
                   score: result.similarityScore,
@@ -128,10 +120,7 @@ export async function runSimilarityAnalysis(
       }
     }
     
-    // Convert map values back to an array, preserving original order
-    const finalWorkflows = workflows.map(wf => workflowMap.get(wf.id)!);
-    
-    return finalWorkflows;
+    return workflows;
 
   } catch (error) {
     console.error('Error in runSimilarityAnalysis:', error);
