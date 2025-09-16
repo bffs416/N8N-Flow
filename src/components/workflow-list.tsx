@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import type { Workflow, Similarity } from '@/types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -66,8 +66,25 @@ const InfoRow = ({ icon, label, children }: { icon: React.ReactNode, label: stri
     </div>
 );
 
-const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (id: string) => void }) => (
-  <Card className="w-full overflow-hidden flex flex-col border-primary">
+const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (id: string) => void }) => {
+  const [openAccordion, setOpenAccordion] = useState('');
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
+        setOpenAccordion('');
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  return (
+  <Card ref={cardRef} className="w-full overflow-hidden flex flex-col border-primary">
     <div className="p-4 md:p-6 flex-grow">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         {/* Main Info */}
@@ -116,7 +133,7 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
             </div>
         </div>
     </div>
-    <Accordion type="single" collapsible className="w-full">
+    <Accordion type="single" collapsible className="w-full" value={openAccordion} onValueChange={setOpenAccordion}>
       <AccordionItem value="details" className="border-t">
         <AccordionTrigger className="px-4 md:px-6 text-sm font-medium text-muted-foreground data-[state=open]:text-primary hover:no-underline justify-start gap-2">
           Ver más detalles
@@ -210,7 +227,7 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
       </AccordionItem>
     </Accordion>
   </Card>
-);
+)};
 
 
 export function WorkflowList({
