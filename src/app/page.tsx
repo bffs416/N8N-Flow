@@ -25,7 +25,6 @@ export default function Home() {
 
   useEffect(() => {
     try {
-      // Assign initial displayId based on index if it's missing
       const workflowsWithDisplayId = (preAnalyzedWorkflows as any[]).map((wf, index) => ({
         ...wf,
         displayId: wf.displayId || index + 1,
@@ -61,20 +60,22 @@ export default function Home() {
     
     toast({
         title: 'Análisis en progreso...',
-        description: `Analizando ${files.length} nuevo(s) flujo(s). Esto puede tardar un momento.`,
+        description: `Analizando ${files.length} nuevo(s) flujo(s).`,
     });
 
-    const newlyAnalyzed: Workflow[] = [];
+    let nextId = getNextDisplayId(workflows);
 
-    // Step 1: Analyze all new files individually and in parallel
-    await Promise.all(files.map(async (file, i) => {
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
         setAnalysisProgress(prev => ({ ...prev, current: i + 1 }));
+
         try {
             const analyzedData = await analyzeSingleWorkflow(file);
-            newlyAnalyzed.push({
-                ...analyzedData,
-                displayId: 0, // Temporary ID, will be set sequentially later
-            });
+            setWorkflows(prevWorkflows => [
+                ...prevWorkflows,
+                { ...analyzedData, displayId: nextId++ }
+            ]);
+            setHasUnsavedChanges(true);
         } catch (e) {
             console.error(e);
             toast({
@@ -83,55 +84,13 @@ export default function Home() {
                 description: e instanceof Error ? e.message : 'Error inesperado.',
             });
         }
-    }));
-    
-    if (newlyAnalyzed.length === 0) {
-        setIsLoading(false);
-        setAnalysisProgress({ total: 0, current: 0 });
-        toast({
-            variant: 'destructive',
-            title: 'Análisis Finalizado',
-            description: `No se agregaron nuevos flujos válidos.`,
-        });
-        return;
     }
-
-    // Step 2: Assign sequential displayIds and add to the main list
-    let finalWorkflows: Workflow[] = [];
-    setWorkflows(prevWorkflows => {
-        let nextId = getNextDisplayId(prevWorkflows);
-        const workflowsWithProperIds = newlyAnalyzed.map(wf => ({
-            ...wf,
-            displayId: nextId++,
-        }));
-        finalWorkflows = [...prevWorkflows, ...workflowsWithProperIds];
-        return finalWorkflows;
-    });
-
-    setHasUnsavedChanges(true);
     
-    // Step 3: Run similarity analysis on the complete list
     toast({
-        title: 'Análisis de Similitud en Progreso',
-        description: 'Comparando todos los flujos para encontrar similitudes.',
+        title: '¡Análisis Completo!',
+        description: `Se agregaron ${files.length} flujo(s) nuevos.`,
     });
-    
-    try {
-        const updatedWithSimilarities = await runSimilarityAnalysis(finalWorkflows);
-        setWorkflows(updatedWithSimilarities);
-        toast({
-            title: '¡Análisis Completo!',
-            description: `Se agregaron ${newlyAnalyzed.length} flujo(s) y se calcularon las similitudes.`,
-        });
-    } catch (error) {
-        console.error('Failed to run similarity analysis', error);
-        toast({
-            variant: 'destructive',
-            title: 'Error en Análisis de Similitud',
-            description: 'No se pudo completar la comparación de flujos.',
-        });
-    }
-    
+
     setIsLoading(false);
     setAnalysisProgress({ total: 0, current: 0 });
   };
@@ -216,8 +175,6 @@ export default function Home() {
         hasWorkflows={workflows.length > 0}
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
-        onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
-        isSimilarityAnalysisDisabled={isLoading || workflows.length < 2}
       />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-8">
@@ -295,6 +252,7 @@ export default function Home() {
               isLoading={isLoading}
               totalWorkflows={workflows.length}
               searchQuery={searchQuery}
+              onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
             />
           )}
         </div>

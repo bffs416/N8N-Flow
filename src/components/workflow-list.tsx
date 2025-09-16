@@ -270,12 +270,14 @@ export function WorkflowList({
   setWorkflows,
   totalWorkflows = 0,
   searchQuery = '',
+  onRunSimilarityAnalysis,
 }: {
   workflows: Workflow[];
   isLoading: boolean;
   setWorkflows: React.Dispatch<React.SetStateAction<Workflow[]>>;
   totalWorkflows?: number;
   searchQuery?: string;
+  onRunSimilarityAnalysis: () => void;
 }) {
   const { toast } = useToast();
 
@@ -381,6 +383,15 @@ ${separator}`;
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>{getTitle()}</CardTitle>
             <div className="flex items-center gap-2">
+               <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={onRunSimilarityAnalysis}
+                  disabled={isLoading || totalWorkflows < 2}
+                >
+                  <Wand2 className="mr-2 h-4 w-4" />
+                  Analizar Similitudes
+                </Button>
               <Button 
                 variant="outline" 
                 size="sm" 
@@ -406,7 +417,3 @@ ${separator}`;
     </div>
   );
 }
-
-    
-
-    
