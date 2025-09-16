@@ -18,9 +18,9 @@ import {
   Code2,
   GitMerge,
   ArrowRight,
-  Upload,
   Copy,
   Trash2,
+  ClipboardCopy,
 } from 'lucide-react';
 import {
   AlertDialog,
@@ -40,6 +40,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { useToast } from '@/hooks/use-toast';
 
 const getComplexityBadge = (complexity: 'Simple' | 'Medio' | 'Complejo') => {
   switch (complexity) {
@@ -64,14 +65,14 @@ const InfoRow = ({ icon, label, children }: { icon: React.ReactNode, label: stri
     </div>
 );
 
-const WorkflowCard = ({ workflow, index, onDelete }: { workflow: Workflow, index: number, onDelete: (id: string) => void }) => (
+const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (id: string) => void }) => (
   <Card className="w-full overflow-hidden">
     <div className="p-4 md:p-6">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         {/* Main Info */}
         <div className="flex-grow">
             <div className='flex items-start gap-3'>
-                <span className="text-xl font-bold text-primary w-8 text-center">{index + 1}.</span>
+                <span className="text-xl font-bold text-primary w-8 text-center">#{workflow.displayId}</span>
                 <div className="flex-grow">
                   <div className='flex items-center gap-2'>
                     {workflow.fileName.endsWith('.json') ? <FileJson className="h-5 w-5 text-accent" /> : <FileText className="h-5 w-5 text-accent" />}
@@ -232,6 +233,7 @@ export function WorkflowList({
   isLoading: boolean;
   setWorkflows: React.Dispatch<React.SetStateAction<Workflow[]>>;
 }) {
+  const { toast } = useToast();
 
   const handleDeleteWorkflow = (idToDelete: string) => {
     // Also remove similarities pointing to this workflow from others
@@ -242,6 +244,59 @@ export function WorkflowList({
         similarities: wf.similarities.filter(sim => sim.workflowId !== idToDelete),
       }));
     setWorkflows(updatedWorkflows);
+    toast({
+      title: 'Flujo de trabajo eliminado',
+      description: 'El flujo de trabajo ha sido eliminado de la lista.',
+    });
+  };
+
+  const handleExport = () => {
+    if (workflows.length === 0) {
+      toast({
+        variant: 'destructive',
+        title: 'No hay flujos para exportar',
+        description: 'Sube al menos un flujo de trabajo antes de exportar.',
+      });
+      return;
+    }
+
+    const formattedText = workflows
+      .map(wf => {
+        const similaritiesText = wf.similarities.length > 0 
+          ? `\n🤝 **Similitudes**\n${wf.similarities.map(s => `- Se parece a ${s.workflowName} (${Math.round(s.score * 100)}%): ${s.reason}`).join('\n')}` 
+          : '';
+
+        return `
+## #${wf.displayId} - ${wf.flowName}
+
+📄 **Resumen**
+- **Descripción Breve:** ${wf.shortDescription}
+- **Función Principal:** ${wf.mainFunction}
+
+🗂️ **Clasificación**
+- **Área Principal:** ${wf.mainArea}
+- **Áreas Secundarias:** ${wf.secondaryAreas.join(', ') || 'N/A'}
+- **Complejidad:** ${wf.complexity}
+
+⚙️ **Detalles Técnicos**
+- **Origen de Datos:** ${wf.dataOrigins.join(', ')}
+- **Destino de Automatización:** ${wf.automationDestinations.join(', ')}
+- **Nodos Clave:** ${wf.keyNodes.join(', ')}
+
+💡 **5 Casos de Uso**
+${wf.useCaseExamples.map(ex => `- ${ex}`).join('\n')}
+${similaritiesText}
+--------------------------------------------------
+`;
+      })
+      .join('');
+
+    navigator.clipboard.writeText(formattedText.trim());
+
+    toast({
+      title: '¡Copiado al portapapeles!',
+      description: `Se ha copiado la información de ${workflows.length} flujo(s) de trabajo.`,
+    });
   };
   
   if (isLoading && workflows.length === 0) {
@@ -271,33 +326,19 @@ export function WorkflowList({
   return (
     <div className='space-y-4'>
        <Card>
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Flujos de Trabajo Analizados ({workflows.length})</CardTitle>
+            {workflows.length > 0 && (
+               <Button variant="outline" size="sm" onClick={handleExport}>
+                <ClipboardCopy className="mr-2 h-4 w-4" />
+                Exportar
+              </Button>
+            )}
           </CardHeader>
         </Card>
-        {workflows.map((workflow, index) => (
-             <WorkflowCard key={workflow.id} workflow={workflow} index={index} onDelete={handleDeleteWorkflow} />
+        {workflows.map((workflow) => (
+             <WorkflowCard key={workflow.id} workflow={workflow} onDelete={handleDeleteWorkflow} />
         ))}
     </div>
   );
 }
-
-// Helper icon - you might want to move this to your icons file
-// const Upload = (props: React.SVGProps<SVGSVGElement>) => (
-//   <svg
-//     xmlns="http://www.w3.org/2000/svg"
-//     width="24"
-//     height="24"
-//     viewBox="0 0 24 24"
-//     fill="none"
-//     stroke="currentColor"
-//     strokeWidth="2"
-//     strokeLinecap="round"
-//     strokeLinejoin="round"
-//     {...props}
-//   >
-//     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-//     <polyline points="17 8 12 3 7 8" />
-//     <line x1="12" x2="12" y1="3" y2="15" />
-//   </svg>
-// );
