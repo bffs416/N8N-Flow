@@ -943,5 +943,492 @@
       "Rastrear y comparar precios de vuelos, hoteles o paquetes turísticos en sitios web de viajes para identificar las mejores ofertas y mantener una base de datos actualizada de fluctuaciones de precios."
     ],
     "similarities": []
+  },
+  {
+    "id": "✨_Generate_Graphic_Wallpaper_with_Midjourney,_GPT_4o_mini_&_Canvas.json-1758054912375",
+    "displayId": 26,
+    "fileName": "✨_Generate_Graphic_Wallpaper_with_Midjourney,_GPT_4o_mini_&_Canvas.json",
+    "flowName": "✨ Generate Graphic Wallpaper with Midjourney, GPT-4o-mini & Canvas APIs",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Diseño",
+      "Creación de Contenido",
+      "Redes Sociales"
+    ],
+    "mainFunction": "Generar fondos de pantalla gráficos combinando prompts de texto con GPT-4o-mini, creación de imágenes con Midjourney y diseño final con Canvas API para producir contenido visualmente atractivo.",
+    "automationDestinations": [
+      "Midjourney (vía PiAPI)",
+      "Canvas API"
+    ],
+    "dataOrigins": [
+      "Manual Trigger",
+      "PiAPI (GPT-4o-mini)"
+    ],
+    "keyNodes": [
+      "HTTP Request (Midjourney Generator)",
+      "HTTP Request (Gpt-4o-mini API)",
+      "Code (Get Prompt)",
+      "Wait for Midjourney Generation",
+      "If (Determine Whether the Image URL was Fetched)",
+      "Switch (Check Image Generation Status)",
+      "HTTP Request (Design in Canvas)"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Este flujo automatiza la creación de fondos de pantalla gráficos utilizando GPT-4o-mini para generar texto, Midjourney para la imagen y Canvas API para el diseño final.",
+    "useCaseExamples": [
+      "Un especialista en marketing de redes sociales podría usarlo para generar rápidamente contenido visual atractivo (imagen y texto) para campañas diarias o semanales, adaptándose a temas de tendencia o productos específicos sin necesidad de un diseñador gráfico.",
+      "Un creador de contenido personal o bloguero podría generar fondos de pantalla o encabezados de artículos temáticos y personalizados para sus publicaciones, basándose en el estado de ánimo, la temporada o el enfoque del contenido de su blog.",
+      "Una startup o pequeña empresa podría crear materiales promocionales conceptuales para nuevos productos o servicios, obteniendo rápidamente un visual y un mensaje inicial antes de invertir en fotografía profesional o diseño avanzado.",
+      "Un organizador de eventos podría generar gráficos dinámicos para anunciar oradores, sesiones o hitos del evento, ajustando el tema y el estilo para cada anuncio específico, manteniendo la coherencia visual.",
+      "Una aplicación de bienestar o autoayuda podría ofrecer a sus usuarios la posibilidad de generar fondos de pantalla motivacionales personalizados, donde el usuario elige un tema (ej. \"superación\", \"calma\") y el flujo crea un diseño único con una imagen y un mensaje inspirador."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "🎨 Interactive Image Editor with FLUX. Fill Tool for Inpainting.txt-1758054923776",
+    "displayId": 26,
+    "fileName": "🎨 Interactive Image Editor with FLUX. Fill Tool for Inpainting.txt",
+    "flowName": "FLUX-fill standalone",
+    "mainArea": "Diseño Gráfico",
+    "secondaryAreas": [
+      "Marketing",
+      "Desarrollo de Producto",
+      "E-commerce"
+    ],
+    "mainFunction": "Permite a los usuarios editar imágenes en un editor web interactivo, aplicar efectos de 'relleno' impulsados por IA a través de la API de FLUX, y recibir la imagen procesada de vuelta.",
+    "automationDestinations": [
+      "API FLUX (api.bfl.ml)",
+      "Navegador del Usuario (vía Webhook Response)"
+    ],
+    "dataOrigins": [
+      "Webhook",
+      "Entrada del Usuario (a través del editor HTML)"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "HTML",
+      "HTTP Request",
+      "If",
+      "Merge",
+      "Respond to Webhook"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Un flujo interactivo para edición de imágenes con IA. Ofrece un editor web para que los usuarios modifiquen imágenes, las procesen con la IA de FLUX y reciban el resultado.",
+    "useCaseExamples": [
+      "Un vendedor online utiliza el flujo para limpiar imperfecciones en sus fotos de productos, como eliminar el fondo original y reemplazarlo con un estudio virtual o llenar espacios vacíos en el empaque con un logotipo actualizado.",
+      "Un equipo de marketing genera variaciones de una imagen publicitaria. Por ejemplo, en una foto de un producto, enmascaran una zona y usan un prompt para añadir un \"ambiente tropical\" o un \"entorno urbano moderno\", adaptando la imagen a diferentes campañas.",
+      "Un agente inmobiliario utiliza la herramienta para \"pintar\" sobre áreas específicas de las fotos de propiedades, como reemplazar un césped seco por uno \"verde exuberante\" o llenar una pared vacía con un \"cuadro abstracto moderno\" para la puesta en escena virtual.",
+      "Un gestor de redes sociales adapta una imagen existente para un nuevo post. Enmascara una parte (por ejemplo, un viejo banner) y usa un prompt para insertar \"texto promocional de descuento\" o \"un nuevo logo de campaña\" sin necesidad de un diseñador gráfico.",
+      "Un diseñador de UI/UX utiliza la herramienta para probar rápidamente diferentes elementos visuales en un mockup de interfaz. Enmascara un botón o un icono y lo reemplaza con \"un botón de estilo neón\" o \"un icono de carrito de compras 3D\" para explorar ideas."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "🐋🤖 DeepSeek AI Agent + Telegram + LONG TERM Memory 🧠.txt-1758054939716",
+    "displayId": 26,
+    "fileName": "🐋🤖 DeepSeek AI Agent + Telegram + LONG TERM Memory 🧠.txt",
+    "flowName": "🐋🤖 DeepSeek AI Agent + Telegram + LONG TERM Memory 🧠",
+    "mainArea": "Asistencia Personal",
+    "secondaryAreas": [
+      "Servicio al Cliente",
+      "Comunicación"
+    ],
+    "mainFunction": "Automatizar una conversación con un agente de IA DeepSeek a través de Telegram, utilizando memoria a largo plazo almacenada en Google Docs para respuestas personalizadas y contextuales.",
+    "automationDestinations": [
+      "Telegram",
+      "Google Docs"
+    ],
+    "dataOrigins": [
+      "Telegram Webhook"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "IF",
+      "Switch",
+      "AI Agent",
+      "Merge",
+      "Google Docs",
+      "Telegram",
+      "Memory Buffer"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Un bot de Telegram que utiliza un agente de IA DeepSeek con memoria a largo plazo (Google Docs) para tener conversaciones personalizadas y contextuales.",
+    "useCaseExamples": [
+      "Un asistente personal que recuerda tus preferencias de programación, citas importantes y tareas diarias. Aprende tus hábitos para ofrecer recordatorios contextuales y sugerencias proactivas a través de Telegram, adaptándose a tu flujo de trabajo con el tiempo.",
+      "Un tutor de idiomas personalizado que guarda tu progreso, vocabulario aprendido y áreas de dificultad. El bot puede adaptar las lecciones y ejercicios en futuras interacciones, recordándote tus errores comunes y tus temas de interés para mantenerte motivado.",
+      "Un agente de soporte VIP para clientes selectos que recuerda el historial de compras del cliente, sus preferencias de productos y problemas anteriores. Esto permite una atención al cliente altamente personalizada y eficiente, sin necesidad de repetir información.",
+      "Un entrenador de fitness y bienestar que almacena tus metas de ejercicio, historial de actividad, preferencias dietéticas y cualquier lesión. El bot puede ofrecer planes de entrenamiento adaptados, sugerencias de comidas y motivación basada en tu progreso y tus necesidades específicas a largo plazo.",
+      "Un curador de contenido y noticias que aprende tus intereses en noticias, artículos, libros o podcasts. Recuerda tus temas favoritos y fuentes preferidas para recomendarte contenido relevante y filtrado, mejorando sus sugerencias con cada interacción."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "🐋DeepSeek V Chat & R Reasoning Quick Start.txt-1758054951593",
+    "displayId": 26,
+    "fileName": "🐋DeepSeek V Chat & R Reasoning Quick Start.txt",
+    "flowName": "🐋DeepSeek V3 Chat & R1 Reasoning Quick Start",
+    "mainArea": "Inteligencia Artificial",
+    "secondaryAreas": [
+      "Desarrollo de Software",
+      "Automatización de IA",
+      "Investigación"
+    ],
+    "mainFunction": "Explorar y demostrar la integración de los modelos de lenguaje DeepSeek (V3 Chat y R1 Reasoner) y Ollama para procesamiento de lenguaje natural y capacidades de razonamiento, respondiendo a mensajes de chat entrantes.",
+    "automationDestinations": [
+      "Plataforma de Chat"
+    ],
+    "dataOrigins": [
+      "Plataforma de Chat"
+    ],
+    "keyNodes": [
+      "When chat message received",
+      "AI Agent",
+      "DeepSeek",
+      "Ollama DeepSeek",
+      "DeepSeek JSON Body",
+      "DeepSeek Raw Body",
+      "Window Buffer Memory"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Este flujo muestra cómo conectar y utilizar los modelos DeepSeek V3 Chat, R1 Reasoner y Ollama para interactuar con un chat, explorando diferentes métodos de integración.",
+    "useCaseExamples": [
+      "Un chatbot de soporte al cliente en un sitio web que responde preguntas frecuentes sobre productos y servicios, utilizando la memoria para mantener el contexto de la conversación del usuario y ofrecer respuestas personalizadas y coherentes.",
+      "Un asistente para equipos de marketing que genera ideas para contenido, borradores de publicaciones en redes sociales o textos publicitarios, permitiendo a los usuarios interactuar de forma conversacional para refinar y expandir el contenido.",
+      "Un tutor virtual interactivo para estudiantes que ayuda a explicar conceptos complejos, resuelve dudas sobre asignaturas específicas y genera ejercicios prácticos, manteniendo un hilo de aprendizaje continuo gracias a su memoria conversacional.",
+      "Una herramienta interna para equipos de desarrollo que permite a los ingenieros hacer preguntas sobre código, obtener explicaciones de funciones o depurar problemas, con el agente recordando el historial de consultas para proporcionar asistencia relevante.",
+      "Un asistente de productividad personal que ayuda a los usuarios a organizar sus tareas diarias, generar listas de ideas, planificar horarios o recordar compromisos importantes, todo a través de una interfaz de chat interactiva que recuerda preferencias y contextos previos."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "📈 Receive Daily Market News from FT.com to your Microsoft outlook inbox.txt-1758054966565",
+    "displayId": 26,
+    "fileName": "📈 Receive Daily Market News from FT.com to your Microsoft outlook inbox.txt",
+    "flowName": "Financial News Recap Workflow",
+    "mainArea": "Finanzas",
+    "secondaryAreas": [
+      "Análisis de Contenido",
+      "Inteligencia de Mercado",
+      "Comunicación"
+    ],
+    "mainFunction": "Automatizar la extracción, resumen por IA y envío diario por correo electrónico de noticias financieras clave para inversores.",
+    "automationDestinations": [
+      "Microsoft Outlook"
+    ],
+    "dataOrigins": [
+      "Schedule Trigger",
+      "HTTP Request (ft.com)"
+    ],
+    "keyNodes": [
+      "Schedule Trigger",
+      "HTTP Request",
+      "HTML",
+      "SET",
+      "AI Agent",
+      "Google Gemini Chat Model",
+      "Microsoft Outlook"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Extrae noticias financieras de la web, las resume usando inteligencia artificial y envía un email diario con un resumen para inversores.",
+    "useCaseExamples": [
+      "Un gestor de inversiones configura el flujo para recibir un resumen diario de las noticias financieras clave del Financial Times cada mañana a las 7 AM, permitiéndole tomar decisiones informadas sobre las carteras de sus clientes antes de la apertura del mercado.",
+      "Un analista de mercado utiliza este flujo para obtener una síntesis diaria de titulares y noticias económicas, facilitando la identificación rápida de tendencias y la preparación de sus informes de mercado sin tener que leer extensos artículos.",
+      "Un inversor particular activo desea recibir un correo electrónico estructurado con las noticias financieras más importantes, lo que le ahorra tiempo y le ayuda a mantenerse al día con los eventos que impactan sus inversiones.",
+      "Un directivo de empresa (CEO o CFO) necesita estar al tanto del panorama económico global y las noticias de Europa sin dedicar horas a la lectura, recibiendo un boletín diario automatizado con los puntos más relevantes para la estrategia empresarial.",
+      "Un equipo de inteligencia de negocio en una corporación configura este flujo para monitorear las noticias financieras y de la industria, usando el resumen generado por IA para alimentar sus informes estratégicos y análisis de riesgo."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "🔍 Perplexity Research to HTML AI-Powered Content Creation.txt-1758054988046",
+    "displayId": 26,
+    "fileName": "🔍 Perplexity Research to HTML AI-Powered Content Creation.txt",
+    "flowName": "🔍🛠️Perplexity Researcher to HTML Web Page",
+    "mainArea": "Marketing Digital",
+    "secondaryAreas": [
+      "Contenido",
+      "Desarrollo Web",
+      "Investigación"
+    ],
+    "mainFunction": "Investiga un tema dado utilizando Perplexity, estructura la información en un formato de artículo, extrae los datos clave en JSON y luego convierte el artículo en una página web HTML estilizada con Tailwind CSS, con la opción de enviar una notificación por Telegram.",
+    "automationDestinations": [
+      "Página Web HTML (salida)",
+      "Telegram",
+      "Webhook (respuesta)"
+    ],
+    "dataOrigins": [
+      "Webhook",
+      "Perplexity (API)"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "Perplexity Topic Agent",
+      "Extract JSON",
+      "Create HTML Article",
+      "Basic LLM Chain",
+      "If",
+      "Respond to Webhook"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Automatiza la investigación de temas con Perplexity, la creación de artículos y su conversión a páginas web HTML estilizadas con Tailwind CSS, respondiendo vía Webhook y enviando notificaciones por Telegram.",
+    "useCaseExamples": [
+      "Un blogger introduce un tema (por ejemplo, \"Últimas tendencias en IA para 2024\") y el flujo de trabajo investiga, estructura y genera una página web HTML completa con estilo Tailwind CSS, lista para ser publicada en su blog personal.",
+      "Un equipo de marketing necesita generar rápidamente contenido para múltiples páginas de destino sobre diferentes características de un producto. El equipo envía los temas a través de webhooks y recibe al instante páginas HTML estilizadas para cada característica.",
+      "Un creador de cursos en línea utiliza el flujo de trabajo para transformar descripciones de módulos (por ejemplo, \"Conceptos básicos de la computación cuántica\") en lecciones HTML bien organizadas y fáciles de leer para sus estudiantes.",
+      "Una pequeña empresa de noticias tecnológicas automatiza la creación de resúmenes de artículos sobre temas de actualidad. Ingresan un tema de noticias y obtienen una página HTML concisa con los puntos clave, metadatos y hashtags, para una publicación rápida.",
+      "Un profesional de SEO desea generar borradores iniciales de contenido web optimizado para palabras clave específicas. Envía las palabras clave al flujo de trabajo, que devuelve páginas HTML estructuradas y con formato que pueden ajustarse para mejorar el ranking."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "🔐🦙🤖 Private & Local Ollama Self-Hosted AI Assistant.txt-1758054999297",
+    "displayId": 26,
+    "fileName": "🔐🦙🤖 Private & Local Ollama Self-Hosted AI Assistant.txt",
+    "flowName": "🗨️Ollama Chat",
+    "mainArea": "Inteligencia Artificial",
+    "secondaryAreas": [
+      "Automatización",
+      "Servicio al Cliente",
+      "Desarrollo de Software"
+    ],
+    "mainFunction": "Procesar mensajes de chat utilizando un modelo de lenguaje Llama 3.2 a través de Ollama y devolver una respuesta estructurada.",
+    "automationDestinations": [
+      "Chat (respuesta estructurada)"
+    ],
+    "dataOrigins": [
+      "Chat Trigger"
+    ],
+    "keyNodes": [
+      "When chat message received",
+      "Basic LLM Chain",
+      "Ollama Model",
+      "JSON to Object",
+      "Structured Response"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Permite interactuar con un modelo de lenguaje Llama 3.2 mediante un chat, procesando la entrada y devolviendo una respuesta en formato JSON.",
+    "useCaseExamples": [
+      "Un chatbot de soporte al cliente para una tienda en línea, donde los usuarios pueden preguntar sobre el estado de sus pedidos, políticas de devolución o detalles de productos, y el flujo de trabajo usa Llama 3.2 para generar respuestas rápidas y precisas.",
+      "Un asistente de contenido para un equipo de marketing que permite a los usuarios introducir prompts para generar ideas de publicaciones en redes sociales, borradores de correos electrónicos o eslóganes, recibiendo la salida en un formato estructurado para revisión.",
+      "Una herramienta de consulta interna para empleados donde pueden hacer preguntas sobre políticas de la empresa, beneficios o procesos de recursos humanos, obteniendo respuestas automatizadas del modelo Ollama.",
+      "Un generador de ideas creativas para escritores o diseñadores, donde pueden solicitar inspiración para tramas de historias, nombres de personajes o conceptos de diseño, y el LLM les proporciona sugerencias estructuradas.",
+      "Un tutor virtual básico para estudiantes que necesitan explicaciones rápidas sobre conceptos complejos en historia, ciencia o matemáticas, con el flujo de trabajo proporcionando respuestas concisas generadas por el modelo Llama 3.2."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "🔥📈🤖 AI Agent for nn Creators Leaderboard - Find Popular Workflows.txt-1758055015316",
+    "displayId": 26,
+    "fileName": "🔥📈🤖 AI Agent for nn Creators Leaderboard - Find Popular Workflows.txt",
+    "flowName": "🔥📈🤖 AI Agent for n8n Creators Leaderboard - Find Popular Workflows",
+    "mainArea": "Análisis de Datos",
+    "secondaryAreas": [
+      "Gestión de Comunidad",
+      "Reportes",
+      "Inteligencia Artificial"
+    ],
+    "mainFunction": "Obtiene, procesa y analiza estadísticas de creadores y flujos de trabajo de n8n de un repositorio de GitHub, para generar un informe Markdown detallado utilizando un agente de IA.",
+    "automationDestinations": [
+      "Sistema de Archivos Local",
+      "Interfaz de Chat"
+    ],
+    "dataOrigins": [
+      "GitHub",
+      "Chat",
+      "Webhook"
+    ],
+    "keyNodes": [
+      "When chat message received",
+      "httpRequest",
+      "set",
+      "filter",
+      "merge",
+      "agent",
+      "lmChatOpenAi",
+      "readWriteFile"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Genera un informe detallado sobre la popularidad y estadísticas de los creadores y flujos de trabajo de n8n, utilizando IA para procesar datos de GitHub.",
+    "useCaseExamples": [
+      "Un gestor de la comunidad de n8n utiliza el flujo de trabajo para generar informes mensuales detallados sobre los creadores más activos y sus flujos de trabajo con mayor impacto, con el fin de reconocer sus contribuciones y promover contenido relevante.",
+      "Un creador de contenido educativo sobre n8n investiga a un contribuyente popular para entender qué hace que sus flujos de trabajo sean tan atractivos, utilizando el informe generado para identificar características clave y casos de uso exitosos para sus propios tutoriales.",
+      "Una empresa de consultoría de automatización emplea este flujo para analizar las tendencias de adopción de flujos de trabajo específicos de n8n, identificando los creadores más influyentes y los tipos de automatizaciones más demandadas para ajustar su estrategia de mercado.",
+      "Un líder de equipo que busca contratar talentos en automatización usa el flujo para evaluar el perfil público de posibles candidatos de n8n, obteniendo un resumen de sus flujos de trabajo, su popularidad y su impacto en la comunidad.",
+      "Un desarrollador individual de n8n ejecuta el flujo para obtener un informe exhaustivo de sus propios flujos de trabajo, analizando métricas de visitas e inserciones para identificar oportunidades de mejora y entender mejor la resonancia de sus contribuciones en la comunidad."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "🤖 Telegram Messaging Agent for Text Audio Images.txt-1758055027543",
+    "displayId": 26,
+    "fileName": "🤖 Telegram Messaging Agent for Text Audio Images.txt",
+    "flowName": "🤖 Telegram Messaging Agent for Text/Audio/Images",
+    "mainArea": "Comunicación",
+    "secondaryAreas": [
+      "Soporte al Cliente",
+      "Inteligencia Artificial",
+      "Gestión de Contenido"
+    ],
+    "mainFunction": "Actúa como un agente de mensajería de Telegram que recibe eventos, valida usuarios y procesa mensajes de texto, audio e imágenes utilizando servicios de IA para transcripción, análisis y clasificación, enviando respuestas contextuales.",
+    "automationDestinations": [
+      "Telegram",
+      "OpenAI"
+    ],
+    "dataOrigins": [
+      "Webhook"
+    ],
+    "keyNodes": [
+      "webhook",
+      "if",
+      "switch",
+      "telegram",
+      "httpRequest",
+      "openAi",
+      "lmChatOpenAi",
+      "textClassifier"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Un agente de Telegram que procesa mensajes de texto, audio e imágenes mediante IA, valida usuarios y responde de forma contextual.",
+    "useCaseExamples": [
+      "Un usuario envía notas de voz a su bot de Telegram para crear tareas y recordatorios. El bot transcribe la voz, clasifica el mensaje como una tarea y lo registra en su lista de pendientes, enviando una confirmación al usuario.",
+      "Un equipo de soporte utiliza el bot para recibir reportes de errores. Los usuarios envían mensajes de texto con descripciones o imágenes del problema. El bot analiza el texto y las imágenes, clasificando el incidente y extrayendo detalles clave para el equipo.",
+      "Un fotógrafo profesional usa el bot para organizar sus inspiraciones. Envía imágenes con subtítulos descriptivos, y el bot analiza la imagen y el texto para clasificarla y etiquetarla automáticamente en una base de datos de referencias visuales.",
+      "Una persona con discapacidad visual utiliza el bot para 'leer' el mundo a su alrededor. Envía fotos de objetos o textos y el bot, tras analizar la imagen, le devuelve una descripción detallada por mensaje de texto.",
+      "Un periodista en el campo envía grabaciones de voz cortas a su bot. El bot transcribe el audio, identifica los temas principales y clasifica la información para ayudar a organizar rápidamente las ideas para sus artículos."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "🤖🧑 💻 AI Agent for Top nn Creators Leaderboard Reporting.txt-1758055039554",
+    "displayId": 26,
+    "fileName": "🤖🧑 💻 AI Agent for Top nn Creators Leaderboard Reporting.txt",
+    "flowName": "🤖🧑‍💻 AI Agent for Top n8n Creators Leaderboard Reporting",
+    "mainArea": "Análisis de Datos",
+    "secondaryAreas": [
+      "Gestión de Comunidad",
+      "Marketing",
+      "Inteligencia Artificial"
+    ],
+    "mainFunction": "Recopila, analiza y genera informes detallados sobre las estadísticas de rendimiento de creadores y flujos de trabajo de la comunidad n8n utilizando un agente de IA, y distribuye estos informes a través de múltiples canales.",
+    "automationDestinations": [
+      "Google Drive",
+      "Gmail",
+      "Telegram",
+      "Sistema de Archivos Local"
+    ],
+    "dataOrigins": [
+      "GitHub (mediante HTTP Request)",
+      "Disparador de n8n (Programado o por ejecución externa)"
+    ],
+    "keyNodes": [
+      "httpRequest",
+      "set",
+      "Split Out",
+      "Sort",
+      "Merge",
+      "n8n Creators Stats Agent (Agente de IA)",
+      "lmChatOpenAi",
+      "lmChatGoogleGemini",
+      "Workflow Tool",
+      "Google Drive",
+      "Gmail",
+      "Telegram",
+      "markdown",
+      "limit"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Un flujo de trabajo de n8n que emplea un agente de IA para extraer y analizar estadísticas de creadores y flujos de trabajo de la comunidad desde GitHub, generando y distribuyendo informes detallados por email, Google Drive y Telegram.",
+    "useCaseExamples": [
+      "Un Community Manager de n8n programa el flujo de trabajo para que se ejecute semanalmente, generando informes detallados sobre los creadores más activos y los flujos de trabajo más populares. Utiliza estos datos para destacar a los contribuidores en las redes sociales y en el boletín informativo de la comunidad, fomentando la participación y el reconocimiento.",
+      "El equipo de Desarrollo de Producto de n8n utiliza este flujo para identificar tendencias en la creación de flujos de trabajo y el uso de integraciones específicas. Los informes generados por la IA les ayudan a comprender las necesidades de los usuarios y a priorizar nuevas características o mejoras en la plataforma.",
+      "Un especialista en marketing de una empresa de automatización desea mostrar la vitalidad y la innovación de la comunidad n8n. Configura el flujo para recibir un informe mensual con los 10 mejores flujos de trabajo y sus creadores, usando esta información para crear contenido (como estudios de caso o artículos de blog) que demuestre el valor de la plataforma a clientes potenciales.",
+      "Un instructor o educador de n8n ejecuta el flujo antes de preparar un nuevo curso o taller. Los informes detallados le permiten identificar los flujos de trabajo más relevantes y con mayor impacto en la comunidad, lo que le ayuda a diseñar un currículo que aborde directamente las soluciones y patrones de automatización más buscados.",
+      "Un usuario avanzado de n8n o un consultor de automatización configura este flujo para mantenerse actualizado sobre los flujos de trabajo más innovadores y los creadores destacados. Recibe un resumen diario o semanal a través de Telegram o correo electrónico, lo que le permite explorar nuevas ideas, aprender de las mejores prácticas de la comunidad y aplicar soluciones probadas en sus propios proyectos o los de sus clientes."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "🤖🧠 AI Agent Chatbot + LONG TERM Memory + Note Storage + Telegram.txt-1758055052679",
+    "displayId": 26,
+    "fileName": "🤖🧠 AI Agent Chatbot + LONG TERM Memory + Note Storage + Telegram.txt",
+    "flowName": "🤖🧠 AI Agent Chatbot + LONG TERM Memory + Note Storage + Telegram",
+    "mainArea": "Inteligencia Artificial",
+    "secondaryAreas": [
+      "Productividad",
+      "Asistencia Personal",
+      "Gestión del Conocimiento",
+      "Comunicación"
+    ],
+    "mainFunction": "Procesar mensajes de chat recibidos para un agente de IA, utilizando memoria a largo plazo y almacenamiento de notas en Google Docs, memoria de conversación a corto plazo, y responder a través de Telegram.",
+    "automationDestinations": [
+      "Telegram",
+      "Google Docs"
+    ],
+    "dataOrigins": [
+      "Chat (disparador de mensaje de chat)",
+      "Google Docs"
+    ],
+    "keyNodes": [
+      "When chat message received",
+      "AI Tools Agent",
+      "gpt-4o-mini",
+      "Window Buffer Memory",
+      "Retrieve Long Term Memories",
+      "Save Long Term Memories",
+      "Retrieve Notes",
+      "Save Notes",
+      "Telegram Response",
+      "Merge",
+      "Aggregate"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Un chatbot de IA con capacidad de memoria a largo plazo y almacenamiento de notas, que interactúa a través de mensajes de chat y responde por Telegram, utilizando Google Docs para la persistencia de datos.",
+    "useCaseExamples": [
+      "**Asistente Personal Inteligente**: Un usuario lo utiliza para gestionar su agenda diaria, guardar recordatorios de citas y tareas, y almacenar preferencias personales como restaurantes favoritos o libros leídos. El bot recuerda sus hábitos y le asiste de forma proactiva a través de Telegram.",
+      "**Soporte al Cliente Personalizado**: Una empresa implementa el chatbot en Telegram para que sus clientes puedan hacer consultas. El bot recuerda el historial de compras del cliente, sus problemas anteriores y sus preferencias, ofreciendo una atención más rápida y relevante sin repetir información.",
+      "**Mentor Educativo y de Aprendizaje**: Estudiantes interactúan con el bot para repasar materias o aprender nuevas habilidades. El bot guarda un registro de su progreso, los temas que les resultan difíciles y sus métodos de estudio preferidos, adaptando la enseñanza y los ejercicios a sus necesidades específicas.",
+      "**Bot de Gestión de Proyectos para Equipos**: Un equipo de trabajo usa el bot en Telegram para coordinar tareas. El bot almacena los roles de los miembros, las decisiones clave tomadas, los plazos del proyecto y las notas importantes, facilitando el seguimiento y la comunicación del equipo.",
+      "**Entrenador de Salud y Bienestar**: Un individuo lo usa para registrar sus hábitos alimenticios, rutinas de ejercicio y objetivos de bienestar. El bot recuerda sus preferencias dietéticas, alergias y progreso físico, ofreciendo sugerencias personalizadas y recordatorios para mantener la disciplina."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "🚀 Local Multi-LLM Testing & Performance Tracker.txt-1758055062684",
+    "displayId": 26,
+    "fileName": "🚀 Local Multi-LLM Testing & Performance Tracker.txt",
+    "flowName": "Testing Mulitple Local LLM with LM Studio",
+    "mainArea": "Inteligencia Artificial",
+    "secondaryAreas": [
+      "Desarrollo de Software",
+      "Análisis de Datos",
+      "Investigación y Desarrollo"
+    ],
+    "mainFunction": "Evaluar y analizar el rendimiento de múltiples modelos de lenguaje grandes (LLMs) locales desde LM Studio, calculando métricas como legibilidad, conteo de palabras y tiempo de respuesta, y registrando los resultados en una hoja de cálculo.",
+    "automationDestinations": [
+      "Google Sheets"
+    ],
+    "dataOrigins": [
+      "Cuando se recibe un mensaje de chat (Trigger de LangChain)",
+      "LM Studio API (Solicitud HTTP)"
+    ],
+    "keyNodes": [
+      "When chat message received",
+      "Get Models",
+      "Run Model with Dunamic Inputs",
+      "Analyze LLM Response Metrics",
+      "Save Results to Google Sheets",
+      "Set",
+      "Date Time"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Este flujo de trabajo permite probar y comparar el rendimiento de diferentes modelos de lenguaje locales (LLMs) hospedados en LM Studio, analizando métricas de respuesta y registrando los resultados en Google Sheets.",
+    "useCaseExamples": [
+      "Una agencia de marketing digital puede comparar varios modelos LLM locales para generar descripciones de productos, evaluando cuál produce las respuestas más concisas y con el nivel de legibilidad adecuado para una audiencia específica, por ejemplo, nivel de \"5to grado\".",
+      "Un equipo de desarrollo de chatbots puede utilizar este flujo para probar diferentes modelos de lenguaje en LM Studio, enviando preguntas frecuentes y analizando la claridad, la longitud de las respuestas y el tiempo de respuesta de cada modelo para seleccionar el más eficiente para soporte al cliente.",
+      "Un creador de contenido educativo podría evaluar diversos LLMs para generar explicaciones de temas complejos, asegurándose de que las respuestas cumplan con un alto puntaje de legibilidad (Flesch-Kincaid) para que sean fácilmente comprensibles para estudiantes jóvenes.",
+      "Un ingeniero de IA puede optimizar los parámetros de modelos LLM (como temperatura y \"top P\") para una aplicación específica, comparando cómo afectan la concisión y la calidad de las respuestas en escenarios de uso controlados y registrando los resultados en una hoja de cálculo.",
+      "Una empresa de análisis de texto puede usar el flujo para comparar la capacidad de diferentes LLMs para resumir documentos largos en textos breves y muy legibles, monitoreando el recuento de palabras, la longitud promedio de las oraciones y el tiempo de procesamiento."
+    ],
+    "similarities": []
   }
 ]

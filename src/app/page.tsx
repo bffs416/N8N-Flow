@@ -17,6 +17,7 @@ import {SearchInput} from '@/components/search-input';
 export default function Home() {
   const [workflows, setWorkflows] = useState<Workflow[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [analysisProgress, setAnalysisProgress] = useState({ total: 0, current: 0 });
   const [searchQuery, setSearchQuery] = useState('');
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
@@ -43,50 +44,47 @@ export default function Home() {
     if (files.length === 0) return;
 
     setIsLoading(true);
+    setAnalysisProgress({ total: files.length, current: 0 });
+    
     toast({
         title: 'Análisis en progreso...',
         description: `Analizando ${files.length} nuevo(s) flujo(s).`,
     });
 
-    try {
-      // 1. Analyze all new files in parallel
-      const analysisPromises = files.map(file => 
-        analyzeSingleWorkflow(file, workflows)
-          .catch(e => { 
-            console.error(e);
-            toast({
-              variant: 'destructive',
-              title: `Falló el Análisis para ${file.fileName}`,
-              description: e instanceof Error ? e.message : 'Error inesperado.',
-            });
-            return null; 
-          })
-      );
-      
-      const newWorkflows = (await Promise.all(analysisPromises)).filter(Boolean) as Workflow[];
+    let newWorkflowsCount = 0;
 
-      if (newWorkflows.length > 0) {
-        setWorkflows(prevWorkflows => [...prevWorkflows, ...newWorkflows]);
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      setAnalysisProgress({ total: files.length, current: i + 1 });
+      try {
+        const newWorkflow = await analyzeSingleWorkflow(file, workflows);
+        setWorkflows(prevWorkflows => [...prevWorkflows, newWorkflow]);
         setHasUnsavedChanges(true);
+        newWorkflowsCount++;
+      } catch (e) {
+        console.error(e);
         toast({
-          title: 'Análisis Completo',
-          description: `Se agregaron ${newWorkflows.length} nuevo(s) flujo(s).`,
-        });
-      } else {
-         toast({
-          title: 'Análisis Finalizado',
-          description: `No se agregaron nuevos flujos válidos.`,
+          variant: 'destructive',
+          title: `Falló el Análisis para ${file.fileName}`,
+          description: e instanceof Error ? e.message : 'Error inesperado.',
         });
       }
-    } catch (error) {
-      console.error('An error occurred during the upload process:', error);
+    }
+    
+    setIsLoading(false);
+    setAnalysisProgress({ total: 0, current: 0 });
+
+    if (newWorkflowsCount > 0) {
       toast({
-        variant: 'destructive',
-        title: 'Error en el Proceso',
-        description: 'Ocurrió un error inesperado al analizar los flujos.',
+        title: 'Análisis Completo',
+        description: `Se agregaron ${newWorkflowsCount} de ${files.length} flujo(s).`,
       });
-    } finally {
-      setIsLoading(false);
+    } else {
+       toast({
+        variant: 'destructive',
+        title: 'Análisis Finalizado',
+        description: `No se agregaron nuevos flujos válidos.`,
+      });
     }
   };
 
@@ -161,6 +159,7 @@ export default function Home() {
     );
   }, [workflows, searchQuery]);
 
+  const isAnalyzing = analysisProgress.total > 0;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -182,11 +181,16 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          {isLoading && workflows.length > 0 && (
-             <Card>
-              <CardContent className="p-6 text-center flex items-center justify-center gap-3">
-                 <Loader2 className="h-5 w-5 animate-spin"/>
-                 <p className="font-medium">Analizando flujos de trabajo...</p>
+          {isAnalyzing && (
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-center gap-3 mb-2">
+                  <Loader2 className="h-5 w-5 animate-spin"/>
+                  <p className="font-medium">
+                    Analizando flujo {analysisProgress.current} de {analysisProgress.total}...
+                  </p>
+                </div>
+                <Progress value={(analysisProgress.current / analysisProgress.total) * 100} />
               </CardContent>
             </Card>
           )}
@@ -203,7 +207,7 @@ export default function Home() {
             </div>
           )}
 
-          {isLoading && workflows.length === 0 ? (
+          {isLoading && workflows.length === 0 && !isAnalyzing ? (
              <Card>
               <CardHeader>
                  <CardTitle>Cargando Flujos...</CardTitle>
