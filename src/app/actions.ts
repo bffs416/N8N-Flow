@@ -8,19 +8,14 @@ import type {Workflow} from '@/types';
 import fs from 'fs';
 import path from 'path';
 
-// Helper to find the next available index for a workflow
-function getNextIndex(workflows: Workflow[]): number {
-  if (workflows.length === 0) {
-    return 1;
-  }
-  const maxIndex = Math.max(...workflows.map(wf => wf.displayId));
-  return maxIndex + 1;
-}
+
+// Omit 'displayId' as it will be assigned on the client
+type AnalyzedWorkflowData = Omit<Workflow, 'displayId'>;
+
 
 export async function analyzeSingleWorkflow(
-  file: {fileName: string; content: string},
-  existingWorkflows: Workflow[]
-): Promise<Workflow> {
+  file: {fileName: string; content: string}
+): Promise<AnalyzedWorkflowData> {
   try {
     let workflowTemplate = file.content;
     if (file.fileName.endsWith('.json')) {
@@ -36,11 +31,9 @@ export async function analyzeSingleWorkflow(
       generateUseCaseExamples({workflowDescription: workflowTemplate}),
     ]);
 
-    const nextId = getNextIndex(existingWorkflows);
 
-    const newWorkflow: Workflow = {
+    const newWorkflowData: AnalyzedWorkflowData = {
       id: `${file.fileName}-${Date.now()}`,
-      displayId: nextId,
       fileName: file.fileName,
       flowName: aiInfo.flowName || 'N/A',
       mainArea: aiInfo.mainArea || 'N/A',
@@ -55,7 +48,7 @@ export async function analyzeSingleWorkflow(
       similarities: [],
     };
 
-    return newWorkflow;
+    return newWorkflowData;
   } catch (error) {
     console.error(`Error analyzing file ${file.fileName}:`, error);
     throw new Error(`Failed to analyze ${file.fileName}.`);

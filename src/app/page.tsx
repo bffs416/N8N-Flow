@@ -25,7 +25,12 @@ export default function Home() {
 
   useEffect(() => {
     try {
-      setWorkflows(preAnalyzedWorkflows as Workflow[]);
+      // Assign initial displayId based on index if it's missing
+      const workflowsWithDisplayId = (preAnalyzedWorkflows as any[]).map((wf, index) => ({
+        ...wf,
+        displayId: wf.displayId || index + 1,
+      }));
+      setWorkflows(workflowsWithDisplayId);
     } catch (error) {
       console.error('Failed to load pre-analyzed workflows', error);
       toast({
@@ -37,6 +42,14 @@ export default function Home() {
       setIsLoading(false);
     }
   }, [toast]);
+
+  const getNextDisplayId = (currentWorkflows: Workflow[]): number => {
+    if (currentWorkflows.length === 0) {
+      return 1;
+    }
+    const maxId = Math.max(...currentWorkflows.map(wf => wf.displayId || 0));
+    return maxId + 1;
+  };
 
   const handleFilesUpload = async (
     files: {fileName: string; content: string}[]
@@ -52,13 +65,23 @@ export default function Home() {
     });
 
     let newWorkflowsCount = 0;
-
+    
+    // Process files one by one to update UI immediately
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      setAnalysisProgress({ total: files.length, current: i + 1 });
+      setAnalysisProgress(prev => ({ ...prev, current: i + 1 }));
       try {
-        const newWorkflow = await analyzeSingleWorkflow(file, workflows);
-        setWorkflows(prevWorkflows => [...prevWorkflows, newWorkflow]);
+        const analyzedData = await analyzeSingleWorkflow(file);
+        
+        // Use a functional update for `setWorkflows` to get the latest state
+        setWorkflows(prevWorkflows => {
+            const newWorkflow: Workflow = {
+              ...analyzedData,
+              displayId: getNextDisplayId(prevWorkflows),
+            };
+            return [...prevWorkflows, newWorkflow];
+        });
+
         setHasUnsavedChanges(true);
         newWorkflowsCount++;
       } catch (e) {
@@ -148,7 +171,7 @@ export default function Home() {
 
     const query = searchQuery.toLowerCase();
     return workflows.filter(wf => 
-      `#${wf.displayId}`.includes(query) ||
+      (wf.displayId && `#${wf.displayId}`.includes(query)) ||
       wf.flowName.toLowerCase().includes(query) ||
       wf.shortDescription.toLowerCase().includes(query) ||
       wf.mainArea.toLowerCase().includes(query) ||
