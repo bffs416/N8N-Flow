@@ -42,6 +42,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { useToast } from '@/hooks/use-toast';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 const getComplexityBadge = (complexity: 'Simple' | 'Medio' | 'Complejo') => {
   switch (complexity) {
@@ -72,7 +73,7 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
 
   const toggleAccordion = (e: React.MouseEvent) => {
      // Evita que el clic en botones dentro de la tarjeta la expanda/colapse
-    if ((e.target as HTMLElement).closest('button, a')) {
+    if ((e.target as HTMLElement).closest('button, a, [role="dialog"]')) {
       return;
     }
     setOpenAccordion(openAccordion === 'details' ? '' : 'details');
@@ -190,31 +191,43 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
                 </div>
               </div>
 
-              {/* Similitudes */}
-              {workflow.similarities.length > 0 && (
-                <div>
-                    <h3 className="font-semibold flex items-center mb-3"><Users className="mr-2 h-4 w-4"/>Análisis de Similitud</h3>
-                    <div className="space-y-4">
-                    {workflow.similarities
-                        .sort((a, b) => b.score - a.score)
-                        .map(sim => (
-                        <div key={sim.workflowId} className="p-3 border rounded-md bg-background">
-                            <div className="flex justify-between items-center mb-2">
-                            <span className="font-medium text-foreground">{sim.workflowName}</span>
-                            <Badge variant="outline">{`Similitud: ${Math.round(sim.score * 100)}%`}</Badge>
-                            </div>
-                            <Progress value={sim.score * 100} className="h-2 mb-2" />
-                            <p className="text-sm text-muted-foreground">
-                            <span className="font-semibold text-foreground/80">Razón:</span> {sim.reason}
-                            </p>
-                        </div>
-                        ))}
-                    </div>
-                </div>
-              )}
-
               {/* Actions */}
-              <div className="flex justify-end pt-4 border-t">
+              <div className="flex justify-between items-center pt-4 border-t">
+                 {/* Botón de Similitudes */}
+                 {workflow.similarities.length > 0 && (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline">
+                        <Users className="mr-2 h-4 w-4"/>
+                        Ver Similitudes ({workflow.similarities.length})
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[625px]">
+                      <DialogHeader>
+                        <DialogTitle>Análisis de Similitud para #{workflow.displayId} - {workflow.flowName}</DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto px-2">
+                        {workflow.similarities
+                          .sort((a, b) => b.score - a.score)
+                          .map(sim => (
+                          <div key={sim.workflowId} className="p-3 border rounded-md bg-background">
+                              <div className="flex justify-between items-center mb-2">
+                              <span className="font-medium text-foreground">{sim.workflowName}</span>
+                              <Badge variant="outline">{`Similitud: ${Math.round(sim.score * 100)}%`}</Badge>
+                              </div>
+                              <Progress value={sim.score * 100} className="h-2 mb-2" />
+                              <p className="text-sm text-muted-foreground">
+                              <span className="font-semibold text-foreground/80">Razón:</span> {sim.reason}
+                              </p>
+                          </div>
+                          ))}
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                 )}
+                 <div/> {/* Empty div to push delete button to the right if no similarities */}
+
+                 {/* Botón de Eliminar */}
                  <AlertDialog>
                     <AlertDialogTrigger asChild>
                        <Button variant="destructive">
