@@ -194,7 +194,7 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
               {/* Actions */}
               <div className="flex justify-between items-center pt-4 border-t">
                  {/* Botón de Similitudes */}
-                 {workflow.similarities.length > 0 && (
+                 {workflow.similarities.length > 0 ? (
                   <Dialog>
                     <DialogTrigger asChild>
                       <Button variant="outline">
@@ -224,8 +224,7 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
                       </div>
                     </DialogContent>
                   </Dialog>
-                 )}
-                 <div/> {/* Empty div to push delete button to the right if no similarities */}
+                 ) : <div />} {/* Empty div to push delete button to the right if no similarities */}
 
                  {/* Botón de Eliminar */}
                  <AlertDialog>
@@ -395,3 +394,5 @@ ${separator}`;
     </div>
   );
 }
+
+    
