@@ -77,7 +77,7 @@ export const PageHeader = ({
                     <AlertDialogHeader>
                       <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
                       <AlertDialogDescription>
-                        Esta acción no se puede deshacer. Se restablecerá la lista de flujos a su estado original, perdiendo los nuevos análisis no guardados.
+                        Esta acción descartará todos los cambios no guardados y restaurará la lista a su último estado guardado. No se puede deshacer.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>

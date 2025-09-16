@@ -16,6 +16,7 @@ import {SearchInput} from '@/components/search-input';
 
 export default function Home() {
   const [workflows, setWorkflows] = useState<Workflow[]>([]);
+  const [initialWorkflows, setInitialWorkflows] = useState<Workflow[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [analysisProgress, setAnalysisProgress] = useState({ total: 0, current: 0 });
   const [searchQuery, setSearchQuery] = useState('');
@@ -30,6 +31,7 @@ export default function Home() {
         displayId: wf.displayId || index + 1,
       }));
       setWorkflows(workflowsWithDisplayId);
+      setInitialWorkflows(workflowsWithDisplayId); // Guardar el estado inicial
     } catch (error) {
       console.error('Failed to load pre-analyzed workflows', error);
       toast({
@@ -97,7 +99,7 @@ export default function Home() {
 
 
   const handleClearWorkflows = () => {
-    setWorkflows(preAnalyzedWorkflows as Workflow[]);
+    setWorkflows(initialWorkflows); // Restablecer al estado inicial guardado
     setHasUnsavedChanges(false);
     toast({
       title: 'Flujos de trabajo restablecidos',
@@ -111,6 +113,7 @@ export default function Home() {
     setIsLoading(false);
     if (result.success) {
       setHasUnsavedChanges(false);
+      setInitialWorkflows(workflows); // Actualizar el estado inicial al guardar
       toast({
         title: '¡Guardado!',
         description: 'Los flujos de trabajo han sido guardados permanentemente.',
