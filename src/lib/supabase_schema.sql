@@ -1,7 +1,7 @@
 -- Tabla para almacenar los flujos de trabajo analizados
 CREATE TABLE public.workflows (
     id TEXT PRIMARY KEY NOT NULL,
-    "displayId" INTEGER,
+    "displayId" INTEGER UNIQUE,
     "fileName" TEXT,
     "flowName" TEXT,
     "mainArea" TEXT,
