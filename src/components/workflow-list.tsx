@@ -67,8 +67,8 @@ const InfoRow = ({ icon, label, children }: { icon: React.ReactNode, label: stri
 );
 
 const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (id: string) => void }) => (
-  <Card className="w-full overflow-hidden">
-    <div className="p-4 md:p-6">
+  <Card className="w-full overflow-hidden flex flex-col">
+    <div className="p-4 md:p-6 flex-grow">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         {/* Main Info */}
         <div className="flex-grow">
@@ -100,20 +100,21 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
                 )}
             </div>
         </div>
-
-        {/* Data Flow */}
-        <div className="flex items-center gap-2 text-sm shrink-0 rounded-lg bg-muted p-2">
+      </div>
+    </div>
+     {/* Data Flow footer */}
+    <div className="bg-muted/50 border-t px-4 py-2">
+        <div className="flex items-center justify-center gap-2 text-xs">
             <div className="flex flex-col items-center text-center">
-                <span className='text-xs text-muted-foreground'>Origen</span>
+                <span className='text-muted-foreground'>Origen</span>
                 <span className="font-semibold">{workflow.dataOrigins[0] || 'N/A'}</span>
             </div>
-            <ArrowRight className="h-5 w-5 text-muted-foreground shrink-0 mt-3" />
+            <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 mt-3" />
             <div className="flex flex-col items-center text-center">
-                 <span className='text-xs text-muted-foreground'>Destino</span>
+                 <span className='text-muted-foreground'>Destino</span>
                  <span className="font-semibold">{workflow.automationDestinations[0] || 'N/A'}</span>
             </div>
         </div>
-      </div>
     </div>
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="details" className="border-t">
@@ -182,17 +183,19 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
               )}
 
               {/* Raw Content */}
+              {workflow.content && (
               <div>
                   <h3 className="font-semibold flex items-center mb-3"><Code2 className="mr-2 h-4 w-4"/>Contenido Original</h3>
                    <div className="relative">
                      <pre className="bg-gray-900 text-white p-4 rounded-md text-xs max-h-60 overflow-auto">
                         <code>{workflow.content}</code>
                     </pre>
-                    <Button variant="ghost" size="icon" className="absolute top-2 right-2 h-7 w-7 text-gray-300 hover:bg-gray-700" onClick={() => navigator.clipboard.writeText(workflow.content)}>
+                    <Button variant="ghost" size="icon" className="absolute top-2 right-2 h-7 w-7 text-gray-300 hover:bg-gray-700" onClick={() => navigator.clipboard.writeText(workflow.content || '')}>
                         <Copy className="h-4 w-4" />
                     </Button>
                    </div>
               </div>
+              )}
 
               {/* Actions */}
               <div className="flex justify-end pt-4 border-t">
