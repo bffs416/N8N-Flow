@@ -71,10 +71,10 @@ export default function Home() {
 
         try {
             const analyzedData = await analyzeSingleWorkflow(file);
-            setWorkflows(prevWorkflows => [
-                ...prevWorkflows,
-                { ...analyzedData, displayId: nextId++ }
-            ]);
+            setWorkflows(prevWorkflows => {
+               const newId = getNextDisplayId(prevWorkflows);
+               return [...prevWorkflows, { ...analyzedData, displayId: newId }];
+            });
             setHasUnsavedChanges(true);
         } catch (e) {
             console.error(e);
@@ -175,6 +175,9 @@ export default function Home() {
         hasWorkflows={workflows.length > 0}
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
+        onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
+        isLoading={isLoading}
+        totalWorkflows={workflows.length}
       />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-8">
@@ -252,7 +255,6 @@ export default function Home() {
               isLoading={isLoading}
               totalWorkflows={workflows.length}
               searchQuery={searchQuery}
-              onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
             />
           )}
         </div>

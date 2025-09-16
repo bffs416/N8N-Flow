@@ -21,6 +21,9 @@ interface PageHeaderProps {
   hasWorkflows: boolean;
   onSave: () => void;
   hasUnsavedChanges: boolean;
+  onRunSimilarityAnalysis: () => void;
+  isLoading: boolean;
+  totalWorkflows: number;
 }
 
 
@@ -29,6 +32,9 @@ export const PageHeader = ({
   hasWorkflows, 
   onSave, 
   hasUnsavedChanges, 
+  onRunSimilarityAnalysis,
+  isLoading,
+  totalWorkflows,
 }: PageHeaderProps) => {
   return (
     <header className="border-b bg-card sticky top-0 z-10">
@@ -47,13 +53,22 @@ export const PageHeader = ({
             </Button>
             {hasWorkflows && (
               <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" onClick={onSave} disabled={!hasUnsavedChanges}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={onRunSimilarityAnalysis}
+                  disabled={isLoading || totalWorkflows < 2}
+                >
+                  <Wand2 className="mr-2 h-4 w-4" />
+                  Analizar Similitudes
+                </Button>
+                <Button variant="outline" size="sm" onClick={onSave} disabled={!hasUnsavedChanges || isLoading}>
                     <Save className="h-4 w-4 mr-2" />
                     Guardar Cambios
                 </Button>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" disabled={isLoading}>
                       <Trash2 className="h-4 w-4 mr-2" />
                       Restablecer
                     </Button>
