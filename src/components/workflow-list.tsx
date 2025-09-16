@@ -382,23 +382,26 @@ ${separator}`;
        <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>{getTitle()}</CardTitle>
-            {workflows.length > 0 && (
-              <div className="flex items-center gap-2">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={onRunSimilarityAnalysis}
-                  disabled={isLoading || workflows.length < 2}
-                >
-                  <Wand2 className="mr-2 h-4 w-4" />
-                  Analizar Similitudes
-                </Button>
-                <Button variant="outline" size="sm" onClick={handleExport}>
-                  <ClipboardCopy className="mr-2 h-4 w-4" />
-                  Exportar
-                </Button>
-              </div>
-            )}
+            <div className="flex items-center gap-2">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={onRunSimilarityAnalysis}
+                disabled={isLoading || totalWorkflows < 2}
+              >
+                <Wand2 className="mr-2 h-4 w-4" />
+                Analizar Similitudes
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleExport}
+                disabled={isLoading || totalWorkflows === 0}
+              >
+                <ClipboardCopy className="mr-2 h-4 w-4" />
+                Exportar
+              </Button>
+            </div>
           </CardHeader>
         </Card>
         {workflows.length === 0 && searchQuery && (
