@@ -1,7 +1,7 @@
 import React from 'react';
 import { N8nInsightsLogo } from './icons';
 import { Button } from './ui/button';
-import { Trash2 } from 'lucide-react';
+import { Trash2, UploadCloud } from 'lucide-react';
 
 interface PageHeaderProps {
   onClear: () => void;
@@ -19,10 +19,16 @@ export const PageHeader = ({ onClear, hasWorkflows }: PageHeaderProps) => {
             <h1 className="text-2xl font-bold text-foreground">n8n Insights</h1>
           </div>
           {hasWorkflows && (
-             <Button variant="outline" size="sm" onClick={onClear}>
-                <Trash2 className="h-4 w-4 mr-2" />
-                Limpiar todo
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button variant="outline" size="sm" onClick={() => alert('Funcionalidad no implementada.')} disabled>
+                  <UploadCloud className="h-4 w-4 mr-2" />
+                  Cargar a Supabase
+              </Button>
+              <Button variant="outline" size="sm" onClick={onClear}>
+                  <Trash2 className="h-4 w-4 mr-2" />
+                  Limpiar todo
+              </Button>
+            </div>
           )}
         </div>
       </div>
