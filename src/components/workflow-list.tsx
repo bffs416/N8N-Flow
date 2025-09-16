@@ -22,6 +22,7 @@ import {
   Copy,
   Trash2,
   ClipboardCopy,
+  Wand2,
 } from 'lucide-react';
 import {
   AlertDialog,
@@ -100,14 +101,12 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
     
     const topSimilarities = sortedSimilarities.slice(0, 3);
     const similarityText = topSimilarities.map(sim => sim.workflowName.split(' ')[0]).join(', ');
-    const remainingCount = sortedSimilarities.length - topSimilarities.length;
 
     return (
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
         <Users className="h-4 w-4" />
         <span>
           Similar con: <strong className="text-foreground">{similarityText}</strong>
-          {remainingCount > 0 ? ` (+${remainingCount})` : ''}
         </span>
       </div>
     );
@@ -269,19 +268,20 @@ export function WorkflowList({
   workflows,
   isLoading,
   setWorkflows,
+  onRunSimilarityAnalysis,
   totalWorkflows = 0,
   searchQuery = '',
 }: {
   workflows: Workflow[];
   isLoading: boolean;
   setWorkflows: React.Dispatch<React.SetStateAction<Workflow[]>>;
+  onRunSimilarityAnalysis: () => void;
   totalWorkflows?: number;
   searchQuery?: string;
 }) {
   const { toast } = useToast();
 
   const handleDeleteWorkflow = (idToDelete: string) => {
-    // Also remove similarities pointing to this workflow from others
     const updatedWorkflows = workflows
       .filter(wf => wf.id !== idToDelete)
       .map(wf => ({
@@ -383,10 +383,21 @@ ${separator}`;
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>{getTitle()}</CardTitle>
             {workflows.length > 0 && (
-               <Button variant="outline" size="sm" onClick={handleExport}>
-                <ClipboardCopy className="mr-2 h-4 w-4" />
-                Exportar
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={onRunSimilarityAnalysis}
+                  disabled={isLoading || workflows.length < 2}
+                >
+                  <Wand2 className="mr-2 h-4 w-4" />
+                  Analizar Similitudes
+                </Button>
+                <Button variant="outline" size="sm" onClick={handleExport}>
+                  <ClipboardCopy className="mr-2 h-4 w-4" />
+                  Exportar
+                </Button>
+              </div>
             )}
           </CardHeader>
         </Card>

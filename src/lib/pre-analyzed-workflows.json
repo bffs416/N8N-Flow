@@ -901,5 +901,47 @@
       "Un periodista investiga discursos públicos o entrevistas largas en YouTube; el flujo le permite obtener rápidamente los argumentos principales, definiciones y puntos clave mencionados para sus reportajes."
     ],
     "similarities": []
+  },
+  {
+    "id": "✨ Vision-Based AI Agent Scraper - with Google Sheets, ScrapingBee, and Gemini.txt-1758054180103",
+    "displayId": 25,
+    "fileName": "✨ Vision-Based AI Agent Scraper - with Google Sheets, ScrapingBee, and Gemini.txt",
+    "flowName": "Vision-Based AI Agent Scraper - with Google Sheets, ScrapingBee, and Gemini",
+    "mainArea": "E-commerce",
+    "secondaryAreas": [
+      "Marketing",
+      "Inteligencia de Negocio",
+      "Análisis de la Competencia"
+    ],
+    "mainFunction": "Extrae datos estructurados de páginas web utilizando un agente de IA basado en visión, con un mecanismo de respaldo para el scraping de HTML, y los organiza en Google Sheets.",
+    "automationDestinations": [
+      "Google Sheets"
+    ],
+    "dataOrigins": [
+      "Manual Trigger",
+      "Google Sheets",
+      "ScrapingBee"
+    ],
+    "keyNodes": [
+      "Vision-based Scraping Agent",
+      "Google Gemini Chat Model",
+      "ScrapingBee - Get page screenshot",
+      "ScrapingBee- Get page HTML",
+      "Structured Output Parser",
+      "Google Sheets - Get list of URLs",
+      "Google Sheets - Create Rows",
+      "HTML-based Scraping Tool",
+      "Set fields"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Extrae datos estructurados de páginas web (como productos y promociones) usando un agente de IA visionario con Gemini y ScrapingBee, guardando los resultados en Google Sheets.",
+    "useCaseExamples": [
+      "Monitorear los precios y promociones de productos de la competencia en varias tiendas online, actualizando automáticamente una hoja de cálculo de Google con los datos extraídos para análisis de mercado.",
+      "Extraer detalles de propiedades (precio, número de habitaciones, área, características clave) de listados en portales inmobiliarios, para un análisis de mercado o una base de datos interna.",
+      "Recopilar información estructurada sobre ofertas de empleo (puesto, empresa, ubicación, requisitos) de diferentes sitios web de empleo para identificar tendencias en el mercado laboral o para fines de reclutamiento.",
+      "Investigar contenido y tendencias de la industria al raspar artículos, blogs o páginas de productos de sitios web de la competencia o de publicaciones especializadas para estrategias de marketing.",
+      "Rastrear y comparar precios de vuelos, hoteles o paquetes turísticos en sitios web de viajes para identificar las mejores ofertas y mantener una base de datos actualizada de fluctuaciones de precios."
+    ],
+    "similarities": []
   }
 ]

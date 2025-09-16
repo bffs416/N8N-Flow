@@ -51,30 +51,27 @@ export default function Home() {
     try {
       // 1. Analyze all new files in parallel
       const analysisPromises = files.map(file => 
-        analyzeSingleWorkflow(file, workflows) // Pass existing workflows to get next ID
-          .catch(e => { // Catch errors individually so one failure doesn't stop all
+        analyzeSingleWorkflow(file, workflows)
+          .catch(e => { 
             console.error(e);
             toast({
               variant: 'destructive',
               title: `Falló el Análisis para ${file.fileName}`,
               description: e instanceof Error ? e.message : 'Error inesperado.',
             });
-            return null; // Return null for failed analyses
+            return null; 
           })
       );
       
       const newWorkflows = (await Promise.all(analysisPromises)).filter(Boolean) as Workflow[];
 
       if (newWorkflows.length > 0) {
-        // 2. Combine new workflows with existing ones and update the state
         setWorkflows(prevWorkflows => [...prevWorkflows, ...newWorkflows]);
         setHasUnsavedChanges(true);
-
         toast({
           title: 'Análisis Completo',
           description: `Se agregaron ${newWorkflows.length} nuevo(s) flujo(s).`,
         });
-
       } else {
          toast({
           title: 'Análisis Finalizado',
@@ -104,7 +101,9 @@ export default function Home() {
   };
 
   const handleSaveChanges = async () => {
+    setIsLoading(true);
     const result = await saveWorkflowsToFile(workflows);
+    setIsLoading(false);
     if (result.success) {
       setHasUnsavedChanges(false);
       toast({
@@ -120,6 +119,32 @@ export default function Home() {
     }
   };
   
+  const handleRunSimilarityAnalysis = async () => {
+    setIsLoading(true);
+    toast({
+      title: 'Análisis de Similitud en Progreso',
+      description: 'Comparando todos los flujos. Esto puede tardar un momento.',
+    });
+    try {
+      const updatedWorkflows = await runSimilarityAnalysis(workflows);
+      setWorkflows(updatedWorkflows);
+      setHasUnsavedChanges(true);
+      toast({
+        title: 'Análisis de Similitud Completo',
+        description: 'Se han calculado las similitudes entre los flujos.',
+      });
+    } catch (error) {
+      console.error('Failed to run similarity analysis', error);
+      toast({
+        variant: 'destructive',
+        title: 'Error en el Análisis',
+        description: 'No se pudo completar el análisis de similitud.',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const filteredWorkflows = useMemo(() => {
     if (!searchQuery) return workflows;
 
@@ -213,6 +238,7 @@ export default function Home() {
             <WorkflowList
               workflows={filteredWorkflows}
               setWorkflows={setWorkflows}
+              onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
               isLoading={isLoading}
               totalWorkflows={workflows.length}
               searchQuery={searchQuery}
