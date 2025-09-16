@@ -76,7 +76,7 @@ export default function Home() {
     setIsProcessing(true);
     setProgress({current: 0, total: files.length});
 
-    const initialWorkflows = [...workflows];
+    const initialWorkflowsCount = workflows.length;
     let processedWorkflows: Workflow[] = [...workflows];
 
     // Process files one by one
@@ -106,7 +106,7 @@ export default function Home() {
     setIsProcessing(false);
 
     // Once all files are processed, run similarity analysis on the complete list
-    if (processedWorkflows.length > initialWorkflows.length) {
+    if (processedWorkflows.length > initialWorkflowsCount) {
       setIsSimilarityRunning(true);
       toast({
         title: 'Análisis de Similitud en Progreso',
@@ -227,5 +227,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
