@@ -4,7 +4,6 @@
     "id": "flujo-1",
     "displayId": 1,
     "fileName": "nostr-reporting.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "#️⃣NOSTR #DAMUS AI POWERED REPORTING + GMAIL + TELEGRAM",
     "shortDescription": "Este flujo automatiza la recopilación de hilos de Nostr con el hashtag #damus, emplea IA (Google Gemini) para extraer y analizar temas, y luego genera informes estructurados que se envían por correo electrónico a través de Gmail y como mensajes a través de Telegram.",
     "mainArea": "Inteligencia Artificial",
@@ -21,13 +20,19 @@
       "Un equipo de desarrollo de un cliente de Nostr recopila automáticamente sugerencias de funciones y reportes de errores relacionados con #damus publicados por los usuarios en la red. El equipo busca identificar 3 nuevas solicitudes de funciones o reportes de errores recurrentes al mes, integrándolos en el backlog del producto en un plazo de 30 días, mejorando la hoja de ruta del producto en un 15% para el final del trimestre. Reciben un informe mensual consolidado a principios de cada mes vía Gmail y un resumen por Telegram sobre feedback crítico en tiempo real.",
       "Un investigador en sociología digital estudia la evolución del discurso y la polarización en torno a #damus en Nostr para un estudio académico sobre la formación de comunidades en redes descentralizadas. Se propone recopilar y analizar 1000 hilos por mes, identificando al menos 2 cambios significativos en el sentimiento o los temas dominantes cada trimestre, contribuyendo a la publicación de un artículo de investigación en 12 meses. Reciben informes trimestrales detallados por Gmail que resuman las tendencias y el sentimiento, y alertas mensuales de Telegram sobre anomalías detectadas."
     ],
-    "similarities": []
+    "similarities": [
+       {
+        "workflowId": "flujo-15",
+        "workflowName": "#15 - NEW TWEETS",
+        "score": 0.75,
+        "reason": "Ambos flujos monitorean una red social (Nostr y Twitter) para recopilar datos, aunque usan diferentes destinos y métodos de procesamiento."
+      }
+    ]
   },
   {
     "id": "flujo-2",
     "displayId": 2,
     "fileName": "gumroad-trigger.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "GUMROAD SALE TRIGGER",
     "shortDescription": "Este flujo se activa con cada nueva venta en Gumroad. Automáticamente añade al comprador como suscriptor en MailerLite, lo asigna a un grupo específico para campañas de email post-venta y registra los detalles de la venta (fecha, email, país, producto) en una hoja de Google Sheets que funciona como CRM.",
     "mainArea": "Automatización de Marketing y Ventas",
@@ -44,13 +49,19 @@
       "Optimización de Contabilidad y Reportes Fiscales: Un freelancer o pequeña empresa que vende productos digitales y necesita una forma eficiente de registrar sus ingresos para la contabilidad y los impuestos. El flujo registra automáticamente cada venta de Gumroad en una hoja de Google Sheets, incluyendo fecha y país, lo que facilita la preparación de informes de ingresos y la gestión de obligaciones fiscales (como el IVA según el país del comprador). Objetivo SMART: Reducir el tiempo dedicado a la preparación de informes de ventas mensuales en un 70% y asegurar la precisión del 100% de los datos de ventas para los cierres fiscales trimestrales, comenzando desde el próximo mes.",
       "Análisis Demográfico y Estrategia de Expansión Geográfica: Un creador que opera a nivel global quiere identificar sus mercados más fuertes y débiles para enfocar sus esfuerzos de marketing o traducir sus productos. El flujo registra automáticamente el país de cada comprador en Google Sheets y los añade a MailerLite. Objetivo SMART: Analizar la distribución geográfica de las ventas registradas en Google Sheets al final de cada trimestre para identificar los tres países con mayor potencial de crecimiento, y lanzar una campaña de marketing dirigida a uno de esos mercados en los siguientes dos meses."
     ],
-    "similarities": []
+    "similarities": [
+      {
+        "workflowId": "flujo-18",
+        "workflowName": "#18 - ON NEW STRIPE INVOICE PAYMENT UPDATE HUBSPOT AND NOTIFY THE TEAM IN SLACK",
+        "score": 0.8,
+        "reason": "Ambos flujos se activan por un evento de pago (Gumroad y Stripe) y realizan acciones de automatización de ventas/clientes, como actualizar un CRM o registrar datos."
+      }
+    ]
   },
   {
     "id": "flujo-3",
     "displayId": 3,
     "fileName": "chatgpt-image.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "TEMPLATE-DEMO-CHATGPT-IMAGE-1-WITH-DRIVE-AND-SHEET COPY",
     "shortDescription": "Este flujo genera imágenes usando ChatGPT a partir de un mensaje de chat, guarda las imágenes generadas en Google Drive y registra los detalles de la imagen y los costos de uso en Google Sheets.",
     "mainArea": "Generación de Contenido Digital",
@@ -67,13 +78,19 @@
       "Generación de Material Educativo: Un instructor de cursos online requiere ilustraciones conceptuales personalizadas y diagramas para sus módulos de formación, pero carece de habilidades de diseño gráfico. Para cada uno de los 5 nuevos módulos del curso a desarrollar en el próximo bimestre, el instructor usará el flujo para generar 4 ilustraciones y diagramas explicativos complejos a partir de descripciones textuales. Estas imágenes se guardarán en Google Drive y los costos se detallarán en Google Sheets. Esto permitirá completar la creación de 20 ilustraciones y diagramas para los nuevos módulos en 8 semanas, garantizando la claridad visual y manteniendo el costo total por módulo por debajo de los $10 USD.",
       "Inmobiliaria para Visitas Virtuales: Una agencia inmobiliaria necesita mostrar el potencial de las propiedades vacías o con mobiliario anticuado mediante \"home staging\" virtual, lo cual es muy caro y lento de realizar manualmente. Para cada una de las 3 propiedades nuevas que se listan semanalmente, el flujo generará 4 imágenes de cada estancia con diferentes estilos de decoración y mobiliario, guardándolas en una carpeta de Google Drive asociada a la propiedad y registrando los costos. Esto permitirá generar 12 imágenes de \"home staging\" virtual para 3 propiedades en un plazo de 24 horas después de la visita inicial, con el fin de aumentar los contactos de posibles compradores en un 20% en el primer mes de publicación y reducir los gastos de fotografía y staging en un 50% en el próximo semestre."
     ],
-    "similarities": []
+    "similarities": [
+      {
+        "workflowId": "flujo-7",
+        "workflowName": "#7 - AUTOMATED SOCIAL MEDIA CONTENT PUBLISHING FACTORY + SYSTEM PROMPT COMPOSITION",
+        "score": 0.85,
+        "reason": "Ambos flujos utilizan IA para generar contenido visual. Este flujo se enfoca en imágenes con ChatGPT y almacenamiento, mientras que el flujo 7 lo integra en un sistema más amplio de publicación en redes sociales."
+      }
+    ]
   },
   {
     "id": "flujo-4",
     "displayId": 4,
     "fileName": "ticket-alerts.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "NEW TICKET ALERTS TO TEAMS",
     "shortDescription": "Este flujo monitorea nuevos tickets en ConnectWise, filtra los ya procesados, agrupa los tickets por empresa y los notifica al equipo de Dispatch a través de Microsoft Teams, registrando cada notificación en Redis.",
     "mainArea": "Servicio al Cliente",
@@ -96,7 +113,6 @@
     "id": "flujo-5",
     "displayId": 5,
     "fileName": "calendar-sync.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "GOOGLE CALENDAR TO OUTLOOK",
     "shortDescription": "Este flujo sincroniza eventos creados y cancelados en Google Calendar con Microsoft Outlook, creando nuevos eventos y eliminando los cancelados, y enviando una notificación por correo electrónico para las cancelaciones.",
     "mainArea": "Productividad",
@@ -119,7 +135,6 @@
     "id": "flujo-6",
     "displayId": 6,
     "fileName": "hn-scrape.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "HN WHO IS HIRING SCRAPE",
     "shortDescription": "Este flujo de trabajo raspa las publicaciones de 'Quién está contratando' de Hacker News, extrae y limpia los detalles de las ofertas de empleo utilizando IA, y los almacena en una base de datos Airtable.",
     "mainArea": "Recursos Humanos",
@@ -136,13 +151,19 @@
       "Un consultor freelancer de TI en busca de proyectos: Aprovechar el flujo de trabajo para encontrar oportunidades de proyectos a corto plazo o consultorías en startups que están contratando, identificando al menos 5 oportunidades relevantes por mes y contactando a los posibles clientes en menos de 48 horas desde la publicación del puesto, con el objetivo de lograr una tasa de respuesta del 15% en los próximos 60 días.",
       "Un departamento de servicios de carrera universitario: Emplear el flujo de trabajo para crear una base de datos actualizada de ofertas de empleo relevantes de startups y tecnología para sus estudiantes de último año, proporcionando una lista semanal de al menos 20 ofertas filtradas, lo que se espera aumente en un 10% las solicitudes de empleo post-graduación de los estudiantes que usan el recurso durante el próximo año académico."
     ],
-    "similarities": []
+    "similarities": [
+       {
+        "workflowId": "flujo-21",
+        "workflowName": "#21 - PRIORIZACIÓN Y CATEGORIZACIÓN DE TAREAS DE TODOIST CON IA",
+        "score": 0.65,
+        "reason": "Ambos flujos utilizan IA (OpenAI) para procesar texto, aunque con fines muy diferentes: uno para extraer datos de ofertas de empleo y el otro para categorizar tareas."
+      }
+    ]
   },
   {
     "id": "flujo-7",
     "displayId": 7,
     "fileName": "social-media-factory.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "AUTOMATED SOCIAL MEDIA CONTENT PUBLISHING FACTORY + SYSTEM PROMPT COMPOSITION",
     "shortDescription": "Este flujo automatiza la generación y publicación de contenido de redes sociales en múltiples plataformas, gestionando la creación de texto e imágenes con IA, la aprobación del usuario y el archivo, todo ello configurable dinámicamente desde Google Docs.",
     "mainArea": "Marketing y Gestión de Contenidos",
@@ -159,13 +180,25 @@
       "Un creador de contenido o influencer gestiona su calendario editorial: El creador define sus temas y mensajes clave semanales en un Google Doc. El flujo aprovecha la IA para generar subtítulos y conceptos de imagen, que el creador revisa y aprueba para su publicación automatizada en Instagram y Twitter. El contenido publicado se archiva. Objetivo: Aumentar la frecuencia de publicación en un 30% y ahorrar 5-10 horas semanales en la creación de contenido en el próximo mes.",
       "El departamento de RRHH de una empresa difunde comunicaciones internas: El equipo de RRHH introduce las novedades (políticas, reconocimientos) en un Google Doc. El flujo genera un mensaje conciso y una imagen con IA, adaptado para plataformas internas (ej. Slack, SharePoint). Un líder de equipo aprueba el mensaje antes de publicarse y se archiva un registro. Objetivo: Asegurar que el 100% de las comunicaciones internas críticas se difundan en 4 horas desde su aprobación, mejorando el engagement de los empleados."
     ],
-    "similarities": []
+    "similarities": [
+      {
+        "workflowId": "flujo-3",
+        "workflowName": "#3 - TEMPLATE-DEMO-CHATGPT-IMAGE-1-WITH-DRIVE-AND-SHEET COPY",
+        "score": 0.85,
+        "reason": "Ambos flujos son similares porque utilizan IA para la generación de contenido visual, pero este flujo es más completo al incluir la publicación multicanal en redes sociales."
+      },
+      {
+        "workflowId": "flujo-8",
+        "workflowName": "#8 - NOTION TO LINKEDIN",
+        "score": 0.7,
+        "reason": "Ambos flujos automatizan la publicación de contenido en redes sociales (especialmente LinkedIn), pero este flujo es más complejo al usar IA para la generación del contenido, mientras que el flujo 8 lo toma de Notion."
+      }
+    ]
   },
   {
     "id": "flujo-8",
     "displayId": 8,
     "fileName": "notion-to-linkedin.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "NOTION TO LINKEDIN",
     "shortDescription": "Este flujo automatiza la publicación diaria de posts de una base de datos de Notion en LinkedIn, formateando el contenido, descargando imágenes asociadas y actualizando el estado de publicación en Notion.",
     "mainArea": "Marketing",
@@ -182,13 +215,25 @@
       "Una empresa tecnológica desea compartir noticias internas, logros de equipo y ofertas de empleo con sus empleados y la comunidad tecnológica en LinkedIn de forma regular. El flujo buscará aumentar el 'employee advocacy' en un 25% en 6 meses y reducir el tiempo de publicación manual en 8 horas semanales, con un lanzamiento en 1 mes y evaluación semestral.",
       "Una empresa SaaS necesita anunciar nuevas características y actualizaciones de productos en LinkedIn de manera consistente para mantener informada a su base de usuarios y posibles clientes. Se busca aumentar la retención de usuarios en un 5% en 3 meses y lograr que el 30% de los posts generen clics hacia la documentación, con implementación y pruebas en 2 semanas y seguimiento mensual."
     ],
-    "similarities": []
+    "similarities": [
+      {
+        "workflowId": "flujo-7",
+        "workflowName": "#7 - AUTOMATED SOCIAL MEDIA CONTENT PUBLISHING FACTORY + SYSTEM PROMPT COMPOSITION",
+        "score": 0.7,
+        "reason": "Ambos automatizan la publicación en LinkedIn, pero este flujo se origina en Notion, mientras que el flujo 7 usa IA y es multicanal, siendo más complejo."
+      },
+      {
+        "workflowId": "flujo-15",
+        "workflowName": "#15 - NEW TWEETS",
+        "score": 0.6,
+        "reason": "Ambos flujos trabajan con plataformas de redes sociales (LinkedIn y Twitter). Uno es para publicar contenido (push) y el otro para monitorear (pull)."
+      }
+    ]
   },
   {
     "id": "flujo-9",
     "displayId": 9,
     "fileName": "multi-agent.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "MULTI-AGENT CONVERSATION",
     "shortDescription": "Este flujo permite iniciar conversaciones con múltiples agentes de IA, cada uno configurable con su propio modelo e instrucciones. Los agentes pueden ser invocados por menciones o responder todos aleatoriamente si no hay menciones específicas.",
     "mainArea": "Inteligencia Artificial",
@@ -211,7 +256,6 @@
     "id": "flujo-10",
     "displayId": 10,
     "fileName": "lead-qualification.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "LEAD QUALIFICATION WITH BATCHDATA",
     "shortDescription": "Este flujo califica leads automáticamente utilizando datos de propiedades de BatchData, actualiza el CRM con la información enriquecida y dispara acciones de seguimiento o notificaciones basadas en el estado de calificación.",
     "mainArea": "Ventas",
@@ -228,13 +272,19 @@
       "Una institución financiera pre-califica automáticamente las solicitudes de préstamos con datos de BatchData para priorizar a los solicitantes con mayor probabilidad de aprobación en el CRM, aspirando a reducir el tiempo de procesamiento en un 25% en los próximos 9 meses.",
       "Una universidad califica a los futuros estudiantes basándose en propiedades de BatchData, actualiza el CRM para priorizar a los candidatos con mayor potencial de inscripción y envía información personalizada, con el fin de aumentar la tasa de conversión de consulta a inscripción en un 8% durante el próximo ciclo de admisión."
     ],
-    "similarities": []
+    "similarities": [
+      {
+        "workflowId": "flujo-22",
+        "workflowName": "#22 - GESTIÓN BÁSICA DE CONTACTOS EN COPPER",
+        "score": 0.7,
+        "reason": "Ambos flujos trabajan con CRMs (uno genérico, el otro Copper) para la gestión de contactos/leads. Este flujo es más complejo ya que incluye calificación de leads con un servicio externo (BatchData)."
+      }
+    ]
   },
   {
     "id": "flujo-11",
     "displayId": 11,
     "fileName": "totp-generator.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "COMPLETE GUIDE TO SETTING UP AND GENERATING TOTP CODES IN N8N 🔐",
     "shortDescription": "Este flujo permite generar códigos TOTP (Time-based One-Time Password) de forma manual en n8n para propósitos de autenticación o seguridad.",
     "mainArea": "IT/Seguridad",
@@ -257,7 +307,6 @@
     "id": "flujo-12",
     "displayId": 12,
     "fileName": "typeform-feedback.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "TYPEFORM FEEDBACK WORKFLOW",
     "shortDescription": "Este flujo recopila feedback enviado a través de Typeform, evalúa su utilidad y lo clasifica automáticamente, guardando la información en hojas de cálculo separadas de Google Sheets según la valoración.",
     "mainArea": "Gestión de Feedback",
@@ -280,7 +329,6 @@
     "id": "flujo-13",
     "displayId": 13,
     "fileName": "bitwarden-management.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "GESTIÓN DE GRUPOS Y MIEMBROS DE BITWARDEN",
     "shortDescription": "Este flujo de trabajo gestiona los grupos y los miembros dentro de Bitwarden, permitiendo la creación de grupos, la obtención de todos los miembros, y la actualización y consulta de la membresía de grupos.",
     "mainArea": "Seguridad / TI",
@@ -303,7 +351,6 @@
     "id": "flujo-14",
     "displayId": 14,
     "fileName": "iss-tracker.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "SEND UPDATES ABOUT THE POSITION OF THE ISS EVERY MINUTE TO A TOPIC IN ACTIVEMQ",
     "shortDescription": "Este flujo obtiene la posición actual de la ISS cada minuto a través de una API externa y la envía a un tópico de ActiveMQ.",
     "mainArea": "Monitoreo de Datos",
@@ -326,7 +373,6 @@
     "id": "flujo-15",
     "displayId": 15,
     "fileName": "new-tweets.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "NEW TWEETS",
     "shortDescription": "Este flujo busca tweets específicos en Twitter, compara los resultados con los registros existentes en Airtable y añade automáticamente los tweets nuevos a la base de datos de Airtable.",
     "mainArea": "Marketing",
@@ -343,13 +389,25 @@
       "**Recopilación Automatizada de Testimonios de Clientes:** Una tienda de comercio electrónico desea recopilar tweets positivos de clientes sobre sus productos para utilizarlos como testimonios en su sitio web y redes sociales. El flujo buscará tweets que mencionen el nombre de la tienda o productos con palabras como “me encanta”, “excelente”, “feliz”, “súper” y calificadores positivos. El objetivo es recopilar un promedio de 5 nuevos testimonios de clientes válidos por semana, y utilizarlos para aumentar la tasa de conversión en la página de producto en un 5% en los próximos seis meses. El flujo se ejecutará dos veces al día.",
       "**Monitoreo Proactivo de Quejas y Soporte al Cliente:** Una empresa de servicios online quiere detectar y responder proactivamente a quejas de clientes en Twitter que aún no se han convertido en tickets de soporte formal. El flujo buscará menciones de la empresa junto con palabras clave como “problema”, “no funciona”, “error”, “ayuda”, “soporte” o “caído”. El objetivo es reducir el tiempo promedio de primera respuesta a quejas públicas en Twitter en un 40% en el próximo trimestre y disminuir el número de quejas sin respuesta en la plataforma a cero. El flujo se ejecutará cada 10 minutos."
     ],
-    "similarities": []
+    "similarities": [
+      {
+        "workflowId": "flujo-1",
+        "workflowName": "#1 - #️⃣NOSTR #DAMUS AI POWERED REPORTING + GMAIL + TELEGRAM",
+        "score": 0.75,
+        "reason": "Ambos flujos monitorean una red social (Twitter y Nostr) para recopilar y procesar información, aunque sus destinos y complejidad varían."
+      },
+      {
+        "workflowId": "flujo-8",
+        "workflowName": "#8 - NOTION TO LINKEDIN",
+        "score": 0.6,
+        "reason": "Ambos flujos interactúan con redes sociales. Este flujo lee datos de Twitter, mientras que el flujo 8 escribe datos en LinkedIn."
+      }
+    ]
   },
   {
     "id": "flujo-16",
     "displayId": 16,
     "fileName": "weather-alert.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "ALERTA METEOROLÓGICA PROGRAMADA",
     "shortDescription": "Este flujo envía un mensaje diario con la temperatura actual de Berlín a través de Plivo, activado por un horario predefinido.",
     "mainArea": "Utilidades",
@@ -372,7 +430,6 @@
     "id": "flujo-17",
     "displayId": 17,
     "fileName": "todoist-task.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "CREATE A NEW TASK IN TODOIST",
     "shortDescription": "Este flujo permite crear una nueva tarea en Todoist de forma manual.",
     "mainArea": "Productividad Personal",
@@ -389,13 +446,19 @@
       "El equipo de RRHH, al confirmar la fecha de inicio de un nuevo empleado, activa manualmente el flujo de n8n para generar una lista de tareas de bienvenida estandarizadas en Todoist, asignándolas al gerente del nuevo empleado con fechas límite apropiadas para su primera semana. Se reducirá el tiempo dedicado a la preparación de tareas de onboarding para gerentes en un 15% durante el próximo trimestre, asegurando que todas las tareas esenciales se creen automáticamente en el momento de la confirmación de la fecha de inicio.",
       "Durante una reunión de seguimiento de proyecto, el jefe de proyecto identifica un impedimento crítico y activa manualmente el flujo de n8n para crear una tarea de alta prioridad en Todoist, asignándola inmediatamente al miembro del equipo responsable con una descripción clara y una fecha límite de 24 horas. La tasa de resolución de impedimentos críticos mejorará en un 20% en los próximos tres meses, logrando que el 95% de los impedimentos se registren y asignen como tareas en Todoist en menos de 15 minutos después de su identificación."
     ],
-    "similarities": []
+    "similarities": [
+       {
+        "workflowId": "flujo-21",
+        "workflowName": "#21 - PRIORIZACIÓN Y CATEGORIZACIÓN DE TAREAS DE TODOIST CON IA",
+        "score": 0.9,
+        "reason": "Ambos flujos se centran en la gestión de tareas en Todoist. Este flujo es para la creación manual de tareas, mientras que el flujo 21 es para la categorización y priorización automática de tareas existentes."
+      }
+    ]
   },
   {
     "id": "flujo-18",
     "displayId": 18,
     "fileName": "stripe-hubspot-slack.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "ON NEW STRIPE INVOICE PAYMENT UPDATE HUBSPOT AND NOTIFY THE TEAM IN SLACK",
     "shortDescription": "Este flujo se activa cuando se paga una factura en Stripe, busca el trato correspondiente en Hubspot basado en el número de PO, actualiza el estado del trato a 'Pagado' y notifica al equipo en Slack sobre el pago, manejando casos sin número de PO o sin trato encontrado.",
     "mainArea": "Finanzas",
@@ -412,13 +475,19 @@
       "Una firma consultora de TI utilizará este flujo para gestionar los pagos por hitos de sus proyectos. Cada vez que se paga una factura de hito en Stripe, el flujo actualizará el estado del trato del proyecto en HubSpot y notificará al equipo de consultores en Slack. Esto reducirá las consultas internas sobre el estado de los pagos en un 75% durante los próximos seis meses y garantizará una transición fluida a la siguiente fase del proyecto sin retrasos por verificación manual.",
       "Este flujo permitirá a un proveedor de software empresarial automatizar la gestión de las renovaciones de licencias de alto valor. Tras recibir el pago de una factura de renovación en Stripe, el flujo actualizará el trato de renovación correspondiente en HubSpot a 'Pagado' y enviará una notificación a los equipos de ventas y legal en Slack. El objetivo es asegurar que el 100% de las actualizaciones de estado de trato por renovación manual se realicen en menos de 10 minutos post-pago, eliminando errores de seguimiento y mejorando la precisión de los pronósticos de ingresos dentro del próximo mes."
     ],
-    "similarities": []
+    "similarities": [
+       {
+        "workflowId": "flujo-2",
+        "workflowName": "#2 - GUMROAD SALE TRIGGER",
+        "score": 0.8,
+        "reason": "Ambos flujos se inician con un evento de pago (Stripe y Gumroad) y automatizan procesos de post-venta, como la actualización de datos de clientes."
+      }
+    ]
   },
   {
     "id": "flujo-19",
     "displayId": 19,
     "fileName": "data-merge.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "FUSIÓN DE DATOS DE ENTREVISTAS Y EMPLEADOS",
     "shortDescription": "Este flujo fusiona datos simulados de entrevistas con información de empleados, utilizando un identificador único para correlacionar ambos conjuntos de información.",
     "mainArea": "Recursos Humanos",
@@ -441,7 +510,6 @@
     "id": "flujo-20",
     "displayId": 20,
     "fileName": "binary-data.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "GENERACIÓN Y GUARDADO DE DATOS BINARIOS",
     "shortDescription": "Este flujo genera datos de ejemplo, los convierte a formato binario y los guarda en un archivo local llamado test.json.",
     "mainArea": "Infraestructura/Desarrollo",
@@ -464,7 +532,6 @@
     "id": "flujo-21",
     "displayId": 21,
     "fileName": "todoist-ai.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "PRIORIZACIÓN Y CATEGORIZACIÓN DE TAREAS DE TODOIST CON IA",
     "shortDescription": "Este flujo automatiza la categorización de tareas de Todoist utilizando Inteligencia Artificial y actualiza su prioridad basándose en reglas predefinidas y la categoría asignada. Se ejecuta periódicamente para procesar nuevas tareas en la bandeja de entrada.",
     "mainArea": "Productividad Personal",
@@ -481,13 +548,25 @@
       "Un estudiante universitario implementa el flujo para categorizar automáticamente sus tareas académicas en Todoist (ej. 'Matemáticas - Ejercicios', 'Literatura - Ensayo', 'Proyecto de Fin de Grado - Investigación') y ajustar su prioridad basándose en la fecha de entrega y la importancia de la asignatura. El objetivo es asegurar que al menos el 90% de las tareas se clasifiquen correctamente y ninguna tarea importante se olvide durante el semestre actual.",
       "Una persona utiliza el flujo para gestionar las tareas del hogar y finanzas personales en Todoist, categorizando automáticamente elementos como 'Pagar factura luz', 'Planificar menú semanal', 'Cita médico' o 'Revisar presupuesto mensual'. El flujo prioriza las facturas con vencimiento cercano y las citas importantes, buscando reducir el estrés por tareas olvidadas en un 25% y asegurar el 100% de pagos puntuales en los próximos 30 días."
     ],
-    "similarities": []
+    "similarities": [
+      {
+        "workflowId": "flujo-17",
+        "workflowName": "#17 - CREATE A NEW TASK IN TODOIST",
+        "score": 0.9,
+        "reason": "Ambos flujos se centran en Todoist. Este es más avanzado, ya que utiliza IA para categorizar y priorizar tareas existentes, mientras que el flujo 17 es para crear nuevas tareas."
+      },
+      {
+        "workflowId": "flujo-6",
+        "workflowName": "#6 - HN WHO IS HIRING SCRAPE",
+        "score": 0.65,
+        "reason": "Ambos utilizan OpenAI para procesar texto, uno para clasificar tareas y el otro para extraer datos de ofertas de trabajo."
+      }
+    ]
   },
   {
     "id": "flujo-22",
     "displayId": 22,
     "fileName": "copper-crm.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "GESTIÓN BÁSICA DE CONTACTOS EN COPPER",
     "shortDescription": "Este flujo de trabajo simple demuestra cómo crear, actualizar y obtener datos de contactos (personas) dentro de Copper CRM utilizando una secuencia lineal de nodos.",
     "mainArea": "Ventas",
@@ -504,13 +583,19 @@
       "Enriquecimiento y Segmentación de Leads Post-Creación: Enriquecer automáticamente los nuevos contactos creados en Copper CRM con información de la industria y asignarles un segmento de mercado basado en datos externos. Se busca que el 90% de los nuevos contactos tengan los campos 'Industria' y 'Segmento' actualizados en Copper CRM dentro de las 2 horas posteriores a su creación, para mejorar las estrategias de marketing y ventas. Implementación completa para el final del próximo trimestre.",
       "Sincronización de Preferencias de Marketing (Opt-out): Sincronizar el estado de 'baja de marketing' de una plataforma de email marketing (ej. Mailchimp) a un campo 'No Contactar Marketing' en Copper CRM. Este flujo garantizará que el 100% de las solicitudes de baja se actualicen en Copper CRM en menos de 3 minutos, evitando cualquier comunicación accidental y asegurando el cumplimiento normativo. Operativo en la próxima semana y auditado mensualmente."
     ],
-    "similarities": []
+    "similarities": [
+       {
+        "workflowId": "flujo-10",
+        "workflowName": "#10 - LEAD QUALIFICATION WITH BATCHDATA",
+        "score": 0.7,
+        "reason": "Ambos flujos se centran en la gestión de contactos en un CRM. Este flujo realiza operaciones básicas en Copper, mientras que el flujo 10 realiza una calificación de leads más avanzada con datos externos."
+      }
+    ]
   },
   {
     "id": "flujo-23",
     "displayId": 23,
     "fileName": "coda-insert.json",
-    "content": "Contenido original no disponible para flujos precargados.",
     "flowName": "INSERTAR DATOS EN UNA NUEVA FILA PARA UNA TABLA EN CODA",
     "shortDescription": "Este flujo inserta datos predefinidos, definidos en el nodo 'Set', en una nueva fila de una tabla en Coda cuando se ejecuta manualmente.",
     "mainArea": "Gestión de Datos",
