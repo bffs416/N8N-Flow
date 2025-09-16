@@ -91,6 +91,10 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
     };
   }, []);
 
+  const highestSimilarity = workflow.similarities.length > 0 
+    ? workflow.similarities.reduce((max, sim) => sim.score > max.score ? sim : max, workflow.similarities[0])
+    : null;
+
   return (
   <Card ref={cardRef} className="w-full overflow-hidden flex flex-col border-primary">
      <Accordion type="single" collapsible className="w-full" value={openAccordion} onValueChange={setOpenAccordion}>
@@ -120,11 +124,14 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
                           <Zap className="h-4 w-4" />
                           {getComplexityBadge(workflow.complexity)}
                       </div>
-                      {workflow.similarities.length > 0 && (
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <Users className="h-4 w-4" />
-                              <span>{workflow.similarities.length} {workflow.similarities.length === 1 ? 'similar' : 'similares'}</span>
-                          </div>
+                      {highestSimilarity && (
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Users className="h-4 w-4" />
+                           <span>
+                            Similar con: <strong className="text-foreground">{highestSimilarity.workflowName.split(' ')[0]}</strong>
+                            {workflow.similarities.length > 1 ? ` (+${workflow.similarities.length - 1})` : ''}
+                          </span>
+                        </div>
                       )}
                   </div>
               </div>
@@ -194,7 +201,7 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
                         <div key={sim.workflowId} className="p-3 border rounded-md bg-background">
                             <div className="flex justify-between items-center mb-2">
                             <span className="font-medium text-foreground">{sim.workflowName}</span>
-                            <Badge variant="outline">{Math.round(sim.score * 100)}% Similitud</Badge>
+                            <Badge variant="outline">{`Similitud: ${Math.round(sim.score * 100)}%`}</Badge>
                             </div>
                             <Progress value={sim.score * 100} className="h-2 mb-2" />
                             <p className="text-sm text-muted-foreground">
