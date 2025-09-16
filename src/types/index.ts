@@ -7,6 +7,7 @@ export type Similarity = {
 
 export type Workflow = {
   id: string;
+  displayId: number; // For enumeration
   fileName: string;
   content: string;
   flowName: string;

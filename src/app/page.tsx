@@ -58,7 +58,9 @@ export default function Home() {
     if (files.length === 0) return;
     setIsLoading(true);
     try {
-      const updatedWorkflows = await analyzeWorkflows(files, workflows);
+      // Pass a fresh copy of workflows to avoid issues with stale state in server actions
+      const currentWorkflows = JSON.parse(localStorage.getItem(WORKFLOWS_STORAGE_KEY) || '[]');
+      const updatedWorkflows = await analyzeWorkflows(files, currentWorkflows);
       setWorkflows(updatedWorkflows);
       toast({
         title: 'Análisis Completo',
@@ -78,10 +80,19 @@ export default function Home() {
   
   const handleClearWorkflows = () => {
     setWorkflows([]);
-    toast({
-      title: 'Flujos de trabajo eliminados',
-      description: 'Todos los flujos de trabajo analizados han sido eliminados.',
-    });
+    try {
+      localStorage.removeItem(WORKFLOWS_STORAGE_KEY);
+      toast({
+        title: 'Flujos de trabajo eliminados',
+        description: 'Todos los flujos de trabajo analizados han sido eliminados.',
+      });
+    } catch (error) {
+       toast({
+        variant: 'destructive',
+        title: 'Error al limpiar',
+        description: 'No se pudieron eliminar los flujos de trabajo.',
+      });
+    }
   };
 
   return (
@@ -101,7 +112,7 @@ export default function Home() {
               </CardContent>
             </Card>
           ) : (
-            <WorkflowList workflows={workflows} isLoading={isLoading} />
+            <WorkflowList workflows={workflows} setWorkflows={setWorkflows} isLoading={isLoading} />
           )}
         </div>
       </main>
