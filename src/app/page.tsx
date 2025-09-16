@@ -191,6 +191,8 @@ export default function Home() {
         hasWorkflows={workflows.length > 0}
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
+        onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
+        isSimilarityAnalysisDisabled={isLoading || workflows.length < 2}
       />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-8">
@@ -265,7 +267,6 @@ export default function Home() {
             <WorkflowList
               workflows={filteredWorkflows}
               setWorkflows={setWorkflows}
-              onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
               isLoading={isLoading}
               totalWorkflows={workflows.length}
               searchQuery={searchQuery}
