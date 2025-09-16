@@ -28,11 +28,13 @@ export default function Home() {
   // Load workflows from localStorage or pre-analyzed file on initial render
   useEffect(() => {
     try {
-      const storedWorkflows = localStorage.getItem(WORKFLOWS_STORAGE_KEY);
-      if (storedWorkflows) {
-        setWorkflows(JSON.parse(storedWorkflows));
+      const storedWorkflowsJSON = localStorage.getItem(WORKFLOWS_STORAGE_KEY);
+      const storedWorkflows = storedWorkflowsJSON ? JSON.parse(storedWorkflowsJSON) : null;
+      
+      if (storedWorkflows && storedWorkflows.length > 0) {
+        setWorkflows(storedWorkflows);
       } else {
-        // If localStorage is empty, load the pre-analyzed workflows
+        // If localStorage is empty or has an empty array, load the pre-analyzed workflows
         setWorkflows(preAnalyzedWorkflows as Workflow[]);
       }
     } catch (error) {
@@ -142,7 +144,7 @@ export default function Home() {
   const handleClearWorkflows = () => {
     setWorkflows([]);
     try {
-      localStorage.removeItem(WORKFLOWS_STORAGE_KEY);
+      localStorage.setItem(WORKFLOWS_STORAGE_KEY, '[]');
       toast({
         title: 'Flujos de trabajo eliminados',
         description:
