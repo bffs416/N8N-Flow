@@ -55,77 +55,75 @@ export async function analyzeSingleWorkflow(
   }
 }
 
-export async function runSimilarityAnalysis(
-  allWorkflows: Workflow[]
+export async function runBatchedSimilarityAnalysis(
+  batch: Workflow[],
+  existingWorkflows: Workflow[]
 ): Promise<Workflow[]> {
   try {
-    // Create a fresh copy to avoid mutations
-    const workflows: Workflow[] = JSON.parse(JSON.stringify(allWorkflows));
-    
-    // Create a map for quick lookups by UUID
+    const fullWorkflowList: Workflow[] = [...existingWorkflows];
     const workflowMap = new Map<string, Workflow>(
-      workflows.map(wf => [wf.workflow_uuid, wf])
+      fullWorkflowList.map(wf => [wf.workflow_uuid, wf])
     );
-    
-    // Clear old similarities
-    workflows.forEach(wf => (wf.similarities = []));
 
-    if (workflows.length > 1) {
-      const workflowDescriptions = workflows.map(wf => {
-        return `
-          ID: ${wf.id}
-          UUID: ${wf.workflow_uuid}
-          Nombre del Flujo: ${wf.flowName}
+    const toWorkflowDescription = (wf: Workflow) => ({
+        uuid: wf.workflow_uuid,
+        description: `
+          Nombre: ${wf.flowName}
           Descripción: ${wf.shortDescription}
-          Función Principal: ${wf.mainFunction}
-          Área Principal: ${wf.mainArea}
-          Orígenes de Datos: ${wf.dataOrigins.join(', ')}
-          Destinos de Automatización: ${wf.automationDestinations.join(', ')}
-          Nodos Clave: ${wf.keyNodes.join(', ')}
-        `.trim();
-      });
+          Función: ${wf.mainFunction}
+          Área: ${wf.mainArea}
+          Orígenes: ${wf.dataOrigins.join(', ')}
+          Destinos: ${wf.automationDestinations.join(', ')}
+          Nodos: ${wf.keyNodes.join(', ')}
+        `.trim(),
+    });
 
-      const similarityResults = await identifySimilarWorkflows({
-        workflowDescriptions: workflowDescriptions,
-      });
+    const similarityResults = await identifySimilarWorkflows({
+      targetWorkflows: batch.map(toWorkflowDescription),
+      comparisonWorkflows: existingWorkflows.map(toWorkflowDescription),
+    });
 
-      if (similarityResults) {
-        similarityResults.forEach(result => {
-          if (result.similarityScore > 0.5) {
-            const wf1 = workflows[result.workflow1Index];
-            const wf2 = workflows[result.workflow2Index];
+    if (similarityResults) {
+      similarityResults.forEach(result => {
+        const wf1 = workflowMap.get(result.workflow1Uuid);
+        const wf2 = workflowMap.get(result.workflow2Uuid);
 
-            if (wf1 && wf2 && wf1.workflow_uuid !== wf2.workflow_uuid) {
-              
-              if (!wf1.similarities.some(s => s.workflowId === wf2.id)) {
-                wf1.similarities.push({
-                  workflowId: wf2.id,
-                  workflowName: `#${wf2.id} - ${wf2.flowName}`,
-                  score: result.similarityScore,
-                  reason: result.reason,
-                });
-              }
-              if (!wf2.similarities.some(s => s.workflowId === wf1.id)) {
-                wf2.similarities.push({
-                  workflowId: wf1.id,
-                  workflowName: `#${wf1.id} - ${wf1.flowName}`,
-                  score: result.similarityScore,
-                  reason: result.reason,
-                });
-              }
-            }
+        if (wf1 && wf2 && wf1.workflow_uuid !== wf2.workflow_uuid) {
+          if (!wf1.similarities.some(s => s.workflowId === wf2.id)) {
+            wf1.similarities.push({
+              workflowId: wf2.id,
+              workflowName: `#${wf2.id} - ${wf2.flowName}`,
+              score: result.similarityScore,
+              reason: result.reason,
+            });
           }
-        });
-      }
+          if (!wf2.similarities.some(s => s.workflowId === wf1.id)) {
+            wf2.similarities.push({
+              workflowId: wf1.id,
+              workflowName: `#${wf1.id} - ${wf1.flowName}`,
+              score: result.similarityScore,
+              reason: result.reason,
+            });
+          }
+        }
+      });
     }
     
-    return workflows;
+    // Return the workflows that were part of the batch or were updated
+    const updatedUuids = new Set<string>();
+    similarityResults.forEach(r => {
+        updatedUuids.add(r.workflow1Uuid);
+        updatedUuids.add(r.workflow2Uuid);
+    });
+
+    return fullWorkflowList.filter(wf => updatedUuids.has(wf.workflow_uuid));
 
   } catch (error) {
-    console.error('Error in runSimilarityAnalysis:', error);
+    console.error('Error in runBatchedSimilarityAnalysis:', error);
     throw new Error('Failed to run similarity analysis.');
   }
 }
+
 
 export async function saveWorkflowsToFile(workflows: Workflow[]): Promise<{success: boolean; error?: string}> {
   try {
@@ -155,10 +153,8 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
     
-    // Sanitize workflows for Supabase
     const sanitizedWorkflows = workflows.map(({ content, id, ...wf }) => ({
         ...wf,
-        // Supabase expects 'null' over 'undefined' for JSON fields
         secondaryAreas: wf.secondaryAreas || [],
         automationDestinations: wf.automationDestinations || [],
         dataOrigins: wf.dataOrigins || [],
@@ -167,9 +163,6 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
         similarities: wf.similarities || [],
     }));
 
-    // Upsert into the 'workflows' table.
-    // It will match rows based on 'workflow_uuid' and create/update them.
-    // Supabase will automatically handle the auto-incrementing 'id' primary key.
     const { data, error } = await supabase
       .from('workflows')
       .upsert(sanitizedWorkflows, { onConflict: 'workflow_uuid' });

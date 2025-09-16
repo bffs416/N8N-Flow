@@ -22,6 +22,7 @@ interface PageHeaderProps {
   onSave: () => void;
   hasUnsavedChanges: boolean;
   onRunSimilarityAnalysis: () => void;
+  similarityAnalysisDisabled: boolean;
   onSendToForm: () => void;
   isLoading: boolean;
   totalWorkflows: number;
@@ -34,6 +35,7 @@ export const PageHeader = ({
   onSave, 
   hasUnsavedChanges, 
   onRunSimilarityAnalysis,
+  similarityAnalysisDisabled,
   onSendToForm,
   isLoading,
   totalWorkflows,
@@ -59,7 +61,7 @@ export const PageHeader = ({
                   variant="outline"
                   size="sm"
                   onClick={onRunSimilarityAnalysis}
-                  disabled={isLoading || totalWorkflows < 2}
+                  disabled={similarityAnalysisDisabled}
                 >
                   <Wand2 className="mr-2 h-4 w-4" />
                   Analizar Similitudes

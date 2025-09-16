@@ -23,6 +23,7 @@ import {
   Trash2,
   ClipboardCopy,
   Wand2,
+  Info,
 } from 'lucide-react';
 import {
   AlertDialog,
@@ -68,7 +69,7 @@ const InfoRow = ({ icon, label, children }: { icon: React.ReactNode, label: stri
     </div>
 );
 
-const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (id: number) => void }) => {
+const WorkflowCard = ({ workflow, onDelete, isUnanalysed }: { workflow: Workflow, onDelete: (id: number) => void, isUnanalysed: boolean }) => {
   const [openAccordion, setOpenAccordion] = useState('');
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -128,6 +129,12 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
                         <div className='flex items-center gap-2'>
                           {workflow.fileName.endsWith('.json') ? <FileJson className="h-5 w-5 text-accent" /> : <FileText className="h-5 w-5 text-accent" />}
                           <h2 className="text-xl font-bold text-foreground">{workflow.flowName}</h2>
+                           {isUnanalysed && (
+                            <Badge variant="outline" className="border-amber-500 text-amber-500">
+                                <Wand2 className="h-3 w-3 mr-1"/>
+                                Sin Analizar
+                            </Badge>
+                           )}
                         </div>
                         <p className="text-muted-foreground mt-1 text-sm">{workflow.shortDescription}</p>
                       </div>
@@ -270,23 +277,30 @@ export function WorkflowList({
   setWorkflows,
   totalWorkflows = 0,
   searchQuery = '',
+  unanalysedUuids,
+  setHasUnsavedChanges
 }: {
   workflows: Workflow[];
   isLoading: boolean;
   setWorkflows: React.Dispatch<React.SetStateAction<Workflow[]>>;
   totalWorkflows?: number;
   searchQuery?: string;
+  unanalysedUuids: Set<string>;
+  setHasUnsavedChanges: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const { toast } = useToast();
 
   const handleDeleteWorkflow = (idToDelete: number) => {
-    const updatedWorkflows = workflows
-      .filter(wf => wf.id !== idToDelete)
-      .map(wf => ({
-        ...wf,
-        similarities: wf.similarities.filter(sim => sim.workflowId !== idToDelete),
-      }));
-    setWorkflows(updatedWorkflows);
+    setWorkflows(prevWorkflows => {
+      const updatedWorkflows = prevWorkflows
+        .filter(wf => wf.id !== idToDelete)
+        .map(wf => ({
+          ...wf,
+          similarities: wf.similarities.filter(sim => sim.workflowId !== idToDelete),
+        }));
+      return updatedWorkflows;
+    });
+    setHasUnsavedChanges(true);
     toast({
       title: 'Flujo de trabajo eliminado',
       description: 'El flujo de trabajo ha sido eliminado de la lista.',
@@ -375,11 +389,21 @@ ${separator}`;
     return `Flujos Analizados (${totalWorkflows})`;
   }
 
+  const unanalysedCount = unanalysedUuids.size;
+
   return (
     <div className='space-y-4'>
        <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>{getTitle()}</CardTitle>
+            <div>
+              <CardTitle>{getTitle()}</CardTitle>
+              {unanalysedCount > 0 && (
+                <p className='text-sm text-amber-500 mt-1 flex items-center'>
+                    <Info className='h-4 w-4 mr-2' />
+                    {unanalysedCount} flujo(s) nuevo(s) sin analizar para similitud.
+                </p>
+              )}
+            </div>
             <div className="flex items-center gap-2">
               <Button 
                 variant="outline" 
@@ -401,7 +425,12 @@ ${separator}`;
           </Card>
         )}
         {workflows.map((workflow) => (
-             <WorkflowCard key={workflow.workflow_uuid} workflow={workflow} onDelete={handleDeleteWorkflow} />
+             <WorkflowCard 
+                key={workflow.workflow_uuid} 
+                workflow={workflow} 
+                onDelete={handleDeleteWorkflow}
+                isUnanalysed={unanalysedUuids.has(workflow.workflow_uuid)}
+              />
         ))}
     </div>
   );

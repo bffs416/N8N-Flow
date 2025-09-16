@@ -6,7 +6,7 @@ import type {Workflow} from '@/types';
 import {PageHeader} from '@/components/page-header';
 import {FileUploader} from '@/components/file-uploader';
 import {WorkflowList} from '@/components/workflow-list';
-import {analyzeSingleWorkflow, runSimilarityAnalysis, saveWorkflowsToFile, sendToSupabase} from '@/app/actions';
+import {analyzeSingleWorkflow, runBatchedSimilarityAnalysis, saveWorkflowsToFile, sendToSupabase} from '@/app/actions';
 import {useToast} from '@/hooks/use-toast';
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {UploadCloud, Loader2} from 'lucide-react';
@@ -14,19 +14,21 @@ import {Progress} from '@/components/ui/progress';
 import preAnalyzedWorkflows from '@/lib/pre-analyzed-workflows.json';
 import {SearchInput} from '@/components/search-input';
 
+const BATCH_SIZE = 5;
+
 export default function Home() {
   const [workflows, setWorkflows] = useState<Workflow[]>([]);
   const [initialWorkflows, setInitialWorkflows] = useState<Workflow[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [analysisProgress, setAnalysisProgress] = useState({ total: 0, current: 0 });
+  const [analysisProgress, setAnalysisProgress] = useState({ total: 0, current: 0, title: '' });
   const [searchQuery, setSearchQuery] = useState('');
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [unanalysedUuids, setUnanalysedUuids] = useState<Set<string>>(new Set());
 
   const {toast} = useToast();
 
   useEffect(() => {
     try {
-      // Assign sequential numeric IDs
       const workflowsWithNumericId = (preAnalyzedWorkflows as any[]).map((wf, index) => ({
         ...wf,
         id: wf.id || index + 1,
@@ -60,12 +62,9 @@ export default function Home() {
     if (files.length === 0) return;
 
     setIsLoading(true);
-    setAnalysisProgress({ total: files.length, current: 0 });
-    
-    toast({
-        title: 'Análisis en progreso...',
-        description: `Analizando ${files.length} nuevo(s) flujo(s).`,
-    });
+    setAnalysisProgress({ total: files.length, current: 0, title: `Analizando ${files.length} nuevo(s) flujo(s)...` });
+
+    const newUuids = new Set(unanalysedUuids);
 
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
@@ -75,7 +74,9 @@ export default function Home() {
             const analyzedData = await analyzeSingleWorkflow(file);
             setWorkflows(prevWorkflows => {
                const newId = getNextId(prevWorkflows);
-               return [...prevWorkflows, { ...analyzedData, id: newId }];
+               const newWorkflow = { ...analyzedData, id: newId };
+               newUuids.add(newWorkflow.workflow_uuid);
+               return [...prevWorkflows, newWorkflow];
             });
             setHasUnsavedChanges(true);
         } catch (e) {
@@ -88,18 +89,21 @@ export default function Home() {
         }
     }
     
+    setUnanalysedUuids(newUuids);
+    
     toast({
         title: '¡Análisis Completo!',
         description: `Se agregaron ${files.length} flujo(s) nuevos.`,
     });
 
     setIsLoading(false);
-    setAnalysisProgress({ total: 0, current: 0 });
+    setAnalysisProgress({ total: 0, current: 0, title: '' });
   };
 
 
   const handleClearWorkflows = () => {
     setWorkflows(initialWorkflows);
+    setUnanalysedUuids(new Set());
     setHasUnsavedChanges(false);
     toast({
       title: 'Flujos de trabajo restablecidos',
@@ -113,6 +117,7 @@ export default function Home() {
     setIsLoading(false);
     if (result.success) {
       setHasUnsavedChanges(false);
+      setUnanalysedUuids(new Set());
       setInitialWorkflows(workflows);
       toast({
         title: '¡Guardado!',
@@ -128,29 +133,71 @@ export default function Home() {
   };
   
   const handleRunSimilarityAnalysis = async () => {
-    setIsLoading(true);
-    toast({
-      title: 'Análisis de Similitud en Progreso',
-      description: 'Comparando todos los flujos. Esto puede tardar un momento.',
-    });
-    try {
-      const updatedWorkflows = await runSimilarityAnalysis(workflows);
-      setWorkflows(updatedWorkflows);
-      setHasUnsavedChanges(true);
+    const workflowsToAnalyze = workflows.filter(wf => unanalysedUuids.has(wf.workflow_uuid));
+    if (workflowsToAnalyze.length === 0) {
       toast({
-        title: 'Análisis de Similitud Completo',
-        description: 'Se han calculado las similitudes entre los flujos.',
+        title: 'No hay flujos nuevos para analizar',
+        description: 'Sube nuevos flujos o restablece para volver a analizar.',
       });
-    } catch (error) {
-      console.error('Failed to run similarity analysis', error);
-      toast({
-        variant: 'destructive',
-        title: 'Error en el Análisis',
-        description: 'No se pudo completar el análisis de similitud.',
-      });
-    } finally {
-      setIsLoading(false);
+      return;
     }
+
+    setIsLoading(true);
+    const existingWorkflows = workflows.filter(wf => !unanalysedUuids.has(wf.workflow_uuid));
+    const batches = [];
+    for (let i = 0; i < workflowsToAnalyze.length; i += BATCH_SIZE) {
+        batches.push(workflowsToAnalyze.slice(i, i + BATCH_SIZE));
+    }
+
+    let currentWorkflowsState = [...workflows];
+
+    for (let i = 0; i < batches.length; i++) {
+        const batch = batches[i];
+        setAnalysisProgress({ 
+            total: batches.length, 
+            current: i + 1, 
+            title: `Analizando similitudes (lote ${i + 1} de ${batches.length})...`
+        });
+
+        try {
+            const updatedWorkflows = await runBatchedSimilarityAnalysis(batch, currentWorkflowsState);
+            
+            // Create a map for efficient updates
+            const updatedWorkflowsMap = new Map(updatedWorkflows.map(wf => [wf.workflow_uuid, wf]));
+
+            // Update the state with the new similarity info
+            currentWorkflowsState = currentWorkflowsState.map(wf => {
+                if (updatedWorkflowsMap.has(wf.workflow_uuid)) {
+                    return updatedWorkflowsMap.get(wf.workflow_uuid)!;
+                }
+                return wf;
+            });
+
+            setWorkflows(currentWorkflowsState);
+
+        } catch (error) {
+            console.error('Failed to run similarity analysis for batch', error);
+            toast({
+                variant: 'destructive',
+                title: `Error en Lote ${i + 1}`,
+                description: 'No se pudo completar el análisis de similitud para este lote.',
+            });
+            // Stop on error
+            setIsLoading(false);
+            setAnalysisProgress({ total: 0, current: 0, title: '' });
+            return;
+        }
+    }
+    
+    setHasUnsavedChanges(true);
+    setUnanalysedUuids(new Set()); // Clear the set of unanalysed workflows
+    setIsLoading(false);
+    setAnalysisProgress({ total: 0, current: 0, title: '' });
+
+    toast({
+        title: 'Análisis de Similitud Completo',
+        description: `Se analizaron ${workflowsToAnalyze.length} flujos nuevos.`,
+    });
   };
 
   const handleSendToForm = async () => {
@@ -198,6 +245,7 @@ export default function Home() {
   }, [workflows, searchQuery]);
 
   const isAnalyzing = analysisProgress.total > 0;
+  const similarityButtonDisabled = unanalysedUuids.size === 0 || isLoading;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -207,6 +255,7 @@ export default function Home() {
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
         onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
+        similarityAnalysisDisabled={similarityButtonDisabled}
         onSendToForm={handleSendToForm}
         isLoading={isLoading}
         totalWorkflows={workflows.length}
@@ -229,7 +278,7 @@ export default function Home() {
                 <div className="flex items-center justify-center gap-3 mb-2">
                   <Loader2 className="h-5 w-5 animate-spin"/>
                   <p className="font-medium">
-                    Analizando flujo {analysisProgress.current} de {analysisProgress.total}...
+                    {analysisProgress.title}
                   </p>
                 </div>
                 <Progress value={(analysisProgress.current / analysisProgress.total) * 100} />
@@ -287,6 +336,8 @@ export default function Home() {
               isLoading={isLoading}
               totalWorkflows={workflows.length}
               searchQuery={searchQuery}
+              unanalysedUuids={unanalysedUuids}
+              setHasUnsavedChanges={setHasUnsavedChanges}
             />
           )}
         </div>
