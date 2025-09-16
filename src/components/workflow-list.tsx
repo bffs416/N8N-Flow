@@ -260,36 +260,37 @@ export function WorkflowList({
       return;
     }
 
-    const formattedText = workflows
+    const separator = '════════════════════════════════════════════════════════════════════════════════';
+    
+    let formattedText = `📊 𝗥𝗘𝗦𝗨𝗠𝗘𝗡 𝗗𝗘 𝗙𝗟𝗨𝗝𝗢𝗦 𝗗𝗘 𝗧𝗥𝗔𝗕𝗔𝗝𝗢 𝗻𝟴𝗻 📊\n${separator}\n\n`;
+
+    formattedText += workflows
       .map(wf => {
-        const similaritiesText = wf.similarities.length > 0 
-          ? `\n🤝 **Similitudes**\n${wf.similarities.map(s => `- Se parece a ${s.workflowName} (${Math.round(s.score * 100)}%): ${s.reason}`).join('\n')}` 
+        const similaritiesText = wf.similarities.length > 0
+          ? `\n    🤝 𝗦𝗜𝗠𝗜𝗟𝗜𝗧𝗨𝗗𝗘𝗦\n${wf.similarities.map(s => `       - Se parece a ${s.workflowName} (${Math.round(s.score * 100)}%): ${s.reason}`).join('\n')}`
           : '';
 
-        return `
-## #${wf.displayId} - ${wf.flowName}
+        return `//======= 𝗙𝗟𝗨𝗝𝗢 #${wf.displayId}: #️⃣ ${wf.flowName.toUpperCase()} =======//
 
-📄 **Resumen**
-- **Descripción Breve:** ${wf.shortDescription}
-- **Función Principal:** ${wf.mainFunction}
+    📌 𝗗𝗘𝗦𝗖𝗥𝗜𝗣𝗖𝗜𝗢́𝗡 𝗚𝗘𝗡𝗘𝗥𝗔𝗟
+       ${wf.shortDescription}
 
-🗂️ **Clasificación**
-- **Área Principal:** ${wf.mainArea}
-- **Áreas Secundarias:** ${wf.secondaryAreas.join(', ') || 'N/A'}
-- **Complejidad:** ${wf.complexity}
+    ⚙️ 𝗗𝗘𝗧𝗔𝗟𝗟𝗘𝗦 𝗗𝗘𝗟 𝗙𝗟𝗨𝗝𝗢
+       • 𝗔́𝗿𝗲𝗮 𝗣𝗿𝗶𝗻𝗰𝗶𝗽𝗮𝗹: ${wf.mainArea}
+       • 𝗙𝘂𝗻𝗰𝗶𝗼́𝗻 𝗖𝗹𝗮𝘃𝗲: ${wf.mainFunction}
+       • 𝗖𝗼𝗺𝗽𝗹𝗲𝗷𝗶𝗱𝗮𝗱: ${wf.complexity}
 
-⚙️ **Detalles Técnicos**
-- **Origen de Datos:** ${wf.dataOrigins.join(', ')}
-- **Destino de Automatización:** ${wf.automationDestinations.join(', ')}
-- **Nodos Clave:** ${wf.keyNodes.join(', ')}
+    🔗 𝗜𝗡𝗧𝗘𝗚𝗥𝗔𝗖𝗜𝗢𝗡𝗘𝗦
+       • 𝗢𝗿𝗶𝗴𝗲𝗻 𝗱𝗲 𝗗𝗮𝘁𝗼𝘀: ${wf.dataOrigins.join(', ')}
+       • 𝗗𝗲𝘀𝘁𝗶𝗻𝗼𝘀: ${wf.automationDestinations.join(', ')}
+       • 𝗡𝗼𝗱𝗼𝘀 𝗥𝗲𝗹𝗲𝘃𝗮𝗻𝘁𝗲𝘀: ${wf.keyNodes.join(', ')}
 
-💡 **5 Casos de Uso**
-${wf.useCaseExamples.map(ex => `- ${ex}`).join('\n')}
-${similaritiesText}
---------------------------------------------------
-`;
+    💡 𝗘𝗝𝗘𝗠𝗣𝗟𝗢𝗦 𝗗𝗘 𝗖𝗔𝗦𝗢𝗦 𝗗𝗘 𝗨𝗦𝗢
+${wf.useCaseExamples.map(ex => `       - ${ex}`).join('\n')}${similaritiesText}
+
+${separator}`;
       })
-      .join('');
+      .join('\n\n\n');
 
     navigator.clipboard.writeText(formattedText.trim());
 
