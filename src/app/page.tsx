@@ -76,18 +76,21 @@ export default function Home() {
     setIsProcessing(true);
     setProgress({current: 0, total: files.length});
 
-    const initialWorkflowsCount = workflows.length;
+    // Use a copy of the current workflows to add new ones
     let processedWorkflows: Workflow[] = [...workflows];
 
     // Process files one by one
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       try {
+        // We pass the current list of processed workflows to get the next correct ID
         const newWorkflow = await analyzeSingleWorkflow(file, processedWorkflows);
         
+        // Add the new workflow to our temporary list
+        processedWorkflows.push(newWorkflow);
+
+        // Update progress and state in a transition
         startTransition(() => {
-          processedWorkflows.push(newWorkflow);
-          setWorkflows([...processedWorkflows]);
           setProgress(p => ({...p, current: i + 1}));
         });
 
@@ -102,11 +105,14 @@ export default function Home() {
         // Continue to next file even if one fails
       }
     }
+
+    // Set all workflows at once after the loop
+    setWorkflows(processedWorkflows);
     
     setIsProcessing(false);
 
     // Once all files are processed, run similarity analysis on the complete list
-    if (processedWorkflows.length > initialWorkflowsCount) {
+    if (processedWorkflows.length > workflows.length) { // Check if new workflows were actually added
       setIsSimilarityRunning(true);
       toast({
         title: 'Análisis de Similitud en Progreso',
@@ -130,13 +136,14 @@ export default function Home() {
       } finally {
         setIsSimilarityRunning(false);
       }
-    } else {
+    } else if (files.length > 0) { // Files were processed but no new workflows were added (e.g., all failed)
        toast({
           title: 'Análisis Finalizado',
-          description: `No se agregaron nuevos flujos.`,
+          description: `No se agregaron nuevos flujos válidos.`,
         });
     }
   };
+
 
   const handleClearWorkflows = () => {
     setWorkflows([]);
@@ -167,7 +174,7 @@ export default function Home() {
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-8">
           
-          <Card>
+          <Card id="analyzer">
             <CardHeader>
               <CardTitle>Analizador de Flujos</CardTitle>
             </CardHeader>
