@@ -67,7 +67,7 @@ const InfoRow = ({ icon, label, children }: { icon: React.ReactNode, label: stri
 );
 
 const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (id: string) => void }) => (
-  <Card className="w-full overflow-hidden flex flex-col">
+  <Card className="w-full overflow-hidden flex flex-col border-primary">
     <div className="p-4 md:p-6 flex-grow">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         {/* Main Info */}
@@ -103,8 +103,8 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
       </div>
     </div>
      {/* Data Flow footer */}
-    <div className="bg-muted/50 border-t px-4 py-2">
-        <div className="flex items-center justify-center gap-2 text-xs">
+    <div className="bg-muted/50 border-t px-4 py-2 text-xs">
+        <div className="flex items-center justify-center gap-2">
             <div className="flex flex-col items-center text-center">
                 <span className='text-muted-foreground'>Origen</span>
                 <span className="font-semibold">{workflow.dataOrigins[0] || 'N/A'}</span>
@@ -332,3 +332,5 @@ ${separator}`;
     </div>
   );
 }
+
+    
