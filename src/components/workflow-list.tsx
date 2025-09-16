@@ -182,21 +182,6 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
                 </div>
               )}
 
-              {/* Raw Content */}
-              {workflow.content && (
-              <div>
-                  <h3 className="font-semibold flex items-center mb-3"><Code2 className="mr-2 h-4 w-4"/>Contenido Original</h3>
-                   <div className="relative">
-                     <pre className="bg-gray-900 text-white p-4 rounded-md text-xs max-h-60 overflow-auto">
-                        <code>{workflow.content}</code>
-                    </pre>
-                    <Button variant="ghost" size="icon" className="absolute top-2 right-2 h-7 w-7 text-gray-300 hover:bg-gray-700" onClick={() => navigator.clipboard.writeText(workflow.content || '')}>
-                        <Copy className="h-4 w-4" />
-                    </Button>
-                   </div>
-              </div>
-              )}
-
               {/* Actions */}
               <div className="flex justify-end pt-4 border-t">
                  <AlertDialog>

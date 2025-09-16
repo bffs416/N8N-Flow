@@ -9,7 +9,7 @@ export type Workflow = {
   id: string;
   displayId: number; // For enumeration
   fileName: string;
-  content: string;
+  content?: string; // Made optional to support pre-analyzed workflows
   flowName: string;
   mainArea: string;
   secondaryAreas: string[];
