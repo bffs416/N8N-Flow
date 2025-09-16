@@ -67,21 +67,21 @@ export function FileUploader({ onFilesUploaded, disabled = false }: FileUploader
             {(disabled || isProcessing) ? (
               <>
                 <Loader2 className="mx-auto h-12 w-12 text-primary animate-spin" />
-                <p className="mt-4 font-semibold text-foreground">Analyzing...</p>
-                <p className="mt-2 text-sm text-muted-foreground">Please wait while we process the workflows.</p>
+                <p className="mt-4 font-semibold text-foreground">Analizando flujos...</p>
+                <p className="mt-2 text-sm text-muted-foreground">Por favor espera mientras procesamos los flujos de trabajo.</p>
               </>
             ) : isDragActive ? (
               <>
                 <UploadCloud className="mx-auto h-12 w-12 text-primary" />
-                <p className="mt-4 font-semibold text-primary">Drop files to start analysis</p>
+                <p className="mt-4 font-semibold text-primary">Suelta los archivos para iniciar el análisis</p>
               </>
             ) : (
               <>
                 <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground" />
-                <p className="mt-4 font-semibold text-foreground">Drag & drop your n8n workflows here</p>
-                <p className="mt-2 text-sm text-muted-foreground">Supports .json and .txt files</p>
+                <p className="mt-4 font-semibold text-foreground">Arrastra y suelta tus flujos de trabajo de n8n aquí</p>
+                <p className="mt-2 text-sm text-muted-foreground">Puedes seleccionar múltiples archivos .json y .txt</p>
                 <Button onClick={open} disabled={disabled || isProcessing} className="mt-4">
-                  Or Select Files
+                  O selecciona los archivos
                 </Button>
               </>
             )}
