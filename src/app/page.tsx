@@ -1,3 +1,4 @@
+
 'use client';
 
 import {useState, useEffect, useTransition} from 'react';
@@ -10,7 +11,7 @@ import {useToast} from '@/hooks/use-toast';
 import {Card, CardContent} from '@/components/ui/card';
 import {UploadCloud} from 'lucide-react';
 import {Progress} from '@/components/ui/progress';
-import {cn} from '@/lib/utils';
+import preAnalyzedWorkflows from '@/lib/pre-analyzed-workflows.json';
 
 const WORKFLOWS_STORAGE_KEY = 'n8n-insights-workflows';
 
@@ -24,20 +25,25 @@ export default function Home() {
 
   const {toast} = useToast();
 
-  // Load workflows from localStorage on initial render
+  // Load workflows from localStorage or pre-analyzed file on initial render
   useEffect(() => {
     try {
       const storedWorkflows = localStorage.getItem(WORKFLOWS_STORAGE_KEY);
       if (storedWorkflows) {
         setWorkflows(JSON.parse(storedWorkflows));
+      } else {
+        // If localStorage is empty, load the pre-analyzed workflows
+        setWorkflows(preAnalyzedWorkflows as Workflow[]);
       }
     } catch (error) {
-      console.error('Failed to load workflows from localStorage', error);
+      console.error('Failed to load workflows', error);
       toast({
         variant: 'destructive',
         title: 'Error al cargar',
-        description: 'No se pudieron cargar los flujos de trabajo guardados.',
+        description: 'No se pudieron cargar los flujos de trabajo.',
       });
+       // Fallback to pre-analyzed if parsing fails
+       setWorkflows(preAnalyzedWorkflows as Workflow[]);
     } finally {
       setIsLoading(false);
     }
@@ -45,8 +51,8 @@ export default function Home() {
 
   // Save workflows to localStorage whenever they change
   useEffect(() => {
-    // We don't save during initial loading, processing, or similarity analysis
-    if (!isLoading && !isProcessing && !isSimilarityRunning) {
+    // We don't save during initial loading
+    if (!isLoading) {
       try {
         localStorage.setItem(WORKFLOWS_STORAGE_KEY, JSON.stringify(workflows));
       } catch (error) {
@@ -58,31 +64,34 @@ export default function Home() {
         });
       }
     }
-  }, [workflows, isLoading, isProcessing, isSimilarityRunning, toast]);
-
+  }, [workflows, isLoading, toast]);
+  
   const handleFilesUpload = async (
     files: {fileName: string; content: string}[]
   ) => {
     if (files.length === 0) return;
 
+    // Clear pre-loaded workflows if user uploads files for the first time
+    const isInitialUpload = workflows.every(wf => wf.content === "Contenido original no disponible para flujos precargados.");
+    const initialWorkflows = isInitialUpload ? [] : workflows;
+
     setIsProcessing(true);
     setProgress({current: 0, total: files.length});
 
-    const newWorkflows: Workflow[] = [];
+    let processedWorkflows: Workflow[] = [...initialWorkflows];
 
     // Process files one by one
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       try {
-        const currentWorkflows = [...workflows, ...newWorkflows];
-        const newWorkflow = await analyzeSingleWorkflow(file, currentWorkflows);
-        newWorkflows.push(newWorkflow);
-
-        // Update UI progressively
+        const newWorkflow = await analyzeSingleWorkflow(file, processedWorkflows);
+        
         startTransition(() => {
-          setWorkflows(prev => [...prev, newWorkflow]);
+          processedWorkflows.push(newWorkflow);
+          setWorkflows([...processedWorkflows]);
           setProgress(p => ({...p, current: i + 1}));
         });
+
       } catch (e) {
         console.error(e);
         toast({
@@ -94,11 +103,11 @@ export default function Home() {
         // Continue to next file even if one fails
       }
     }
-
+    
     setIsProcessing(false);
 
     // Once all files are processed, run similarity analysis on the complete list
-    if (newWorkflows.length > 0) {
+    if (processedWorkflows.length > initialWorkflows.length) {
       setIsSimilarityRunning(true);
       toast({
         title: 'Análisis de Similitud en Progreso',
@@ -106,7 +115,7 @@ export default function Home() {
       });
 
       try {
-        const finalWorkflows = await runSimilarityAnalysis(workflows);
+        const finalWorkflows = await runSimilarityAnalysis(processedWorkflows);
         setWorkflows(finalWorkflows);
         toast({
           title: 'Análisis de Similitud Completo',
@@ -207,3 +216,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

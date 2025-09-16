@@ -1,3 +1,4 @@
+
 'use server';
 
 import {extractKeyWorkflowInfo} from '@/ai/flows/extract-key-workflow-info';
@@ -64,17 +65,19 @@ export async function runSimilarityAnalysis(
   allWorkflows: Workflow[]
 ): Promise<Workflow[]> {
   try {
-    // Create a fresh copy to avoid mutations
+    // Create a fresh copy to avoid mutations and ensure order is preserved.
     const workflows = JSON.parse(JSON.stringify(allWorkflows)) as Workflow[];
+    
+    // Create a map for quick lookups by ID
     const workflowMap = new Map<string, Workflow>(
       workflows.map(wf => [wf.id, wf])
     );
+    
+    // Clear old similarities before re-calculating for all workflows
+    workflows.forEach(wf => (wf.similarities = []));
 
     // Run similarity check only if there is more than one workflow
     if (workflows.length > 1) {
-      // Clear old similarities before re-calculating
-      workflows.forEach(wf => (wf.similarities = []));
-
       const allWorkflowContents = workflows.map(wf => wf.content);
       const similarityResults = await identifySimilarWorkflows({
         workflowJsons: allWorkflowContents,
@@ -91,6 +94,7 @@ export async function runSimilarityAnalysis(
               const wf1FromMap = workflowMap.get(wf1.id)!;
               const wf2FromMap = workflowMap.get(wf2.id)!;
 
+              // Check for existence before adding to prevent duplicates
               if (!wf1FromMap.similarities.some(s => s.workflowId === wf2.id)) {
                 wf1FromMap.similarities.push({
                   workflowId: wf2.id,
@@ -112,10 +116,16 @@ export async function runSimilarityAnalysis(
         });
       }
     }
-    // Return the final list from the map, preserving the order
-    return Array.from(workflowMap.values());
+    
+    // Convert map values back to an array, preserving original order
+    const finalWorkflows = workflows.map(wf => workflowMap.get(wf.id)!);
+    
+    return finalWorkflows;
+
   } catch (error) {
     console.error('Error in runSimilarityAnalysis:', error);
     throw new Error('Failed to run similarity analysis.');
   }
 }
+
+    
