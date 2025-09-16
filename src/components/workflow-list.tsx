@@ -72,7 +72,6 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
   const cardRef = useRef<HTMLDivElement>(null);
 
   const toggleAccordion = (e: React.MouseEvent) => {
-     // Evita que el clic en botones dentro de la tarjeta la expanda/colapse
     if ((e.target as HTMLElement).closest('button, a, [role="dialog"]')) {
       return;
     }
@@ -92,9 +91,28 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
     };
   }, []);
 
-  const highestSimilarity = workflow.similarities.length > 0 
-    ? workflow.similarities.reduce((max, sim) => sim.score > max.score ? sim : max, workflow.similarities[0])
-    : null;
+  const sortedSimilarities = workflow.similarities.length > 0 
+    ? [...workflow.similarities].sort((a, b) => b.score - a.score)
+    : [];
+
+  const getSimilaritiesPreview = () => {
+    if (sortedSimilarities.length === 0) return null;
+    
+    const topSimilarities = sortedSimilarities.slice(0, 3);
+    const similarityText = topSimilarities.map(sim => sim.workflowName.split(' ')[0]).join(', ');
+    const remainingCount = sortedSimilarities.length - topSimilarities.length;
+
+    return (
+      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+        <Users className="h-4 w-4" />
+        <span>
+          Similar con: <strong className="text-foreground">{similarityText}</strong>
+          {remainingCount > 0 ? ` (+${remainingCount})` : ''}
+        </span>
+      </div>
+    );
+  };
+
 
   return (
   <Card ref={cardRef} className="w-full overflow-hidden flex flex-col border-primary">
@@ -125,15 +143,7 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
                           <Zap className="h-4 w-4" />
                           {getComplexityBadge(workflow.complexity)}
                       </div>
-                      {highestSimilarity && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Users className="h-4 w-4" />
-                           <span>
-                            Similar con: <strong className="text-foreground">{highestSimilarity.workflowName.split(' ')[0]}</strong>
-                            {workflow.similarities.length > 1 ? ` (+${workflow.similarities.length - 1})` : ''}
-                          </span>
-                        </div>
-                      )}
+                      {getSimilaritiesPreview()}
                   </div>
               </div>
             </div>
@@ -207,8 +217,7 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
                         <DialogTitle>Análisis de Similitud para #{workflow.displayId} - {workflow.flowName}</DialogTitle>
                       </DialogHeader>
                       <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto px-2">
-                        {workflow.similarities
-                          .sort((a, b) => b.score - a.score)
+                        {sortedSimilarities
                           .map(sim => (
                           <div key={sim.workflowId} className="p-3 border rounded-md bg-background">
                               <div className="flex justify-between items-center mb-2">
@@ -394,5 +403,7 @@ ${separator}`;
     </div>
   );
 }
+
+    
 
     
