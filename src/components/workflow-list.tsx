@@ -70,6 +70,10 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
   const [openAccordion, setOpenAccordion] = useState('');
   const cardRef = useRef<HTMLDivElement>(null);
 
+  const toggleAccordion = () => {
+    setOpenAccordion(openAccordion === 'details' ? '' : 'details');
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
@@ -85,61 +89,60 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
 
   return (
   <Card ref={cardRef} className="w-full overflow-hidden flex flex-col border-primary">
-    <div className="p-4 md:p-6 flex-grow">
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-        {/* Main Info */}
-        <div className="flex-grow">
-            <div className='flex items-start gap-3'>
-                <span className="text-xl font-bold text-primary w-8 text-center">#{workflow.displayId}</span>
-                <div className="flex-grow">
-                  <div className='flex items-center gap-2'>
-                    {workflow.fileName.endsWith('.json') ? <FileJson className="h-5 w-5 text-accent" /> : <FileText className="h-5 w-5 text-accent" />}
-                    <h2 className="text-xl font-bold text-foreground">{workflow.flowName}</h2>
+     <Accordion type="single" collapsible className="w-full" value={openAccordion} onValueChange={setOpenAccordion}>
+      <AccordionItem value="details" className="border-none">
+        <div onClick={toggleAccordion} className="cursor-pointer hover:bg-secondary/30 transition-colors">
+          <div className="p-4 md:p-6">
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+              {/* Main Info */}
+              <div className="flex-grow">
+                  <div className='flex items-start gap-3'>
+                      <span className="text-xl font-bold text-primary w-8 text-center">#{workflow.displayId}</span>
+                      <div className="flex-grow">
+                        <div className='flex items-center gap-2'>
+                          {workflow.fileName.endsWith('.json') ? <FileJson className="h-5 w-5 text-accent" /> : <FileText className="h-5 w-5 text-accent" />}
+                          <h2 className="text-xl font-bold text-foreground">{workflow.flowName}</h2>
+                        </div>
+                        <p className="text-muted-foreground mt-1 text-sm">{workflow.shortDescription}</p>
+                      </div>
                   </div>
-                  <p className="text-muted-foreground mt-1 text-sm">{workflow.shortDescription}</p>
-                </div>
+                  
+                  <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Briefcase className="h-4 w-4" />
+                          <span>{workflow.mainArea}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Zap className="h-4 w-4" />
+                          {getComplexityBadge(workflow.complexity)}
+                      </div>
+                      {workflow.similarities.length > 0 && (
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                              <Users className="h-4 w-4" />
+                              <span>{workflow.similarities.length} {workflow.similarities.length === 1 ? 'similar' : 'similares'}</span>
+                          </div>
+                      )}
+                  </div>
+              </div>
             </div>
-            
-            <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Briefcase className="h-4 w-4" />
-                    <span>{workflow.mainArea}</span>
-                </div>
-                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Zap className="h-4 w-4" />
-                    {getComplexityBadge(workflow.complexity)}
-                </div>
-                {workflow.similarities.length > 0 && (
-                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Users className="h-4 w-4" />
-                        <span>{workflow.similarities.length} {workflow.similarities.length === 1 ? 'similar' : 'similares'}</span>
-                    </div>
-                )}
-            </div>
+          </div>
+          {/* Data Flow footer */}
+          <div className="bg-muted/50 border-t px-4 py-2 text-xs">
+              <div className="flex items-center justify-center gap-2">
+                  <div className="flex flex-col items-center text-center">
+                      <span className='text-muted-foreground'>Origen</span>
+                      <span className="font-semibold">{workflow.dataOrigins[0] || 'N/A'}</span>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 mt-3" />
+                  <div className="flex flex-col items-center text-center">
+                      <span className='text-muted-foreground'>Destino</span>
+                      <span className="font-semibold">{workflow.automationDestinations[0] || 'N/A'}</span>
+                  </div>
+              </div>
+          </div>
         </div>
-      </div>
-    </div>
-     {/* Data Flow footer */}
-    <div className="bg-muted/50 border-t px-4 py-2 text-xs">
-        <div className="flex items-center justify-center gap-2">
-            <div className="flex flex-col items-center text-center">
-                <span className='text-muted-foreground'>Origen</span>
-                <span className="font-semibold">{workflow.dataOrigins[0] || 'N/A'}</span>
-            </div>
-            <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 mt-3" />
-            <div className="flex flex-col items-center text-center">
-                 <span className='text-muted-foreground'>Destino</span>
-                 <span className="font-semibold">{workflow.automationDestinations[0] || 'N/A'}</span>
-            </div>
-        </div>
-    </div>
-    <Accordion type="single" collapsible className="w-full" value={openAccordion} onValueChange={setOpenAccordion}>
-      <AccordionItem value="details" className="border-t">
-        <AccordionTrigger className="px-4 md:px-6 text-sm font-medium text-muted-foreground data-[state=open]:text-primary hover:no-underline justify-start gap-2">
-          Ver más detalles
-        </AccordionTrigger>
         <AccordionContent>
-          <div className="p-4 md:p-6 pt-0 bg-secondary/30 space-y-6">
+          <div className="p-4 md:p-6 pt-4 bg-secondary/30 space-y-6">
               
               {/* Detalles */}
               <div>
@@ -349,5 +352,7 @@ ${separator}`;
     </div>
   );
 }
+
+    
 
     
