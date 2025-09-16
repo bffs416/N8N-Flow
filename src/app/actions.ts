@@ -77,50 +77,54 @@ export async function runSimilarityAnalysis(
 
     // Run similarity check only if there is more than one workflow
     if (workflows.length > 1) {
-      // The `identifySimilarWorkflows` flow expects the content, but we are not storing it anymore.
-      // We will need to adjust this flow or the data we pass to it.
-      // For now, let's assume we cannot run similarity analysis if we don't store the content.
-      // This part of the logic needs to be revisited.
-      // To prevent crashes, we will skip the similarity analysis if content is missing.
-      const workflowsWithContent = workflows.filter(wf => wf.content);
-      if (workflowsWithContent.length > 1) {
-        const allWorkflowContents = workflowsWithContent.map(wf => wf.content!);
-        const similarityResults = await identifySimilarWorkflows({
-          workflowJsons: allWorkflowContents,
-        });
+      
+      const workflowDescriptions = workflows.map(wf => {
+        return `
+          Nombre del Flujo: ${wf.flowName}
+          Descripción: ${wf.shortDescription}
+          Función Principal: ${wf.mainFunction}
+          Área Principal: ${wf.mainArea}
+          Orígenes de Datos: ${wf.dataOrigins.join(', ')}
+          Destinos de Automatización: ${wf.automationDestinations.join(', ')}
+          Nodos Clave: ${wf.keyNodes.join(', ')}
+        `.trim();
+      });
 
-        if (similarityResults) {
-          similarityResults.forEach(result => {
-            // Only process pairs with a meaningful similarity score
-            if (result.similarityScore > 0.5) {
-              const wf1 = workflowsWithContent[result.workflow1Index];
-              const wf2 = workflowsWithContent[result.workflow2Index];
+      const similarityResults = await identifySimilarWorkflows({
+        workflowDescriptions: workflowDescriptions,
+      });
 
-              if (wf1 && wf2 && wf1.id !== wf2.id) {
-                const wf1FromMap = workflowMap.get(wf1.id)!;
-                const wf2FromMap = workflowMap.get(wf2.id)!;
+      if (similarityResults) {
+        similarityResults.forEach(result => {
+          // Only process pairs with a meaningful similarity score
+          if (result.similarityScore > 0.5) {
+            const wf1 = workflows[result.workflow1Index];
+            const wf2 = workflows[result.workflow2Index];
 
-                // Check for existence before adding to prevent duplicates
-                if (!wf1FromMap.similarities.some(s => s.workflowId === wf2.id)) {
-                  wf1FromMap.similarities.push({
-                    workflowId: wf2.id,
-                    workflowName: `#${wf2.displayId} - ${wf2.flowName}`,
-                    score: result.similarityScore,
-                    reason: result.reason,
-                  });
-                }
-                if (!wf2FromMap.similarities.some(s => s.workflowId === wf1.id)) {
-                  wf2FromMap.similarities.push({
-                    workflowId: wf1.id,
-                    workflowName: `#${wf1.displayId} - ${wf1.flowName}`,
-                    score: result.similarityScore,
-                    reason: result.reason,
-                  });
-                }
+            if (wf1 && wf2 && wf1.id !== wf2.id) {
+              const wf1FromMap = workflowMap.get(wf1.id)!;
+              const wf2FromMap = workflowMap.get(wf2.id)!;
+
+              // Check for existence before adding to prevent duplicates
+              if (!wf1FromMap.similarities.some(s => s.workflowId === wf2.id)) {
+                wf1FromMap.similarities.push({
+                  workflowId: wf2.id,
+                  workflowName: `#${wf2.displayId} - ${wf2.flowName}`,
+                  score: result.similarityScore,
+                  reason: result.reason,
+                });
+              }
+              if (!wf2FromMap.similarities.some(s => s.workflowId === wf1.id)) {
+                wf2FromMap.similarities.push({
+                  workflowId: wf1.id,
+                  workflowName: `#${wf1.displayId} - ${wf1.flowName}`,
+                  score: result.similarityScore,
+                  reason: result.reason,
+                });
               }
             }
-          });
-        }
+          }
+        });
       }
     }
     

@@ -12,9 +12,9 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const IdentifySimilarWorkflowsInputSchema = z.object({
-  workflowJsons: z.array(
-    z.string().describe('JSON representation of n8n workflow')
-  ).describe('An array of n8n workflow JSONs to compare and identify similarities.'),
+  workflowDescriptions: z.array(
+    z.string().describe('Textual description of an n8n workflow')
+  ).describe('An array of n8n workflow descriptions to compare and identify similarities.'),
 });
 export type IdentifySimilarWorkflowsInput = z.infer<typeof IdentifySimilarWorkflowsInputSchema>;
 
@@ -36,12 +36,12 @@ const prompt = ai.definePrompt({
   name: 'identifySimilarWorkflowsPrompt',
   input: {schema: IdentifySimilarWorkflowsInputSchema},
   output: {schema: IdentifySimilarWorkflowsOutputSchema},
-  prompt: `You are an expert workflow analyst, skilled at identifying similarities between n8n workflows.
+  prompt: `You are an expert workflow analyst, skilled at identifying similarities between n8n workflows based on their descriptions.
 
-  Given a list of n8n workflow JSONs, analyze each pair of workflows and determine their similarity based on their functionality and structure.  Provide a similarity score between 0 and 1, and a brief explanation of why the workflows are considered similar.
+  Given a list of n8n workflow descriptions, analyze each pair of workflows and determine their similarity based on their functionality and structure. Provide a similarity score between 0 and 1, and a brief explanation in Spanish of why the workflows are considered similar.
 
-  Workflows:\n{{
-    #each workflowJsons
+  Workflow Descriptions:\n{{
+    #each workflowDescriptions
     }}Workflow {{@index}}: {{{this}}}\n{{\newline}}
     {{/each}}
   `,
