@@ -1,7 +1,7 @@
 
 'use client';
 
-import {useState, useEffect, useTransition} from 'react';
+import {useState, useEffect, useMemo} from 'react';
 import type {Workflow} from '@/types';
 import {PageHeader} from '@/components/page-header';
 import {FileUploader} from '@/components/file-uploader';
@@ -12,6 +12,7 @@ import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {UploadCloud} from 'lucide-react';
 import {Progress} from '@/components/ui/progress';
 import preAnalyzedWorkflows from '@/lib/pre-analyzed-workflows.json';
+import {SearchInput} from '@/components/search-input';
 
 const WORKFLOWS_STORAGE_KEY = 'n8n-insights-workflows';
 
@@ -21,7 +22,7 @@ export default function Home() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSimilarityRunning, setIsSimilarityRunning] = useState(false);
   const [progress, setProgress] = useState({current: 0, total: 0});
-  const [isPending, startTransition] = useTransition();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const {toast} = useToast();
 
@@ -89,10 +90,8 @@ export default function Home() {
         // Add the new workflow to our temporary list
         processedWorkflows.push(newWorkflow);
 
-        // Update progress and state in a transition
-        startTransition(() => {
-          setProgress(p => ({...p, current: i + 1}));
-        });
+        // Update progress and state
+        setProgress(p => ({...p, current: i + 1}));
 
       } catch (e) {
         console.error(e);
@@ -165,6 +164,23 @@ export default function Home() {
   
   const anyTaskRunning = isProcessing || isSimilarityRunning || isLoading;
 
+  const filteredWorkflows = useMemo(() => {
+    if (!searchQuery) return workflows;
+
+    const query = searchQuery.toLowerCase();
+    return workflows.filter(wf => 
+      `#${wf.displayId}`.includes(query) ||
+      wf.flowName.toLowerCase().includes(query) ||
+      wf.shortDescription.toLowerCase().includes(query) ||
+      wf.mainArea.toLowerCase().includes(query) ||
+      wf.mainFunction.toLowerCase().includes(query) ||
+      wf.dataOrigins.some(o => o.toLowerCase().includes(query)) ||
+      wf.automationDestinations.some(d => d.toLowerCase().includes(query)) ||
+      wf.keyNodes.some(n => n.toLowerCase().includes(query))
+    );
+  }, [workflows, searchQuery]);
+
+
   return (
     <div className="flex flex-col min-h-screen">
       <PageHeader
@@ -182,7 +198,6 @@ export default function Home() {
               <FileUploader onFilesUploaded={handleFilesUpload} disabled={anyTaskRunning} />
             </CardContent>
           </Card>
-
 
           {isProcessing && (
             <Card>
@@ -203,6 +218,19 @@ export default function Home() {
             </Card>
           )}
 
+          {workflows.length > 0 && (
+            <div className="sticky top-[65px] z-10 bg-background/80 backdrop-blur-sm -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-2">
+                <SearchInput
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={`Buscar en ${workflows.length} flujos...`}
+                  disabled={anyTaskRunning}
+                  onClear={() => setSearchQuery('')}
+                />
+            </div>
+          )}
+
+
           {workflows.length === 0 && !anyTaskRunning ? (
             <Card className="w-full">
               <CardHeader>
@@ -221,9 +249,11 @@ export default function Home() {
             </Card>
           ) : (
             <WorkflowList
-              workflows={workflows}
+              workflows={filteredWorkflows}
               setWorkflows={setWorkflows}
               isLoading={anyTaskRunning}
+              totalWorkflows={workflows.length}
+              searchQuery={searchQuery}
             />
           )}
         </div>

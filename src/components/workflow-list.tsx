@@ -70,7 +70,11 @@ const WorkflowCard = ({ workflow, onDelete }: { workflow: Workflow, onDelete: (i
   const [openAccordion, setOpenAccordion] = useState('');
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const toggleAccordion = () => {
+  const toggleAccordion = (e: React.MouseEvent) => {
+     // Evita que el clic en botones dentro de la tarjeta la expanda/colapse
+    if ((e.target as HTMLElement).closest('button, a')) {
+      return;
+    }
     setOpenAccordion(openAccordion === 'details' ? '' : 'details');
   };
 
@@ -237,10 +241,14 @@ export function WorkflowList({
   workflows,
   isLoading,
   setWorkflows,
+  totalWorkflows = 0,
+  searchQuery = '',
 }: {
   workflows: Workflow[];
   isLoading: boolean;
   setWorkflows: React.Dispatch<React.SetStateAction<Workflow[]>>;
+  totalWorkflows?: number;
+  searchQuery?: string;
 }) {
   const { toast } = useToast();
 
@@ -309,7 +317,7 @@ ${separator}`;
     });
   };
   
-  if (isLoading && workflows.length === 0) {
+  if (isLoading && totalWorkflows === 0) {
     return (
        <Card>
         <CardHeader>
@@ -333,11 +341,19 @@ ${separator}`;
     );
   }
 
+  const getTitle = () => {
+    if (searchQuery) {
+      if (workflows.length === 1) return '1 resultado encontrado';
+      return `${workflows.length} resultados encontrados`;
+    }
+    return `Flujos Analizados (${totalWorkflows})`;
+  }
+
   return (
     <div className='space-y-4'>
        <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Flujos Analizados ({workflows.length})</CardTitle>
+            <CardTitle>{getTitle()}</CardTitle>
             {workflows.length > 0 && (
                <Button variant="outline" size="sm" onClick={handleExport}>
                 <ClipboardCopy className="mr-2 h-4 w-4" />
@@ -346,13 +362,16 @@ ${separator}`;
             )}
           </CardHeader>
         </Card>
+        {workflows.length === 0 && searchQuery && (
+          <Card>
+            <CardContent className='p-6 text-center text-muted-foreground'>
+              <p>No se encontraron resultados para "<strong>{searchQuery}</strong>".</p>
+            </CardContent>
+          </Card>
+        )}
         {workflows.map((workflow) => (
              <WorkflowCard key={workflow.id} workflow={workflow} onDelete={handleDeleteWorkflow} />
         ))}
     </div>
   );
 }
-
-    
-
-    
