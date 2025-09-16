@@ -133,17 +133,29 @@ export default function Home() {
   };
   
   const handleRunSimilarityAnalysis = async () => {
-    const workflowsToAnalyze = workflows.filter(wf => unanalysedUuids.has(wf.workflow_uuid));
+    let workflowsToAnalyze = workflows.filter(wf => unanalysedUuids.has(wf.workflow_uuid));
+    let existingWorkflows = workflows.filter(wf => !unanalysedUuids.has(wf.workflow_uuid));
+
     if (workflowsToAnalyze.length === 0) {
+      // If no new workflows, assume user wants to re-analyze everything
       toast({
-        title: 'No hay flujos nuevos para analizar',
-        description: 'Sube nuevos flujos o restablece para volver a analizar.',
+        title: 'Re-analizando todos los flujos',
+        description: 'Se analizarán las similitudes entre todos los flujos de trabajo existentes.',
       });
-      return;
+      workflowsToAnalyze = workflows;
+      existingWorkflows = []; // All are targets now
     }
 
+    if (workflowsToAnalyze.length === 0 && workflows.length > 0) {
+        toast({
+            title: 'No hay flujos para analizar',
+            description: 'Sube nuevos flujos o reinicia la aplicación.',
+        });
+        return;
+    }
+
+
     setIsLoading(true);
-    const existingWorkflows = workflows.filter(wf => !unanalysedUuids.has(wf.workflow_uuid));
     const batches = [];
     for (let i = 0; i < workflowsToAnalyze.length; i += BATCH_SIZE) {
         batches.push(workflowsToAnalyze.slice(i, i + BATCH_SIZE));
@@ -160,12 +172,13 @@ export default function Home() {
         });
 
         try {
-            const updatedWorkflows = await runBatchedSimilarityAnalysis(batch, currentWorkflowsState);
+            // In a full re-analysis, compare against the already processed part of the full list
+            const comparisonList = existingWorkflows.length > 0 ? existingWorkflows : workflows.slice(0, workflows.indexOf(batch[0]));
+
+            const updatedWorkflows = await runBatchedSimilarityAnalysis(batch, comparisonList);
             
-            // Create a map for efficient updates
             const updatedWorkflowsMap = new Map(updatedWorkflows.map(wf => [wf.workflow_uuid, wf]));
 
-            // Update the state with the new similarity info
             currentWorkflowsState = currentWorkflowsState.map(wf => {
                 if (updatedWorkflowsMap.has(wf.workflow_uuid)) {
                     return updatedWorkflowsMap.get(wf.workflow_uuid)!;
@@ -182,7 +195,6 @@ export default function Home() {
                 title: `Error en Lote ${i + 1}`,
                 description: 'No se pudo completar el análisis de similitud para este lote.',
             });
-            // Stop on error
             setIsLoading(false);
             setAnalysisProgress({ total: 0, current: 0, title: '' });
             return;
@@ -190,13 +202,13 @@ export default function Home() {
     }
     
     setHasUnsavedChanges(true);
-    setUnanalysedUuids(new Set()); // Clear the set of unanalysed workflows
+    setUnanalysedUuids(new Set()); 
     setIsLoading(false);
     setAnalysisProgress({ total: 0, current: 0, title: '' });
 
     toast({
         title: 'Análisis de Similitud Completo',
-        description: `Se analizaron ${workflowsToAnalyze.length} flujos nuevos.`,
+        description: `Se analizaron ${workflowsToAnalyze.length} flujos.`,
     });
   };
 
@@ -245,17 +257,16 @@ export default function Home() {
   }, [workflows, searchQuery]);
 
   const isAnalyzing = analysisProgress.total > 0;
-  const similarityButtonDisabled = unanalysedUuids.size === 0 || isLoading;
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background">
       <PageHeader
         onClear={handleClearWorkflows}
         hasWorkflows={workflows.length > 0}
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
         onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
-        similarityAnalysisDisabled={similarityButtonDisabled}
+        similarityAnalysisDisabled={isLoading}
         onSendToForm={handleSendToForm}
         isLoading={isLoading}
         totalWorkflows={workflows.length}
@@ -277,7 +288,7 @@ export default function Home() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-center gap-3 mb-2">
                   <Loader2 className="h-5 w-5 animate-spin"/>
-                  <p className="font-medium">
+                  <p className="font-medium text-foreground">
                     {analysisProgress.title}
                   </p>
                 </div>
