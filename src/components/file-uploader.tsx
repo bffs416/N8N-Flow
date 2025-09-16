@@ -61,58 +61,54 @@ export function FileUploader({
   });
 
   return (
-    <Card>
-      <CardContent className="p-6">
-        <div
-          {...getRootProps()}
-          className={cn(
-            'flex flex-col items-center justify-center w-full p-8 border-2 border-dashed rounded-lg cursor-pointer transition-colors',
-            isDragActive
-              ? 'border-primary bg-primary/10'
-              : 'border-border hover:border-primary/50',
-            disabled || isReading ? 'cursor-not-allowed opacity-60' : ''
-          )}
-        >
-          <input {...getInputProps()} />
-          <div className="text-center">
-            {disabled ? (
-              <>
-                <Loader2 className="mx-auto h-12 w-12 text-primary animate-spin" />
-                <p className="mt-4 font-semibold text-foreground">
-                  Procesando flujos...
-                </p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Por favor espera mientras analizamos los flujos de trabajo.
-                </p>
-              </>
-            ) : isDragActive ? (
-              <>
-                <UploadCloud className="mx-auto h-12 w-12 text-primary" />
-                <p className="mt-4 font-semibold text-primary">
-                  Suelta los archivos para iniciar el análisis
-                </p>
-              </>
-            ) : (
-              <>
-                <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground" />
-                <p className="mt-4 font-semibold text-foreground">
-                  Arrastra y suelta tus flujos de trabajo de n8n aquí
-                </p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Puedes seleccionar múltiples archivos .json y .txt
-                </p>
-                <Button
-                  onClick={open}
-                  disabled={disabled || isReading}
-                  className="mt-4"
-                >
-                  {isReading ? 'Leyendo archivos...' : 'O selecciona los archivos'}
-                </Button>
-              </>
-            )}
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+    <div
+      {...getRootProps()}
+      className={cn(
+        'flex flex-col items-center justify-center w-full p-8 border-2 border-dashed rounded-lg cursor-pointer transition-colors',
+        isDragActive
+          ? 'border-primary bg-primary/10'
+          : 'border-border hover:border-primary/50',
+        disabled || isReading ? 'cursor-not-allowed opacity-60' : ''
+      )}
+    >
+      <input {...getInputProps()} />
+      <div className="text-center">
+        {disabled ? (
+          <>
+            <Loader2 className="mx-auto h-12 w-12 text-primary animate-spin" />
+            <p className="mt-4 font-semibold text-foreground">
+              Procesando flujos...
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Por favor espera mientras analizamos los flujos de trabajo.
+            </p>
+          </>
+        ) : isDragActive ? (
+          <>
+            <UploadCloud className="mx-auto h-12 w-12 text-primary" />
+            <p className="mt-4 font-semibold text-primary">
+              Suelta los archivos para iniciar el análisis
+            </p>
+          </>
+        ) : (
+          <>
+            <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground" />
+            <p className="mt-4 font-semibold text-foreground">
+              Arrastra y suelta tus flujos de trabajo de n8n aquí
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Puedes seleccionar múltiples archivos .json y .txt
+            </p>
+            <Button
+              onClick={open}
+              disabled={disabled || isReading}
+              className="mt-4"
+            >
+              {isReading ? 'Leyendo archivos...' : 'O selecciona los archivos'}
+            </Button>
+          </>
+        )}
+      </div>
+    </div>
   );
 }

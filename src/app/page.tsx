@@ -8,7 +8,7 @@ import {FileUploader} from '@/components/file-uploader';
 import {WorkflowList} from '@/components/workflow-list';
 import {analyzeSingleWorkflow, runSimilarityAnalysis} from '@/app/actions';
 import {useToast} from '@/hooks/use-toast';
-import {Card, CardContent} from '@/components/ui/card';
+import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {UploadCloud} from 'lucide-react';
 import {Progress} from '@/components/ui/progress';
 import preAnalyzedWorkflows from '@/lib/pre-analyzed-workflows.json';
@@ -167,7 +167,16 @@ export default function Home() {
       />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-8">
-          <FileUploader onFilesUploaded={handleFilesUpload} disabled={anyTaskRunning} />
+          
+          <Card>
+            <CardHeader>
+              <CardTitle>Analiza tus Flujos de Trabajo</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <FileUploader onFilesUploaded={handleFilesUpload} disabled={anyTaskRunning} />
+            </CardContent>
+          </Card>
+
 
           {isProcessing && (
             <Card>
