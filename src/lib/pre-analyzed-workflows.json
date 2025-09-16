@@ -1,2 +1,42 @@
-
-[]
+[
+  {
+    "workflow_uuid": "⚡AI-Powered YouTube Video Summarization & Analysis.txt-1758062058823",
+    "fileName": "⚡AI-Powered YouTube Video Summarization & Analysis.txt",
+    "flowName": "Resumen Inteligente de Transcripciones de YouTube",
+    "mainArea": "Contenido y Medios",
+    "secondaryAreas": [
+      "Educación",
+      "Investigación",
+      "Marketing",
+      "Productividad"
+    ],
+    "mainFunction": "Procesa una URL de YouTube para obtener su transcripción, la resume utilizando inteligencia artificial y luego envía el resumen resultante a través de un webhook o a Telegram.",
+    "automationDestinations": [
+      "Webhook",
+      "Telegram"
+    ],
+    "dataOrigins": [
+      "Webhook"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "YouTube Transcript",
+      "Concatenate",
+      "Summarize & Analyze Transcript",
+      "gpt-4o-mini",
+      "Respond to Webhook",
+      "Telegram"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Toma una URL de YouTube, extrae y resume su transcripción con IA, y envía el resumen a un webhook o Telegram.",
+    "useCaseExamples": [
+      "Un estudiante universitario o investigador puede usar este flujo para obtener resúmenes técnicos estructurados de conferencias, seminarios o tutoriales complejos alojados en YouTube, lo que le permite extraer rápidamente definiciones, características y detalles de implementación para sus trabajos o estudios.",
+      "Un equipo de marketing de contenidos puede automatizar la creación de borradores para artículos de blog, descripciones SEO optimizadas para videos o publicaciones para redes sociales, utilizando los resúmenes estructurados generados a partir de sus propios videos de YouTube, potenciando así su estrategia de contenido.",
+      "Una empresa puede emplear este flujo para procesar videos de capacitación interna (subidos a YouTube como privados o no listados) y generar guías rápidas o puntos clave para sus empleados, facilitando la revisión y comprensión del material de formación.",
+      "Un analista de mercado o producto puede monitorear videos de reseñas de productos o análisis de la competencia en YouTube, usando el flujo para obtener resúmenes estructurados que destaquen ventajas, desventajas y aspectos técnicos relevantes para la toma de decisiones.",
+      "Periodistas o curadores de contenido pueden alimentar el flujo con enlaces a videos de noticias, documentales o entrevistas de YouTube para generar rápidamente resúmenes estructurados de los eventos o temas discutidos, agilizando el proceso de seguimiento y difusión de información."
+    ],
+    "similarities": [],
+    "id": 1
+  }
+]
