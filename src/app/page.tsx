@@ -26,31 +26,23 @@ export default function Home() {
 
   const {toast} = useToast();
 
-  // Load workflows from localStorage or pre-analyzed file on initial render
+  // Load workflows from pre-analyzed file on initial render
   useEffect(() => {
     try {
-      const storedWorkflowsJSON = localStorage.getItem(WORKFLOWS_STORAGE_KEY);
-      const storedWorkflows = storedWorkflowsJSON ? JSON.parse(storedWorkflowsJSON) : null;
-      
-      if (storedWorkflows && storedWorkflows.length > 0) {
-        setWorkflows(storedWorkflows);
-      } else {
-        // If localStorage is empty or has an empty array, load the pre-analyzed workflows
-        setWorkflows(preAnalyzedWorkflows as Workflow[]);
-      }
+      // Always load the pre-analyzed workflows on initial load for consistency
+      setWorkflows(preAnalyzedWorkflows as Workflow[]);
     } catch (error) {
-      console.error('Failed to load workflows', error);
+      console.error('Failed to load pre-analyzed workflows', error);
       toast({
         variant: 'destructive',
         title: 'Error al cargar',
-        description: 'No se pudieron cargar los flujos de trabajo.',
+        description: 'No se pudieron cargar los flujos de trabajo iniciales.',
       });
-       // Fallback to pre-analyzed if parsing fails
-       setWorkflows(preAnalyzedWorkflows as Workflow[]);
     } finally {
       setIsLoading(false);
     }
   }, [toast]);
+
 
   // Save workflows to localStorage whenever they change
   useEffect(() => {
