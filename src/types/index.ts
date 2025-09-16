@@ -9,8 +9,15 @@ export type Workflow = {
   id: string;
   fileName: string;
   content: string;
-  useCases: string;
-  keyNodes: string;
-  description: string;
+  flowName: string;
+  mainArea: string;
+  secondaryAreas: string[];
+  mainFunction: string;
+  automationDestinations: string[];
+  dataOrigins: string[];
+  keyNodes: string[];
+  complexity: 'Simple' | 'Medio' | 'Complejo';
+  shortDescription: string;
+  useCaseExamples: string[];
   similarities: Similarity[];
 };

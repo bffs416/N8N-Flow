@@ -2,6 +2,7 @@
 
 import { extractKeyWorkflowInfo } from '@/ai/flows/extract-key-workflow-info';
 import { identifySimilarWorkflows } from '@/ai/flows/identify-similar-workflows';
+import { generateUseCaseExamples } from '@/ai/flows/generate-use-case-examples';
 import type { Workflow } from '@/types';
 
 export async function analyzeWorkflows(
@@ -10,8 +11,6 @@ export async function analyzeWorkflows(
 ): Promise<Workflow[]> {
   try {
     const newWorkflowsPromises = newFiles.map(async (file, index) => {
-      // For JSON files, we can pretty-print them to potentially improve AI understanding.
-      // For TXT files (which might also be JSON), we just use the content as is.
       let workflowTemplate = file.content;
       if (file.fileName.endsWith('.json')) {
         try {
@@ -21,14 +20,25 @@ export async function analyzeWorkflows(
         }
       }
 
-      const aiInfo = await extractKeyWorkflowInfo({ workflowTemplate });
+      const [aiInfo, useCaseExamples] = await Promise.all([
+        extractKeyWorkflowInfo({ workflowTemplate }),
+        generateUseCaseExamples({ workflowDescription: workflowTemplate }) 
+      ]);
+      
       const workflow: Workflow = {
         id: `${file.fileName}-${Date.now()}-${index}`,
         fileName: file.fileName,
         content: file.content,
-        useCases: aiInfo.useCases || 'N/A',
-        keyNodes: aiInfo.keyNodes || 'N/A',
-        description: aiInfo.description || 'N/A',
+        flowName: aiInfo.flowName || 'N/A',
+        mainArea: aiInfo.mainArea || 'N/A',
+        secondaryAreas: aiInfo.secondaryAreas || [],
+        mainFunction: aiInfo.mainFunction || 'N/A',
+        automationDestinations: aiInfo.automationDestinations || [],
+        dataOrigins: aiInfo.dataOrigins || [],
+        keyNodes: aiInfo.keyNodes || [],
+        complexity: aiInfo.complexity || 'Medio',
+        shortDescription: aiInfo.shortDescription || 'N/A',
+        useCaseExamples: useCaseExamples.useCaseExamples || [],
         similarities: [],
       };
       return workflow;
@@ -38,7 +48,6 @@ export async function analyzeWorkflows(
 
     const allWorkflows = [...existingWorkflows, ...newlyAnalyzedWorkflows];
     
-    // Create a map for quick lookups
     const workflowMap = new Map<string, Workflow>(allWorkflows.map(wf => [wf.id, wf]));
 
     if (allWorkflows.length > 1) {

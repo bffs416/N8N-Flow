@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import type { Workflow, Similarity } from '@/types';
+import type { Workflow } from '@/types';
 import {
   Table,
   TableBody,
@@ -24,11 +24,15 @@ import {
   Users,
   Code2,
   BookOpen,
+  Briefcase,
+  Lightbulb,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+type SortableKeys = 'flowName' | 'mainArea' | 'complexity' | 'similarities';
+
 type SortConfig = {
-  key: keyof Workflow | 'similarities';
+  key: SortableKeys;
   direction: 'ascending' | 'descending';
 } | null;
 
@@ -53,24 +57,52 @@ const SortableHeader = ({
 
 const ExpandedRowContent = ({ workflow }: { workflow: Workflow }) => (
   <div className="p-4 bg-secondary/50 space-y-6">
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center text-lg">
-          <BookOpen className="mr-3 h-5 w-5 text-primary" />
-          Full Description
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-sm text-muted-foreground">{workflow.description}</p>
-      </CardContent>
-    </Card>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center text-lg">
+            <BookOpen className="mr-3 h-5 w-5 text-primary" />
+            Detalles del Flujo
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm">
+          <div>
+            <p className="font-semibold text-foreground">Función Principal:</p>
+            <p className="text-muted-foreground">{workflow.mainFunction}</p>
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">Descripción Corta:</p>
+            <p className="text-muted-foreground">{workflow.shortDescription}</p>
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">Nodos Clave:</p>
+            <div className="flex flex-wrap gap-2 mt-1">
+              {workflow.keyNodes.map(node => <Badge key={node} variant="secondary">{node}</Badge>)}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center text-lg">
+            <Lightbulb className="mr-3 h-5 w-5 text-primary" />
+            Ejemplos de Casos de Uso
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+            {workflow.useCaseExamples.map((example, index) => <li key={index}>{example}</li>)}
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
 
     {workflow.similarities.length > 0 && (
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center text-lg">
             <Users className="mr-3 h-5 w-5 text-primary" />
-            Similarity Analysis
+            Análisis de Similitud
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -80,11 +112,11 @@ const ExpandedRowContent = ({ workflow }: { workflow: Workflow }) => (
               <div key={sim.workflowId} className="p-3 border rounded-md">
                 <div className="flex justify-between items-center mb-2">
                   <span className="font-medium text-foreground">{sim.workflowName}</span>
-                  <Badge variant="outline">{Math.round(sim.score * 100)}% Match</Badge>
+                  <Badge variant="outline">{Math.round(sim.score * 100)}% Coincidencia</Badge>
                 </div>
                 <Progress value={sim.score * 100} className="h-2 mb-2" />
                 <p className="text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground/80">Reason:</span> {sim.reason}
+                  <span className="font-semibold text-foreground/80">Razón:</span> {sim.reason}
                 </p>
               </div>
             ))}
@@ -102,7 +134,7 @@ export function WorkflowTable({
   isLoading: boolean;
 }) {
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
-  const [sortConfig, setSortConfig] = useState<SortConfig>(null);
+  const [sortConfig, setSortConfig] = useState<SortConfig>({ key: 'flowName', direction: 'ascending'});
 
   const toggleRow = (id: string) => {
     const newExpandedRows = new Set(expandedRows);
@@ -123,8 +155,8 @@ export function WorkflowTable({
             aValue = a.similarities.length;
             bValue = b.similarities.length;
         } else {
-            aValue = a[sortConfig.key];
-            bValue = b[sortConfig.key];
+            aValue = a[sortConfig.key as keyof Workflow];
+            bValue = b[sortConfig.key as keyof Workflow];
         }
 
         if (aValue < bValue) {
@@ -139,7 +171,7 @@ export function WorkflowTable({
     return sortableItems;
   }, [workflows, sortConfig]);
   
-  const requestSort = (key: keyof Workflow | 'similarities') => {
+  const requestSort = (key: SortableKeys) => {
     let direction: 'ascending' | 'descending' = 'ascending';
     if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
       direction = 'descending';
@@ -147,12 +179,25 @@ export function WorkflowTable({
     setSortConfig({ key, direction });
   };
 
+  const getComplexityBadge = (complexity: 'Simple' | 'Medio' | 'Complejo') => {
+    switch (complexity) {
+      case 'Simple':
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-200">Simple</Badge>;
+      case 'Medio':
+        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">Medio</Badge>;
+      case 'Complejo':
+        return <Badge className="bg-red-100 text-red-800 hover:bg-red-200">Complejo</Badge>;
+      default:
+        return <Badge variant="secondary">{complexity}</Badge>;
+    }
+  };
 
-  if (isLoading) {
+
+  if (isLoading && workflows.length === 0) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Analyzed Workflows</CardTitle>
+          <CardTitle>Flujos de Trabajo Analizados</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -174,7 +219,7 @@ export function WorkflowTable({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Analyzed Workflows</CardTitle>
+        <CardTitle>Flujos de Trabajo Analizados</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="rounded-md border">
@@ -183,23 +228,23 @@ export function WorkflowTable({
               <TableRow>
                 <TableHead className="w-[50px]"></TableHead>
                 <TableHead>
-                    <SortableHeader onClick={() => requestSort('fileName')} isSorted={sortConfig?.key === 'fileName'} direction={sortConfig?.direction || 'ascending'}>
-                        File Name
+                    <SortableHeader onClick={() => requestSort('flowName')} isSorted={sortConfig?.key === 'flowName'} direction={sortConfig?.direction || 'ascending'}>
+                        Nombre
                     </SortableHeader>
                 </TableHead>
                 <TableHead>
-                    <SortableHeader onClick={() => requestSort('keyNodes')} isSorted={sortConfig?.key === 'keyNodes'} direction={sortConfig?.direction || 'ascending'}>
-                        Key Nodes
+                    <SortableHeader onClick={() => requestSort('mainArea')} isSorted={sortConfig?.key === 'mainArea'} direction={sortConfig?.direction || 'ascending'}>
+                        Área Principal
                     </SortableHeader>
                 </TableHead>
                 <TableHead>
-                    <SortableHeader onClick={() => requestSort('useCases')} isSorted={sortConfig?.key === 'useCases'} direction={sortConfig?.direction || 'ascending'}>
-                        Use Cases
+                    <SortableHeader onClick={() => requestSort('complexity')} isSorted={sortConfig?.key === 'complexity'} direction={sortConfig?.direction || 'ascending'}>
+                        Complejidad
                     </SortableHeader>
                 </TableHead>
                 <TableHead className="text-right">
                     <SortableHeader onClick={() => requestSort('similarities')} isSorted={sortConfig?.key === 'similarities'} direction={sortConfig?.direction || 'ascending'}>
-                        Similarity
+                        Similitud
                     </SortableHeader>
                 </TableHead>
               </TableRow>
@@ -222,20 +267,20 @@ export function WorkflowTable({
                     </TableCell>
                     <TableCell className="font-medium flex items-center gap-2">
                       {workflow.fileName.endsWith('.json') ? <FileJson className="h-4 w-4 text-accent" /> : <FileText className="h-4 w-4 text-accent" />}
-                      {workflow.fileName}
+                      <span className="truncate">{workflow.flowName}</span>
                     </TableCell>
-                    <TableCell className="max-w-xs truncate">
+                    <TableCell>
                       <div className="flex items-center gap-2">
-                        <Code2 className="h-4 w-4 text-muted-foreground shrink-0" />
-                        <span className="truncate">{workflow.keyNodes}</span>
+                        <Briefcase className="h-4 w-4 text-muted-foreground shrink-0" />
+                        <span className="truncate">{workflow.mainArea}</span>
                       </div>
                     </TableCell>
-                    <TableCell className="max-w-xs truncate">{workflow.useCases}</TableCell>
+                    <TableCell>{getComplexityBadge(workflow.complexity)}</TableCell>
                     <TableCell className="text-right">
                       {workflow.similarities.length > 0 ? (
-                        <Badge variant="secondary">{workflow.similarities.length} similar</Badge>
+                        <Badge variant="secondary">{workflow.similarities.length} similares</Badge>
                       ) : (
-                        <Badge variant="outline">None</Badge>
+                        <Badge variant="outline">Ninguna</Badge>
                       )}
                     </TableCell>
                   </TableRow>

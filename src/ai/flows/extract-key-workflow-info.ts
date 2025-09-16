@@ -1,6 +1,6 @@
 'use server';
 /**
- * @fileOverview Extracts key information (use cases, key nodes, descriptions) from n8n workflow templates using AI.
+ * @fileOverview Extracts key information from n8n workflow templates using AI.
  *
  * - extractKeyWorkflowInfo - A function that extracts key information from n8n workflow templates.
  * - ExtractKeyWorkflowInfoInput - The input type for the extractKeyWorkflowInfo function.
@@ -20,10 +20,17 @@ export type ExtractKeyWorkflowInfoInput = z.infer<
 >;
 
 const ExtractKeyWorkflowInfoOutputSchema = z.object({
-  useCases: z.string().describe('The use cases of the workflow.'),
-  keyNodes: z.string().describe('The key nodes in the workflow.'),
-  description: z.string().describe('The description of the workflow.'),
+  flowName: z.string().describe('El nombre del flujo, extraído directamente de la plantilla.'),
+  mainArea: z.string().describe('El área de negocio principal a la que se dirige el flujo (ej: "Marketing", "Ventas", "Recursos Humanos").'),
+  secondaryAreas: z.array(z.string()).describe('Otras áreas secundarias donde el flujo también podría ser útil.'),
+  mainFunction: z.string().describe('Una descripción de la función principal que realiza el flujo (ej: "Sincronizar contactos entre Hubspot y Mailchimp").'),
+  automationDestinations: z.array(z.string()).describe('Las aplicaciones o servicios finales a los que el flujo envía datos o realiza acciones (ej: "Slack, Google Sheets").'),
+  dataOrigins: z.array(z.string()).describe('La aplicación o servicio que actúa como la principal fuente de datos o el disparador del flujo (ej: "Webhook, Stripe").'),
+  keyNodes: z.array(z.string()).describe('Los nodos más importantes o cruciales dentro del flujo que definen su lógica principal (ej: "IF, Merge, HTTP Request").'),
+  complexity: z.enum(['Simple', 'Medio', 'Complejo']).describe('El nivel de complejidad del flujo.'),
+  shortDescription: z.string().describe('Una descripción muy breve y fácil de entender sobre lo que hace el flujo.'),
 });
+
 export type ExtractKeyWorkflowInfoOutput = z.infer<
   typeof ExtractKeyWorkflowInfoOutputSchema
 >;
@@ -38,21 +45,23 @@ const prompt = ai.definePrompt({
   name: 'extractKeyWorkflowInfoPrompt',
   input: {schema: ExtractKeyWorkflowInfoInputSchema},
   output: {schema: ExtractKeyWorkflowInfoOutputSchema},
-  prompt: `You are an AI expert in analyzing n8n workflow templates. Your task is to extract key information from the given workflow template, including use cases, key nodes, and a concise description.
+  prompt: `Eres un experto analista de flujos de trabajo de n8n. Tu tarea es extraer información clave de la plantilla de flujo de trabajo proporcionada y responder únicamente en español.
 
-Workflow Template:
+Plantilla de Flujo de Trabajo:
 {{{workflowTemplate}}}
 
-Provide the extracted information in a structured format.
+Extrae la siguiente información de la plantilla:
+- flowName: El nombre del flujo, extraído directamente de la plantilla.
+- mainArea: El área de negocio principal a la que se dirige el flujo (ej: "Marketing", "Ventas", "Recursos Humanos").
+- secondaryAreas: Otras áreas secundarias donde el flujo también podría ser útil.
+- mainFunction: Una descripción de la función principal que realiza el flujo (ej: "Sincronizar contactos entre Hubspot y Mailchimp").
+- automationDestinations: Las aplicaciones o servicios finales a los que el flujo envía datos o realiza acciones (ej: "Slack, Google Sheets").
+- dataOrigins: La aplicación o servicio que actúa como la principal fuente de datos o el disparador del flujo (ej: "Webhook, Stripe").
+- keyNodes: Los nodos más importantes o cruciales dentro del flujo que definen su lógica principal (ej: "IF, Merge, HTTP Request").
+- complexity: El nivel de complejidad del flujo, clasificado como "Simple", "Medio" o "Complejo".
+- shortDescription: Una descripción muy breve y fácil de entender sobre lo que hace el flujo.
 
-Use Cases:
-- Briefly list the primary use cases or purposes of this workflow.
-
-Key Nodes:
-- Identify and list the most important nodes within the workflow, explaining their roles.
-
-Description:
-- Write a short, comprehensive description of the workflow's functionality.
+Proporciona la información extraída en un formato JSON estructurado.
 `,
 });
 
