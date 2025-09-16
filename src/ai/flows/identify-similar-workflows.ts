@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -40,10 +41,7 @@ const prompt = ai.definePrompt({
 
   Given a list of n8n workflow descriptions, analyze each pair of workflows and determine their similarity based on their functionality and structure. Provide a similarity score between 0 and 1, and a brief explanation in Spanish of why the workflows are considered similar.
 
-  Workflow Descriptions:\n{{
-    #each workflowDescriptions
-    }}Workflow {{@index}}: {{{this}}}\n{{\newline}}
-    {{/each}}
+  Workflow Descriptions:\n{{#each workflowDescriptions}}Workflow {{@index}}: {{{this}}}\n\n{{/each}}
   `,
 });
 
