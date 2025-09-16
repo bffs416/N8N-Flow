@@ -45,7 +45,7 @@ export default function Home() {
     setIsLoading(true);
     toast({
         title: 'Análisis en progreso...',
-        description: `Analizando y comparando ${files.length} flujo(s). Esto puede tardar un momento.`,
+        description: `Analizando ${files.length} nuevo(s) flujo(s).`,
     });
 
     try {
@@ -66,19 +66,13 @@ export default function Home() {
       const newWorkflows = (await Promise.all(analysisPromises)).filter(Boolean) as Workflow[];
 
       if (newWorkflows.length > 0) {
-        // 2. Combine new workflows with existing ones
-        const allWorkflows = [...workflows, ...newWorkflows];
-
-        // 3. Run similarity analysis on the complete list
-        const finalWorkflows = await runSimilarityAnalysis(allWorkflows);
-
-        // 4. Update state all at once
-        setWorkflows(finalWorkflows);
+        // 2. Combine new workflows with existing ones and update the state
+        setWorkflows(prevWorkflows => [...prevWorkflows, ...newWorkflows]);
         setHasUnsavedChanges(true);
 
         toast({
           title: 'Análisis Completo',
-          description: `Se agregaron ${newWorkflows.length} nuevo(s) flujo(s) y se recalcularon las similitudes.`,
+          description: `Se agregaron ${newWorkflows.length} nuevo(s) flujo(s).`,
         });
 
       } else {
@@ -167,7 +161,7 @@ export default function Home() {
              <Card>
               <CardContent className="p-6 text-center flex items-center justify-center gap-3">
                  <Loader2 className="h-5 w-5 animate-spin"/>
-                 <p className="font-medium">Analizando y comparando flujos de trabajo...</p>
+                 <p className="font-medium">Analizando flujos de trabajo...</p>
               </CardContent>
             </Card>
           )}
