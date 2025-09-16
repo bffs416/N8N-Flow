@@ -9,25 +9,19 @@ import {WorkflowList} from '@/components/workflow-list';
 import {analyzeSingleWorkflow, runSimilarityAnalysis, saveWorkflowsToFile} from '@/app/actions';
 import {useToast} from '@/hooks/use-toast';
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
-import {UploadCloud} from 'lucide-react';
+import {UploadCloud, Loader2} from 'lucide-react';
 import {Progress} from '@/components/ui/progress';
 import preAnalyzedWorkflows from '@/lib/pre-analyzed-workflows.json';
 import {SearchInput} from '@/components/search-input';
 
-const WORKFLOWS_STORAGE_KEY = 'n8n-insights-workflows';
-
 export default function Home() {
   const [workflows, setWorkflows] = useState<Workflow[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [isSimilarityRunning, setIsSimilarityRunning] = useState(false);
-  const [progress, setProgress] = useState({current: 0, total: 0});
   const [searchQuery, setSearchQuery] = useState('');
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
   const {toast} = useToast();
 
-  // Load workflows from pre-analyzed file on initial render
   useEffect(() => {
     try {
       setWorkflows(preAnalyzedWorkflows as Workflow[]);
@@ -43,106 +37,70 @@ export default function Home() {
     }
   }, [toast]);
 
-
-  // Save workflows to localStorage whenever they change
-  useEffect(() => {
-    // We don't save during initial loading
-    if (!isLoading) {
-      try {
-        localStorage.setItem(WORKFLOWS_STORAGE_KEY, JSON.stringify(workflows));
-      } catch (error) {
-        console.error('Failed to save workflows to localStorage', error);
-        toast({
-          variant: 'destructive',
-          title: 'Error al guardar',
-          description: 'No se pudieron guardar los flujos de trabajo.',
-        });
-      }
-    }
-  }, [workflows, isLoading, toast]);
-  
   const handleFilesUpload = async (
     files: {fileName: string; content: string}[]
   ) => {
     if (files.length === 0) return;
 
-    setIsProcessing(true);
-    setProgress({current: 0, total: files.length});
+    setIsLoading(true);
+    toast({
+        title: 'Análisis en progreso...',
+        description: `Analizando y comparando ${files.length} flujo(s). Esto puede tardar un momento.`,
+    });
 
-    // Use a copy of the current workflows to add new ones
-    let processedWorkflows: Workflow[] = [...workflows];
-    let newWorkflowsAdded = false;
+    try {
+      // 1. Analyze all new files in parallel
+      const analysisPromises = files.map(file => 
+        analyzeSingleWorkflow(file, workflows) // Pass existing workflows to get next ID
+          .catch(e => { // Catch errors individually so one failure doesn't stop all
+            console.error(e);
+            toast({
+              variant: 'destructive',
+              title: `Falló el Análisis para ${file.fileName}`,
+              description: e instanceof Error ? e.message : 'Error inesperado.',
+            });
+            return null; // Return null for failed analyses
+          })
+      );
+      
+      const newWorkflows = (await Promise.all(analysisPromises)).filter(Boolean) as Workflow[];
 
-    // Process files one by one
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      try {
-        // We pass the current list of processed workflows to get the next correct ID
-        const newWorkflow = await analyzeSingleWorkflow(file, processedWorkflows);
-        
-        // Add the new workflow to our temporary list
-        processedWorkflows.push(newWorkflow);
-        newWorkflowsAdded = true;
+      if (newWorkflows.length > 0) {
+        // 2. Combine new workflows with existing ones
+        const allWorkflows = [...workflows, ...newWorkflows];
 
-        // Update progress and state
-        setProgress(p => ({...p, current: i + 1}));
+        // 3. Run similarity analysis on the complete list
+        const finalWorkflows = await runSimilarityAnalysis(allWorkflows);
 
-      } catch (e) {
-        console.error(e);
-        toast({
-          variant: 'destructive',
-          title: `Falló el Análisis para ${file.fileName}`,
-          description:
-            e instanceof Error ? e.message : 'Error inesperado.',
-        });
-        // Continue to next file even if one fails
-      }
-    }
-
-    // Set all workflows at once after the loop
-    setWorkflows(processedWorkflows);
-    if(newWorkflowsAdded){
-      setHasUnsavedChanges(true);
-    }
-    
-    setIsProcessing(false);
-
-    // Once all files are processed, run similarity analysis on the complete list
-    if (processedWorkflows.length > workflows.length) { // Check if new workflows were actually added
-      setIsSimilarityRunning(true);
-      toast({
-        title: 'Análisis de Similitud en Progreso',
-        description: 'Calculando similitudes entre todos los flujos de trabajo.',
-      });
-
-      try {
-        const finalWorkflows = await runSimilarityAnalysis(processedWorkflows);
+        // 4. Update state all at once
         setWorkflows(finalWorkflows);
+        setHasUnsavedChanges(true);
+
         toast({
-          title: 'Análisis de Similitud Completo',
-          description: `Se han actualizado las relaciones entre los flujos.`,
+          title: 'Análisis Completo',
+          description: `Se agregaron ${newWorkflows.length} nuevo(s) flujo(s) y se recalcularon las similitudes.`,
         });
-      } catch (e) {
-        console.error(e);
-        toast({
-          variant: 'destructive',
-          title: 'Falló el Análisis de Similitud',
-          description: 'Ocurrió un error al comparar los flujos.',
-        });
-      } finally {
-        setIsSimilarityRunning(false);
-      }
-    } else if (files.length > 0) { // Files were processed but no new workflows were added (e.g., all failed)
-       toast({
+
+      } else {
+         toast({
           title: 'Análisis Finalizado',
           description: `No se agregaron nuevos flujos válidos.`,
         });
+      }
+    } catch (error) {
+      console.error('An error occurred during the upload process:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Error en el Proceso',
+        description: 'Ocurrió un error inesperado al analizar los flujos.',
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
 
   const handleClearWorkflows = () => {
-    // Instead of clearing completely, we reset to the initial state
     setWorkflows(preAnalyzedWorkflows as Workflow[]);
     setHasUnsavedChanges(false);
     toast({
@@ -168,8 +126,6 @@ export default function Home() {
     }
   };
   
-  const anyTaskRunning = isProcessing || isSimilarityRunning || isLoading;
-
   const filteredWorkflows = useMemo(() => {
     if (!searchQuery) return workflows;
 
@@ -203,25 +159,15 @@ export default function Home() {
               <CardTitle>Analizador de Flujos</CardTitle>
             </CardHeader>
             <CardContent>
-              <FileUploader onFilesUploaded={handleFilesUpload} disabled={anyTaskRunning} />
+              <FileUploader onFilesUploaded={handleFilesUpload} disabled={isLoading} />
             </CardContent>
           </Card>
 
-          {isProcessing && (
-            <Card>
-              <CardContent className="p-6">
-                <p className="text-center font-medium mb-2">
-                  Analizando {progress.current} de {progress.total} flujos...
-                </p>
-                <Progress value={(progress.current / progress.total) * 100} />
-              </CardContent>
-            </Card>
-          )}
-          {isSimilarityRunning && !isProcessing && (
+          {isLoading && workflows.length > 0 && (
              <Card>
-              <CardContent className="p-6 text-center">
-                 <p className="font-medium">Calculando similitudes entre todos los flujos de trabajo...</p>
-                 <p className="text-sm text-muted-foreground">Esto puede tardar un momento.</p>
+              <CardContent className="p-6 text-center flex items-center justify-center gap-3">
+                 <Loader2 className="h-5 w-5 animate-spin"/>
+                 <p className="font-medium">Analizando y comparando flujos de trabajo...</p>
               </CardContent>
             </Card>
           )}
@@ -232,14 +178,28 @@ export default function Home() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={`Buscar en ${workflows.length} flujos...`}
-                  disabled={anyTaskRunning}
+                  disabled={isLoading}
                   onClear={() => setSearchQuery('')}
                 />
             </div>
           )}
 
-
-          {workflows.length === 0 && !anyTaskRunning ? (
+          {isLoading && workflows.length === 0 ? (
+             <Card>
+              <CardHeader>
+                 <CardTitle>Cargando Flujos...</CardTitle>
+              </CardHeader>
+              <CardContent className="py-20 flex flex-col items-center justify-center text-center">
+                <Loader2 className="h-16 w-16 text-muted-foreground mb-4 animate-spin" />
+                <h3 className="text-xl font-semibold text-foreground">
+                  Inicializando...
+                </h3>
+                <p className="text-muted-foreground mt-2">
+                  Cargando la base de flujos pre-analizados.
+                </p>
+              </CardContent>
+            </Card>
+          ) : workflows.length === 0 ? (
             <Card className="w-full">
               <CardHeader>
                  <CardTitle>Flujos Analizados (0)</CardTitle>
@@ -259,7 +219,7 @@ export default function Home() {
             <WorkflowList
               workflows={filteredWorkflows}
               setWorkflows={setWorkflows}
-              isLoading={anyTaskRunning}
+              isLoading={isLoading}
               totalWorkflows={workflows.length}
               searchQuery={searchQuery}
             />

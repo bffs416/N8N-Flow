@@ -1,4 +1,3 @@
-
 [
   {
     "id": "flujo-1",
@@ -9,9 +8,23 @@
     "mainArea": "Inteligencia Artificial",
     "secondaryAreas": [],
     "mainFunction": "Generar y distribuir informes detallados sobre temas y conversaciones de la red social Nostr (específicamente #damus) utilizando capacidades de IA para el análisis de texto.",
-    "automationDestinations": ["Gmail", "Telegram"],
-    "dataOrigins": ["Nostr"],
-    "keyNodes": ["Nostr Read #damus", "ChainLlm", "lmChatGoogleGemini", "Markdown", "Gmail", "Telegram", "Aggregate", "Merge"],
+    "automationDestinations": [
+      "Gmail",
+      "Telegram"
+    ],
+    "dataOrigins": [
+      "Nostr"
+    ],
+    "keyNodes": [
+      "Nostr Read #damus",
+      "ChainLlm",
+      "lmChatGoogleGemini",
+      "Markdown",
+      "Gmail",
+      "Telegram",
+      "Aggregate",
+      "Merge"
+    ],
     "complexity": "Complejo",
     "useCaseExamples": [
       "Una startup que desarrolla una aplicación social descentralizada monitorea en tiempo real el sentimiento y las tendencias emergentes en Nostr relacionadas con #damus para informar el desarrollo de su propio producto. El objetivo es identificar los 3 temas más discutidos (positivos o negativos) sobre #damus cada semana para priorizar mejoras en su aplicación, apuntando a un aumento del 15% en la satisfacción del usuario en el próximo trimestre. Reciben informes semanales los lunes por la mañana a través de Telegram y Gmail.",
@@ -21,7 +34,7 @@
       "Un investigador en sociología digital estudia la evolución del discurso y la polarización en torno a #damus en Nostr para un estudio académico sobre la formación de comunidades en redes descentralizadas. Se propone recopilar y analizar 1000 hilos por mes, identificando al menos 2 cambios significativos en el sentimiento o los temas dominantes cada trimestre, contribuyendo a la publicación de un artículo de investigación en 12 meses. Reciben informes trimestrales detallados por Gmail que resuman las tendencias y el sentimiento, y alertas mensuales de Telegram sobre anomalías detectadas."
     ],
     "similarities": [
-       {
+      {
         "workflowId": "flujo-15",
         "workflowName": "#15 - NEW TWEETS",
         "score": 0.75,
@@ -38,9 +51,20 @@
     "mainArea": "Automatización de Marketing y Ventas",
     "secondaryAreas": [],
     "mainFunction": "Automatizar la gestión de nuevos clientes y la comunicación post-venta después de una venta en Gumroad, registrando la información en un CRM y añadiéndolos a una lista de correo.",
-    "automationDestinations": ["Gumroad", "MailerLite", "Google Sheets"],
-    "dataOrigins": ["Gumroad"],
-    "keyNodes": ["Gumroad Trigger", "MailerLite", "HTTP Request", "Google Sheets"],
+    "automationDestinations": [
+      "Gumroad",
+      "MailerLite",
+      "Google Sheets"
+    ],
+    "dataOrigins": [
+      "Gumroad"
+    ],
+    "keyNodes": [
+      "Gumroad Trigger",
+      "MailerLite",
+      "HTTP Request",
+      "Google Sheets"
+    ],
     "complexity": "Medio",
     "useCaseExamples": [
       "Automatización de Onboarding para Cursos Digitales: Un creador de cursos online utiliza este flujo para automatizar el onboarding de nuevos estudiantes. Cada vez que se vende un curso en Gumroad, el estudiante se añade automáticamente a MailerLite, se le asigna a un grupo específico del curso (ej. \"Curso Avanzado de Fotografía\") para recibir emails de bienvenida, acceso a recursos y actualizaciones relevantes. Los detalles de la venta se registran en Google Sheets para seguimiento. Objetivo SMART: Asegurar que el 100% de los nuevos estudiantes reciban la secuencia de bienvenida y acceso a recursos en las primeras 24 horas después de la compra, mejorando la tasa de finalización del curso en un 15% en los próximos tres meses.",
@@ -67,9 +91,23 @@
     "mainArea": "Generación de Contenido Digital",
     "secondaryAreas": [],
     "mainFunction": "Generar imágenes a partir de descripciones de texto mediante IA, almacenarlas en la nube y registrar su uso y costos.",
-    "automationDestinations": ["OpenAI (ChatGPT API)", "Google Drive", "Google Sheets"],
-    "dataOrigins": ["Chat Trigger"],
-    "keyNodes": ["n8n-nodes-base.httpRequest", "n8n-nodes-base.googleDrive", "n8n-nodes-base.googleSheets", "@n8n/n8n-nodes-langchain.chatTrigger", "n8n-nodes-base.convertToFile", "n8n-nodes-base.splitOut", "n8n-nodes-base.splitInBatches"],
+    "automationDestinations": [
+      "OpenAI (ChatGPT API)",
+      "Google Drive",
+      "Google Sheets"
+    ],
+    "dataOrigins": [
+      "Chat Trigger"
+    ],
+    "keyNodes": [
+      "n8n-nodes-base.httpRequest",
+      "n8n-nodes-base.googleDrive",
+      "n8n-nodes-base.googleSheets",
+      "@n8n/n8n-nodes-langchain.chatTrigger",
+      "n8n-nodes-base.convertToFile",
+      "n8n-nodes-base.splitOut",
+      "n8n-nodes-base.splitInBatches"
+    ],
     "complexity": "Complejo",
     "useCaseExamples": [
       "Marketing Digital para PYMES: Una pequeña empresa necesita generar imágenes atractivas y variadas para sus publicaciones diarias en redes sociales sin un diseñador gráfico a tiempo completo. El flujo generará 5 imágenes únicas cada día, basándose en el tema diario de la campaña, guardándolas en una carpeta específica de Google Drive y registrando el costo de cada generación. Esto reducirá el tiempo de creación de contenido visual en un 70% y aumentará la interacción en redes sociales en un 15% en los próximos 30 días, con un costo máximo de $50 USD mensuales por imágenes.",
@@ -96,9 +134,22 @@
     "mainArea": "Servicio al Cliente",
     "secondaryAreas": [],
     "mainFunction": "Notificación de nuevos tickets de soporte",
-    "automationDestinations": ["ConnectWise", "Redis", "Microsoft Teams"],
-    "dataOrigins": ["ConnectWise"],
-    "keyNodes": ["Schedule Trigger", "HTTP Request", "Redis", "Code", "Merge", "Microsoft Teams"],
+    "automationDestinations": [
+      "ConnectWise",
+      "Redis",
+      "Microsoft Teams"
+    ],
+    "dataOrigins": [
+      "ConnectWise"
+    ],
+    "keyNodes": [
+      "Schedule Trigger",
+      "HTTP Request",
+      "Redis",
+      "Code",
+      "Merge",
+      "Microsoft Teams"
+    ],
     "complexity": "Medio",
     "useCaseExamples": [
       "Una empresa de servicios gestionados (MSP) implementará el flujo para acelerar el tiempo de respuesta inicial a los problemas críticos de sus clientes. El objetivo es reducir en un 25% el tiempo promedio desde la creación de un ticket de alta prioridad en ConnectWise hasta su notificación al equipo de Dispatch a través de Microsoft Teams en el próximo trimestre, garantizando una atención más rápida a los incidentes que afectan el servicio del cliente.",
@@ -118,9 +169,18 @@
     "mainArea": "Productividad",
     "secondaryAreas": [],
     "mainFunction": "Sincronización de eventos de calendario entre Google Calendar y Outlook",
-    "automationDestinations": ["Google Calendar", "Microsoft Outlook"],
-    "dataOrigins": ["Google Calendar"],
-    "keyNodes": ["Google Calendar Trigger", "Microsoft Outlook", "Merge"],
+    "automationDestinations": [
+      "Google Calendar",
+      "Microsoft Outlook"
+    ],
+    "dataOrigins": [
+      "Google Calendar"
+    ],
+    "keyNodes": [
+      "Google Calendar Trigger",
+      "Microsoft Outlook",
+      "Merge"
+    ],
     "complexity": "Medio",
     "useCaseExamples": [
       "Un consultor independiente que gestiona múltiples clientes utiliza Google Calendar para su planificación personal y profesional. Algunos clientes, sin embargo, programan reuniones a través de Outlook. El flujo de trabajo asegura que todas las reuniones creadas o canceladas en Google Calendar se sincronicen automáticamente con su calendario de Outlook, eliminando la necesidad de introducir manualmente los eventos y enviando una notificación instantánea si un cliente cancela una cita, lo que permite al consultor reorganizar su tiempo eficientemente y reducir en un 80% el tiempo de gestión de calendarios en el próximo mes.",
@@ -140,9 +200,22 @@
     "mainArea": "Recursos Humanos",
     "secondaryAreas": [],
     "mainFunction": "Extracción, procesamiento y almacenamiento estructurado de ofertas de empleo",
-    "automationDestinations": ["OpenAI", "Airtable"],
-    "dataOrigins": ["Hacker News (Algolia Search API, Firebase API)"],
-    "keyNodes": ["manualTrigger", "httpRequest", "Split Out", "Code", "OpenAI Chat Model", "Structured Output Parser", "Airtable"],
+    "automationDestinations": [
+      "OpenAI",
+      "Airtable"
+    ],
+    "dataOrigins": [
+      "Hacker News (Algolia Search API, Firebase API)"
+    ],
+    "keyNodes": [
+      "manualTrigger",
+      "httpRequest",
+      "Split Out",
+      "Code",
+      "OpenAI Chat Model",
+      "Structured Output Parser",
+      "Airtable"
+    ],
     "complexity": "Complejo",
     "useCaseExamples": [
       "Un desarrollador de software busca activamente nuevas oportunidades: Utilizar el flujo de trabajo para automatizar la recopilación de ofertas de empleo de startups y empresas tecnológicas, reduciendo el tiempo de búsqueda manual en un 70% y aumentando el número de candidaturas enviadas en un 50% en los próximos 30 días, enfocándose solo en puestos relevantes filtrados en Airtable.",
@@ -152,7 +225,7 @@
       "Un departamento de servicios de carrera universitario: Emplear el flujo de trabajo para crear una base de datos actualizada de ofertas de empleo relevantes de startups y tecnología para sus estudiantes de último año, proporcionando una lista semanal de al menos 20 ofertas filtradas, lo que se espera aumente en un 10% las solicitudes de empleo post-graduación de los estudiantes que usan el recurso durante el próximo año académico."
     ],
     "similarities": [
-       {
+      {
         "workflowId": "flujo-21",
         "workflowName": "#21 - PRIORIZACIÓN Y CATEGORIZACIÓN DE TAREAS DE TODOIST CON IA",
         "score": 0.65,
@@ -169,9 +242,41 @@
     "mainArea": "Marketing y Gestión de Contenidos",
     "secondaryAreas": [],
     "mainFunction": "Automatizar la creación, aprobación y publicación de contenido optimizado para diversas plataformas de redes sociales, utilizando IA y configuraciones dinámicas.",
-    "automationDestinations": ["X (Twitter)", "Instagram", "Facebook", "LinkedIn", "Threads", "YouTube Shorts", "Pollinations.ai", "imgbb.com", "Gmail", "Google Docs", "Google Drive", "Telegram", "SerpAPI"],
-    "dataOrigins": ["Mensajes de chat (interacción del usuario)", "Google Docs (esquemas y prompts de IA)", "SerpAPI (datos de búsqueda web)"],
-    "keyNodes": ["chatTrigger", "agent", "lmChatOpenAi", "googleDocs", "httpRequest", "switch", "twitter", "facebookGraphApi", "linkedIn", "gmail", "googleDrive", "code", "toolSerpApi"],
+    "automationDestinations": [
+      "X (Twitter)",
+      "Instagram",
+      "Facebook",
+      "LinkedIn",
+      "Threads",
+      "YouTube Shorts",
+      "Pollinations.ai",
+      "imgbb.com",
+      "Gmail",
+      "Google Docs",
+      "Google Drive",
+      "Telegram",
+      "SerpAPI"
+    ],
+    "dataOrigins": [
+      "Mensajes de chat (interacción del usuario)",
+      "Google Docs (esquemas y prompts de IA)",
+      "SerpAPI (datos de búsqueda web)"
+    ],
+    "keyNodes": [
+      "chatTrigger",
+      "agent",
+      "lmChatOpenAi",
+      "googleDocs",
+      "httpRequest",
+      "switch",
+      "twitter",
+      "facebookGraphApi",
+      "linkedIn",
+      "gmail",
+      "googleDrive",
+      "code",
+      "toolSerpApi"
+    ],
     "complexity": "Complejo",
     "useCaseExamples": [
       "Una agencia de marketing automatiza la creación y publicación de contenido diario para sus clientes: La agencia configura los temas y el calendario en Google Docs. El flujo utiliza IA para generar borradores de texto e imágenes, los envía para aprobación del cliente y, tras la aprobación, los publica en LinkedIn, Facebook e Instagram. Objetivo: Reducir el tiempo de creación y programación en un 50% para 3 clientes en los próximos 3 meses.",
@@ -204,9 +309,23 @@
     "mainArea": "Marketing",
     "secondaryAreas": [],
     "mainFunction": "Automatizar la publicación de contenido diario",
-    "automationDestinations": ["Notion", "LinkedIn", "Servicio HTTP externo (para imágenes)"],
-    "dataOrigins": ["Notion"],
-    "keyNodes": ["Schedule Trigger", "Notion", "Aggregate", "Code", "HTTP Request", "Merge", "LinkedIn"],
+    "automationDestinations": [
+      "Notion",
+      "LinkedIn",
+      "Servicio HTTP externo (para imágenes)"
+    ],
+    "dataOrigins": [
+      "Notion"
+    ],
+    "keyNodes": [
+      "Schedule Trigger",
+      "Notion",
+      "Aggregate",
+      "Code",
+      "HTTP Request",
+      "Merge",
+      "LinkedIn"
+    ],
     "complexity": "Medio",
     "useCaseExamples": [
       "Una agencia de marketing digital desea mantener una presencia activa en LinkedIn, publicando diariamente consejos y artículos de blog para atraer nuevos clientes. El flujo automatizará la publicación, buscando aumentar el engagement en un 20% y generar 5 nuevos leads cualificados por mes, con un plazo de implementación de 1 semana y evaluación mensual.",
@@ -239,9 +358,21 @@
     "mainArea": "Inteligencia Artificial",
     "secondaryAreas": [],
     "mainFunction": "Gestionar y orquestar conversaciones interactivas con múltiples agentes de IA personalizables.",
-    "automationDestinations": ["OpenRouter"],
-    "dataOrigins": ["Mensaje de Chat (n8n chatTrigger)"],
-    "keyNodes": ["Chat Trigger", "Agente de IA", "Código", "Split in Batches (Bucle)", "If (Condicional)", "Memoria de Conversación", "Modelo de Chat OpenRouter"],
+    "automationDestinations": [
+      "OpenRouter"
+    ],
+    "dataOrigins": [
+      "Mensaje de Chat (n8n chatTrigger)"
+    ],
+    "keyNodes": [
+      "Chat Trigger",
+      "Agente de IA",
+      "Código",
+      "Split in Batches (Bucle)",
+      "If (Condicional)",
+      "Memoria de Conversación",
+      "Modelo de Chat OpenRouter"
+    ],
     "complexity": "Complejo",
     "useCaseExamples": [
       "Una empresa de comercio electrónico utiliza el flujo para gestionar consultas de clientes. Configuran agentes como \"@SoportePedidos\" para problemas de envío/devoluciones y \"@SoporteTécnico\" para fallos de productos. Las consultas que mencionan a un agente son dirigidas; las generales reciben una respuesta combinada. El objetivo es reducir el tiempo de primera respuesta en un 40% y mejorar la satisfacción del cliente en un 15% en los próximos tres meses.",
@@ -261,9 +392,21 @@
     "mainArea": "Ventas",
     "secondaryAreas": [],
     "mainFunction": "Calificar leads automáticamente utilizando datos de propiedades y automatizar tareas de seguimiento o notificación.",
-    "automationDestinations": ["CRM", "BatchData", "Slack"],
-    "dataOrigins": ["CRM"],
-    "keyNodes": ["webhook", "httpRequest", "code", "if", "slack"],
+    "automationDestinations": [
+      "CRM",
+      "BatchData",
+      "Slack"
+    ],
+    "dataOrigins": [
+      "CRM"
+    ],
+    "keyNodes": [
+      "webhook",
+      "httpRequest",
+      "code",
+      "if",
+      "slack"
+    ],
     "complexity": "Complejo",
     "useCaseExamples": [
       "Una agencia inmobiliaria automatiza la calificación de interesados en propiedades, enriqueciendo los leads con BatchData para priorizar contactos de alto valor en el CRM y disparar llamadas automáticas, buscando aumentar las conversiones de consulta a visita en un 15% en 6 meses.",
@@ -290,9 +433,16 @@
     "mainArea": "IT/Seguridad",
     "secondaryAreas": [],
     "mainFunction": "Generar códigos TOTP (Time-based One-Time Password) para autenticación segura",
-    "automationDestinations": ["n8n"],
-    "dataOrigins": ["Datos internos de n8n / Configuración manual"],
-    "keyNodes": ["Manual Trigger", "TOTP"],
+    "automationDestinations": [
+      "n8n"
+    ],
+    "dataOrigins": [
+      "Datos internos de n8n / Configuración manual"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "TOTP"
+    ],
     "complexity": "Simple",
     "useCaseExamples": [
       "Un administrador de TI necesita acceder a una herramienta de gestión interna o un panel de control que requiere un código TOTP para el inicio de sesión, pero su dispositivo móvil principal con la aplicación autenticadora no está disponible o no tiene batería. El flujo de n8n le permite generar este código bajo demanda, reduciendo el tiempo de inactividad del administrador por problemas de acceso en un 50% en el próximo mes, con el código TOTP disponible para copiar en menos de 10 segundos desde la ejecución del flujo.",
@@ -312,9 +462,18 @@
     "mainArea": "Gestión de Feedback",
     "secondaryAreas": [],
     "mainFunction": "Recopilación y Clasificación de Feedback",
-    "automationDestinations": ["Google Sheets"],
-    "dataOrigins": ["Typeform"],
-    "keyNodes": ["Typeform Trigger", "IF", "Google Sheets", "Set"],
+    "automationDestinations": [
+      "Google Sheets"
+    ],
+    "dataOrigins": [
+      "Typeform"
+    ],
+    "keyNodes": [
+      "Typeform Trigger",
+      "IF",
+      "Google Sheets",
+      "Set"
+    ],
     "complexity": "Medio",
     "useCaseExamples": [
       "Gestión de Feedback de Producto: Una startup de software utiliza Typeform para recopilar sugerencias de nuevas funcionalidades y reportes de errores. El flujo evalúa automáticamente la prioridad del feedback (por ejemplo, 'Crítico', 'Mayor', 'Menor') basándose en palabras clave y categoriza las entradas, guardando los errores críticos en una hoja de Google Sheets para el equipo de desarrollo de inmediato y las sugerencias en otra para revisión semanal, con el objetivo de reducir el tiempo de triage manual en un 70% para el próximo trimestre.",
@@ -334,9 +493,15 @@
     "mainArea": "Seguridad / TI",
     "secondaryAreas": [],
     "mainFunction": "Automatizar la gestión de grupos y miembros en Bitwarden.",
-    "automationDestinations": ["Bitwarden"],
-    "dataOrigins": ["Bitwarden"],
-    "keyNodes": ["Bitwarden"],
+    "automationDestinations": [
+      "Bitwarden"
+    ],
+    "dataOrigins": [
+      "Bitwarden"
+    ],
+    "keyNodes": [
+      "Bitwarden"
+    ],
     "complexity": "Simple",
     "useCaseExamples": [
       "Integración de empleados: Al contratar a un nuevo empleado, el flujo de trabajo lo añade automáticamente a los grupos de Bitwarden pertinentes (ej. \"Finanzas\", \"Desarrollo\") basándose en su departamento en el sistema de RRHH, asegurando un acceso inmediato a las credenciales compartidas y reduciendo los retrasos en el acceso en un 70% en el primer día de trabajo.",
@@ -356,9 +521,18 @@
     "mainArea": "Monitoreo de Datos",
     "secondaryAreas": [],
     "mainFunction": "Obtener y enviar la posición actual de la Estación Espacial Internacional (ISS)",
-    "automationDestinations": ["ActiveMQ"],
-    "dataOrigins": ["API externa (wheretheiss.at)"],
-    "keyNodes": ["Cron", "HTTP Request", "Set", "AMQP Sender"],
+    "automationDestinations": [
+      "ActiveMQ"
+    ],
+    "dataOrigins": [
+      "API externa (wheretheiss.at)"
+    ],
+    "keyNodes": [
+      "Cron",
+      "HTTP Request",
+      "Set",
+      "AMQP Sender"
+    ],
     "complexity": "Simple",
     "useCaseExamples": [
       "Un museo de ciencia desea mostrar la ubicación en tiempo real de la Estación Espacial Internacional (ISS) en una gran pantalla interactiva dentro de su exposición espacial. La pantalla se actualiza cada minuto, mostrando las coordenadas correctas y una representación visual de la ISS sobre un mapa global, logrando una disponibilidad del 98% del sistema durante las horas de apertura del museo. El flujo de n8n envía los datos de la ISS a un tópico de ActiveMQ, y una aplicación de display personalizada suscrita a ese tópico consume y visualiza los datos. La implementación y puesta en marcha deben completarse antes de la inauguración de la nueva exposición en los próximos dos meses.",
@@ -378,9 +552,19 @@
     "mainArea": "Marketing",
     "secondaryAreas": [],
     "mainFunction": "Monitorear y almacenar nuevos tweets en una base de datos",
-    "automationDestinations": ["Twitter", "Airtable"],
-    "dataOrigins": ["Twitter"],
-    "keyNodes": ["Twitter", "Airtable", "Set", "Merge"],
+    "automationDestinations": [
+      "Twitter",
+      "Airtable"
+    ],
+    "dataOrigins": [
+      "Twitter"
+    ],
+    "keyNodes": [
+      "Twitter",
+      "Airtable",
+      "Set",
+      "Merge"
+    ],
     "complexity": "Medio",
     "useCaseExamples": [
       "**Monitorización de Marca y Gestión de Reputación:** Una empresa de software desea monitorizar todas las menciones de su marca, productos y palabras clave relacionadas en Twitter para identificar comentarios de clientes, quejas y noticias relevantes. El flujo buscará tweets con “@MiEmpresa”, “#MiProducto” y “MiEmpresa opiniones”. El objetivo es reducir el tiempo de respuesta a menciones negativas en Twitter en un 30% en los próximos dos meses. El flujo se ejecutará cada 15 minutos, almacenando los tweets en Airtable para su revisión por el equipo de marketing.",
@@ -413,9 +597,17 @@
     "mainArea": "Utilidades",
     "secondaryAreas": [],
     "mainFunction": "Enviar una alerta diaria con la temperatura actual",
-    "automationDestinations": ["Plivo"],
-    "dataOrigins": ["OpenWeatherMap"],
-    "keyNodes": ["Cron", "OpenWeatherMap", "Plivo"],
+    "automationDestinations": [
+      "Plivo"
+    ],
+    "dataOrigins": [
+      "OpenWeatherMap"
+    ],
+    "keyNodes": [
+      "Cron",
+      "OpenWeatherMap",
+      "Plivo"
+    ],
     "complexity": "Simple",
     "useCaseExamples": [
       "Una empresa de logística utiliza este flujo para enviar la temperatura actual de su principal centro de operaciones en Barcelona a todos sus conductores cada mañana a las 6:00 AM, con el objetivo de reducir en un 15% las demoras por condiciones climáticas adversas en las entregas durante el próximo trimestre.",
@@ -435,9 +627,16 @@
     "mainArea": "Productividad Personal",
     "secondaryAreas": [],
     "mainFunction": "Crear una nueva tarea",
-    "automationDestinations": ["Todoist"],
-    "dataOrigins": ["Entrada Manual"],
-    "keyNodes": ["Manual Trigger", "Todoist"],
+    "automationDestinations": [
+      "Todoist"
+    ],
+    "dataOrigins": [
+      "Entrada Manual"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Todoist"
+    ],
     "complexity": "Simple",
     "useCaseExamples": [
       "Después de cerrar una venta importante, un representante comercial inicia manualmente el flujo de n8n para crear una tarea estandarizada en Todoist para el equipo de implementación, incluyendo detalles clave del cliente y la fecha límite acordada. Esto asegura que el 100% de las ventas cerradas tengan una tarea de seguimiento en Todoist asignada al equipo de implementación en las 24 horas siguientes al cierre, reduciendo los olvidos de un 15% a un 0% en el próximo trimestre.",
@@ -447,7 +646,7 @@
       "Durante una reunión de seguimiento de proyecto, el jefe de proyecto identifica un impedimento crítico y activa manualmente el flujo de n8n para crear una tarea de alta prioridad en Todoist, asignándola inmediatamente al miembro del equipo responsable con una descripción clara y una fecha límite de 24 horas. La tasa de resolución de impedimentos críticos mejorará en un 20% en los próximos tres meses, logrando que el 95% de los impedimentos se registren y asignen como tareas en Todoist en menos de 15 minutos después de su identificación."
     ],
     "similarities": [
-       {
+      {
         "workflowId": "flujo-21",
         "workflowName": "#21 - PRIORIZACIÓN Y CATEGORIZACIÓN DE TAREAS DE TODOIST CON IA",
         "score": 0.9,
@@ -464,9 +663,20 @@
     "mainArea": "Finanzas",
     "secondaryAreas": [],
     "mainFunction": "Actualizar el estado de pago de una transacción y notificar al equipo",
-    "automationDestinations": ["Stripe", "Hubspot", "Slack"],
-    "dataOrigins": ["Stripe"],
-    "keyNodes": ["stripeTrigger", "hubspot", "if", "slack"],
+    "automationDestinations": [
+      "Stripe",
+      "Hubspot",
+      "Slack"
+    ],
+    "dataOrigins": [
+      "Stripe"
+    ],
+    "keyNodes": [
+      "stripeTrigger",
+      "hubspot",
+      "if",
+      "slack"
+    ],
     "complexity": "Medio",
     "useCaseExamples": [
       "Este flujo de trabajo permitirá a una empresa SaaS automatizar la actualización del estado de los tratos en HubSpot a 'Pagado' inmediatamente después de recibir un pago de un cliente empresarial a través de Stripe. Esto reducirá el tiempo dedicado por el equipo de finanzas a la conciliación manual de pagos en un 50% para el próximo trimestre, garantizando que los equipos de éxito del cliente sean notificados instantáneamente en Slack para iniciar los procesos de onboarding o soporte.",
@@ -476,7 +686,7 @@
       "Este flujo permitirá a un proveedor de software empresarial automatizar la gestión de las renovaciones de licencias de alto valor. Tras recibir el pago de una factura de renovación en Stripe, el flujo actualizará el trato de renovación correspondiente en HubSpot a 'Pagado' y enviará una notificación a los equipos de ventas y legal en Slack. El objetivo es asegurar que el 100% de las actualizaciones de estado de trato por renovación manual se realicen en menos de 10 minutos post-pago, eliminando errores de seguimiento y mejorando la precisión de los pronósticos de ingresos dentro del próximo mes."
     ],
     "similarities": [
-       {
+      {
         "workflowId": "flujo-2",
         "workflowName": "#2 - GUMROAD SALE TRIGGER",
         "score": 0.8,
@@ -493,9 +703,16 @@
     "mainArea": "Recursos Humanos",
     "secondaryAreas": [],
     "mainFunction": "Correlacionar datos de entrevistas con información de empleados por un identificador único.",
-    "automationDestinations": ["Ninguna (solo procesamiento interno de datos en esta representación simplificada)"],
-    "dataOrigins": ["Interna (generada en los nodos Function)"],
-    "keyNodes": ["Function", "Merge"],
+    "automationDestinations": [
+      "Ninguna (solo procesamiento interno de datos en esta representación simplificada)"
+    ],
+    "dataOrigins": [
+      "Interna (generada en los nodos Function)"
+    ],
+    "keyNodes": [
+      "Function",
+      "Merge"
+    ],
     "complexity": "Medio",
     "useCaseExamples": [
       "**Proceso de Selección (RRHH):** Fusionar los resultados detallados de las entrevistas técnicas y de habilidades blandas de los candidatos (puntuaciones, comentarios, disponibilidad) con su información demográfica y historial de aplicaciones ya registrado en el ATS (Sistema de Seguimiento de Candidatos). El objetivo es reducir el tiempo de consolidación manual de datos en un 30% y agilizar la toma de decisiones para finales del próximo trimestre, logrando una vista unificada de cada candidato.",
@@ -515,9 +732,16 @@
     "mainArea": "Infraestructura/Desarrollo",
     "secondaryAreas": [],
     "mainFunction": "Crear, transformar y guardar datos en un archivo binario",
-    "automationDestinations": ["Sistema de Archivos Local"],
-    "dataOrigins": ["Generado Internamente"],
-    "keyNodes": ["function", "writeBinaryFile"],
+    "automationDestinations": [
+      "Sistema de Archivos Local"
+    ],
+    "dataOrigins": [
+      "Generado Internamente"
+    ],
+    "keyNodes": [
+      "function",
+      "writeBinaryFile"
+    ],
     "complexity": "Simple",
     "useCaseExamples": [
       "Un equipo de desarrollo web necesita generar datos de prueba para simular 100 usuarios en un nuevo formulario de registro. El flujo de n8n genera 100 perfiles de usuario ficticios (nombre, email, id), los convierte a formato binario y los guarda como 'mock_users.json' localmente. El éxito se mide si el archivo se crea correctamente y la integración del formulario consume los datos sin errores antes del final del día.",
@@ -537,9 +761,20 @@
     "mainArea": "Productividad Personal",
     "secondaryAreas": [],
     "mainFunction": "Categorizar automáticamente tareas de Todoist utilizando IA y actualizar su prioridad en función de la categoría asignada.",
-    "automationDestinations": ["Todoist", "OpenAI"],
-    "dataOrigins": ["Todoist"],
-    "keyNodes": ["Schedule Trigger", "Todoist", "Set", "OpenAI", "Filter"],
+    "automationDestinations": [
+      "Todoist",
+      "OpenAI"
+    ],
+    "dataOrigins": [
+      "Todoist"
+    ],
+    "keyNodes": [
+      "Schedule Trigger",
+      "Todoist",
+      "Set",
+      "OpenAI",
+      "Filter"
+    ],
     "complexity": "Medio",
     "useCaseExamples": [
       "Un gestor de redes sociales de una agencia de marketing digital utiliza el flujo para categorizar automáticamente las nuevas tareas de contenido (ej. 'crear reel', 'redactar post blog', 'responder comentarios') en Todoist y ajustar su prioridad. Esto permite reducir en un 30% el tiempo manual de organización semanal y asegurar que el 95% de las publicaciones se realicen a tiempo para finales del próximo trimestre.",
@@ -572,9 +807,16 @@
     "mainArea": "Ventas",
     "secondaryAreas": [],
     "mainFunction": "Realizar operaciones CRUD (Crear, Actualizar, Obtener) sobre contactos en Copper.",
-    "automationDestinations": ["Copper CRM"],
-    "dataOrigins": ["Manual / Interna (datos hardcodeados)"],
-    "keyNodes": ["Manual Trigger", "Copper"],
+    "automationDestinations": [
+      "Copper CRM"
+    ],
+    "dataOrigins": [
+      "Manual / Interna (datos hardcodeados)"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Copper"
+    ],
     "complexity": "Simple",
     "useCaseExamples": [
       "Automatización de Nuevos Leads desde Formularios Web: Automatizar la creación de contactos de nuevos leads en Copper CRM a partir de cada envío de formulario web, reduciendo el tiempo de entrada manual de datos en un 95% y asegurando que el 100% de los leads se registren en Copper CRM en menos de 2 minutos, a lograr en el próximo trimestre fiscal con monitoreo continuo.",
@@ -584,7 +826,7 @@
       "Sincronización de Preferencias de Marketing (Opt-out): Sincronizar el estado de 'baja de marketing' de una plataforma de email marketing (ej. Mailchimp) a un campo 'No Contactar Marketing' en Copper CRM. Este flujo garantizará que el 100% de las solicitudes de baja se actualicen en Copper CRM en menos de 3 minutos, evitando cualquier comunicación accidental y asegurando el cumplimiento normativo. Operativo en la próxima semana y auditado mensualmente."
     ],
     "similarities": [
-       {
+      {
         "workflowId": "flujo-10",
         "workflowName": "#10 - LEAD QUALIFICATION WITH BATCHDATA",
         "score": 0.7,
@@ -601,9 +843,17 @@
     "mainArea": "Gestión de Datos",
     "secondaryAreas": [],
     "mainFunction": "Insertar datos predefinidos en una nueva fila de una tabla en Coda.",
-    "automationDestinations": ["Coda"],
-    "dataOrigins": ["Datos predefinidos en el flujo (nodo Set)"],
-    "keyNodes": ["Trigger Manual", "Set", "Coda"],
+    "automationDestinations": [
+      "Coda"
+    ],
+    "dataOrigins": [
+      "Datos predefinidos en el flujo (nodo Set)"
+    ],
+    "keyNodes": [
+      "Trigger Manual",
+      "Set",
+      "Coda"
+    ],
     "complexity": "Simple",
     "useCaseExamples": [
       "Un supervisor de equipo utiliza este flujo diariamente para registrar el \"Inicio de Turno Matutino\" en una tabla de asistencia en Coda. Los datos predefinidos incluyen \"Turno: Mañana\" y \"Estado: Iniciado\". El objetivo es garantizar que el 100% de los inicios de turno se registren correctamente en Coda cada día laboral, reduciendo el tiempo de registro en un 30% en la próxima semana.",
@@ -611,6 +861,44 @@
       "Un gerente de proyecto utiliza este flujo para marcar la \"Finalización de Hito Mayor\" en la tabla \"Hitos del Proyecto\" en Coda. El flujo inserta el nombre del hito y el estado \"Completado\" una vez que se ha alcanzado. El objetivo es que todos los hitos clave se registren en Coda en las 24 horas siguientes a su cumplimiento, aumentando la visibilidad del progreso del proyecto en un 15% para el próximo trimestre.",
       "Un técnico de TI ejecuta este flujo para registrar rápidamente un incidente de \"Phishing Detectado\" en la tabla de \"Incidentes de Seguridad\" de Coda, insertando datos predefinidos como \"Tipo: Phishing\", \"Severidad: Media\" y \"Estado: Nuevo\". Esto reduce el tiempo promedio de registro de este tipo de incidentes en un 50% en el próximo mes, asegurando una respuesta más rápida.",
       "Un editor de contenido utiliza este flujo después de publicar un nuevo artículo para registrarlo en la tabla \"Calendario Editorial\" de Coda. Los datos predefinidos incluyen \"Estado: Publicado\", \"Tipo: Artículo\" y \"Plataforma: Blog\". Esto garantiza que el 100% de los artículos publicados se registren con su estado correcto en Coda el mismo día de su lanzamiento, mejorando la precisión del calendario editorial en un 25%."
+    ],
+    "similarities": []
+  },
+  {
+    "id": "⚡AI-Powered YouTube Video Summarization & Analysis.txt-1758053719277",
+    "displayId": 24,
+    "fileName": "⚡AI-Powered YouTube Video Summarization & Analysis.txt",
+    "flowName": "Resumen y Análisis de Transcripciones de YouTube",
+    "mainArea": "Análisis de Contenido",
+    "secondaryAreas": [
+      "Marketing",
+      "Educación",
+      "Investigación"
+    ],
+    "mainFunction": "Extraer la transcripción de un video de YouTube, resumirla y analizarla usando inteligencia artificial (IA), y luego compartir el resumen y los detalles del video.",
+    "automationDestinations": [
+      "Telegram",
+      "Webhook"
+    ],
+    "dataOrigins": [
+      "Webhook"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "YouTube Video ID",
+      "YouTube Transcript",
+      "Summarize & Analyze Transcript",
+      "Response Object",
+      "Telegram"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Toma un enlace de YouTube, extrae y resume su transcripción con IA, y luego comparte el resumen y los datos del video vía Telegram o como respuesta a la llamada inicial.",
+    "useCaseExamples": [
+      "Un estudiante de ingeniería utiliza el flujo de trabajo para resumir conferencias técnicas largas de YouTube, obteniendo puntos clave, definiciones y detalles de implementación para sus apuntes de estudio.",
+      "Un equipo de marketing de contenidos automatiza la creación de descripciones para blogs y redes sociales a partir de videos de YouTube, usando el resumen estructurado generado para destacar los temas principales.",
+      "Un analista de mercado envía enlaces de videos de análisis de la industria a este flujo para recibir resúmenes concisos sobre tendencias, ventajas y desventajas de productos, facilitando la toma de decisiones.",
+      "Un formador corporativo comparte enlaces de tutoriales de software en YouTube y utiliza los resúmenes generados para crear materiales de capacitación concisos, enfocándose en las características principales y su uso.",
+      "Un periodista investiga discursos públicos o entrevistas largas en YouTube; el flujo le permite obtener rápidamente los argumentos principales, definiciones y puntos clave mencionados para sus reportajes."
     ],
     "similarities": []
   }
