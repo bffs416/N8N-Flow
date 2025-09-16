@@ -6,7 +6,7 @@ import type {Workflow} from '@/types';
 import {PageHeader} from '@/components/page-header';
 import {FileUploader} from '@/components/file-uploader';
 import {WorkflowList} from '@/components/workflow-list';
-import {analyzeSingleWorkflow, runSimilarityAnalysis, saveWorkflowsToFile} from '@/app/actions';
+import {analyzeSingleWorkflow, runSimilarityAnalysis, saveWorkflowsToFile, sendToSupabase} from '@/app/actions';
 import {useToast} from '@/hooks/use-toast';
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {UploadCloud, Loader2} from 'lucide-react';
@@ -153,6 +153,34 @@ export default function Home() {
     }
   };
 
+  const handleSendToForm = async () => {
+    setIsLoading(true);
+    toast({
+      title: 'Enviando datos...',
+      description: 'Enviando flujos de trabajo al formulario.',
+    });
+    try {
+      const result = await sendToSupabase(workflows);
+      if (result.success) {
+        toast({
+          title: '¡Éxito!',
+          description: 'Los datos de los flujos de trabajo han sido enviados correctamente.',
+        });
+      } else {
+        throw new Error(result.error);
+      }
+    } catch (error) {
+      console.error('Failed to send to form:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Error al Enviar',
+        description: error instanceof Error ? error.message : 'No se pudieron enviar los datos.',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const filteredWorkflows = useMemo(() => {
     if (!searchQuery) return workflows;
 
@@ -179,6 +207,7 @@ export default function Home() {
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
         onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
+        onSendToForm={handleSendToForm}
         isLoading={isLoading}
         totalWorkflows={workflows.length}
       />

@@ -7,7 +7,7 @@ import {generateUseCaseExamples} from '@/ai/flows/generate-use-case-examples';
 import type {Workflow} from '@/types';
 import fs from 'fs';
 import path from 'path';
-
+import { createClient } from '@supabase/supabase-js'
 
 // Omit 'displayId' as it will be assigned on the client
 type AnalyzedWorkflowData = Omit<Workflow, 'displayId'>;
@@ -141,6 +141,48 @@ export async function saveWorkflowsToFile(workflows: Workflow[]): Promise<{succe
     return { success: true };
   } catch (error) {
     console.error('Failed to save workflows to file:', error);
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred.';
+    return { success: false, error: errorMessage };
+  }
+}
+
+export async function sendToSupabase(workflows: Workflow[]): Promise<{success: boolean; error?: string}> {
+  try {
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      throw new Error('Supabase URL or Anon Key is not configured in .env file.');
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    
+    // Sanitize workflows for Supabase (e.g., ensure no undefined values, correct types)
+    const sanitizedWorkflows = workflows.map(({ content, ...wf }) => ({
+        ...wf,
+        // Supabase might prefer 'null' over 'undefined' for JSON fields
+        secondaryAreas: wf.secondaryAreas || [],
+        automationDestinations: wf.automationDestinations || [],
+        dataOrigins: wf.dataOrigins || [],
+        keyNodes: wf.keyNodes || [],
+        useCaseExamples: wf.useCaseExamples || [],
+        similarities: wf.similarities || [],
+    }));
+
+    // Example: Inserting into a table named 'workflows'
+    // You must create this table in your Supabase project first.
+    const { data, error } = await supabase
+      .from('workflows')
+      .upsert(sanitizedWorkflows, { onConflict: 'id' }); // 'id' should be the primary key
+
+    if (error) {
+      throw error;
+    }
+    
+    return { success: true };
+
+  } catch (error) {
+    console.error('Failed to send data to Supabase:', error);
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred.';
     return { success: false, error: errorMessage };
   }

@@ -2,7 +2,7 @@
 import React from 'react';
 import { N8nInsightsLogo } from './icons';
 import { Button } from './ui/button';
-import { Trash2, UploadCloud, Link as LinkIcon, Save, Wand2 } from 'lucide-react';
+import { Trash2, UploadCloud, Link as LinkIcon, Save, Wand2, Send } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,6 +22,7 @@ interface PageHeaderProps {
   onSave: () => void;
   hasUnsavedChanges: boolean;
   onRunSimilarityAnalysis: () => void;
+  onSendToForm: () => void;
   isLoading: boolean;
   totalWorkflows: number;
 }
@@ -33,6 +34,7 @@ export const PageHeader = ({
   onSave, 
   hasUnsavedChanges, 
   onRunSimilarityAnalysis,
+  onSendToForm,
   isLoading,
   totalWorkflows,
 }: PageHeaderProps) => {
@@ -61,6 +63,15 @@ export const PageHeader = ({
                 >
                   <Wand2 className="mr-2 h-4 w-4" />
                   Analizar Similitudes
+                </Button>
+                 <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={onSendToForm}
+                  disabled={isLoading || !hasWorkflows}
+                >
+                  <Send className="mr-2 h-4 w-4" />
+                  Enviar a Formulario
                 </Button>
                 <Button variant="outline" size="sm" onClick={onSave} disabled={!hasUnsavedChanges || isLoading}>
                     <Save className="h-4 w-4 mr-2" />
