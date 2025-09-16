@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -267,7 +268,7 @@ export function WorkflowList({
     formattedText += workflows
       .map(wf => {
         const similaritiesText = wf.similarities.length > 0
-          ? `\n    🤝 𝗦𝗜𝗠𝗜𝗟𝗜𝗧𝗨𝗗𝗘𝗦\n${wf.similarities.map(s => `       - Se parece a ${s.workflowName} (${Math.round(s.score * 100)}%): ${s.reason}`).join('\n')}`
+          ? `\n\n    🤝 𝗦𝗜𝗠𝗜𝗟𝗜𝗧𝗨𝗗𝗘𝗦\n${wf.similarities.map(s => `       - Se parece a ${s.workflowName} (${Math.round(s.score * 100)}%): ${s.reason}`).join('\n')}`
           : '';
 
         return `//======= 𝗙𝗟𝗨𝗝𝗢 #${wf.displayId}: #️⃣ ${wf.flowName.toUpperCase()} =======//
@@ -304,7 +305,7 @@ ${separator}`;
     return (
        <Card>
         <CardHeader>
-          <CardTitle>Analizando Flujos de Trabajo...</CardTitle>
+          <CardTitle>Flujos Analizados...</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           {[...Array(2)].map((_, i) => (
@@ -328,7 +329,7 @@ ${separator}`;
     <div className='space-y-4'>
        <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Flujos de Trabajo Analizados ({workflows.length})</CardTitle>
+            <CardTitle>Flujos Analizados ({workflows.length})</CardTitle>
             {workflows.length > 0 && (
                <Button variant="outline" size="sm" onClick={handleExport}>
                 <ClipboardCopy className="mr-2 h-4 w-4" />

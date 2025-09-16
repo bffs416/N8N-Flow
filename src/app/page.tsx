@@ -170,7 +170,7 @@ export default function Home() {
           
           <Card>
             <CardHeader>
-              <CardTitle>Analiza tus Flujos de Trabajo</CardTitle>
+              <CardTitle>Analizador de Flujos</CardTitle>
             </CardHeader>
             <CardContent>
               <FileUploader onFilesUploaded={handleFilesUpload} disabled={anyTaskRunning} />
@@ -199,6 +199,9 @@ export default function Home() {
 
           {workflows.length === 0 && !anyTaskRunning ? (
             <Card className="w-full">
+              <CardHeader>
+                 <CardTitle>Flujos Analizados (0)</CardTitle>
+              </CardHeader>
               <CardContent className="py-20 flex flex-col items-center justify-center text-center">
                 <UploadCloud className="h-16 w-16 text-muted-foreground mb-4" />
                 <h3 className="text-xl font-semibold text-foreground">
