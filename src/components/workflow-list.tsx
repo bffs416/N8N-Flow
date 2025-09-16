@@ -244,7 +244,7 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed }: { workflow: Workflow
                  {/* Botón de Eliminar */}
                  <AlertDialog>
                     <AlertDialogTrigger asChild>
-                       <Button variant="outline" className="text-destructive border-destructive hover:bg-destructive/10 hover:text-destructive">
+                       <Button variant="outline" className="text-primary border-primary hover:bg-primary/10 hover:text-primary">
                          <Trash2 className="mr-2 h-4 w-4" />
                          Eliminar Flujo
                        </Button>
