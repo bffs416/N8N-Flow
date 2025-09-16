@@ -1,7 +1,15 @@
 import React from 'react';
 import { N8nInsightsLogo } from './icons';
+import { Button } from './ui/button';
+import { Trash2 } from 'lucide-react';
 
-export const PageHeader = () => {
+interface PageHeaderProps {
+  onClear: () => void;
+  hasWorkflows: boolean;
+}
+
+
+export const PageHeader = ({ onClear, hasWorkflows }: PageHeaderProps) => {
   return (
     <header className="border-b bg-card">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -10,6 +18,12 @@ export const PageHeader = () => {
             <N8nInsightsLogo className="h-8 w-8 text-primary" />
             <h1 className="text-2xl font-bold text-foreground">n8n Insights</h1>
           </div>
+          {hasWorkflows && (
+             <Button variant="outline" size="sm" onClick={onClear}>
+                <Trash2 className="h-4 w-4 mr-2" />
+                Limpiar todo
+            </Button>
+          )}
         </div>
       </div>
     </header>
