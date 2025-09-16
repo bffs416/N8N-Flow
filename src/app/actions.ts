@@ -80,6 +80,9 @@ export async function runSimilarityAnalysis(
     // Run similarity check only if there is more than one workflow
     if (workflows.length > 1) {
       
+      // EXPLANATION: This is where we build the "profile" for each workflow to send to the AI.
+      // We combine multiple pieces of information into a single text description.
+      // This gives the AI a richer context to find meaningful similarities.
       const workflowDescriptions = workflows.map(wf => {
         return `
           Nombre del Flujo: ${wf.flowName}
@@ -91,7 +94,9 @@ export async function runSimilarityAnalysis(
           Nodos Clave: ${wf.keyNodes.join(', ')}
         `.trim();
       });
+      // END EXPLANATION
 
+      // We send the array of comprehensive descriptions to the AI for analysis.
       const similarityResults = await identifySimilarWorkflows({
         workflowDescriptions: workflowDescriptions,
       });
