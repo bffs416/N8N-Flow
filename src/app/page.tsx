@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import type { Workflow } from '@/types';
 import { PageHeader } from '@/components/page-header';
 import { FileUploader } from '@/components/file-uploader';
-import { WorkflowTable } from '@/components/workflow-table';
+import { WorkflowList } from '@/components/workflow-list';
 import { analyzeWorkflows } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent } from '@/components/ui/card';
@@ -101,7 +101,7 @@ export default function Home() {
               </CardContent>
             </Card>
           ) : (
-            <WorkflowTable workflows={workflows} isLoading={isLoading} />
+            <WorkflowList workflows={workflows} isLoading={isLoading} />
           )}
         </div>
       </main>
