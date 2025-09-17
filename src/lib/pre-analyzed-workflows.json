@@ -37,7 +37,8 @@
       "Periodistas o curadores de contenido pueden alimentar el flujo con enlaces a videos de noticias, documentales o entrevistas de YouTube para generar rápidamente resúmenes estructurados de los eventos o temas discutidos, agilizando el proceso de seguimiento y difusión de información."
     ],
     "similarities": [],
-    "id": 1
+    "id": 1,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "✨ Vision-Based AI Agent Scraper - with Google Sheets, ScrapingBee, and Gemini.txt-1758064149368",
@@ -78,7 +79,8 @@
       "Un equipo de compras empresariales necesita rastrear la disponibilidad y los precios de los componentes de hardware o software de varios proveedores. El flujo automatiza la extracción de detalles del producto, precios y si hay descuentos por volumen, centralizando la información en Google Sheets para facilitar las decisiones de compra."
     ],
     "similarities": [],
-    "id": 2
+    "id": 2,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "✨_Generate_Graphic_Wallpaper_with_Midjourney,_GPT_4o_mini_&_Canvas.json-1758064167594",
@@ -117,7 +119,8 @@
       "Desarrollo de arte conceptual para videojuegos o proyectos creativos: Un equipo de desarrollo de videojuegos o diseñadores de productos necesita explorar rápidamente diferentes estilos visuales y mensajes para sus proyectos. Pueden alimentar el flujo con \"estilos\" (ej. \"ciberpunk distópico\", \"fantasía épica\") y \"temas\" (ej. \"exploración de mundos\", \"lucha contra la adversidad\") para obtener varias opciones de arte conceptual con texto descriptivo."
     ],
     "similarities": [],
-    "id": 3
+    "id": 3,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🎨 Interactive Image Editor with FLUX. Fill Tool for Inpainting.txt-1758064183390",
@@ -156,7 +159,8 @@
       "Un bloguero o editor de contenido desea enriquecer sus artículos con imágenes personalizadas. Carga una foto genérica, enmascara un elemento secundario y lo reemplaza o lo mejora con la IA (por ejemplo, enmascara un cielo gris y lo cambia por \"cielo azul soleado con nubes\" o enmascara un objeto de fondo y lo reemplaza con \"planta de interior elegante\") para que la imagen se adapte mejor al tema del artículo."
     ],
     "similarities": [],
-    "id": 4
+    "id": 4,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🐋🤖 DeepSeek AI Agent + Telegram + LONG TERM Memory 🧠.txt-1758064200354",
@@ -197,7 +201,8 @@
       "Un asistente para la planificación de eventos o viajes que, a través de Telegram, guarda las preferencias del usuario (por ejemplo, destinos anteriores, tipos de actividades, restricciones de presupuesto). Luego, utiliza esta memoria para sugerir itinerarios, alojamientos o actividades adaptadas a los gustos individuales del usuario."
     ],
     "similarities": [],
-    "id": 5
+    "id": 5,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🐋DeepSeek V Chat & R Reasoning Quick Start.txt-1758064211618",
@@ -236,7 +241,8 @@
       "Un sistema de recomendación personalizado que, basado en las preferencias expresadas por el usuario en una conversación, sugiere productos, libros, películas o destinos de viaje."
     ],
     "similarities": [],
-    "id": 6
+    "id": 6,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "📈 Receive Daily Market News from FT.com to your Microsoft outlook inbox.txt-1758064223389",
@@ -274,7 +280,8 @@
       "Un equipo de investigación económica dentro de una organización necesita monitorear constantemente los desarrollos del mercado. Este flujo les asegura que cada mañana a las 7:00 AM, todos los miembros del equipo reciben un correo electrónico con un resumen estructurado y generado por IA de las noticias financieras más importantes del día."
     ],
     "similarities": [],
-    "id": 7
+    "id": 7,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "📚 Auto-generate documentation for nn workflows with GPT and Docsify.txt-1758064236487",
@@ -318,7 +325,8 @@
       "Un gestor de proyectos quiere proporcionar un catálogo de autoservicio para los usuarios finales, donde puedan ver descripciones y diagramas de los flujos de trabajo de n8n sin acceder a la interfaz completa, facilitando la comprensión y adopción de las automatizaciones."
     ],
     "similarities": [],
-    "id": 8
+    "id": 8,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🔍 Perplexity Research to HTML AI-Powered Content Creation.txt-1758064244850",
@@ -359,7 +367,8 @@
       "Una empresa necesita actualizar su base de conocimientos interna con nuevos artículos técnicos (por ejemplo, \"Guía de implementación de Kubernetes\"). El flujo automatiza la investigación y la generación de borradores HTML para estos artículos."
     ],
     "similarities": [],
-    "id": 9
+    "id": 9,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🔐🦙🤖 Private & Local Ollama Self-Hosted AI Assistant.txt-1758064255631",
@@ -396,7 +405,8 @@
       "Una empresa interna de TI implementa el chat para que los empleados puedan reportar problemas tecnológicos o hacer preguntas sobre software interno, y el bot proporciona pasos de solución de problemas o redirige a los recursos adecuados."
     ],
     "similarities": [],
-    "id": 10
+    "id": 10,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🔥📈🤖 AI Agent for nn Creators Leaderboard - Find Popular Workflows.txt-1758064265918",
@@ -437,7 +447,8 @@
       "Un desarrollador individual de n8n, que es también un contribuidor activo en la comunidad, desea realizar un seguimiento de su propio desempeño. Ejecuta el flujo con su nombre de usuario para obtener un informe personal que muestre las estadísticas de sus flujos de trabajo, cuántos usuarios los están insertando y visitando, y el feedback general, para guiar su estrategia de desarrollo futuro."
     ],
     "similarities": [],
-    "id": 11
+    "id": 11,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🤖 Telegram Messaging Agent for Text Audio Images.txt-1758064545028",
@@ -476,7 +487,8 @@
       "Un bot educativo que permite a los estudiantes interactuar mediante diferentes formatos. Pueden enviar preguntas de texto para recibir respuestas, grabar su voz para practicar la pronunciación y obtener transcripciones, o enviar imágenes de objetos para aprender sobre ellos a través de análisis visuales."
     ],
     "similarities": [],
-    "id": 12
+    "id": 12,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🤖🧑 💻 AI Agent for Top nn Creators Leaderboard Reporting.txt-1758064557020",
@@ -524,7 +536,8 @@
       "Un educador o capacitador de n8n se suscribe al informe de los \"10 mejores flujos de trabajo\" enviado por correo electrónico para mantener una lista actualizada y curada de los flujos de trabajo más relevantes y populares, que luego recomienda a sus estudiantes o incluye en sus materiales de curso."
     ],
     "similarities": [],
-    "id": 13
+    "id": 13,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🤖🧠 AI Agent Chatbot + LONG TERM Memory + Note Storage + Telegram.txt-1758064566851",
@@ -567,7 +580,8 @@
       "Un organizador de proyectos para freelancers que utiliza Telegram para recordar requisitos específicos de clientes, plazos de entrega o preferencias de comunicación (memoria a largo plazo) y permite guardar notas detalladas de reuniones y tareas."
     ],
     "similarities": [],
-    "id": 14
+    "id": 14,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🚀 Local Multi-LLM Testing & Performance Tracker.txt-1758064575741",
@@ -609,7 +623,8 @@
       "Una organización de noticias busca automatizar la creación de titulares y resúmenes de artículos, y necesita comparar la eficiencia y la calidad de varios LLMs locales. El flujo puede evaluar la velocidad de generación y la concisión (recuento de palabras y oraciones) de los resultados para determinar el mejor modelo."
     ],
     "similarities": [],
-    "id": 15
+    "id": 15,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "🚀_Social_Media_Content_Generator_&_Publisher_for_LinkedIn_and_X.json-1758064586630",
@@ -649,7 +664,8 @@
       "Un organizador de eventos necesita promover un próximo seminario web o conferencia; ingresa el título del evento y el flujo de trabajo genera texto promocional convincente para LinkedIn y X, publicándolos automáticamente para atraer asistentes."
     ],
     "similarities": [],
-    "id": 16
+    "id": 16,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0001-nostr-damus-ai-report.json-1758064858468",
@@ -691,7 +707,8 @@
       "Un creador de contenido especializado en el ecosistema Nostr automatiza la recolección de los hilos más interesantes sobre #damus. La IA resume estos hilos en un informe que el creador recibe por Gmail y Telegram, utilizando esta información como base para sus artículos o videos diarios, ahorrando tiempo en la investigación manual."
     ],
     "similarities": [],
-    "id": 17
+    "id": 17,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0002-Gumroad-MailerLite-trigger.json-1758064869303",
@@ -726,7 +743,8 @@
       "Un fotógrafo vende presets y guías de edición en Gumroad. Cuando alguien adquiere un preset, este flujo automatiza el proceso de añadir al nuevo cliente a un grupo de MailerLite denominado 'Compradores de Presets [Nombre del Preset]' para enviar consejos de uso y ofertas exclusivas. Toda la información de la venta se almacena en una hoja de Google Sheets, facilitando el seguimiento de los productos más populares y la gestión de la base de clientes."
     ],
     "similarities": [],
-    "id": 18
+    "id": 18,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0003-line-chatgpt-image-flow.json-1758064880092",
@@ -764,7 +782,8 @@
       "Un equipo de diseño interno permite a otros departamentos solicitar conceptos visuales. Un gerente de producto puede pedir \"un diagrama de flujo abstracto que represente el ciclo de vida del cliente\" para una presentación, recibiendo una imagen guardada en la carpeta del proyecto y con el costo de generación registrado."
     ],
     "similarities": [],
-    "id": 19
+    "id": 19,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0004-connectwise-ticket-alerts-to-teams.json-1758064896597",
@@ -802,7 +821,8 @@
       "Un equipo responsable de la administración de la infraestructura de TI recibe alertas automatizadas en ConnectWise de sistemas de monitoreo. Este flujo asegura que los nuevos tickets generados por estas alertas sean inmediatamente comunicados a su canal de Teams, facilitando la pronta investigación y resolución de posibles problemas de infraestructura."
     ],
     "similarities": [],
-    "id": 20
+    "id": 20,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0005-google-calendar-outlook-sync.json-1758064914717",
@@ -835,7 +855,8 @@
       "Un coordinador de eventos o un gestor de proyectos que utiliza Google Calendar para planificar la logística detallada de un evento (reuniones con proveedores, horarios de montaje, ensayos) y necesita que estos plazos y citas se reflejen en su Outlook para tener una vista unificada de su agenda profesional y coordinar con el personal interno."
     ],
     "similarities": [],
-    "id": 21
+    "id": 21,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0006-airtable-hn-job-scraping.json-1758064926008",
@@ -874,7 +895,8 @@
       "Una startup quiere monitorear discretamente las ofertas de trabajo publicadas por sus competidores o empresas similares en Hacker News. Esto les permitiría entender las habilidades que buscan, los tipos de proyectos en los que invierten y cómo estructuran sus equipos."
     ],
     "similarities": [],
-    "id": 22
+    "id": 22,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0007-social-media-creator.json-1758064938279",
@@ -923,7 +945,8 @@
       "Un bloguero o periodista tecnológico que publica reseñas de software puede usar este flujo para generar automáticamente resúmenes de sus artículos en diferentes plataformas. Por ejemplo, una entrada concisa en X destacando los puntos clave, una publicación más detallada en Facebook con una pregunta para la comunidad y una publicación profesional en LinkedIn enfocada en el impacto empresarial del software, con imágenes generadas por IA para cada una."
     ],
     "similarities": [],
-    "id": 23
+    "id": 23,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0008-notion_linkedin_pub.json-1758064945480",
@@ -961,7 +984,8 @@
       "Un educador o capacitador utiliza Notion para redactar fragmentos educativos diarios, cuestionarios o noticias relevantes para sus seguidores. El flujo de trabajo automatiza el intercambio de este contenido valioso directamente en su red profesional de LinkedIn, manteniendo el compromiso de la audiencia."
     ],
     "similarities": [],
-    "id": 24
+    "id": 24,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0009-multi-agente-ia.json-1758064961087",
@@ -1002,7 +1026,8 @@
       "Una plataforma de simulación de debate o lluvia de ideas para explorar un tema complejo, donde agentes con diferentes perspectivas (ej. @AbogadoDelDiablo, @Optimista, @AnalistaPragmático) intercambian argumentos y puntos de vista para ayudar al usuario a considerar todas las facetas de una decisión o problema."
     ],
     "similarities": [],
-    "id": 25
+    "id": 25,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0010-crm-lead-batchdata-calification.json-1758064978287",
@@ -1038,7 +1063,8 @@
       "Un desarrollador inmobiliario utiliza el flujo para evaluar propiedades o terrenos para futuras adquisiciones. Al ingresar una dirección, el sistema obtiene automáticamente datos de BatchData sobre el valor, tamaño del lote y otras características, ayudando a calificar la idoneidad del sitio para un nuevo proyecto."
     ],
     "similarities": [],
-    "id": 26
+    "id": 26,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0011-totp-generator.json-1758117904491",
@@ -1068,7 +1094,8 @@
       "Acceso seguro a paneles de control o bases de datos para la generación automática de informes o la ejecución de tareas programadas, donde el acceso requiere un TOTP para mayor seguridad."
     ],
     "similarities": [],
-    "id": 27
+    "id": 27,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0012-typeform-feedback-route.json-1758117955718",
@@ -1102,7 +1129,8 @@
       "Un editor de contenido web utiliza Typeform para que los lectores valoren la utilidad de sus artículos. Las valoraciones se guardan en dos hojas de cálculo: una para identificar temas exitosos y replicarlos, y otra para revisar o mejorar el contenido menos útil."
     ],
     "similarities": [],
-    "id": 28
+    "id": 28,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0013-bitwarden-line-sync.json-1758117993653",
@@ -1136,7 +1164,8 @@
       "Al lanzar un nuevo proyecto que requiere acceso compartido a un conjunto de credenciales, el flujo crea un grupo específico como \"Proyecto Alfa\" y añade automáticamente a todos los miembros de la organización para facilitar la colaboración."
     ],
     "similarities": [],
-    "id": 29
+    "id": 29,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0014-monitor-verstappen-tweets.json-1758118020876",
@@ -1171,7 +1200,8 @@
       "Un investigador académico recolecta datos de Twitter sobre un tema social específico (ej. \"cambio climático\" o \"salud mental\") para un estudio, almacenando los tweets relevantes y nuevos en Airtable para su análisis."
     ],
     "similarities": [],
-    "id": 30
+    "id": 30,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0015-berlin-clima-plivo.json-1758118038735",
@@ -1206,7 +1236,8 @@
       "Un organizador de eventos al aire libre en Berlín utiliza el SMS diario de temperatura para hacer ajustes de última hora en la logística del evento o para informar a los participantes."
     ],
     "similarities": [],
-    "id": 31
+    "id": 31,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0016-todoist-task-creator.json-1758118071165",
@@ -1238,7 +1269,8 @@
       "Creación de una tarea de \"revisión de pendiente\": Al finalizar el día, el usuario puede activar este flujo para generar una tarea como \"Revisar tareas incompletas del día\" en Todoist, recordándose analizar lo que quedó pendiente."
     ],
     "similarities": [],
-    "id": 32
+    "id": 32,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0017-stripe-hubspot-slack.json-1758118118655",
@@ -1273,7 +1305,8 @@
       "Un proveedor de soluciones de software recibe un pago por una personalización o módulo adicional de un cliente existente. El flujo de trabajo valida el pago en Stripe, vincula el número de PO al trato específico en HubSpot para marcarlo como \"Completado/Pagado\" y envía un aviso al equipo de desarrollo y ventas en Slack, o reporta si falta el número de PO."
     ],
     "similarities": [],
-    "id": 33
+    "id": 33,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0018-entrevistas-y-participantes.json-1758118144873",
@@ -1306,7 +1339,8 @@
       "En una institución educativa, combinar los registros de tutorías o asesorías (ID del tutor) con los perfiles de los tutores (nombre, departamento, foto, especialización) para la asignación de estudiantes, la generación de informes académicos o para permitir a los estudiantes buscar tutores por perfil."
     ],
     "similarities": [],
-    "id": 34
+    "id": 34,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0019-EscrituraJSONBinario.json-1758118177928",
@@ -1338,7 +1372,8 @@
       "Generar y almacenar archivos de configuración JSON personalizados para diferentes entornos de aplicación (desarrollo, pruebas, producción) basándose en parámetros dinámicos."
     ],
     "similarities": [],
-    "id": 35
+    "id": 35,
+    "isFavorite": false
   },
   {
     "workflow_uuid": "0020-todoist-ai-categorization.json-1758118209766",
@@ -1374,6 +1409,7 @@
       "Una persona ocupada usa Todoist para organizar tareas domésticas. El flujo podría categorizar automáticamente nuevas entradas en proyectos como \"Limpieza\", \"Compras\", \"Mantenimiento\" o \"Finanzas\" y establecer su prioridad, garantizando que las tareas críticas como pagar facturas siempre tengan la atención necesaria."
     ],
     "similarities": [],
-    "id": 36
+    "id": 36,
+    "isFavorite": false
   }
 ]

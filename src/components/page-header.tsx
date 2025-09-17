@@ -57,15 +57,6 @@ export const PageHeader = ({
             </Button>
             {hasWorkflows && (
               <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={onRunSimilarityAnalysis}
-                  disabled={similarityAnalysisDisabled}
-                >
-                  <Wand2 className="mr-2 h-4 w-4" />
-                  Analizar Similitudes
-                </Button>
                  <Button
                   variant="outline"
                   size="sm"
@@ -79,26 +70,6 @@ export const PageHeader = ({
                     <Save className="h-4 w-4 mr-2" />
                     Guardar Cambios
                 </Button>
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button variant="outline" size="sm" disabled={isLoading}>
-                      <Trash2 className="h-4 w-4 mr-2" />
-                      Restablecer
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        Esta acción descartará todos los cambios no guardados y restaurará la lista a su último estado guardado. No se puede deshacer.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                      <AlertDialogAction onClick={onClear}>Continuar</AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
               </div>
             )}
           </div>
