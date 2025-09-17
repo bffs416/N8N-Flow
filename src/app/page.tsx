@@ -14,6 +14,7 @@ import {Progress} from '@/components/ui/progress';
 import preAnalyzedWorkflows from '@/lib/pre-analyzed-workflows.json';
 import {SearchInput} from '@/components/search-input';
 import { WorkflowFilters } from '@/components/filters';
+import { ScrollToBottomButton } from '@/components/scroll-to-bottom';
 
 const BATCH_SIZE = 5;
 
@@ -429,9 +430,12 @@ export default function Home() {
           )}
         </div>
       </main>
-      <footer className="py-4 text-center text-sm text-muted-foreground">
+      <footer id="footer" className="py-4 text-center text-sm text-muted-foreground">
         <p>Construido con Next.js y Genkit</p>
       </footer>
+      <ScrollToBottomButton />
     </div>
   );
 }
+
+    
