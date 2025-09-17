@@ -2,43 +2,24 @@
 import React from 'react';
 import { N8nInsightsLogo } from './icons';
 import { Button } from './ui/button';
-import { Trash2, UploadCloud, Link as LinkIcon, Save, Wand2, Send } from 'lucide-react';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+import { Link as LinkIcon, Save, Send } from 'lucide-react';
 import Link from 'next/link';
 
 interface PageHeaderProps {
-  onClear: () => void;
   hasWorkflows: boolean;
   onSave: () => void;
   hasUnsavedChanges: boolean;
-  onRunSimilarityAnalysis: () => void;
-  similarityAnalysisDisabled: boolean;
   onSendToForm: () => void;
   isLoading: boolean;
-  totalWorkflows: number;
 }
 
 
 export const PageHeader = ({ 
-  onClear, 
   hasWorkflows, 
   onSave, 
   hasUnsavedChanges, 
-  onRunSimilarityAnalysis,
-  similarityAnalysisDisabled,
   onSendToForm,
   isLoading,
-  totalWorkflows,
 }: PageHeaderProps) => {
   return (
     <header className="border-b bg-card sticky top-0 z-10">

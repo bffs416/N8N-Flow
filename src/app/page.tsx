@@ -27,7 +27,7 @@ export default function Home() {
   const [unanalysedUuids, setUnanalysedUuids] = useState<Set<string>>(new Set());
   
   // State for new filters
-  const [mainAreaFilter, setMainAreaFilter] = useState('all');
+  const [mainAreaFilters, setMainAreaFilters] = useState<string[]>([]);
   const [complexityFilter, setComplexityFilter] = useState('all');
   const [showFavorites, setShowFavorites] = useState(false);
 
@@ -73,21 +73,40 @@ export default function Home() {
 
     const newUuids = new Set(unanalysedUuids);
 
+    const newWorkflows: Workflow[] = [];
+
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
         setAnalysisProgress(prev => ({ ...prev, current: i + 1 }));
 
         try {
             const analyzedData = await analyzeSingleWorkflow(file);
-            setWorkflows(prevWorkflows => {
-               const newId = getNextId(prevWorkflows);
-               const newWorkflow = { ...analyzedData, id: newId, isFavorite: false };
-               newUuids.add(newWorkflow.workflow_uuid);
-               return [...prevWorkflows, newWorkflow];
-            });
-            setHasUnsavedChanges(true);
-        } catch (e) {
+            const newId = getNextId([...workflows, ...newWorkflows]);
+            const newWorkflow = { ...analyzedData, id: newId, isFavorite: false };
+            newWorkflows.push(newWorkflow);
+            newUuids.add(newWorkflow.workflow_uuid);
+        } catch (e: any) {
             console.error(e);
+            const newId = getNextId([...workflows, ...newWorkflows]);
+            // Create a failed workflow card
+            const failedWorkflow: Workflow = {
+                id: newId,
+                workflow_uuid: `${file.fileName}-${Date.now()}`,
+                fileName: file.fileName,
+                flowName: `Análisis Fallido: ${file.fileName}`,
+                mainArea: "Error",
+                secondaryAreas: [],
+                mainFunction: e.message || 'Error inesperado.',
+                automationDestinations: [],
+                dataOrigins: [],
+                keyNodes: [],
+                complexity: 'Medio',
+                shortDescription: `El análisis con IA falló. Causa: ${e.message}. Revisa la clave de API o la configuración del modelo.`,
+                useCaseExamples: [],
+                similarities: [],
+                isFavorite: false,
+            };
+            newWorkflows.push(failedWorkflow);
             toast({
                 variant: 'destructive',
                 title: `Falló el Análisis para ${file.fileName}`,
@@ -96,7 +115,9 @@ export default function Home() {
         }
     }
     
+    setWorkflows(prev => [...prev, ...newWorkflows]);
     setUnanalysedUuids(newUuids);
+    setHasUnsavedChanges(true);
     
     toast({
         title: '¡Análisis Completo!',
@@ -256,8 +277,8 @@ export default function Home() {
     }
 
     // Apply main area filter
-    if (mainAreaFilter !== 'all') {
-      filtered = filtered.filter(wf => wf.mainArea === mainAreaFilter);
+    if (mainAreaFilters.length > 0) {
+      filtered = filtered.filter(wf => mainAreaFilters.includes(wf.mainArea));
     }
 
     // Apply complexity filter
@@ -281,14 +302,14 @@ export default function Home() {
     }
 
     return filtered;
-  }, [workflows, searchQuery, mainAreaFilter, complexityFilter, showFavorites]);
+  }, [workflows, searchQuery, mainAreaFilters, complexityFilter, showFavorites]);
 
   const isAnalyzing = analysisProgress.total > 0;
   
-  const mainAreas = useMemo(() => ['all', ...Array.from(new Set(workflows.map(wf => wf.mainArea)))], [workflows]);
+  const mainAreas = useMemo(() => [...Array.from(new Set(workflows.map(wf => wf.mainArea).filter(area => area !== 'Error')))], [workflows]);
   const complexities = useMemo(() => ['all', 'Simple', 'Medio', 'Complejo'], []);
 
-  const isFiltered = searchQuery || mainAreaFilter !== 'all' || complexityFilter !== 'all' || showFavorites;
+  const isFiltered = searchQuery || mainAreaFilters.length > 0 || complexityFilter !== 'all' || showFavorites;
 
   const getTitle = () => {
     if (isFiltered) {
@@ -307,15 +328,11 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <PageHeader
-        onClear={handleClearWorkflows}
         hasWorkflows={workflows.length > 0}
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
-        onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
-        similarityAnalysisDisabled={isLoading}
         onSendToForm={handleSendToForm}
         isLoading={isLoading}
-        totalWorkflows={workflows.length}
       />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-8">
@@ -355,8 +372,8 @@ export default function Home() {
                 <WorkflowFilters
                     mainAreas={mainAreas}
                     complexities={complexities}
-                    mainAreaFilter={mainAreaFilter}
-                    setMainAreaFilter={setMainAreaFilter}
+                    selectedMainAreas={mainAreaFilters}
+                    setSelectedMainAreas={setMainAreaFilters}
                     complexityFilter={complexityFilter}
                     setComplexityFilter={setComplexityFilter}
                     showFavorites={showFavorites}

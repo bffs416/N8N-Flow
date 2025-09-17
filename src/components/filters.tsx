@@ -1,7 +1,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Select,
   SelectContent,
@@ -9,15 +9,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { Star } from 'lucide-react';
+import { Star, ChevronDown, Check, X } from 'lucide-react';
+import { ScrollArea } from './ui/scroll-area';
 
 interface WorkflowFiltersProps {
   mainAreas: string[];
   complexities: string[];
-  mainAreaFilter: string;
-  setMainAreaFilter: (value: string) => void;
+  selectedMainAreas: string[];
+  setSelectedMainAreas: (value: string[]) => void;
   complexityFilter: string;
   setComplexityFilter: (value: string) => void;
   showFavorites: boolean;
@@ -28,34 +34,91 @@ interface WorkflowFiltersProps {
 export function WorkflowFilters({
   mainAreas,
   complexities,
-  mainAreaFilter,
-  setMainAreaFilter,
+  selectedMainAreas,
+  setSelectedMainAreas,
   complexityFilter,
   setComplexityFilter,
   showFavorites,
   setShowFavorites,
   disabled,
 }: WorkflowFiltersProps) {
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const filteredAreas = useMemo(() => {
+    if (!search) return mainAreas;
+    return mainAreas.filter(area =>
+      area.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [search, mainAreas]);
+
+  const handleSelectArea = (area: string) => {
+    setSelectedMainAreas(
+      selectedMainAreas.includes(area)
+        ? selectedMainAreas.filter(a => a !== area)
+        : [...selectedMainAreas, area]
+    );
+  };
+  
+  const handleClear = () => {
+    setSelectedMainAreas([]);
+    setSearch('');
+  }
+
   return (
     <div className="flex flex-col sm:flex-row items-center gap-4">
       <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
         {/* Main Area Filter */}
-        <Select
-          value={mainAreaFilter}
-          onValueChange={setMainAreaFilter}
-          disabled={disabled}
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Filtrar por categoría..." />
-          </SelectTrigger>
-          <SelectContent>
-            {mainAreas.map(area => (
-              <SelectItem key={area} value={area}>
-                {area === 'all' ? 'Todas las Categorías' : area}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={open}
+              className="w-full justify-between"
+              disabled={disabled}
+            >
+              {selectedMainAreas.length > 0
+                ? `Categorías (${selectedMainAreas.length})`
+                : "Todas las Categorías"}
+              <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-[300px] p-0" align="start">
+             <Command>
+                <CommandInput 
+                    placeholder="Buscar categoría..." 
+                    value={search}
+                    onValueChange={setSearch}
+                />
+                <CommandList>
+                    <CommandEmpty>No se encontraron categorías.</CommandEmpty>
+                    <ScrollArea className="h-48">
+                        <CommandGroup>
+                        {filteredAreas.map(area => (
+                            <CommandItem
+                            key={area}
+                            onSelect={() => handleSelectArea(area)}
+                            className="cursor-pointer"
+                            >
+                            <Checkbox
+                                checked={selectedMainAreas.includes(area)}
+                                className="mr-2"
+                            />
+                            {area}
+                            </CommandItem>
+                        ))}
+                        </CommandGroup>
+                    </ScrollArea>
+                </CommandList>
+                <div className="p-2 border-t flex justify-end gap-2">
+                   <Button variant="ghost" size="sm" onClick={handleClear} disabled={selectedMainAreas.length === 0}>
+                        Limpiar
+                   </Button>
+                </div>
+            </Command>
+          </PopoverContent>
+        </Popover>
 
         {/* Complexity Filter */}
         <Select
@@ -84,7 +147,7 @@ export function WorkflowFilters({
           onCheckedChange={setShowFavorites}
           disabled={disabled}
         />
-        <Label htmlFor="favorites-only" className="flex items-center gap-2">
+        <Label htmlFor="favorites-only" className="flex items-center gap-2 cursor-pointer">
           <Star className="h-4 w-4 text-yellow-500" />
           <span>Solo Favoritos</span>
         </Label>
