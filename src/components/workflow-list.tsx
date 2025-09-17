@@ -293,18 +293,18 @@ export function WorkflowList({
   workflows,
   isLoading,
   setWorkflows,
-  totalWorkflows = 0,
-  searchQuery = '',
+  searchQuery,
   unanalysedUuids,
-  setHasUnsavedChanges
+  setHasUnsavedChanges,
+  listTitle,
 }: {
   workflows: Workflow[];
   isLoading: boolean;
   setWorkflows: React.Dispatch<React.SetStateAction<Workflow[]>>;
-  totalWorkflows?: number;
-  searchQuery?: string;
+  searchQuery: string;
   unanalysedUuids: Set<string>;
   setHasUnsavedChanges: React.Dispatch<React.SetStateAction<boolean>>;
+  listTitle: string;
 }) {
   const { toast } = useToast();
 
@@ -335,7 +335,8 @@ export function WorkflowList({
   };
 
   const handleExport = () => {
-    if (workflows.length === 0) {
+    const totalWorkflows = workflows.length;
+    if (totalWorkflows === 0) {
       toast({
         variant: 'destructive',
         title: 'No hay flujos para exportar',
@@ -380,11 +381,11 @@ ${separator}`;
 
     toast({
       title: '¡Copiado al portapapeles!',
-      description: `Se ha copiado la información de ${workflows.length} flujo(s) de trabajo.`,
+      description: `Se ha copiado la información de ${totalWorkflows} flujo(s) de trabajo.`,
     });
   };
   
-  if (isLoading && totalWorkflows === 0) {
+  if (isLoading && workflows.length === 0) {
     return (
        <Card>
         <CardHeader>
@@ -408,14 +409,6 @@ ${separator}`;
     );
   }
 
-  const getTitle = () => {
-    if (searchQuery) {
-      if (workflows.length === 1) return '1 resultado encontrado';
-      return `${workflows.length} resultados encontrados`;
-    }
-    return `Flujos Analizados (${totalWorkflows})`;
-  }
-
   const unanalysedCount = unanalysedUuids.size;
 
   return (
@@ -423,7 +416,7 @@ ${separator}`;
        <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
-              <CardTitle>{getTitle()}</CardTitle>
+              <CardTitle>{listTitle}</CardTitle>
               {unanalysedCount > 0 && (
                 <p className='text-sm text-amber-500 mt-1 flex items-center'>
                     <Info className='h-4 w-4 mr-2' />
@@ -436,7 +429,7 @@ ${separator}`;
                 variant="outline" 
                 size="sm" 
                 onClick={handleExport}
-                disabled={isLoading || totalWorkflows === 0}
+                disabled={isLoading || workflows.length === 0}
               >
                 <ClipboardCopy className="mr-2 h-4 w-4" />
                 Exportar
@@ -444,7 +437,7 @@ ${separator}`;
             </div>
           </CardHeader>
         </Card>
-        {workflows.length === 0 && searchQuery && (
+        {workflows.length === 0 && (
           <Card>
             <CardContent className='p-6 text-center text-muted-foreground'>
               <p>No se encontraron resultados para "<strong>{searchQuery}</strong>".</p>

@@ -288,6 +288,21 @@ export default function Home() {
   const mainAreas = useMemo(() => ['all', ...Array.from(new Set(workflows.map(wf => wf.mainArea)))], [workflows]);
   const complexities = useMemo(() => ['all', 'Simple', 'Medio', 'Complejo'], []);
 
+  const isFiltered = searchQuery || mainAreaFilter !== 'all' || complexityFilter !== 'all' || showFavorites;
+
+  const getTitle = () => {
+    if (isFiltered) {
+      if (filteredWorkflows.length === 0) {
+        return 'No se encontraron resultados';
+      }
+      if (filteredWorkflows.length === 1) {
+        return '1 flujo encontrado';
+      }
+      return `${filteredWorkflows.length} flujos encontrados`;
+    }
+    return `Flujos Analizados (${workflows.length})`;
+  };
+
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -387,10 +402,10 @@ export default function Home() {
               workflows={filteredWorkflows}
               setWorkflows={setWorkflows}
               isLoading={isLoading}
-              totalWorkflows={workflows.length}
               searchQuery={searchQuery}
               unanalysedUuids={unanalysedUuids}
               setHasUnsavedChanges={setHasUnsavedChanges}
+              listTitle={getTitle()}
             />
           )}
         </div>
