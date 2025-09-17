@@ -38,7 +38,8 @@
     ],
     "similarities": [],
     "id": 1,
-    "isFavorite": true
+    "isFavorite": true,
+    "notes": ""
   },
   {
     "workflow_uuid": "✨ Vision-Based AI Agent Scraper - with Google Sheets, ScrapingBee, and Gemini.txt-1758064149368",
@@ -80,7 +81,8 @@
     ],
     "similarities": [],
     "id": 2,
-    "isFavorite": true
+    "isFavorite": true,
+    "notes": ""
   },
   {
     "workflow_uuid": "✨_Generate_Graphic_Wallpaper_with_Midjourney,_GPT_4o_mini_&_Canvas.json-1758064167594",
@@ -120,7 +122,8 @@
     ],
     "similarities": [],
     "id": 3,
-    "isFavorite": true
+    "isFavorite": true,
+    "notes": ""
   },
   {
     "workflow_uuid": "🎨 Interactive Image Editor with FLUX. Fill Tool for Inpainting.txt-1758064183390",
@@ -160,7 +163,8 @@
     ],
     "similarities": [],
     "id": 4,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "🐋🤖 DeepSeek AI Agent + Telegram + LONG TERM Memory 🧠.txt-1758064200354",
@@ -202,7 +206,8 @@
     ],
     "similarities": [],
     "id": 5,
-    "isFavorite": true
+    "isFavorite": true,
+    "notes": ""
   },
   {
     "workflow_uuid": "🐋DeepSeek V Chat & R Reasoning Quick Start.txt-1758064211618",
@@ -242,7 +247,8 @@
     ],
     "similarities": [],
     "id": 6,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "📈 Receive Daily Market News from FT.com to your Microsoft outlook inbox.txt-1758064223389",
@@ -281,7 +287,8 @@
     ],
     "similarities": [],
     "id": 7,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "📚 Auto-generate documentation for nn workflows with GPT and Docsify.txt-1758064236487",
@@ -326,7 +333,8 @@
     ],
     "similarities": [],
     "id": 8,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "🔍 Perplexity Research to HTML AI-Powered Content Creation.txt-1758064244850",
@@ -368,7 +376,8 @@
     ],
     "similarities": [],
     "id": 9,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "🔐🦙🤖 Private & Local Ollama Self-Hosted AI Assistant.txt-1758064255631",
@@ -406,7 +415,8 @@
     ],
     "similarities": [],
     "id": 10,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "🔥📈🤖 AI Agent for nn Creators Leaderboard - Find Popular Workflows.txt-1758064265918",
@@ -448,7 +458,8 @@
     ],
     "similarities": [],
     "id": 11,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "🤖 Telegram Messaging Agent for Text Audio Images.txt-1758064545028",
@@ -488,7 +499,8 @@
     ],
     "similarities": [],
     "id": 12,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "🤖🧑 💻 AI Agent for Top nn Creators Leaderboard Reporting.txt-1758064557020",
@@ -537,7 +549,8 @@
     ],
     "similarities": [],
     "id": 13,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "🤖🧠 AI Agent Chatbot + LONG TERM Memory + Note Storage + Telegram.txt-1758064566851",
@@ -581,7 +594,8 @@
     ],
     "similarities": [],
     "id": 14,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "🚀 Local Multi-LLM Testing & Performance Tracker.txt-1758064575741",
@@ -624,7 +638,8 @@
     ],
     "similarities": [],
     "id": 15,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "🚀_Social_Media_Content_Generator_&_Publisher_for_LinkedIn_and_X.json-1758064586630",
@@ -665,7 +680,8 @@
     ],
     "similarities": [],
     "id": 16,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0001-nostr-damus-ai-report.json-1758064858468",
@@ -708,7 +724,8 @@
     ],
     "similarities": [],
     "id": 17,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0002-Gumroad-MailerLite-trigger.json-1758064869303",
@@ -744,7 +761,8 @@
     ],
     "similarities": [],
     "id": 18,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0003-line-chatgpt-image-flow.json-1758064880092",
@@ -783,7 +801,8 @@
     ],
     "similarities": [],
     "id": 19,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0004-connectwise-ticket-alerts-to-teams.json-1758064896597",
@@ -822,7 +841,8 @@
     ],
     "similarities": [],
     "id": 20,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0005-google-calendar-outlook-sync.json-1758064914717",
@@ -856,7 +876,8 @@
     ],
     "similarities": [],
     "id": 21,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0006-airtable-hn-job-scraping.json-1758064926008",
@@ -896,7 +917,8 @@
     ],
     "similarities": [],
     "id": 22,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0007-social-media-creator.json-1758064938279",
@@ -946,7 +968,8 @@
     ],
     "similarities": [],
     "id": 23,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0008-notion_linkedin_pub.json-1758064945480",
@@ -985,7 +1008,8 @@
     ],
     "similarities": [],
     "id": 24,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0009-multi-agente-ia.json-1758064961087",
@@ -1027,7 +1051,8 @@
     ],
     "similarities": [],
     "id": 25,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0010-crm-lead-batchdata-calification.json-1758064978287",
@@ -1064,7 +1089,8 @@
     ],
     "similarities": [],
     "id": 26,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0011-totp-generator.json-1758117904491",
@@ -1095,7 +1121,8 @@
     ],
     "similarities": [],
     "id": 27,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0012-typeform-feedback-route.json-1758117955718",
@@ -1130,7 +1157,8 @@
     ],
     "similarities": [],
     "id": 28,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0013-bitwarden-line-sync.json-1758117993653",
@@ -1165,7 +1193,8 @@
     ],
     "similarities": [],
     "id": 29,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0014-monitor-verstappen-tweets.json-1758118020876",
@@ -1201,7 +1230,8 @@
     ],
     "similarities": [],
     "id": 30,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0015-berlin-clima-plivo.json-1758118038735",
@@ -1237,7 +1267,8 @@
     ],
     "similarities": [],
     "id": 31,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0016-todoist-task-creator.json-1758118071165",
@@ -1270,7 +1301,8 @@
     ],
     "similarities": [],
     "id": 32,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0017-stripe-hubspot-slack.json-1758118118655",
@@ -1306,7 +1338,8 @@
     ],
     "similarities": [],
     "id": 33,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0018-entrevistas-y-participantes.json-1758118144873",
@@ -1340,7 +1373,8 @@
     ],
     "similarities": [],
     "id": 34,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0019-EscrituraJSONBinario.json-1758118177928",
@@ -1373,7 +1407,8 @@
     ],
     "similarities": [],
     "id": 35,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0020-todoist-ai-categorization.json-1758118209766",
@@ -1410,7 +1445,8 @@
     ],
     "similarities": [],
     "id": 36,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0021-mock-contacts-to-sheet.json-1758120542942",
@@ -1447,7 +1483,8 @@
     ],
     "similarities": [],
     "id": 37,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0022-copper-person-flow.json-1758120597165",
@@ -1479,7 +1516,8 @@
     ],
     "similarities": [],
     "id": 38,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0023-coda-insert-data.json-1758120625551",
@@ -1513,7 +1551,8 @@
     ],
     "similarities": [],
     "id": 39,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0024-iss-position-updates.json-1758120654704",
@@ -1550,7 +1589,8 @@
     ],
     "similarities": [],
     "id": 40,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0025-google-slides-thumbnail.json-1758120682532",
@@ -1583,7 +1623,8 @@
     ],
     "similarities": [],
     "id": 41,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0026-linkedin-top-sourcer.json-1758120710002",
@@ -1621,7 +1662,8 @@
     ],
     "similarities": [],
     "id": 42,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0027-chargebee-nuevo-cliente.json-1758120731382",
@@ -1654,7 +1696,8 @@
     ],
     "similarities": [],
     "id": 43,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0028-verificacion-email-deliverable.json-1758120759250",
@@ -1687,7 +1730,8 @@
     ],
     "similarities": [],
     "id": 44,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0029-mattermost-emelia-trigger.json-1758120778057",
@@ -1719,7 +1763,8 @@
     ],
     "similarities": [],
     "id": 45,
-    "isFavorite": false
+    "isFavorite": false,
+    "notes": ""
   },
   {
     "workflow_uuid": "0030-iss-monitoring-sqs.json-1758120800130",
@@ -1756,6 +1801,984 @@
     ],
     "similarities": [],
     "id": 46,
+    "isFavorite": false,
+    "notes": ""
+  },
+  {
+    "workflow_uuid": "0031-webflow-crear-y-actualizar.json-1758126553721",
+    "fileName": "0031-webflow-crear-y-actualizar.json",
+    "flowName": "Prueba de Operaciones en Webflow",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Desarrollo Web",
+      "Gestión de Contenido"
+    ],
+    "mainFunction": "Crea, actualiza y recupera elementos de una colección en Webflow.",
+    "automationDestinations": [
+      "Webflow"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Webflow"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo demuestra cómo crear, actualizar y recuperar elementos de una colección en Webflow.",
+    "useCaseExamples": [
+      "Automatizar pruebas de integración para las operaciones CRUD (Crear, Actualizar, Eliminar) en una colección específica de Webflow, donde se crea un elemento de prueba, se modifica su contenido y se elimina para verificar que la API funciona correctamente en cada etapa.",
+      "Restablecer automáticamente un entorno de demostración de Webflow después de cada uso, creando un elemento temporal, actualizándolo con datos de ejemplo y luego eliminándolo para garantizar que la colección esté siempre limpia y lista para la siguiente demostración.",
+      "Validar la estructura y manipulación de datos en una colección de Webflow durante el desarrollo de nuevas características: se crea un elemento con campos básicos, se actualiza para añadir más información (como una imagen) y finalmente se elimina para no dejar residuos en la base de datos.",
+      "Gestionar contenido efímero o borradores temporales para campañas de marketing en Webflow: se crea una entrada rápida, se actualiza para incluir un activo visual (ej. un avatar de campaña) y, una vez finalizada la revisión o la campaña, se elimina automáticamente.",
+      "Simular un ciclo de vida completo de un elemento de contenido (creación, edición y eliminación) en Webflow para fines de capacitación de nuevos usuarios o para demostrar las capacidades del CMS sin dejar datos persistentes después de la demostración."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 47,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0032-iss-satellite-monitoring.json-1758126583207",
+    "fileName": "0032-iss-satellite-monitoring.json",
+    "flowName": "Seguimiento de la Posición de la ISS",
+    "mainArea": "Análisis de Datos",
+    "secondaryAreas": [
+      "Educación",
+      "Monitoreo",
+      "Geoespacial"
+    ],
+    "mainFunction": "Obtiene la posición actual de la Estación Espacial Internacional (ISS) y la almacena en Google BigQuery de forma periódica.",
+    "automationDestinations": [
+      "Google BigQuery"
+    ],
+    "dataOrigins": [
+      "Cron",
+      "API de Posición de la ISS"
+    ],
+    "keyNodes": [
+      "Cron",
+      "HTTP Request",
+      "Set",
+      "Google BigQuery"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo rastrea la ubicación en tiempo real de la ISS y guarda los datos en Google BigQuery cada minuto.",
+    "useCaseExamples": [
+      "Monitoreo en tiempo real de la Estación Espacial Internacional (ISS) para fines educativos en museos o escuelas, mostrando su ubicación actual en un mapa.",
+      "Recopilación de datos históricos de la trayectoria de la ISS en Google BigQuery para análisis científicos, estudios de órbita y predicción de pasadas visibles.",
+      "Alimentar una aplicación web o móvil que muestre la posición actual de la ISS y notifique a los usuarios sobre su visibilidad desde su ubicación.",
+      "Creación de dashboards interactivos y visualizaciones de datos avanzadas utilizando la posición de la ISS almacenada en BigQuery para análisis geográficos y temporales.",
+      "Implementación de un sistema de alerta que notifique a investigadores o aficionados cuando la ISS pase sobre una región geográfica de interés específica, como una ciudad o un observatorio."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 48,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0033-ip-location-email.json-1758126610974",
+    "fileName": "0033-ip-location-email.json",
+    "flowName": "location_by_ip",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Ventas",
+      "Atención al Cliente"
+    ],
+    "mainFunction": "Determina la ubicación de un usuario por su dirección IP y envía un email de bienvenida localizado.",
+    "automationDestinations": [
+      "AWS SES (Email)"
+    ],
+    "dataOrigins": [
+      "Disparador Manual",
+      "Uproc (API de geolocalización)",
+      "Datos Fijos (Función)"
+    ],
+    "keyNodes": [
+      "Get Location By IP",
+      "User in Spain?",
+      "Send Spanish Email",
+      "Send English Email"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Obtiene la ubicación de un usuario por IP y le envía un email de bienvenida personalizado en español o inglés.",
+    "useCaseExamples": [
+      "Un nuevo usuario se registra en una plataforma online; el flujo detecta su IP, determina que está en España y automáticamente le envía un correo de bienvenida en español. Si está fuera de España, recibe el correo en inglés.",
+      "Una empresa quiere mostrar banners publicitarios o contenido web específico por región. El flujo identifica la IP de un visitante, y si este proviene de España, le presenta una oferta en español; de lo contrario, una en inglés.",
+      "Al procesar un formulario de contacto o una consulta de soporte, el flujo usa la IP del remitente. Si la IP indica que el usuario está en España, la respuesta automática o la asignación a un agente se realiza en español.",
+      "Una aplicación móvil registra la IP del dispositivo al iniciar sesión. El flujo utiliza esta información para preconfigurar el idioma de la interfaz del usuario a español si se detecta que está en España, y a inglés en cualquier otro caso.",
+      "En una tienda online, para mejorar la experiencia de compra, el flujo detecta la ubicación IP del visitante. Si es de España, se le muestra automáticamente los precios en euros y las opciones de envío relevantes para España; de lo contrario, se muestra un idioma y moneda por defecto (inglés/dólares)."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 49,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0034-clearbit-persona-buscar.json-1758126643928",
+    "fileName": "0034-clearbit-persona-buscar.json",
+    "flowName": "Look up a person using their email in Clearbit",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Marketing",
+      "Inteligencia de Negocio"
+    ],
+    "mainFunction": "Buscar información detallada sobre una persona utilizando su dirección de correo electrónico a través de Clearbit.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "Clearbit"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Busca y obtiene información pública detallada sobre una persona en Clearbit usando su correo electrónico.",
+    "useCaseExamples": [
+      "Enriquecer automáticamente la información de nuevos leads capturados en un formulario web, obteniendo detalles como nombre, empresa y puesto para personalizar la comunicación de ventas.",
+      "Actualizar o completar perfiles de clientes existentes en un CRM que solo tienen el correo electrónico, añadiendo datos demográficos y profesionales clave para un mejor segmento y atención.",
+      "Cuando un cliente se comunica a través de un canal de soporte (ej. chat o correo), buscar su perfil al instante para que el agente tenga contexto sobre su rol y empresa, ofreciendo un servicio más relevante.",
+      "Calificar y segmentar a los asistentes a un webinar o evento online en función de su correo electrónico, obteniendo información sobre su empresa y seniority para adaptar el seguimiento post-evento.",
+      "Investigar rápidamente el perfil de un candidato potencial en la fase inicial de reclutamiento si solo se dispone de su dirección de correo electrónico, para evaluar su adecuación al puesto antes de un contacto directo."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 50,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0035-airtable-mailcheck-validacion.json-1758126669117",
+    "fileName": "0035-airtable-mailcheck-validacion.json",
+    "flowName": "Verificación de Correos en Airtable",
+    "mainArea": "Gestión de Datos",
+    "secondaryAreas": [
+      "Marketing",
+      "Servicio al Cliente",
+      "Administración"
+    ],
+    "mainFunction": "Valida direcciones de correo electrónico de registros en Airtable utilizando Mailcheck y actualiza el estado de validez en la tabla de Airtable original.",
+    "automationDestinations": [
+      "Airtable"
+    ],
+    "dataOrigins": [
+      "Airtable"
+    ],
+    "keyNodes": [
+      "Airtable",
+      "Mailcheck",
+      "Set"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Verifica correos electrónicos de Airtable y actualiza su estado de validez en la misma tabla.",
+    "useCaseExamples": [
+      "Validación de leads: Una empresa recopila leads en Airtable y necesita verificar la validez de los correos electrónicos para asegurar que los equipos de ventas se pongan en contacto con direcciones válidas, reduciendo la tasa de rebote.",
+      "Limpieza de listas de correo: Un equipo de marketing mantiene una lista de suscriptores para newsletters en Airtable. Este flujo de trabajo puede ejecutarse periódicamente para identificar y marcar correos electrónicos inválidos, mejorando la entregabilidad de las campañas.",
+      "Verificación de registros de eventos: Los organizadores de eventos usan Airtable para gestionar los registros. Este flujo puede validar automáticamente los correos electrónicos de los asistentes para asegurar que todas las comunicaciones importantes lleguen a su destino.",
+      "Auditoría de contactos de proveedores: Una empresa almacena información de contacto de proveedores en Airtable. El flujo de trabajo puede verificar la existencia de los registros MX de los correos electrónicos para asegurar que los contactos son operativos y fiables.",
+      "Detección de errores en formularios: Si un formulario web envía datos a Airtable, este flujo puede actuar como una validación post-envío, marcando cualquier dirección de correo electrónico que parezca ser incorrecta o ficticia, ayudando a corregir los datos en origen."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 51,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0036-mattermost-notificacion-iniciado.json-1758126689275",
+    "fileName": "0036-mattermost-notificacion-iniciado.json",
+    "flowName": "Notificación de Inicio de n8n a Mattermost",
+    "mainArea": "Operaciones TI",
+    "secondaryAreas": [
+      "Comunicación Interna",
+      "Monitoreo"
+    ],
+    "mainFunction": "Envía un mensaje de notificación a un canal de Mattermost cuando la instancia de n8n se inicia.",
+    "automationDestinations": [
+      "Mattermost"
+    ],
+    "dataOrigins": [
+      "n8n Trigger"
+    ],
+    "keyNodes": [
+      "n8n Trigger",
+      "Mattermost"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo envía una alerta a Mattermost cada vez que la instancia de n8n se inicia.",
+    "useCaseExamples": [
+      "Un equipo de DevOps recibe una alerta automática en Mattermost cada vez que la instancia de n8n se reinicia, lo que les permite monitorear la disponibilidad del servicio y detectar reinicios inesperados.",
+      "Después de una actualización de software o mantenimiento programado en el servidor, los administradores de sistemas reciben una confirmación instantánea en Mattermost de que el servicio de n8n ha iniciado correctamente y está operativo.",
+      "Un equipo que depende de automatizaciones críticas recibe una notificación en Mattermost cada vez que el entorno de n8n se vuelve a poner en marcha, asegurando que todos estén al tanto de cuándo las automatizaciones están activas de nuevo.",
+      "Para fines de auditoría, se registra un mensaje en un canal específico de Mattermost cada vez que la instancia de n8n se inicia, proporcionando un registro de los tiempos de actividad del servicio.",
+      "Cuando los flujos de trabajo fallan, el equipo de soporte técnico puede revisar el historial de Mattermost para ver si la instancia de n8n se ha reiniciado recientemente, lo que podría explicar interrupciones temporales en el servicio."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 52,
+    "isFavorite": false
+  },
+  {
+    "id": 53,
+    "workflow_uuid": "0037-mattermost-trigger.json-1758126750307",
+    "fileName": "0037-mattermost-trigger.json",
+    "flowName": "Análisis Fallido: 0037-mattermost-trigger.json",
+    "mainArea": "Error",
+    "secondaryAreas": [],
+    "mainFunction": "An unexpected response was received from the server.",
+    "automationDestinations": [],
+    "dataOrigins": [],
+    "keyNodes": [],
+    "complexity": "Medio",
+    "shortDescription": "El análisis con IA falló. Causa: An unexpected response was received from the server.. Revisa la clave de API o la configuración del modelo.",
+    "useCaseExamples": [],
+    "similarities": [],
+    "isFavorite": false,
+    "notes": ""
+  },
+  {
+    "workflow_uuid": "0038-orbit-member-update.json-1758126776760",
+    "fileName": "0038-orbit-member-update.json",
+    "flowName": "Create a new member, update the information of the member, create a note and a post for the member in Orbit",
+    "mainArea": "Comunidad",
+    "secondaryAreas": [
+      "Marketing",
+      "Gestión de Contenidos"
+    ],
+    "mainFunction": "Crear, actualizar, añadir notas y publicaciones para un miembro en la plataforma Orbit.",
+    "automationDestinations": [
+      "Orbit"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "manualTrigger",
+      "Orbit"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Automatiza la gestión completa de miembros en Orbit, incluyendo la creación, actualización de información, adición de notas y registro de publicaciones.",
+    "useCaseExamples": [
+      "Cuando un nuevo contribuidor realiza su primer pull request en un repositorio de GitHub, el flujo automatiza la creación o actualización de su perfil en Orbit, le asigna una etiqueta \"primer-contribuidor\", añade una nota de bienvenida y publica un enlace a las guías de contribución.",
+      "Al registrarse un usuario en un evento de la comunidad (webinar, taller), el flujo crea o actualiza su perfil de miembro en Orbit, añade la etiqueta \"asistente-evento-X\", registra una nota de su participación y publica un enlace al material del evento o a la grabación.",
+      "Si un miembro de la comunidad es mencionado en un artículo de blog externo o crea contenido relevante, el flujo puede actualizar su perfil de Orbit, añadir una etiqueta como \"mención-destacada\", registrar una nota con el contexto y publicar el enlace a dicho contenido.",
+      "Cuando un usuario proporciona feedback detallado o informa un error crítico a través de un formulario específico, el flujo actualiza su perfil en Orbit, añade una etiqueta \"feedback-activo\", registra una nota con los detalles y enlaza al ticket de soporte o hilo de discusión correspondiente.",
+      "Para reconocer un logro comunitario, como un miembro que se convierte en moderador de foro o alcanza un número significativo de respuestas, el flujo actualiza su perfil en Orbit, añade una etiqueta \"líder-comunidad\", registra una nota de felicitación y publica un enlace a un anuncio público de su logro."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 54,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0039-clickup-task-creator.json-1758126803448",
+    "fileName": "0039-clickup-task-creator.json",
+    "flowName": "Create a task in ClickUp",
+    "mainArea": "Gestión de Proyectos",
+    "secondaryAreas": [
+      "Operaciones",
+      "Productividad",
+      "Desarrollo de Software"
+    ],
+    "mainFunction": "Crear una tarea en ClickUp.",
+    "automationDestinations": [
+      "ClickUp"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "ClickUp"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo permite crear una tarea en ClickUp de forma manual.",
+    "useCaseExamples": [
+      "Cuando un nuevo cliente se registra en el CRM, se crea automáticamente una tarea en ClickUp para el equipo de onboarding con los pasos a seguir.",
+      "Si un correo electrónico con un asunto específico llega a una bandeja de entrada designada, se genera una tarea en ClickUp para el equipo correspondiente para su revisión.",
+      "Después de que un formulario web de 'contacto' es enviado, se crea una tarea en ClickUp para el equipo de ventas para hacer un seguimiento.",
+      "Al finalizar una etapa clave en un proyecto gestionado en otra herramienta (ej. Trello), se crea una tarea en ClickUp para notificar al equipo de desarrollo el siguiente paso.",
+      "Cuando una nueva entrada es añadida a una hoja de cálculo de Google Sheets con solicitudes de contenido, se crea una tarea en ClickUp para el equipo de marketing para su creación."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 55,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0040-screenshot-automation.json-1758126821864",
+    "fileName": "0040-screenshot-automation.json",
+    "flowName": "screenshot",
+    "mainArea": "Productividad",
+    "secondaryAreas": [
+      "Marketing",
+      "Desarrollo Web",
+      "Soporte al Cliente"
+    ],
+    "mainFunction": "Genera capturas de pantalla de una página web (normal y de página completa), las guarda en Dropbox y las envía por correo electrónico al usuario especificado.",
+    "automationDestinations": [
+      "Dropbox",
+      "AWS SES"
+    ],
+    "dataOrigins": [
+      "Manual Trigger",
+      "Function Item"
+    ],
+    "keyNodes": [
+      "Function Item",
+      "uproc",
+      "HTTP Request",
+      "Dropbox",
+      "Merge",
+      "AWS SES"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Genera capturas de pantalla de una web, las sube a Dropbox y las envía por correo electrónico.",
+    "useCaseExamples": [
+      "Monitoreo semanal de la competencia: Una empresa configura el flujo para tomar automáticamente capturas de pantalla de los sitios web de sus principales competidores cada lunes, guardarlas en Dropbox y enviar un correo electrónico al equipo de marketing para revisar rápidamente los cambios.",
+      "Auditorías visuales post-despliegue: Un equipo de desarrollo integra este flujo para que, después de cada despliegue en producción, se generen capturas de pantalla de páginas clave del sitio web, se almacenen en Dropbox como registro histórico y se envíe una notificación por correo electrónico al equipo de QA.",
+      "Reportes de accesibilidad web: Una consultora de accesibilidad utiliza el flujo para documentar el estado visual de los sitios web de sus clientes, generando capturas de pantalla antes y después de las mejoras, guardándolas en Dropbox para referencia y compartiéndolas por correo electrónico con los clientes.",
+      "Generación automática de vistas previas para un CMS: Al publicar un nuevo artículo en un blog, el flujo se activa para tomar una captura de pantalla del artículo recién publicado, subirla a Dropbox y enviar el enlace de la imagen al editor para usarla como vista previa en redes sociales o en el backend del CMS.",
+      "Documentación de incidentes y errores visuales: Cuando un usuario reporta un problema visual en una aplicación web, el equipo de soporte puede activar el flujo introduciendo la URL afectada, generando así capturas de pantalla del error que se guardan en Dropbox y se envían por correo electrónico al equipo de desarrollo para una rápida depuración."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 56,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0041-filemaker-multi-step.json-1758126851760",
+    "fileName": "0041-filemaker-multi-step.json",
+    "flowName": "Gestión Secuencial de Registros en FileMaker",
+    "mainArea": "Gestión de Información",
+    "secondaryAreas": [
+      "Administración",
+      "Operaciones",
+      "Recursos Humanos"
+    ],
+    "mainFunction": "Realiza una secuencia de operaciones en FileMaker: primero crea un registro, luego lo edita y finalmente lo recupera.",
+    "automationDestinations": [
+      "FileMaker"
+    ],
+    "dataOrigins": [
+      "Disparador Manual"
+    ],
+    "keyNodes": [
+      "On clicking 'execute'",
+      "FileMaker",
+      "FileMaker2",
+      "FileMaker3"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Un flujo que demuestra cómo crear, editar y consultar registros en FileMaker de forma secuencial.",
+    "useCaseExamples": [
+      "Gestión de Clientes Potenciales (Leads): Un nuevo lead se registra inicialmente en FileMaker con su nombre y apellido. Posteriormente, la información se edita para añadir su país de origen o interés. Finalmente, se recupera el registro completo para su asignación a un vendedor.",
+      "Incorporación de Empleados: Se crea un registro básico para un nuevo empleado en FileMaker con su nombre. Luego, se actualiza el registro con su ubicación o país de residencia. Finalmente, se recupera toda la información del empleado para su perfil interno.",
+      "Procesamiento de Pedidos: Cuando se recibe un pedido, se crea un registro inicial en FileMaker con el nombre del cliente. Después, se actualiza el país de destino del envío. Finalmente, se consultan los detalles del pedido para el despacho.",
+      "Seguimiento de Activos Fijos: Se registra un nuevo activo (ej. una maquinaria) en FileMaker con un identificador y responsable inicial. Luego, se actualiza su ubicación o país de adquisición. Finalmente, se recuperan los datos para auditoría o inventario.",
+      "Administración de Proyectos: Al iniciar un nuevo proyecto, se crea un registro en FileMaker con el nombre del líder de proyecto. Posteriormente, se edita para añadir el país donde se ejecuta el proyecto. Finalmente, se obtiene el registro completo del proyecto para su monitoreo."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 57,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0042-iss-mqtt-flow.json-1758126871275",
+    "fileName": "0042-iss-mqtt-flow.json",
+    "flowName": "Seguimiento Posición ISS",
+    "mainArea": "Integración de Sistemas",
+    "secondaryAreas": [
+      "Análisis de Datos",
+      "IoT",
+      "Monitoreo"
+    ],
+    "mainFunction": "Obtener la posición actual de la Estación Espacial Internacional (ISS) y publicarla en un tema MQTT.",
+    "automationDestinations": [
+      "MQTT"
+    ],
+    "dataOrigins": [
+      "Cron",
+      "API Externa (ISS Tracker)"
+    ],
+    "keyNodes": [
+      "Cron",
+      "HTTP Request",
+      "Set",
+      "MQTT"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Obtiene la ubicación en tiempo real de la ISS y la publica en un tema MQTT.",
+    "useCaseExamples": [
+      "Visualización en un dashboard IoT: Un sistema de monitoreo se suscribe al tema MQTT 'iss-position' para mostrar la ubicación actual de la ISS en un mapa en tiempo real, junto con su latitud y longitud, para entusiastas del espacio o centros de control.",
+      "Integración con aplicaciones móviles o web: Una aplicación para rastrear la ISS se suscribe a este flujo MQTT para recibir actualizaciones instantáneas de la posición y mostrarlas a los usuarios sin necesidad de hacer llamadas directas a la API externa.",
+      "Automatización de un sistema de casa inteligente: Un sistema de domótica compatible con MQTT consume los datos de la posición de la ISS, permitiendo, por ejemplo, que una pantalla inteligente muestre su ubicación o que se active una notificación cuando la estación pase sobre una región específica.",
+      "Alimentación de una base de datos para análisis histórico: Un servicio backend se suscribe al tema MQTT y almacena cada mensaje de posición en una base de datos para construir un registro histórico de la trayectoria de la ISS, útil para estudios científicos o educativos.",
+      "Proyectos educativos y de ciencia ciudadana: Escuelas o universidades utilizan este flujo para proporcionar datos en tiempo real a sus estudiantes, quienes pueden desarrollar sus propios visualizadores, predecir órbitas o realizar experimentos basados en la posición de la ISS a través de un feed MQTT accesible."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 58,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0044-gmail-drive-adjunto.json-1758126894374",
+    "fileName": "0044-gmail-drive-adjunto.json",
+    "flowName": "Guardar Adjuntos de Gmail en Google Drive",
+    "mainArea": "Gestión Documental",
+    "secondaryAreas": [
+      "Productividad Personal",
+      "Administración"
+    ],
+    "mainFunction": "Extrae adjuntos de correos electrónicos de Gmail (filtrados por una etiqueta) y los sube automáticamente a una carpeta específica en Google Drive, capturando el enlace del archivo subido.",
+    "automationDestinations": [
+      "Google Drive"
+    ],
+    "dataOrigins": [
+      "Gmail"
+    ],
+    "keyNodes": [
+      "Gmail",
+      "Google Drive",
+      "Set"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo guarda automáticamente los adjuntos de correos de Gmail con una etiqueta específica en Google Drive y obtiene su enlace.",
+    "useCaseExamples": [
+      "Una agencia de marketing recibe anuncios en video de sus clientes a través de correos electrónicos. Utilizan una etiqueta de Gmail como \"Videos Clientes\" para estos correos. El flujo de trabajo descarga automáticamente los archivos MP4 adjuntos y los sube a una carpeta de Google Drive específica para su posterior revisión por el equipo de diseño.",
+      "Un departamento de Recursos Humanos recibe currículums (documentos PDF) de candidatos por correo electrónico. Etiquetan estos correos como \"Candidatos CV\". El flujo de trabajo extrae los archivos PDF y los almacena automáticamente en una carpeta de Google Drive \"CVs Pendientes\", facilitando el acceso para el equipo de contratación.",
+      "Un equipo de ventas recibe contratos firmados (archivos PDF escaneados) de clientes por correo electrónico. Asignan la etiqueta \"Contratos Firmados\" a estos correos. El flujo de trabajo carga automáticamente estos documentos a una carpeta de Google Drive \"Contratos Legales\", asegurando un archivo organizado y accesible.",
+      "Un equipo de desarrollo de software recibe informes de errores con capturas de pantalla o grabaciones de pantalla (imágenes o MP4) de probadores externos por correo electrónico. Los correos se marcan con la etiqueta \"Reportes Bugs\". El flujo de trabajo guarda los archivos adjuntos en una carpeta compartida de Google Drive para que los desarrolladores los analicen.",
+      "Un educador solicita a sus estudiantes que envíen tareas (documentos, presentaciones) por correo electrónico, pidiéndoles que apliquen una etiqueta específica, por ejemplo, \"Tareas Clase\". El flujo de trabajo recopila automáticamente todos los archivos adjuntos de estos correos y los organiza en una carpeta de Google Drive designada para las calificaciones de la asignatura."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 59,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0045-google-books-automation.json-1758126920779",
+    "fileName": "0045-google-books-automation.json",
+    "flowName": "Get a volume and add it to your bookshelf",
+    "mainArea": "Personal",
+    "secondaryAreas": [
+      "Educación",
+      "Productividad"
+    ],
+    "mainFunction": "Obtener la información de un volumen de Google Books y añadirlo a una estantería personal.",
+    "automationDestinations": [
+      "Google Books"
+    ],
+    "dataOrigins": [
+      "Manual Trigger",
+      "Google Books"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Google Books"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Obtiene los detalles de un libro de Google Books y lo añade a tu estantería personal.",
+    "useCaseExamples": [
+      "Un usuario quiere añadir rápidamente los libros recomendados en una lista o artículo a su estantería de 'Lectura Pendiente' en Google Books sin tener que buscarlos manualmente.",
+      "Un club de lectura decide el 'libro del mes' y el organizador utiliza el flujo para añadir automáticamente ese volumen a la estantería compartida del club en Google Books.",
+      "Un profesor identifica textos específicos (por su ID en Google Books) que desea que sus alumnos tengan en una estantería de 'Recursos del Curso', y utiliza el flujo para agregarlos.",
+      "Un editor de contenido prepara una lista curada de libros para un evento o conferencia y usa este flujo para poblar una estantería dedicada en Google Books con esos volúmenes específicos.",
+      "Un desarrollador integra este flujo con una aplicación de recomendación de libros, permitiendo a los usuarios añadir un libro directamente a su estantería personal de Google Books con un solo clic, una vez que el ID del volumen es conocido."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 60,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0046-email-invite-calendar.json-1758126933352",
+    "fileName": "0046-email-invite-calendar.json",
+    "flowName": "Automatización de Invitaciones de Eventos vía iCalendar por Correo",
+    "mainArea": "Comunicaciones",
+    "secondaryAreas": [
+      "Organización de Eventos",
+      "Marketing",
+      "Recursos Humanos"
+    ],
+    "mainFunction": "Generar automáticamente un archivo iCalendar para un evento específico y enviarlo como adjunto en un correo electrónico a los destinatarios.",
+    "automationDestinations": [
+      "Servicio de Correo Electrónico (SMTP)"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "iCalendar",
+      "Send Email"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Crea y envía invitaciones de eventos en formato iCalendar por correo electrónico.",
+    "useCaseExamples": [
+      "Envío automático de invitaciones a reuniones de equipo internas con el archivo iCalendar adjunto.",
+      "Confirmación de registro a un seminario web, enviando el evento de calendario directamente al correo del asistente.",
+      "Programación y envío de citas con clientes o pacientes, incluyendo el archivo iCalendar para facilitar su adición al calendario personal.",
+      "Notificación de eventos educativos o talleres a los participantes, con los detalles del curso y una invitación de calendario adjunta.",
+      "Coordinación y confirmación de entrevistas de trabajo, enviando a los candidatos un correo con la información y el archivo iCalendar de la entrevista."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 61,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0047-calendly-notion-auto.json-1758126948108",
+    "fileName": "0047-calendly-notion-auto.json",
+    "flowName": "Calendly a Notion",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Marketing",
+      "Gestión de Proyectos"
+    ],
+    "mainFunction": "Crear automáticamente una nueva entrada en Notion para cada cita programada en Calendly, registrando los detalles del invitado.",
+    "automationDestinations": [
+      "Notion"
+    ],
+    "dataOrigins": [
+      "Calendly"
+    ],
+    "keyNodes": [
+      "Calendly Trigger",
+      "Notion"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Registra automáticamente nuevas citas de Calendly en una base de datos de Notion.",
+    "useCaseExamples": [
+      "Un equipo de ventas utiliza Calendly para programar demos de productos. Cada vez que un prospecto reserva una demo, sus datos (nombre, correo electrónico) se añaden automáticamente a una base de datos de 'Leads de Ventas' en Notion para su seguimiento.",
+      "Un consultor independiente usa Calendly para que los clientes reserven sesiones de consulta. Cuando se programa una nueva consulta, los detalles del cliente se registran instantáneamente en una base de datos de 'Clientes y Consultas' en Notion.",
+      "Un departamento de Recursos Humanos programa entrevistas con candidatos a través de Calendly. Cada vez que un candidato reserva una entrevista, su información se añade a una base de datos de 'Seguimiento de Candidatos' en Notion para facilitar la gestión del proceso de contratación.",
+      "Una agencia de marketing utiliza Calendly para programar reuniones iniciales con nuevos clientes. Al reservar una reunión, los datos del cliente se guardan en una base de datos de 'Proyectos de Clientes' en Notion, marcando el inicio del proceso de integración.",
+      "Un organizador de eventos ofrece sesiones individuales o reuniones de networking a través de Calendly durante un congreso. Cada vez que un asistente reserva una sesión, sus detalles se registran en una base de datos de 'Participantes del Evento' en Notion para el seguimiento personalizado."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 62,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0048-notion-mattermost-marketing.json-1758126969559",
+    "fileName": "0048-notion-mattermost-marketing.json",
+    "flowName": "Notificación de Notas de Reunión de Marketing de Notion a Mattermost",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Comunicación Interna",
+      "Productividad"
+    ],
+    "mainFunction": "Notificar al equipo de Marketing en Mattermost sobre nuevas notas de reunión añadidas en una base de datos de Notion.",
+    "automationDestinations": [
+      "Mattermost"
+    ],
+    "dataOrigins": [
+      "Notion"
+    ],
+    "keyNodes": [
+      "Notion Trigger",
+      "IF",
+      "Mattermost"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo envía una alerta a Mattermost cada vez que se registra una nueva nota de reunión para el equipo de Marketing en Notion.",
+    "useCaseExamples": [
+      "Cada vez que se añade un nuevo acta de reunión a la base de datos de Notion del equipo de Marketing, se envía automáticamente una notificación con el resumen y el enlace a un canal específico de Mattermost para que todo el equipo esté al tanto.",
+      "Cuando un miembro del equipo de contenido agrega una nueva entrada (por ejemplo, un artículo, post de blog) al calendario editorial gestionado en Notion, y está clasificada como \"Marketing\", el flujo avisa al canal de Mattermost del equipo.",
+      "Un gerente de proyectos crea una nueva página en Notion para una tarea o un proyecto específico del equipo de Marketing. El flujo notifica a los miembros del equipo en Mattermost sobre la nueva asignación o inicio del proyecto.",
+      "Después de una sesión de lluvia de ideas, las nuevas ideas se documentan como páginas en una base de datos de Notion. Si estas ideas están etiquetadas para \"Marketing\", el equipo recibe un mensaje en Mattermost para revisarlas.",
+      "Un equipo de marketing utiliza Notion para rastrear los entregables de campañas. Cuando un entregable clave (ej. borrador de anuncio, gráfico) se añade como una nueva página y se marca para el equipo de \"Marketing\", se envía una alerta al canal de Mattermost para su revisión inmediata."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 63,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0049-chargebee-event-trigger.json-1758126982282",
+    "fileName": "0049-chargebee-event-trigger.json",
+    "flowName": "Receive updates for events in Chargebee",
+    "mainArea": "Operaciones",
+    "secondaryAreas": [
+      "Finanzas",
+      "Atención al Cliente"
+    ],
+    "mainFunction": "Monitorizar y recibir notificaciones de eventos generados en Chargebee.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "Chargebee"
+    ],
+    "keyNodes": [
+      "Chargebee Trigger"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo recibe actualizaciones automáticas cuando ocurren eventos en Chargebee.",
+    "useCaseExamples": [
+      "Enviar automáticamente un correo de bienvenida y crear un nuevo registro en el CRM (ej. Salesforce) cada vez que un nuevo cliente se suscribe en Chargebee.",
+      "Notificar al equipo de soporte al cliente vía Slack cuando un pago de suscripción falla o una suscripción es cancelada para iniciar un seguimiento proactivo.",
+      "Sincronizar automáticamente la información de nuevas facturas y pagos exitosos desde Chargebee a un sistema de contabilidad como QuickBooks o Xero.",
+      "Actualizar el perfil de un cliente en una plataforma de marketing (ej. HubSpot) cuando se produce un cambio en su plan de suscripción o en su estado de pago en Chargebee.",
+      "Desencadenar la provisión o desprovisión de acceso a un servicio externo (ej. una herramienta SaaS) cuando una suscripción es creada, activada, pausada o cancelada en Chargebee."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 64,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0050-calendly-humantic-personality-analysis.json-1758127005099",
+    "fileName": "0050-calendly-humantic-personality-analysis.json",
+    "flowName": "Análisis de Personalidad de Asistentes a Calendly y Registro en Notion",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Marketing",
+      "Recursos Humanos"
+    ],
+    "mainFunction": "Capturar datos de nuevos asistentes a eventos de Calendly, realizar un análisis de personalidad con Humantic AI y registrar la información relevante, incluyendo el análisis, en Notion.",
+    "automationDestinations": [
+      "Notion"
+    ],
+    "dataOrigins": [
+      "Calendly"
+    ],
+    "keyNodes": [
+      "Calendly Trigger",
+      "Humantic AI",
+      "Notion"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Automatiza la captura de asistentes de Calendly, su análisis de personalidad con Humantic AI y el almacenamiento en Notion.",
+    "useCaseExamples": [
+      "Un vendedor que agenda una llamada de descubrimiento con un nuevo prospecto vía Calendly, y el flujo guarda automáticamente un perfil de personalidad detallado del prospecto en Notion para personalizar el enfoque de la venta.",
+      "Un reclutador que programa una entrevista con un candidato, y el sistema genera un análisis de personalidad en Notion antes de la reunión para entender mejor el estilo de comunicación y comportamiento del candidato.",
+      "Un consultor que reserva una sesión inicial con un cliente potencial. El flujo obtiene información sobre su personalidad y la almacena en Notion, permitiéndole adaptar su propuesta y estrategia de interacción.",
+      "Un coach de vida o desarrollo profesional que programa una sesión inicial con un nuevo cliente. El flujo provee un análisis de personalidad en Notion para personalizar el plan de coaching.",
+      "Un gerente de éxito del cliente que organiza una reunión de bienvenida con un nuevo cliente. El flujo le da una visión de la personalidad del cliente en Notion para adaptar la comunicación y fortalecer la relación desde el principio."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 65,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0052-release-content-publisher.json-1758127582634",
+    "fileName": "0052-release-content-publisher.json",
+    "flowName": "Get all the stories starting with `release` and publish them",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Gestión de Contenidos",
+      "Operaciones"
+    ],
+    "mainFunction": "Obtener todas las historias de Storyblok que comienzan con 'release' y publicarlas automáticamente.",
+    "automationDestinations": [
+      "Storyblok"
+    ],
+    "dataOrigins": [
+      "Manual Trigger",
+      "Storyblok"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Storyblok"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo obtiene y publica historias de Storyblok que empiezan con la palabra 'release'.",
+    "useCaseExamples": [
+      "Un equipo de desarrollo prepara las notas de lanzamiento de un nuevo software en Storyblok, nombrando cada entrada con un prefijo \"release-\". Cuando la versión está lista, un miembro del equipo ejecuta este flujo para publicar todas las notas de lanzamiento simultáneamente.",
+      "Un gerente de contenido ha redactado múltiples anuncios de características nuevas para una \"liberación\" de producto, guardándolos como historias que comienzan con \"release-vX.X\". En la fecha de lanzamiento, activa el flujo para hacerlos visibles en el sitio web de una sola vez.",
+      "Una agencia de marketing gestiona el contenido de varias campañas estacionales que se publican bajo un tema de \"lanzamiento\". Una vez que todas las piezas (p. ej., landing pages, artículos de blog) están aprobadas y nombradas apropiadamente, el flujo se usa para lanzarlas todas al mismo tiempo.",
+      "Un editor de blog prepara una serie de artículos relacionados con el \"lanzamiento\" de un nuevo servicio. Para evitar publicar cada artículo manualmente, utiliza este flujo para poner en línea toda la colección de historias que comienzan con \"release-\" con un solo clic.",
+      "Una empresa utiliza Storyblok para documentar actualizaciones de productos. Cuando una nueva \"release\" está lista para ser anunciada, el equipo de producto activa este flujo para publicar todos los cambios documentados, asegurando que la información sea consistente y esté disponible al instante."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 66,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0053-ssl-expiry-checker.json-1758127599902",
+    "fileName": "0053-ssl-expiry-checker.json",
+    "flowName": "Get SSL Certificate",
+    "mainArea": "Operaciones de TI",
+    "secondaryAreas": [
+      "Desarrollo Web",
+      "Seguridad de la Información",
+      "Monitoreo"
+    ],
+    "mainFunction": "Verificar el estado de un certificado SSL para un dominio específico y enviar una alarma si ha expirado.",
+    "automationDestinations": [
+      "Telegram"
+    ],
+    "dataOrigins": [
+      "Disparador Manual"
+    ],
+    "keyNodes": [
+      "uproc",
+      "IF",
+      "Telegram"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Monitorea la expiración de certificados SSL de un dominio y notifica vía Telegram si el certificado ha caducado.",
+    "useCaseExamples": [
+      "Una pequeña empresa desea monitorear el certificado SSL de su sitio web principal (por ejemplo, su tienda online) para recibir una notificación instantánea si caduca y evitar interrupciones de servicio o advertencias de seguridad para sus clientes.",
+      "Un equipo de TI necesita asegurar que el certificado SSL de una aplicación interna crítica o un servidor de autenticación esté siempre vigente. Configuran este flujo para que les alerte vía Telegram si el certificado de este servicio específico deja de ser válido.",
+      "Una agencia de desarrollo web monitorea proactivamente el certificado SSL del sitio web de un cliente clave. Utilizan este flujo para ser alertados en cuanto el certificado caduque, permitiéndoles gestionarlo antes de que el cliente se vea afectado.",
+      "Un desarrollador o bloguero personal tiene un sitio web o un proyecto open-source y quiere una forma sencilla de ser notificado si su certificado SSL caduca, asegurando la disponibilidad y confianza de su plataforma.",
+      "Un administrador de sistemas ha desplegado un nuevo servicio o microservicio y configura este flujo de trabajo para realizar una verificación continua del certificado SSL del nuevo endpoint, asegurándose de que la seguridad esté siempre activa y válida."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 67,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0054-clickup-trigger.json-1758127616667",
+    "fileName": "0054-clickup-trigger.json",
+    "flowName": "Receive updates for events in ClickUp",
+    "mainArea": "Gestión de Proyectos",
+    "secondaryAreas": [
+      "Operaciones",
+      "Desarrollo de Producto"
+    ],
+    "mainFunction": "Recibir notificaciones o actualizaciones en tiempo real de eventos específicos que ocurren en ClickUp.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "ClickUp"
+    ],
+    "keyNodes": [
+      "ClickUp Trigger"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo se activa al recibir actualizaciones de eventos dentro de ClickUp.",
+    "useCaseExamples": [
+      "Notificar al equipo en Slack o Microsoft Teams cada vez que se actualice el estado de una tarea, se añada un nuevo comentario o se asigne una tarea en ClickUp.",
+      "Sincronizar automáticamente nuevas tareas creadas en ClickUp con una fecha de vencimiento al calendario de Google del asignado, creando un evento para su seguimiento.",
+      "Registrar automáticamente en una hoja de cálculo de Google Sheets la finalización de cada tarea en ClickUp, incluyendo la fecha de cierre y el nombre del responsable, para informes de productividad.",
+      "Crear un borrador de factura en Stripe cuando una tarea de cliente en ClickUp alcance el estado 'Listo para facturar', extrayendo los detalles relevantes de la tarea.",
+      "Enviar correos electrónicos de actualización personalizados a clientes o partes interesadas a través de Gmail o SendGrid cuando el estado de un proyecto o una tarea clave cambie en ClickUp (ej. de 'En progreso' a 'Revisión del cliente')."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 68,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0055-line-message-processing.json-1758127634201",
+    "fileName": "0055-line-message-processing.json",
+    "flowName": "Guardar Enlace en Notion y Confirmar",
+    "mainArea": "Productividad",
+    "secondaryAreas": [
+      "Gestión del Conocimiento",
+      "Colaboración"
+    ],
+    "mainFunction": "Permite guardar enlaces enviados a través de un webhook en una base de datos de Notion, extrayendo el título de la página, y envía una confirmación.",
+    "automationDestinations": [
+      "Notion",
+      "Discord"
+    ],
+    "dataOrigins": [
+      "Webhook"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "Check type (IF)",
+      "HTTP Request",
+      "Extract Title",
+      "Add Link to Notion"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Automatiza el proceso de guardar enlaces de páginas web en Notion, extrayendo su título, y confirma la operación al origen del webhook.",
+    "useCaseExamples": [
+      "Un bot de Discord permite a los usuarios guardar enlaces a artículos interesantes en una base de datos de Notion compartida por el equipo, extrayendo automáticamente el título de la página.",
+      "Un equipo de marketing utiliza un comando interno para recopilar enlaces a contenido relevante de la competencia o de la industria, almacenándolos con sus títulos en un Notion para su análisis.",
+      "Un investigador académico automatiza la adición de referencias bibliográficas encontradas en línea a una base de datos de Notion, extrayendo el título de cada página web para una organización más sencilla.",
+      "Empleados de una empresa utilizan un atajo o un formulario simple que activa este flujo de trabajo para añadir recursos útiles (documentación, tutoriales) a una base de conocimientos interna en Notion.",
+      "Un gestor de proyectos usa una herramienta que envía un webhook con una URL para agregar rápidamente enlaces a especificaciones o documentos externos importantes directamente a un tablero de Notion del proyecto."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 69,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0056-aws-transcribe-s3.json-1758127648219",
+    "fileName": "0056-aws-transcribe-s3.json",
+    "flowName": "Transcribir Audio desde AWS S3",
+    "mainArea": "Procesamiento de Contenido",
+    "secondaryAreas": [
+      "Servicios al Cliente",
+      "Investigación",
+      "Media y Entretenimiento"
+    ],
+    "mainFunction": "Transcribir archivos de audio almacenados en AWS S3 utilizando el servicio AWS Transcribe.",
+    "automationDestinations": [
+      "AWS Transcribe"
+    ],
+    "dataOrigins": [
+      "Manual Trigger",
+      "AWS S3"
+    ],
+    "keyNodes": [
+      "AWS S3",
+      "AWS Transcribe"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo transcribe automáticamente archivos de audio desde un bucket de AWS S3 usando AWS Transcribe.",
+    "useCaseExamples": [
+      "Una empresa de medios carga regularmente grabaciones de podcasts o videos en un bucket S3. Este flujo de trabajo podría transcribir automáticamente todo el nuevo contenido para generar transcripciones, facilitar la búsqueda de palabras clave y mejorar el SEO.",
+      "Un centro de llamadas guarda todas las grabaciones de las interacciones con los clientes en un bucket S3. El flujo de trabajo transcribiría estas llamadas para permitir el análisis de sentimiento, la identificación de problemas comunes o la auditoría de calidad de las interacciones.",
+      "Una institución educativa o corporación almacena grabaciones de clases, seminarios web o reuniones internas en S3. El flujo de trabajo transcribiría automáticamente todas las grabaciones, creando un archivo de texto searchable para referencia futura o para generar actas.",
+      "Un bufete de abogados o una entidad gubernamental archiva grabaciones de deposiciones, testimonios o evidencia de audio/video en S3. Las transcripciones permitirían una búsqueda rápida de información clave en grandes volúmenes de datos de audio.",
+      "Una plataforma de e-learning o un creador de contenido de video sube sus videos a S3. El flujo de trabajo transcribiría automáticamente el audio para crear subtítulos, mejorar la accesibilidad y permitir la traducción del texto."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 70,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0057-uptime-robot-monitor-management.json-1758127662096",
+    "fileName": "0057-uptime-robot-monitor-management.json",
+    "flowName": "Gestión de Monitores de UptimeRobot",
+    "mainArea": "Operaciones de TI",
+    "secondaryAreas": [
+      "DevOps",
+      "Administración de Sistemas"
+    ],
+    "mainFunction": "Gestionar monitores en UptimeRobot: crear un nuevo monitor, actualizar su nombre y luego obtener los detalles del monitor.",
+    "automationDestinations": [
+      "UptimeRobot"
+    ],
+    "dataOrigins": [
+      "UptimeRobot"
+    ],
+    "keyNodes": [
+      "UptimeRobot (Create Monitor)",
+      "UptimeRobot (Update Monitor)",
+      "UptimeRobot (Get Monitor)"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo crea, actualiza y recupera el estado de un monitor específico en UptimeRobot.",
+    "useCaseExamples": [
+      "Creación y actualización automática de monitores para nuevos proyectos: Cuando un nuevo sitio web o servicio se lanza, este flujo de trabajo puede ser invocado para crear automáticamente un monitor en UptimeRobot y luego actualizar su nombre amigable con información más detallada extraída de un sistema de gestión de proyectos.",
+      "Sincronización de inventario de servicios con UptimeRobot: Un sistema de inventario o CMDB podría activar este flujo para asegurar que cada servicio registrado tenga un monitor en UptimeRobot, creando nuevos si faltan y actualizando sus propiedades (como el nombre amigable o la URL) si han cambiado.",
+      "Integración en un pipeline de despliegue continuo (CI/CD): Tras un despliegue exitoso de una aplicación, el flujo podría crear o actualizar el monitor asociado en UptimeRobot con la nueva URL o los detalles del entorno, y luego obtener su estado para verificar que el monitoreo ha sido configurado correctamente.",
+      "Gestión de monitores para clientes de SaaS: Una plataforma SaaS podría usar este flujo para crear y actualizar automáticamente los monitores de los sitios web o servicios de sus nuevos clientes en UptimeRobot, y luego recuperar los detalles del monitor para mostrárselos al cliente o para auditoría interna.",
+      "Mantenimiento masivo de monitores existentes: Cuando se requiere cambiar la convención de nomenclatura de los monitores o actualizar ciertas propiedades (como los contactos de alerta) para un gran número de servicios, este flujo puede automatizar el proceso de buscar, actualizar y verificar cada monitor en UptimeRobot."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 71,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0058-microsoft-todo-blueprint.json-1758127683153",
+    "fileName": "0058-microsoft-todo-blueprint.json",
+    "flowName": "Gestión de Tareas en Microsoft To Do",
+    "mainArea": "Productividad",
+    "secondaryAreas": [
+      "Gestión de Proyectos",
+      "Administración"
+    ],
+    "mainFunction": "Crear tareas de alta importancia en Microsoft To Do y actualizar su estado a 'en progreso'.",
+    "automationDestinations": [
+      "Microsoft To Do"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "Microsoft To Do",
+      "Manual Trigger"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo crea una nueva tarea de alta importancia en Microsoft To Do y luego la actualiza para marcarla como 'en progreso'.",
+    "useCaseExamples": [
+      "Cuando se recibe una nueva solicitud de servicio a través de un formulario web, se crea automáticamente una tarea en Microsoft To Do para el equipo de soporte con los detalles de la solicitud y se marca inmediatamente como \"En Progreso\" para indicar que se está gestionando.",
+      "Tras la confirmación de un nuevo pedido en una tienda online, se genera una tarea en To Do para el equipo de almacén (\"Preparar Pedido #XYZ\") y se establece su estado a \"En Progreso\" para agilizar el inicio del proceso de empaquetado y envío.",
+      "Al iniciar el proceso de incorporación de un nuevo empleado, se crea una tarea específica (\"Configurar Acceso a Sistemas para [Nombre del Empleado]\") en una lista de tareas de RRHH y se marca automáticamente como \"En Progreso\" para asegurar que los preparativos se inician sin demora.",
+      "Cuando un nuevo lead de ventas es capturado desde una campaña de marketing, se crea una tarea en To Do para el equipo de ventas (\"Contactar Lead [Nombre del Lead]\") con alta importancia y se actualiza su estado a \"En Progreso\" para indicar que el seguimiento debe comenzar de inmediato.",
+      "Después de que un borrador de contenido es completado y enviado para revisión, se genera una tarea en To Do para el editor (\"Revisar Borrador de Artículo X\") y se pone en estado \"En Progreso\" para alertar al editor que el contenido está listo para su evaluación."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 72,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0059-mattermost-bot-config.json-1758127697432",
+    "fileName": "0059-mattermost-bot-config.json",
+    "flowName": "Standup Bot - Initialize",
+    "mainArea": "Productividad del Equipo",
+    "secondaryAreas": [
+      "IT & Operaciones",
+      "Colaboración"
+    ],
+    "mainFunction": "Inicializar y guardar la configuración por defecto de un bot de standup, incluyendo tokens y URLs de Mattermost.",
+    "automationDestinations": [
+      "Sistema de Archivos",
+      "Mattermost (configuración)"
+    ],
+    "dataOrigins": [
+      "Disparador Manual"
+    ],
+    "keyNodes": [
+      "ManualTrigger",
+      "Set",
+      "Move Binary Data",
+      "Write Binary File"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Inicializa la configuración por defecto de un bot de standup y la guarda en un archivo de configuración.",
+    "useCaseExamples": [
+      "Inicializar el bot de standup en un nuevo servidor de Mattermost, estableciendo todos los tokens y URLs necesarios por defecto para su primera ejecución.",
+      "Restaurar la configuración del bot de standup a un estado predeterminado si el archivo de configuración actual se corrompe o se modifica accidentalmente.",
+      "Preparar rápidamente un entorno de desarrollo o prueba para el bot de standup, asegurando que todos los parámetros esenciales estén correctamente configurados desde el inicio.",
+      "Automatizar la configuración inicial del bot de standup como parte de un proceso más grande de incorporación para nuevos equipos o proyectos que usarán Mattermost.",
+      "Estandarizar y aplicar una configuración base para el bot de standup en múltiples instancias de Mattermost, garantizando consistencia en los tokens y URLs utilizados."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 73,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0060-notion-sigalerts.json-1758127749238",
+    "fileName": "0060-notion-sigalerts.json",
+    "flowName": "Gestión de Alertas de Máquinas con Notion y SIGNL4",
+    "mainArea": "Operaciones TI",
+    "secondaryAreas": [
+      "Gestión de Proyectos",
+      "Automatización"
+    ],
+    "mainFunction": "Automatizar la creación de alertas en SIGNL4 desde nuevas entradas en Notion, y actualizar el estado de las alertas en Notion y SIGNL4 en función de los eventos recibidos desde SIGNL4 y verificaciones programadas.",
+    "automationDestinations": [
+      "Notion",
+      "SIGNL4"
+    ],
+    "dataOrigins": [
+      "Webhook",
+      "Notion Trigger",
+      "Notion (lectura programada)"
+    ],
+    "keyNodes": [
+      "Function",
+      "Webhook",
+      "Notion",
+      "SIGNL4",
+      "Interval"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Sincroniza el estado de las alertas de máquinas entre Notion y SIGNL4, creando alertas automáticamente y actualizando su estado bidireccionalmente.",
+    "useCaseExamples": [
+      "Monitorización de Infraestructura IT: Cuando un sistema de monitorización registra una alerta crítica (servidor caído, alto uso de CPU), se crea una entrada en una base de datos de Notion. Este flujo de trabajo envía una alerta urgente al equipo de TI de guardia a través de SIGNL4 y actualiza el estado de la alerta en Notion cuando es reconocida o cerrada en SIGNL4.",
+      "Gestión de Incidentes en Producción/Fabricación: Ante la detección de una falla crítica en una máquina de producción mediante sensores, se genera automáticamente una página en Notion. El flujo alerta al personal de mantenimiento a través de SIGNL4, y las acciones de estos (reconocimiento, resolución) en SIGNL4 se sincronizan con el estado en Notion.",
+      "Coordinación de Respuesta a Emergencias: En situaciones de emergencia (ej. desastres naturales), cuando se registra un nuevo incidente en una base de datos de Notion, el flujo notifica instantáneamente a los equipos de respuesta (bomberos, servicios médicos) mediante SIGNL4. Las actualizaciones del estado del incidente (reconocido, en ruta, resuelto) desde SIGNL4 se reflejan en tiempo real en Notion.",
+      "Respuesta a Incidentes de Seguridad: Un sistema SIEM (Security Information and Event Management) detecta una amenaza de alta prioridad y crea una entrada en una base de datos de Notion de \"Incidentes de Seguridad\". El flujo de n8n alerta al equipo de ciberseguridad a través de SIGNL4, y el progreso de la investigación y resolución del incidente se actualiza automáticamente en Notion.",
+      "Escalada de Problemas Críticos de Clientes: Cuando un problema de cliente de nivel crítico (ej. sistema de producción del cliente inoperativo) se registra en Notion, el flujo utiliza SIGNL4 para alertar inmediatamente al equipo de soporte de nivel 3 o a ingeniería. El estado del problema se mantiene actualizado en Notion a medida que el equipo responde y lo resuelve a través de SIGNL4."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 74,
     "isFavorite": false
   }
 ]
