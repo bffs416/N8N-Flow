@@ -22,4 +22,5 @@ export type Workflow = {
   useCaseExamples: string[];
   similarities: Similarity[];
   isFavorite?: boolean;
+  notes?: string;
 };

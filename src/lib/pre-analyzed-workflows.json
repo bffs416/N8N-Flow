@@ -38,7 +38,7 @@
     ],
     "similarities": [],
     "id": 1,
-    "isFavorite": false
+    "isFavorite": true
   },
   {
     "workflow_uuid": "✨ Vision-Based AI Agent Scraper - with Google Sheets, ScrapingBee, and Gemini.txt-1758064149368",
@@ -80,7 +80,7 @@
     ],
     "similarities": [],
     "id": 2,
-    "isFavorite": false
+    "isFavorite": true
   },
   {
     "workflow_uuid": "✨_Generate_Graphic_Wallpaper_with_Midjourney,_GPT_4o_mini_&_Canvas.json-1758064167594",
@@ -120,7 +120,7 @@
     ],
     "similarities": [],
     "id": 3,
-    "isFavorite": false
+    "isFavorite": true
   },
   {
     "workflow_uuid": "🎨 Interactive Image Editor with FLUX. Fill Tool for Inpainting.txt-1758064183390",
@@ -202,7 +202,7 @@
     ],
     "similarities": [],
     "id": 5,
-    "isFavorite": false
+    "isFavorite": true
   },
   {
     "workflow_uuid": "🐋DeepSeek V Chat & R Reasoning Quick Start.txt-1758064211618",
@@ -1410,6 +1410,352 @@
     ],
     "similarities": [],
     "id": 36,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0021-mock-contacts-to-sheet.json-1758120542942",
+    "fileName": "0021-mock-contacts-to-sheet.json",
+    "flowName": "Loading data into a spreadsheet",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Marketing",
+      "Gestión de Datos",
+      "Servicio al Cliente"
+    ],
+    "mainFunction": "Prepara y carga datos de contactos de CRM en una hoja de cálculo o base de datos.",
+    "automationDestinations": [
+      "Google Sheets",
+      "Airtable",
+      "Base de Datos"
+    ],
+    "dataOrigins": [
+      "Hubspot"
+    ],
+    "keyNodes": [
+      "Function",
+      "Set",
+      "NoOp"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Carga contactos de CRM en una hoja de cálculo o base de datos de manera sencilla.",
+    "useCaseExamples": [
+      "Un equipo de marketing necesita exportar semanalmente todos los contactos nuevos de su CRM a una hoja de cálculo de Google para segmentarlos y usarlos en una campaña de email marketing específica, ya que la plataforma de email no se integra directamente con el CRM.",
+      "Una empresa desea mantener un registro de respaldo diario de todos sus contactos de clientes en una hoja de cálculo de Airtable, extrayendo el nombre y el correo electrónico del CRM principal para fines de auditoría y recuperación de datos.",
+      "Un organizador de eventos necesita compilar una lista consolidada de todos los asistentes de diferentes eventos virtuales. Este flujo puede extraer los datos de registro (simulados por el CRM) y añadirlos automáticamente a una hoja maestra en una base de datos.",
+      "Un gerente de ventas quiere preparar una lista rápida de contactos clave (nombre y email) para un equipo de telemarketing. Este flujo le permite extraer la información relevante del CRM y volcarla en una hoja de cálculo que el equipo puede usar fácilmente sin acceder al CRM completo.",
+      "Un equipo de soporte al cliente necesita una forma sencilla de ver el nombre y el correo electrónico de los usuarios que han enviado una nueva consulta. El flujo extrae estos datos del sistema de tickets (simulado por el CRM) y los carga en una hoja de cálculo compartida para un seguimiento rápido."
+    ],
+    "similarities": [],
+    "id": 37,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0022-copper-person-flow.json-1758120597165",
+    "fileName": "0022-copper-person-flow.json",
+    "flowName": "Gestionar Contactos en Copper",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Atención al Cliente"
+    ],
+    "mainFunction": "Crea, actualiza y recupera información de contactos (personas) dentro de Copper.",
+    "automationDestinations": [
+      "Copper"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "manualTrigger",
+      "Copper"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo permite realizar operaciones básicas de gestión de contactos (crear, actualizar, obtener) en el CRM Copper de forma manual.",
+    "useCaseExamples": [
+      "Incorporación manual de un nuevo lead o socio: Un miembro del equipo de ventas o alianzas necesita agregar rápidamente un nuevo contacto (un lead prometedor o un socio estratégico) en Copper, registrando su nombre y correo electrónico, y luego añadiendo su número de teléfono tan pronto como esté disponible para un seguimiento completo.",
+      "Pruebas de integración para nuevas conexiones de datos: Antes de lanzar una integración a gran escala que sincronice datos de clientes de una base de datos externa a Copper, se utiliza este flujo para verificar que la creación, actualización y recuperación de un registro de persona funcionan correctamente con las credenciales y configuraciones de la API.",
+      "Actualización de información de contactos clave tras una reunión: Después de una reunión importante, un gerente desea actualizar la información de un contacto clave en Copper. Este flujo podría ser adaptado para crear un nuevo contacto (si no existe) o actualizar su número de teléfono (si se obtuvo durante la reunión), y luego verificar los datos actualizados.",
+      "Soporte al cliente para la creación/modificación de perfiles: Un agente de soporte recibe una solicitud de un cliente para actualizar su información de contacto (por ejemplo, añadir un número de teléfono de trabajo) o para registrar un nuevo contacto que representará a su empresa. El agente usa un mecanismo manual (simulado por el disparador) para iniciar este proceso en Copper.",
+      "Generación de contactos de prueba para desarrollo y staging: En un entorno de desarrollo o staging, se necesita poblar el CRM con datos de prueba. Este flujo proporciona una forma rápida y repetible de crear un contacto básico, añadirle un número de teléfono y verificar su existencia, facilitando las pruebas de otras funcionalidades que dependan de datos en Copper."
+    ],
+    "similarities": [],
+    "id": 38,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0023-coda-insert-data.json-1758120625551",
+    "fileName": "0023-coda-insert-data.json",
+    "flowName": "Insert data into a new row for a table in Coda",
+    "mainArea": "Gestión de Datos",
+    "secondaryAreas": [
+      "Productividad",
+      "Operaciones"
+    ],
+    "mainFunction": "Inserta datos definidos en una nueva fila de una tabla específica en Coda.",
+    "automationDestinations": [
+      "Coda"
+    ],
+    "dataOrigins": [
+      "Disparador Manual"
+    ],
+    "keyNodes": [
+      "manualTrigger",
+      "Set",
+      "Coda"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo inserta datos predefinidos en una nueva fila de una tabla de Coda.",
+    "useCaseExamples": [
+      "Captura de Leads desde Formularios Web: Cuando un nuevo lead completa un formulario en una página web (por ejemplo, Google Forms o Typeform), el flujo de trabajo extrae los datos del lead (nombre, email, empresa) y los inserta automáticamente como una nueva fila en una tabla de Coda utilizada como CRM.",
+      "Registro de Tareas o Incidencias: Al crearse una nueva tarea en una herramienta de gestión de proyectos (como Trello o Asana), el flujo de trabajo captura los detalles (título, descripción, asignado) y los añade como una nueva entrada en una tabla de seguimiento de proyectos en Coda.",
+      "Sincronización de Nuevos Pedidos de E-commerce: Cada vez que se realiza un nuevo pedido en una plataforma de comercio electrónico (como Shopify o WooCommerce), el flujo extrae la información relevante (ID del pedido, cliente, total, artículos) y la inserta automáticamente en una tabla de Coda para el seguimiento de ventas o inventario.",
+      "Registro de Comentarios de Clientes: Cuando un cliente envía un formulario de feedback o una encuesta (por ejemplo, a través de SurveyMonkey o un formulario personalizado), el contenido del feedback (calificación, comentario, nombre del cliente) se registra como una nueva fila en una tabla de Coda dedicada a la gestión de comentarios.",
+      "Añadir Nuevas Citas a un Calendario/Agenda: Al programarse una nueva cita en una herramienta de calendario (como Calendly o Google Calendar), los detalles de la cita (fecha, hora, participante, tema) se extraen y se insertan como un nuevo registro en una tabla de Coda utilizada para la agenda o el seguimiento de reuniones."
+    ],
+    "similarities": [],
+    "id": 39,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0024-iss-position-updates.json-1758120654704",
+    "fileName": "0024-iss-position-updates.json",
+    "flowName": "Send updates about the position of the ISS every minute to a topic in ActiveMQ",
+    "mainArea": "IT/Operaciones",
+    "secondaryAreas": [
+      "Ciencia y Datos",
+      "Monitoreo",
+      "IoT"
+    ],
+    "mainFunction": "Obtener la posición actual de la Estación Espacial Internacional (ISS) a través de una API externa y enviar estos datos a un topic de ActiveMQ cada minuto.",
+    "automationDestinations": [
+      "ActiveMQ"
+    ],
+    "dataOrigins": [
+      "API externa",
+      "Cron"
+    ],
+    "keyNodes": [
+      "Cron",
+      "HTTP Request",
+      "Set",
+      "AMQP Sender"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Envía actualizaciones de la posición de la ISS a ActiveMQ cada minuto.",
+    "useCaseExamples": [
+      "Un museo espacial o un sitio web educativo utiliza estos datos para alimentar un mapa interactivo que muestra la posición actual de la ISS en tiempo real, accesible al público.",
+      "Una aplicación de astronomía aficionada consume estos mensajes para enviar notificaciones a los usuarios cuando la ISS sea visible desde su ubicación geográfica específica.",
+      "Un equipo de investigación espacial recopila y almacena esta secuencia de datos de posición para realizar análisis a largo plazo sobre la órbita, velocidad y patrones de movimiento de la ISS.",
+      "Estaciones terrestres de aficionados o profesionales que necesiten apuntar automáticamente sus antenas o telescopios para seguir el paso de la ISS, utilizando estos datos como entrada.",
+      "Desarrolladores de simulaciones 3D o experiencias de realidad virtual utilizan esta transmisión de datos en vivo para dar vida a modelos de la ISS, permitiendo a los usuarios \"volar junto\" a ella virtualmente."
+    ],
+    "similarities": [],
+    "id": 40,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0025-google-slides-thumbnail.json-1758120682532",
+    "fileName": "0025-google-slides-thumbnail.json",
+    "flowName": "Extracción de Diapositivas y Miniaturas de Google Slides",
+    "mainArea": "Gestión de Contenido",
+    "secondaryAreas": [
+      "Marketing",
+      "Educación",
+      "Productividad"
+    ],
+    "mainFunction": "Recuperar todas las diapositivas de una presentación de Google Slides y generar miniaturas para cada una de ellas.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "Google Slides",
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "Google Slides",
+      "Google Slides1"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Obtiene diapositivas y sus miniaturas de una presentación de Google Slides.",
+    "useCaseExamples": [
+      "Un equipo de marketing necesita generar rápidamente miniaturas de todas las diapositivas de presentaciones de productos para una biblioteca interna de recursos visuales, permitiendo a los miembros del equipo buscar y previsualizar contenido sin abrir cada archivo completo.",
+      "Un departamento de RRHH quiere crear un índice visual para un curso de formación online. El flujo de trabajo podría descargar las miniaturas de cada diapositiva de la presentación del curso, que luego podrían usarse como enlaces a las secciones correspondientes en una plataforma de e-learning.",
+      "Una empresa necesita archivar automáticamente una representación visual de todas las diapositivas de sus presentaciones trimestrales de resultados para fines de cumplimiento y auditoría, asegurando un registro visual de lo que se presentó.",
+      "Un creador de contenido quiere publicar un resumen visual de una presentación reciente en el blog de la empresa o en la intranet. El flujo de trabajo descargaría las miniaturas de las diapositivas clave, que luego podrían incrustarse como imágenes en el post.",
+      "Un community manager necesita extraer rápidamente elementos visuales de presentaciones existentes para crear publicaciones en redes sociales. Al obtener las miniaturas de las diapositivas, puede identificar y reutilizar el contenido visual más relevante de forma eficiente."
+    ],
+    "similarities": [],
+    "id": 41,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0026-linkedin-top-sourcer.json-1758120710002",
+    "fileName": "0026-linkedin-top-sourcer.json",
+    "flowName": "TopSourcer - Finds LinkedIn Profiles using natural language",
+    "mainArea": "Recursos Humanos",
+    "secondaryAreas": [
+      "Ventas",
+      "Inteligencia de Negocio"
+    ],
+    "mainFunction": "Genera cadenas de búsqueda booleanas a partir de descripciones de puestos para encontrar perfiles de LinkedIn y los guarda en una hoja de Google Sheets.",
+    "automationDestinations": [
+      "Google Sheets"
+    ],
+    "dataOrigins": [
+      "Chat",
+      "OpenAI"
+    ],
+    "keyNodes": [
+      "When chat message received",
+      "Generate a Boolean Search String",
+      "Google Boolean Search",
+      "Extracts all linkedin urls from the google http response",
+      "If desired results not reached",
+      "Appends the results to the sheet"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Este flujo usa IA para convertir descripciones de trabajo en búsquedas booleanas de Google, encuentra perfiles de LinkedIn y los guarda automáticamente en Google Sheets.",
+    "useCaseExamples": [
+      "Un reclutador de una empresa de tecnología necesita encontrar ingenieros de software senior con experiencia en React, Node.js y AWS en la región de Madrid. Introduce la descripción del puesto en lenguaje natural y el flujo genera una lista de perfiles de LinkedIn relevantes en una hoja de cálculo.",
+      "Una agencia de contratación especializada busca candidatos para un puesto de \"Jefe de Producto con experiencia en SaaS y metodologías ágiles\". Usan el flujo para generar cadenas de búsqueda complejas y obtener una amplia base de datos de posibles candidatos para sus clientes.",
+      "El equipo de RRHH de una gran corporación necesita cubrir una posición muy nicho, como \"Científico de Datos con especialización en procesamiento de lenguaje natural y experiencia en el sector financiero\". El flujo les ayuda a identificar rápidamente expertos en la materia.",
+      "Un equipo de ventas quiere identificar directores de marketing en empresas de e-commerce en Latinoamérica para una campaña de prospección. Utilizan el flujo para buscar perfiles que coincidan con estos criterios y recopilar URLs de LinkedIn para su alcance inicial.",
+      "Una empresa desea analizar el panorama de talento para \"expertos en ciberseguridad con certificaciones CISSP o CISM\" en Europa. El flujo les permite compilar rápidamente una lista de profesionales para entender la distribución geográfica y las habilidades predominantes."
+    ],
+    "similarities": [],
+    "id": 42,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0027-chargebee-nuevo-cliente.json-1758120731382",
+    "fileName": "0027-chargebee-nuevo-cliente.json",
+    "flowName": "Create a new customer in Chargebee",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Finanzas",
+      "Atención al Cliente"
+    ],
+    "mainFunction": "Crear un nuevo cliente en Chargebee.",
+    "automationDestinations": [
+      "Chargebee"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Chargebee"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo permite crear manualmente un nuevo cliente en Chargebee.",
+    "useCaseExamples": [
+      "Creación automática de un nuevo cliente en Chargebee cuando un usuario se registra en un formulario web para una suscripción a un servicio.",
+      "Sincronización de nuevos clientes desde un CRM (por ejemplo, Salesforce o HubSpot) a Chargebee después de que un acuerdo de venta es cerrado y marcado como \"ganado\".",
+      "Un miembro del equipo de soporte o ventas crea manualmente un nuevo cliente en Chargebee para una suscripción personalizada o un acuerdo offline.",
+      "Registro de asistentes a un evento o webinar de pago como nuevos clientes en Chargebee para gestionar futuras facturaciones o accesos.",
+      "Integración con una plataforma de e-commerce (como Shopify o WooCommerce) para crear automáticamente un cliente en Chargebee cuando se realiza una compra de un producto de suscripción."
+    ],
+    "similarities": [],
+    "id": 43,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0028-verificacion-email-deliverable.json-1758120759250",
+    "fileName": "0028-verificacion-email-deliverable.json",
+    "flowName": "verify email",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Ventas",
+      "Operaciones"
+    ],
+    "mainFunction": "Verifica la existencia y validez de una dirección de correo electrónico utilizando un servicio externo.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "Manual"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Function Item",
+      "Uproc",
+      "IF"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Verifica la validez de una dirección de correo electrónico.",
+    "useCaseExamples": [
+      "Validar correos electrónicos de nuevos registros de usuarios para asegurar que son válidos antes de crear una cuenta.",
+      "Limpiar periódicamente una lista de marketing por correo electrónico, identificando y eliminando direcciones que ya no son entregables para mejorar la eficacia de las campañas.",
+      "Verificar la validez de las direcciones de correo electrónico proporcionadas en formularios de contacto o soporte al cliente para asegurar una comunicación efectiva.",
+      "Confirmar que el correo electrónico de un nuevo suscriptor a un boletín es entregable antes de añadirlo a la lista activa, evitando rebotes.",
+      "Integrar la verificación de correo electrónico en formularios de comentarios o solicitudes para reducir el spam y asegurar que las respuestas lleguen a direcciones válidas."
+    ],
+    "similarities": [],
+    "id": 44,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0029-mattermost-emelia-trigger.json-1758120778057",
+    "fileName": "0029-mattermost-emelia-trigger.json",
+    "flowName": "Notificación de Respuesta a Campaña de Emelia en Mattermost",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Ventas"
+    ],
+    "mainFunction": "Notificar en Mattermost cuando un contacto responde a una campaña de Emelia.",
+    "automationDestinations": [
+      "Mattermost"
+    ],
+    "dataOrigins": [
+      "Emelia Trigger"
+    ],
+    "keyNodes": [
+      "Emelia Trigger",
+      "Mattermost"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo notifica al equipo en Mattermost cada vez que un contacto responde a una campaña de correo electrónico de Emelia.",
+    "useCaseExamples": [
+      "Un equipo de ventas envía campañas de correo electrónico a clientes potenciales a través de Emelia. Cuando un prospecto responde a una campaña, el equipo recibe una notificación instantánea en su canal de ventas de Mattermost, lo que les permite hacer un seguimiento rápido.",
+      "Un equipo de soporte al cliente utiliza Emelia para enviar campañas proactivas con actualizaciones o encuestas. Si un cliente responde con una pregunta o un problema, el equipo es alertado inmediatamente en su canal de soporte de Mattermost para atender el caso.",
+      "Un departamento de marketing lanza una campaña de lanzamiento de un nuevo producto. Cada vez que un receptor responde mostrando interés o haciendo una pregunta, el equipo de marketing recibe una notificación en tiempo real en Mattermost para medir el compromiso.",
+      "Organizadores de eventos envían campañas de Emelia para invitaciones o confirmaciones de asistencia a un webinar. Si un invitado responde para confirmar o hacer una pregunta, el equipo de coordinación del evento es notificado en su canal de Mattermost.",
+      "Un equipo de producto distribuye una encuesta de retroalimentación a través de Emelia. Cuando los usuarios envían sus respuestas, el equipo recibe alertas directas en su canal de Mattermost, facilitando una revisión y análisis ágil de los comentarios."
+    ],
+    "similarities": [],
+    "id": 45,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0030-iss-monitoring-sqs.json-1758120800130",
+    "fileName": "0030-iss-monitoring-sqs.json",
+    "flowName": "Envío de Posición de la ISS a AWS SQS",
+    "mainArea": "Monitoreo de Datos",
+    "secondaryAreas": [
+      "Integración de Datos",
+      "Infraestructura IT",
+      "Ciencia de Datos"
+    ],
+    "mainFunction": "Obtiene la posición actual de la Estación Espacial Internacional (ISS) en intervalos regulares y envía estos datos a una cola de AWS SQS.",
+    "automationDestinations": [
+      "AWS SQS"
+    ],
+    "dataOrigins": [
+      "Cron",
+      "API Externa (ISS Tracker)"
+    ],
+    "keyNodes": [
+      "Cron",
+      "HTTP Request",
+      "Set",
+      "AWS SQS"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Recopila periódicamente la posición de la ISS mediante una API y la publica en una cola de AWS SQS.",
+    "useCaseExamples": [
+      "Monitoreo en tiempo real de la Estación Espacial Internacional (ISS) para una aplicación web que visualiza su trayectoria global en un mapa.",
+      "Alimentar un sistema de alertas que notifique a los observadores de estrellas cuando la ISS sea visible desde su ubicación, basándose en los datos de posición recibidos cada minuto.",
+      "Recopilar un historial detallado de la ubicación de la ISS en un lago de datos (data lake) para análisis científicos o estudios de trayectoria orbital a largo plazo.",
+      "Suministrar datos de localización actual de la ISS a una pantalla interactiva en un museo de ciencia o centro educativo, mostrando su posición sobre la Tierra en ese instante.",
+      "Integrar la información de la posición de la ISS en un sistema de radioaficionados para coordinar la escucha o el seguimiento de las transmisiones de la estación cuando pasa por una región determinada."
+    ],
+    "similarities": [],
+    "id": 46,
     "isFavorite": false
   }
 ]

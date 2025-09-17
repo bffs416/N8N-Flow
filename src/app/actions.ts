@@ -46,6 +46,7 @@ export async function analyzeSingleWorkflow(
       shortDescription: aiInfo.shortDescription || 'N/A',
       useCaseExamples: useCaseExamples.useCaseExamples || [],
       similarities: [],
+      notes: '',
     };
 
     return newWorkflowData;

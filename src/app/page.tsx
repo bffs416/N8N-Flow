@@ -35,14 +35,15 @@ export default function Home() {
 
   useEffect(() => {
     try {
-      const workflowsWithFavorites = (preAnalyzedWorkflows as any[]).map((wf, index) => ({
+      const workflowsWithFavoritesAndNotes = (preAnalyzedWorkflows as any[]).map((wf, index) => ({
         ...wf,
         id: wf.id || index + 1,
         workflow_uuid: wf.workflow_uuid || `pre-analyzed-${index + 1}`,
         isFavorite: wf.isFavorite || false,
+        notes: wf.notes || '',
       }));
-      setWorkflows(workflowsWithFavorites);
-      setInitialWorkflows(workflowsWithFavorites);
+      setWorkflows(workflowsWithFavoritesAndNotes);
+      setInitialWorkflows(workflowsWithFavoritesAndNotes);
     } catch (error) {
       console.error('Failed to load pre-analyzed workflows', error);
       toast({
@@ -82,7 +83,7 @@ export default function Home() {
         try {
             const analyzedData = await analyzeSingleWorkflow(file);
             const newId = getNextId([...workflows, ...newWorkflows]);
-            const newWorkflow = { ...analyzedData, id: newId, isFavorite: false };
+            const newWorkflow = { ...analyzedData, id: newId, isFavorite: false, notes: '' };
             newWorkflows.push(newWorkflow);
             newUuids.add(newWorkflow.workflow_uuid);
         } catch (e: any) {
@@ -105,6 +106,7 @@ export default function Home() {
                 useCaseExamples: [],
                 similarities: [],
                 isFavorite: false,
+                notes: '',
             };
             newWorkflows.push(failedWorkflow);
             toast({
