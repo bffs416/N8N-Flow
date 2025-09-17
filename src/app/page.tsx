@@ -13,6 +13,7 @@ import {UploadCloud, Loader2} from 'lucide-react';
 import {Progress} from '@/components/ui/progress';
 import preAnalyzedWorkflows from '@/lib/pre-analyzed-workflows.json';
 import {SearchInput} from '@/components/search-input';
+import { WorkflowFilters } from '@/components/filters';
 
 const BATCH_SIZE = 5;
 
@@ -24,18 +25,24 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [unanalysedUuids, setUnanalysedUuids] = useState<Set<string>>(new Set());
+  
+  // State for new filters
+  const [mainAreaFilter, setMainAreaFilter] = useState('all');
+  const [complexityFilter, setComplexityFilter] = useState('all');
+  const [showFavorites, setShowFavorites] = useState(false);
 
   const {toast} = useToast();
 
   useEffect(() => {
     try {
-      const workflowsWithNumericId = (preAnalyzedWorkflows as any[]).map((wf, index) => ({
+      const workflowsWithFavorites = (preAnalyzedWorkflows as any[]).map((wf, index) => ({
         ...wf,
         id: wf.id || index + 1,
-        workflow_uuid: wf.workflow_uuid || `pre-analyzed-${index + 1}`
+        workflow_uuid: wf.workflow_uuid || `pre-analyzed-${index + 1}`,
+        isFavorite: wf.isFavorite || false,
       }));
-      setWorkflows(workflowsWithNumericId);
-      setInitialWorkflows(workflowsWithNumericId);
+      setWorkflows(workflowsWithFavorites);
+      setInitialWorkflows(workflowsWithFavorites);
     } catch (error) {
       console.error('Failed to load pre-analyzed workflows', error);
       toast({
@@ -74,7 +81,7 @@ export default function Home() {
             const analyzedData = await analyzeSingleWorkflow(file);
             setWorkflows(prevWorkflows => {
                const newId = getNextId(prevWorkflows);
-               const newWorkflow = { ...analyzedData, id: newId };
+               const newWorkflow = { ...analyzedData, id: newId, isFavorite: false };
                newUuids.add(newWorkflow.workflow_uuid);
                return [...prevWorkflows, newWorkflow];
             });
@@ -241,22 +248,46 @@ export default function Home() {
   };
 
   const filteredWorkflows = useMemo(() => {
-    if (!searchQuery) return workflows;
+    let filtered = workflows;
 
-    const query = searchQuery.toLowerCase();
-    return workflows.filter(wf => 
-      (wf.id && `#${wf.id}`.includes(query)) ||
-      wf.flowName.toLowerCase().includes(query) ||
-      wf.shortDescription.toLowerCase().includes(query) ||
-      wf.mainArea.toLowerCase().includes(query) ||
-      wf.mainFunction.toLowerCase().includes(query) ||
-      wf.dataOrigins.some(o => o.toLowerCase().includes(query)) ||
-      wf.automationDestinations.some(d => d.toLowerCase().includes(query)) ||
-      wf.keyNodes.some(n => n.toLowerCase().includes(query))
-    );
-  }, [workflows, searchQuery]);
+    // Apply favorite filter
+    if (showFavorites) {
+      filtered = filtered.filter(wf => wf.isFavorite);
+    }
+
+    // Apply main area filter
+    if (mainAreaFilter !== 'all') {
+      filtered = filtered.filter(wf => wf.mainArea === mainAreaFilter);
+    }
+
+    // Apply complexity filter
+    if (complexityFilter !== 'all') {
+      filtered = filtered.filter(wf => wf.complexity === complexityFilter);
+    }
+
+    // Apply search query
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(wf => 
+        (wf.id && `#${wf.id}`.includes(query)) ||
+        wf.flowName.toLowerCase().includes(query) ||
+        wf.shortDescription.toLowerCase().includes(query) ||
+        wf.mainArea.toLowerCase().includes(query) ||
+        wf.mainFunction.toLowerCase().includes(query) ||
+        wf.dataOrigins.some(o => o.toLowerCase().includes(query)) ||
+        wf.automationDestinations.some(d => d.toLowerCase().includes(query)) ||
+        wf.keyNodes.some(n => n.toLowerCase().includes(query))
+      );
+    }
+
+    return filtered;
+  }, [workflows, searchQuery, mainAreaFilter, complexityFilter, showFavorites]);
 
   const isAnalyzing = analysisProgress.total > 0;
+  
+  const mainAreas = useMemo(() => ['all', ...Array.from(new Set(workflows.map(wf => wf.mainArea)))], [workflows]);
+  const complexities = useMemo(() => ['all', 'Simple', 'Medio', 'Complejo'], []);
+
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -298,13 +329,24 @@ export default function Home() {
           )}
 
           {workflows.length > 0 && (
-            <div className="sticky top-[65px] z-10 bg-background/80 backdrop-blur-sm -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-2">
+            <div className="sticky top-[65px] z-10 bg-background/80 backdrop-blur-sm -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-2 space-y-4">
                 <SearchInput
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={`Buscar en ${workflows.length} flujos...`}
                   disabled={isLoading}
                   onClear={() => setSearchQuery('')}
+                />
+                <WorkflowFilters
+                    mainAreas={mainAreas}
+                    complexities={complexities}
+                    mainAreaFilter={mainAreaFilter}
+                    setMainAreaFilter={setMainAreaFilter}
+                    complexityFilter={complexityFilter}
+                    setComplexityFilter={setComplexityFilter}
+                    showFavorites={showFavorites}
+                    setShowFavorites={setShowFavorites}
+                    disabled={isLoading}
                 />
             </div>
           )}

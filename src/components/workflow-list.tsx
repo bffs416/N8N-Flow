@@ -24,6 +24,7 @@ import {
   ClipboardCopy,
   Wand2,
   Info,
+  Star,
 } from 'lucide-react';
 import {
   AlertDialog,
@@ -45,6 +46,8 @@ import {
 } from "@/components/ui/accordion"
 import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { cn } from '@/lib/utils';
+
 
 const getComplexityBadge = (complexity: 'Simple' | 'Medio' | 'Complejo') => {
   switch (complexity) {
@@ -69,7 +72,7 @@ const InfoRow = ({ icon, label, children }: { icon: React.ReactNode, label: stri
     </div>
 );
 
-const WorkflowCard = ({ workflow, onDelete, isUnanalysed }: { workflow: Workflow, onDelete: (id: number) => void, isUnanalysed: boolean }) => {
+const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite }: { workflow: Workflow, onDelete: (id: number) => void, isUnanalysed: boolean, onToggleFavorite: (id: number) => void }) => {
   const [openAccordion, setOpenAccordion] = useState('');
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -79,6 +82,11 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed }: { workflow: Workflow
     }
     setOpenAccordion(openAccordion === 'details' ? '' : 'details');
   };
+  
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+      e.stopPropagation(); // Prevent card from expanding/collapsing
+      onToggleFavorite(workflow.id);
+  }
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -118,14 +126,24 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed }: { workflow: Workflow
   <Card ref={cardRef} className="w-full overflow-hidden flex flex-col border-primary">
      <Accordion type="single" collapsible className="w-full" value={openAccordion} onValueChange={setOpenAccordion}>
       <AccordionItem value="details" className="border-none">
-        <div onClick={toggleAccordion} className="cursor-pointer hover:bg-secondary/30 transition-colors">
+        <div onClick={toggleAccordion} className="cursor-pointer hover:bg-secondary/30 transition-colors relative">
+         <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-3 right-3 z-10 h-8 w-8"
+            onClick={handleFavoriteClick}
+            aria-label={workflow.isFavorite ? "Quitar de favoritos" : "Añadir a favoritos"}
+          >
+            <Star className={cn("h-5 w-5 text-muted-foreground transition-all", workflow.isFavorite ? "fill-yellow-400 text-yellow-500" : "hover:text-yellow-500")} />
+          </Button>
+
           <div className="p-4 md:p-6">
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
               {/* Main Info */}
               <div className="flex-grow">
                   <div className='flex items-start gap-3'>
                       <span className="text-xl font-bold text-primary w-8 text-center">#{workflow.id}</span>
-                      <div className="flex-grow">
+                      <div className="flex-grow pr-8">
                         <div className='flex items-center gap-2'>
                           {workflow.fileName.endsWith('.json') ? <FileJson className="h-5 w-5 text-accent" /> : <FileText className="h-5 w-5 text-accent" />}
                           <h2 className="text-xl font-bold text-foreground">{workflow.flowName}</h2>
@@ -307,6 +325,15 @@ export function WorkflowList({
     });
   };
 
+ const handleToggleFavorite = (idToToggle: number) => {
+    setWorkflows(prev =>
+      prev.map(wf =>
+        wf.id === idToToggle ? { ...wf, isFavorite: !wf.isFavorite } : wf
+      )
+    );
+    setHasUnsavedChanges(true);
+  };
+
   const handleExport = () => {
     if (workflows.length === 0) {
       toast({
@@ -430,6 +457,7 @@ ${separator}`;
                 workflow={workflow} 
                 onDelete={handleDeleteWorkflow}
                 isUnanalysed={unanalysedUuids.has(workflow.workflow_uuid)}
+                onToggleFavorite={handleToggleFavorite}
               />
         ))}
     </div>

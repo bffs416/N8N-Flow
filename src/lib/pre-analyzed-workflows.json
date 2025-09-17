@@ -1039,5 +1039,341 @@
     ],
     "similarities": [],
     "id": 26
+  },
+  {
+    "workflow_uuid": "0011-totp-generator.json-1758117904491",
+    "fileName": "0011-totp-generator.json",
+    "flowName": "Complete Guide to Setting Up and Generating TOTP Codes in n8n 🔐",
+    "mainArea": "IT/Utilidades",
+    "secondaryAreas": [
+      "Seguridad",
+      "Administración de Sistemas"
+    ],
+    "mainFunction": "Generar códigos TOTP (Time-Based One-Time Password) para autenticación de dos factores.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "TOTP"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo genera códigos TOTP para la autenticación de dos factores, activado manualmente.",
+    "useCaseExamples": [
+      "Automatización de inicio de sesión en servicios externos que requieren autenticación de dos factores (2FA) con TOTP, como la conexión a APIs bancarias o de pasarelas de pago.",
+      "Provisión de códigos TOTP para bots o scripts internos que necesitan acceder de forma segura a sistemas críticos (ej. herramientas de administración de servidores, bases de datos) con 2FA sin intervención manual.",
+      "Rotación automática de claves API para servicios que exigen una autenticación TOTP adicional al realizar la operación de cambio de clave, aumentando la seguridad de las integraciones.",
+      "Generación de códigos TOTP para entornos de prueba, permitiendo a los desarrolladores simular y validar procesos de autenticación de dos factores en aplicaciones sin necesidad de usar un dispositivo físico.",
+      "Acceso seguro a paneles de control o bases de datos para la generación automática de informes o la ejecución de tareas programadas, donde el acceso requiere un TOTP para mayor seguridad."
+    ],
+    "similarities": [],
+    "id": 27
+  },
+  {
+    "workflow_uuid": "0012-typeform-feedback-route.json-1758117955718",
+    "fileName": "0012-typeform-feedback-route.json",
+    "flowName": "typeform feedback workflow",
+    "mainArea": "Educación",
+    "secondaryAreas": [
+      "Análisis de Datos",
+      "Mejora Continua"
+    ],
+    "mainFunction": "Recopilar, procesar y clasificar automáticamente el feedback de cursos enviado a través de Typeform y almacenarlo de forma diferenciada en Google Sheets.",
+    "automationDestinations": [
+      "Google Sheets"
+    ],
+    "dataOrigins": [
+      "Typeform"
+    ],
+    "keyNodes": [
+      "Typeform Trigger",
+      "Set",
+      "IF",
+      "Google Sheets"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo recoge feedback de cursos de Typeform, lo clasifica en positivo o negativo, y lo guarda en hojas de cálculo separadas de Google Sheets.",
+    "useCaseExamples": [
+      "Un centro de formación utiliza Typeform para que los estudiantes valoren la utilidad de un curso. Las valoraciones positivas (3 o más) se almacenan en una hoja de cálculo para testimonios y las negativas en otra para identificar mejoras.",
+      "Una empresa de SaaS implementa una encuesta Typeform post-implementación para que los clientes califiquen la utilidad de su software. El feedback se segrega en hojas de cálculo separadas para que el equipo de producto priorice las funciones y el equipo de éxito del cliente identifique a los usuarios en riesgo.",
+      "Organizadores de eventos recogen la opinión de los asistentes sobre la relevancia de las ponencias a través de Typeform. Las respuestas con alta utilidad se usan para promocionar futuros eventos, y las de baja utilidad para mejorar la selección de contenido.",
+      "Un equipo de recursos humanos lanza una encuesta Typeform interna para evaluar la utilidad de nuevas políticas o herramientas de colaboración. Los resultados se dividen en hojas de cálculo para medir la aceptación y realizar ajustes proactivamente.",
+      "Un editor de contenido web utiliza Typeform para que los lectores valoren la utilidad de sus artículos. Las valoraciones se guardan en dos hojas de cálculo: una para identificar temas exitosos y replicarlos, y otra para revisar o mejorar el contenido menos útil."
+    ],
+    "similarities": [],
+    "id": 28
+  },
+  {
+    "workflow_uuid": "0013-bitwarden-line-sync.json-1758117993653",
+    "fileName": "0013-bitwarden-line-sync.json",
+    "flowName": "Gestión Programática de Grupos y Miembros en Bitwarden",
+    "mainArea": "IT y Seguridad",
+    "secondaryAreas": [
+      "Recursos Humanos",
+      "Administración"
+    ],
+    "mainFunction": "Automatizar la creación de un grupo en Bitwarden y la asignación/validación de miembros a dicho grupo.",
+    "automationDestinations": [
+      "Bitwarden"
+    ],
+    "dataOrigins": [
+      "Bitwarden"
+    ],
+    "keyNodes": [
+      "Bitwarden (Crear Grupo)",
+      "Bitwarden (Obtener Miembros)",
+      "Bitwarden (Actualizar Miembros)",
+      "Bitwarden (Obtener Miembros del Grupo)"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Crea un grupo en Bitwarden, asigna miembros y verifica los miembros del grupo.",
+    "useCaseExamples": [
+      "Provisión inicial de un nuevo grupo de Bitwarden llamado \"Documentación Interna\" y asignación automática de todos los miembros de la organización a él para asegurar acceso universal a recursos de inicio.",
+      "Creación de un grupo de acceso universal \"Herramientas Esenciales\" para todos los empleados, asegurando que al momento de su creación, todos los miembros existentes sean añadidos de forma automática.",
+      "Restauración o recreación de un grupo de Bitwarden \"Acceso Global\" después de una eliminación accidental, garantizando que todos los miembros de la organización sean repoblados en él de inmediato.",
+      "Configuración de un nuevo grupo \"Cumplimiento Normativo\" en Bitwarden y asignación automática de todos los miembros de la organización para cumplir con requisitos de auditoría o políticas de seguridad.",
+      "Al lanzar un nuevo proyecto que requiere acceso compartido a un conjunto de credenciales, el flujo crea un grupo específico como \"Proyecto Alfa\" y añade automáticamente a todos los miembros de la organización para facilitar la colaboración."
+    ],
+    "similarities": [],
+    "id": 29
+  },
+  {
+    "workflow_uuid": "0014-monitor-verstappen-tweets.json-1758118020876",
+    "fileName": "0014-monitor-verstappen-tweets.json",
+    "flowName": "New tweets",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Análisis de Datos",
+      "Comunicación"
+    ],
+    "mainFunction": "Buscar tweets con una palabra clave específica, comparar con una lista existente en Airtable y añadir solo los nuevos tweets a una base de datos de Airtable.",
+    "automationDestinations": [
+      "Airtable"
+    ],
+    "dataOrigins": [
+      "Twitter",
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "Twitter",
+      "Airtable",
+      "Merge",
+      "Set"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo busca tweets por una palabra clave, los compara con registros existentes en Airtable y guarda los tweets nuevos en Airtable.",
+    "useCaseExamples": [
+      "Una marca de ropa deportiva monitorea menciones de su nombre y productos en Twitter para gestionar la reputación y medir el impacto de campañas, guardando todos los tweets nuevos en Airtable.",
+      "Un equipo de marketing analiza las menciones de la competencia en Twitter para identificar nuevas tendencias de mercado, quejas de clientes o lanzamientos de productos, almacenando los datos en una base de Airtable.",
+      "Organizadores de un evento o conferencia utilizan el flujo para recopilar en tiempo real todos los tweets que usen el hashtag oficial del evento, creando un archivo en Airtable para seguimiento post-evento.",
+      "Un equipo de ventas busca proactivamente tweets de usuarios expresando la necesidad de un producto o servicio que su empresa ofrece, guardando estos leads en Airtable para un posterior contacto.",
+      "Un investigador académico recolecta datos de Twitter sobre un tema social específico (ej. \"cambio climático\" o \"salud mental\") para un estudio, almacenando los tweets relevantes y nuevos en Airtable para su análisis."
+    ],
+    "similarities": [],
+    "id": 30
+  },
+  {
+    "workflow_uuid": "0015-berlin-clima-plivo.json-1758118038735",
+    "fileName": "0015-berlin-clima-plivo.json",
+    "flowName": "Enviar Temperatura Diaria por SMS",
+    "mainArea": "Productividad",
+    "secondaryAreas": [
+      "Notificaciones",
+      "Alertas",
+      "Operaciones"
+    ],
+    "mainFunction": "Obtener la temperatura de una ciudad y enviarla como un mensaje SMS a un número de teléfono específico de forma programada.",
+    "automationDestinations": [
+      "Plivo"
+    ],
+    "dataOrigins": [
+      "Cron",
+      "OpenWeatherMap"
+    ],
+    "keyNodes": [
+      "Cron",
+      "OpenWeatherMap",
+      "Plivo"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Envía la temperatura diaria de una ciudad por SMS a las 9 AM.",
+    "useCaseExamples": [
+      "Un individuo en Berlín recibe un SMS cada mañana a las 9 AM con la temperatura actual, ayudándole a decidir qué ropa usar para el día.",
+      "Un turista visitando Berlín configura este flujo para obtener la temperatura matutina y planificar sus actividades al aire libre o visitas turísticas.",
+      "Una persona que cuida a un familiar mayor en Berlín configura el flujo para enviar un mensaje diario con la temperatura, asegurándose de que su familiar se vista adecuadamente.",
+      "El dueño de una cafetería con terraza en Berlín usa el flujo para recibir la temperatura de la mañana y decidir si debe preparar la terraza con parasoles o estufas.",
+      "Un organizador de eventos al aire libre en Berlín utiliza el SMS diario de temperatura para hacer ajustes de última hora en la logística del evento o para informar a los participantes."
+    ],
+    "similarities": [],
+    "id": 31
+  },
+  {
+    "workflow_uuid": "0016-todoist-task-creator.json-1758118071165",
+    "fileName": "0016-todoist-task-creator.json",
+    "flowName": "Create a new task in Todoist",
+    "mainArea": "Productividad",
+    "secondaryAreas": [
+      "Gestión de Proyectos",
+      "Gestión Personal"
+    ],
+    "mainFunction": "Crear una nueva tarea en Todoist.",
+    "automationDestinations": [
+      "Todoist"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "manualTrigger",
+      "Todoist"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo permite crear rápidamente una nueva tarea en Todoist mediante un disparador manual.",
+    "useCaseExamples": [
+      "Registro rápido de ideas o pensamientos: Un usuario tiene una idea repentina y usa el flujo de trabajo para crear rápidamente una tarea en Todoist con un título predefinido como \"Idea: [Descripción]\" para revisarla más tarde.",
+      "Creación de una tarea estándar post-reunión: Después de una reunión, el usuario activa el flujo para crear una tarea genérica como \"Enviar resumen de la reunión X\" o \"Seguimiento con el participante Y\", simplificando la creación de tareas recurrentes.",
+      "Añadir una tarea para seguimiento de cliente: Un comercial termina una llamada y quiere añadir rápidamente una tarea en Todoist para \"Hacer seguimiento con el Cliente Z en 3 días\" sin tener que abrir la aplicación.",
+      "Generar un recordatorio de mantenimiento rutinario: Para tareas de mantenimiento que se deciden hacer \"cuando se tenga tiempo\" (ej. \"Limpiar bandeja de entrada\"), el usuario activa el flujo manualmente cuando decide que es el momento.",
+      "Creación de una tarea de \"revisión de pendiente\": Al finalizar el día, el usuario puede activar este flujo para generar una tarea como \"Revisar tareas incompletas del día\" en Todoist, recordándose analizar lo que quedó pendiente."
+    ],
+    "similarities": [],
+    "id": 32
+  },
+  {
+    "workflow_uuid": "0017-stripe-hubspot-slack.json-1758118118655",
+    "fileName": "0017-stripe-hubspot-slack.json",
+    "flowName": "On new Stripe Invoice Payment update Hubspot and notify the team in Slack",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Finanzas",
+      "Operaciones"
+    ],
+    "mainFunction": "Actualizar un trato en Hubspot a pagado cuando se recibe un pago de factura exitoso en Stripe y notificar al equipo a través de Slack, incluyendo el manejo de casos donde no hay número de pedido o el trato no se encuentra.",
+    "automationDestinations": [
+      "Hubspot",
+      "Slack"
+    ],
+    "dataOrigins": [
+      "Stripe"
+    ],
+    "keyNodes": [
+      "Stripe Trigger",
+      "Hubspot",
+      "IF",
+      "Slack"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Automatiza la actualización de tratos en Hubspot y la notificación en Slack tras un pago exitoso de Stripe, con gestión de errores para números de pedido ausentes o tratos no encontrados.",
+    "useCaseExamples": [
+      "Una empresa de SaaS gestiona sus suscripciones. Cuando un cliente paga una factura anual a través de Stripe, el flujo encuentra el trato correspondiente en HubSpot (usando el número de PO), lo marca como \"Pagado\" y notifica al equipo de finanzas en Slack con todos los detalles de la transacción.",
+      "Una agencia de consultoría cobra a un cliente un hito de un proyecto importante. El flujo detecta el pago en Stripe, busca el trato en HubSpot por el número de orden de compra, actualiza el estado del trato a \"Pagado\" y envía un mensaje a Slack al equipo de cuentas para su registro, o alerta si el PO no fue encontrado.",
+      "Una plataforma de e-learning B2B recibe el pago por un paquete de licencias empresariales. El flujo de trabajo identifica el ID de la orden de compra de Stripe, localiza el trato en HubSpot, cambia su estado a \"Factura Pagada\" y alerta al equipo de éxito del cliente en Slack para iniciar el proceso de onboarding.",
+      "Una empresa de servicios profesionales procesa pagos de sus clientes vía Stripe. Tras un pago exitoso, el sistema busca el proyecto o \"deal\" en HubSpot mediante el PO, actualiza el campo \"Pagado\" y notifica al gerente de proyecto y al equipo de contabilidad en Slack sobre el ingreso, incluyendo una alerta si el trato no pudo ser encontrado.",
+      "Un proveedor de soluciones de software recibe un pago por una personalización o módulo adicional de un cliente existente. El flujo de trabajo valida el pago en Stripe, vincula el número de PO al trato específico en HubSpot para marcarlo como \"Completado/Pagado\" y envía un aviso al equipo de desarrollo y ventas en Slack, o reporta si falta el número de PO."
+    ],
+    "similarities": [],
+    "id": 33
+  },
+  {
+    "workflow_uuid": "0018-entrevistas-y-participantes.json-1758118144873",
+    "fileName": "0018-entrevistas-y-participantes.json",
+    "flowName": "Combinación de Datos por ID",
+    "mainArea": "Gestión de Datos",
+    "secondaryAreas": [
+      "Recursos Humanos",
+      "Ventas",
+      "Marketing"
+    ],
+    "mainFunction": "Combina dos conjuntos de datos separados basándose en un identificador común para enriquecer o relacionar información entre ellos.",
+    "automationDestinations": [
+      "Transformación Interna de Datos"
+    ],
+    "dataOrigins": [
+      "Nodos Function (Datos Mock)"
+    ],
+    "keyNodes": [
+      "Function",
+      "Merge"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Combina dos conjuntos de datos de origen simulado utilizando un ID común para emparejar y fusionar registros.",
+    "useCaseExamples": [
+      "Un flujo de trabajo de Recursos Humanos que combina los detalles de las entrevistas programadas (candidato, tema, entrevistador ID) con la información detallada de los entrevistadores (nombre, cargo, departamento, foto) obtenida de un sistema de gestión de empleados, para generar informes de contratación completos o paneles de control.",
+      "En una plataforma de gestión de eventos, fusionar la lista de sesiones y sus ponentes (ID del ponente) con los perfiles completos de los ponentes (nombre, biografía, foto de perfil) para crear un directorio de ponentes dinámico o agendas personalizadas para los asistentes.",
+      "Para un sistema de gestión de proyectos, integrar las asignaciones de tareas (tarea, responsable ID) con la información del perfil del miembro del equipo (nombre, rol, departamento, foto) para visualizaciones del equipo, directorios internos o para facilitar la comunicación.",
+      "En un centro de soporte al cliente, unificar los tickets de soporte (ID del agente asignado) con los perfiles detallados de los agentes (nombre, equipo, foto) para el seguimiento del rendimiento, la gestión de la capacidad o para presentar a los agentes a los clientes.",
+      "En una institución educativa, combinar los registros de tutorías o asesorías (ID del tutor) con los perfiles de los tutores (nombre, departamento, foto, especialización) para la asignación de estudiantes, la generación de informes académicos o para permitir a los estudiantes buscar tutores por perfil."
+    ],
+    "similarities": [],
+    "id": 34
+  },
+  {
+    "workflow_uuid": "0019-EscrituraJSONBinario.json-1758118177928",
+    "fileName": "0019-EscrituraJSONBinario.json",
+    "flowName": "Escribir Datos Binarios en Archivo",
+    "mainArea": "Desarrollo",
+    "secondaryAreas": [
+      "IT",
+      "Operaciones"
+    ],
+    "mainFunction": "Genera datos de ejemplo en formato JSON, los transforma a binario y los guarda en un archivo local.",
+    "automationDestinations": [
+      "Sistema de Archivos Local"
+    ],
+    "dataOrigins": [
+      "Generación Interna (Función n8n)"
+    ],
+    "keyNodes": [
+      "Function",
+      "Write Binary File"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Genera y guarda datos de ejemplo en formato binario en un archivo.",
+    "useCaseExamples": [
+      "Guardar automáticamente las respuestas JSON de una API externa (por ejemplo, datos de stock, información meteorológica o detalles de pedidos) en un archivo local para análisis posterior o como respaldo.",
+      "Exportar los resultados de una consulta a una base de datos (SQL o NoSQL) como un archivo JSON en un servidor local para informes o para transferirlos a otros sistemas.",
+      "Registrar eventos específicos del sistema o la aplicación, transformando la información del evento a formato JSON y guardándola como un archivo de registro diario o mensual para auditoría y depuración.",
+      "Almacenar los envíos de formularios web: cada vez que un usuario completa un formulario, capturar los datos como JSON y guardarlos como un archivo individual para su posterior procesamiento o archivo.",
+      "Generar y almacenar archivos de configuración JSON personalizados para diferentes entornos de aplicación (desarrollo, pruebas, producción) basándose en parámetros dinámicos."
+    ],
+    "similarities": [],
+    "id": 35
+  },
+  {
+    "workflow_uuid": "0020-todoist-ai-categorization.json-1758118209766",
+    "fileName": "0020-todoist-ai-categorization.json",
+    "flowName": "Gestión Inteligente de Prioridades en Todoist",
+    "mainArea": "Productividad",
+    "secondaryAreas": [
+      "Organización Personal",
+      "Gestión de Proyectos"
+    ],
+    "mainFunction": "Automatizar la categorización de tareas de Todoist y la actualización de su prioridad utilizando inteligencia artificial.",
+    "automationDestinations": [
+      "Todoist"
+    ],
+    "dataOrigins": [
+      "Schedule Trigger",
+      "Todoist"
+    ],
+    "keyNodes": [
+      "Schedule Trigger",
+      "Todoist",
+      "OpenAI",
+      "Filter",
+      "Set"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Categoriza y asigna prioridad automáticamente a las tareas de Todoist usando IA, ejecutándose en un horario.",
+    "useCaseExamples": [
+      "Un usuario individual con una bandeja de entrada de Todoist llena de tareas variadas puede usar este flujo para categorizar automáticamente las nuevas tareas en proyectos personales (como \"Trabajo\", \"Salud\", \"Hogar\") y asignarles una prioridad predefinida, asegurando que las tareas más importantes se destaquen.",
+      "Un freelancer que recibe tareas de varios clientes en su Todoist puede configurar el flujo para que, de forma programada, clasifique las nuevas entradas por cliente o tipo de proyecto (ej. \"Cliente A\", \"Diseño Gráfico\", \"Facturación\") y actualice su prioridad según la urgencia o importancia asociada a cada categoría.",
+      "Un gerente de equipo utiliza una bandeja de entrada compartida en Todoist para nuevas solicitudes. El flujo puede categorizar las solicitudes en áreas como \"Soporte Técnico\", \"Desarrollo\", \"Administración\" y ajustar automáticamente la prioridad de la tarea para reflejar los SLAs o la importancia estratégica de cada tipo de solicitud.",
+      "Un estudiante gestiona múltiples proyectos académicos en Todoist. Este flujo puede ejecutarse diariamente para clasificar nuevas tareas en asignaturas (ej. \"Matemáticas\", \"Historia\", \"Programación\") y asignarles una prioridad diferente, ayudándole a enfocarse en los trabajos más urgentes de cada curso.",
+      "Una persona ocupada usa Todoist para organizar tareas domésticas. El flujo podría categorizar automáticamente nuevas entradas en proyectos como \"Limpieza\", \"Compras\", \"Mantenimiento\" o \"Finanzas\" y establecer su prioridad, garantizando que las tareas críticas como pagar facturas siempre tengan la atención necesaria."
+    ],
+    "similarities": [],
+    "id": 36
   }
 ]
