@@ -91,25 +91,23 @@ export function WorkflowFilters({
                     value={search}
                     onValueChange={setSearch}
                 />
-                <CommandList>
+                <CommandList className="max-h-none">
                     <CommandEmpty>No se encontraron categorías.</CommandEmpty>
-                    <ScrollArea className="h-48">
-                        <CommandGroup>
-                        {filteredAreas.map(area => (
-                            <CommandItem
-                            key={area}
-                            onSelect={() => handleSelectArea(area)}
-                            className="cursor-pointer"
-                            >
-                            <Checkbox
-                                checked={selectedMainAreas.includes(area)}
-                                className="mr-2"
-                            />
-                            {area}
-                            </CommandItem>
-                        ))}
-                        </CommandGroup>
-                    </ScrollArea>
+                    <CommandGroup>
+                    {filteredAreas.map(area => (
+                        <CommandItem
+                        key={area}
+                        onSelect={() => handleSelectArea(area)}
+                        className="cursor-pointer"
+                        >
+                        <Checkbox
+                            checked={selectedMainAreas.includes(area)}
+                            className="mr-2"
+                        />
+                        {area}
+                        </CommandItem>
+                    ))}
+                    </CommandGroup>
                 </CommandList>
                 <div className="p-2 border-t flex justify-end gap-2">
                    <Button variant="ghost" size="sm" onClick={handleClear} disabled={selectedMainAreas.length === 0}>
