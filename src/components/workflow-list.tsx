@@ -125,7 +125,12 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite, onUp
     if (sortedSimilarities.length === 0) return null;
     
     const topSimilarities = sortedSimilarities.slice(0, 3);
-    const similarityText = topSimilarities.map(sim => sim.workflowName.split(' ')[0]).join(', ');
+    const similarityText = topSimilarities
+        .map(sim => sim.workflowName ? sim.workflowName.split(' ')[0] : '')
+        .filter(Boolean)
+        .join(', ');
+
+    if (!similarityText) return null;
 
     return (
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
