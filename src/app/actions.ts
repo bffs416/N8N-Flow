@@ -149,7 +149,7 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
     const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
     if (!supabaseUrl || !supabaseAnonKey) {
-      throw new Error('Supabase URL or Anon Key is not configured in .env file.');
+      return { success: false, error: 'Las credenciales de Supabase (URL y Anon Key) no están configuradas en el archivo .env.local.' };
     }
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
