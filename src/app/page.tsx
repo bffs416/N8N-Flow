@@ -250,19 +250,36 @@ export default function Home() {
       description: 'Enviando flujos de trabajo a la base de datos.',
     });
 
-    const result = await sendToSupabase(workflows);
-
-    if (result.success) {
-      toast({
-        title: '¡Éxito!',
-        description: 'Los datos de los flujos de trabajo han sido enviados correctamente a Supabase.',
-      });
-    } else {
-      toast({
-        variant: 'destructive',
-        title: 'Error al Enviar a Supabase',
-        description: result.error || 'No se pudieron enviar los datos.',
-      });
+    try {
+      const result = await sendToSupabase(workflows);
+  
+      if (result.success) {
+        toast({
+          title: '¡Éxito!',
+          description: 'Los datos de los flujos de trabajo han sido enviados correctamente a Supabase.',
+        });
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Error al Enviar a Supabase',
+          description: result.error || 'No se pudieron enviar los datos.',
+        });
+      }
+    } catch (error) {
+      console.error('Failed to send to Supabase:', error);
+      if (error instanceof Error) {
+        toast({
+          variant: 'destructive',
+          title: 'Error de Conexión',
+          description: error.message,
+        });
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Error Desconocido',
+          description: 'Ocurrió un error inesperado al enviar a Supabase.',
+        });
+      }
     }
     
     setIsLoading(false);
@@ -332,6 +349,7 @@ export default function Home() {
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
         onSendToSupabase={handleSendToSupabase}
+        onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
         isLoading={isLoading}
       />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">

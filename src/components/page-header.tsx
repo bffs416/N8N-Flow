@@ -2,7 +2,7 @@
 import React from 'react';
 import { N8nInsightsLogo } from './icons';
 import { Button } from './ui/button';
-import { Link as LinkIcon, Save, Send } from 'lucide-react';
+import { Link as LinkIcon, Save, Send, GitCompareArrows } from 'lucide-react';
 import Link from 'next/link';
 
 interface PageHeaderProps {
@@ -10,6 +10,7 @@ interface PageHeaderProps {
   onSave: () => void;
   hasUnsavedChanges: boolean;
   onSendToSupabase: () => void;
+  onRunSimilarityAnalysis: () => void;
   isLoading: boolean;
 }
 
@@ -19,6 +20,7 @@ export const PageHeader = ({
   onSave, 
   hasUnsavedChanges, 
   onSendToSupabase,
+  onRunSimilarityAnalysis,
   isLoading,
 }: PageHeaderProps) => {
   return (
@@ -38,6 +40,15 @@ export const PageHeader = ({
             </Button>
             {hasWorkflows && (
               <div className="flex items-center gap-2">
+                 <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={onRunSimilarityAnalysis}
+                  disabled={isLoading}
+                >
+                  <GitCompareArrows className="mr-2 h-4 w-4" />
+                  Analizar Similitudes
+                </Button>
                  <Button
                   variant="outline"
                   size="sm"
