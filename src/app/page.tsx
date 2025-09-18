@@ -257,7 +257,7 @@ export default function Home() {
           description: 'Los datos de los flujos de trabajo han sido enviados correctamente a Supabase.',
         });
       } else {
-        throw new Error(result.error);
+        throw new Error(result.error || 'No se pudieron enviar los datos.');
       }
     } catch (error) {
       console.error('Failed to send to Supabase:', error);

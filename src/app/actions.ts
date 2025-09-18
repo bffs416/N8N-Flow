@@ -162,6 +162,8 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
         keyNodes: wf.keyNodes || [],
         useCaseExamples: wf.useCaseExamples || [],
         similarities: wf.similarities || [],
+        isFavorite: wf.isFavorite || false,
+        notes: wf.notes || '',
     }));
 
     const { data, error } = await supabase
