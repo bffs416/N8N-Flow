@@ -12,11 +12,10 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Input } from '@/components/ui/input';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { Star, ChevronDown, Check, X } from 'lucide-react';
+import { Star, ChevronDown } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 
 interface WorkflowFiltersProps {
@@ -91,29 +90,34 @@ export function WorkflowFilters({
                     value={search}
                     onValueChange={setSearch}
                 />
-                <CommandList className="max-h-none">
+                <CommandList>
                     <CommandEmpty>No se encontraron categorías.</CommandEmpty>
-                    <CommandGroup>
-                    {filteredAreas.map(area => (
-                        <CommandItem
-                        key={area}
-                        onSelect={() => handleSelectArea(area)}
-                        className="cursor-pointer"
-                        >
-                        <Checkbox
-                            checked={selectedMainAreas.includes(area)}
-                            className="mr-2"
-                        />
-                        {area}
-                        </CommandItem>
-                    ))}
-                    </CommandGroup>
+                    <ScrollArea className="h-48">
+                      <CommandGroup>
+                      {filteredAreas.map(area => (
+                          <CommandItem
+                          key={area}
+                          onSelect={() => handleSelectArea(area)}
+                          className="cursor-pointer"
+                          >
+                          <Checkbox
+                              checked={selectedMainAreas.includes(area)}
+                              className="mr-2"
+                              onCheckedChange={() => handleSelectArea(area)}
+                          />
+                          {area}
+                          </CommandItem>
+                      ))}
+                      </CommandGroup>
+                    </ScrollArea>
                 </CommandList>
-                <div className="p-2 border-t flex justify-end gap-2">
-                   <Button variant="ghost" size="sm" onClick={handleClear} disabled={selectedMainAreas.length === 0}>
-                        Limpiar
-                   </Button>
-                </div>
+                {selectedMainAreas.length > 0 && (
+                  <div className="p-2 border-t flex justify-end gap-2">
+                    <Button variant="ghost" size="sm" onClick={handleClear}>
+                          Limpiar
+                    </Button>
+                  </div>
+                )}
             </Command>
           </PopoverContent>
         </Popover>
