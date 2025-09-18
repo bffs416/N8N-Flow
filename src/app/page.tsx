@@ -99,7 +99,8 @@ export default function Home() {
 
     const newUuids = new Set(unanalysedUuids);
     const summary: AnalysisResult[] = [];
-    let currentWorkflows = workflows;
+    let currentWorkflows = [...workflows];
+    const existingFileNames = new Set(currentWorkflows.map(wf => wf.fileName));
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -109,10 +110,19 @@ export default function Home() {
         title: `Analizando flujo ${i + 1} de ${files.length}...`,
       }));
 
+      if (existingFileNames.has(file.fileName)) {
+        summary.push({
+          fileName: file.fileName,
+          status: 'skipped',
+          message: 'Ya existe un flujo con este nombre.',
+        });
+        continue;
+      }
+
       try {
         const analyzedData = await analyzeSingleWorkflow(file);
         const newId = getNextId(currentWorkflows);
-        const newWorkflow = {
+        const newWorkflow: Workflow = {
           ...analyzedData,
           id: newId,
           isFavorite: false,
@@ -122,6 +132,7 @@ export default function Home() {
         setWorkflows(prev => [...prev, newWorkflow]);
 
         newUuids.add(newWorkflow.workflow_uuid);
+        existingFileNames.add(newWorkflow.fileName);
         summary.push({fileName: file.fileName, status: 'success'});
 
       } catch (e: any) {
@@ -514,5 +525,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     

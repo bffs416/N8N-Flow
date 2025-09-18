@@ -10,12 +10,12 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, XCircle } from 'lucide-react';
+import { CheckCircle, XCircle, Info } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 
 export interface AnalysisResult {
   fileName: string;
-  status: 'success' | 'error';
+  status: 'success' | 'error' | 'skipped';
   message?: string;
 }
 
@@ -32,6 +32,7 @@ export function AnalysisSummaryDialog({
 }: AnalysisSummaryDialogProps) {
   const successCount = results.filter(r => r.status === 'success').length;
   const errorCount = results.filter(r => r.status === 'error').length;
+  const skippedCount = results.filter(r => r.status === 'skipped').length;
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
@@ -39,7 +40,7 @@ export function AnalysisSummaryDialog({
         <DialogHeader>
           <DialogTitle>Resumen del Análisis</DialogTitle>
           <DialogDescription>
-            Se procesaron {results.length} archivo(s). {successCount} con éxito, {errorCount} con errores.
+            Se procesaron {results.length} archivo(s). {successCount} con éxito, {errorCount} con errores, {skippedCount} omitidos.
           </DialogDescription>
         </DialogHeader>
         <ScrollArea className="max-h-[60vh] my-4">
@@ -49,16 +50,20 @@ export function AnalysisSummaryDialog({
                 key={index}
                 className="flex items-start p-3 border rounded-md"
               >
-                {result.status === 'success' ? (
-                  <CheckCircle className="h-5 w-5 text-green-500 mr-3 shrink-0 mt-0.5" />
-                ) : (
-                  <XCircle className="h-5 w-5 text-red-500 mr-3 shrink-0 mt-0.5" />
-                )}
+                {result.status === 'success' && <CheckCircle className="h-5 w-5 text-green-500 mr-3 shrink-0 mt-0.5" />}
+                {result.status === 'error' && <XCircle className="h-5 w-5 text-red-500 mr-3 shrink-0 mt-0.5" />}
+                {result.status === 'skipped' && <Info className="h-5 w-5 text-yellow-500 mr-3 shrink-0 mt-0.5" />}
+                
                 <div className="flex-grow">
                   <p className="font-medium text-sm break-all">{result.fileName}</p>
                   {result.status === 'error' && (
                     <p className="text-xs text-red-400 mt-1 break-words">
                       Error: {result.message}
+                    </p>
+                  )}
+                  {result.status === 'skipped' && (
+                    <p className="text-xs text-yellow-400 mt-1 break-words">
+                      Omitido: {result.message}
                     </p>
                   )}
                 </div>
