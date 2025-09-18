@@ -117,7 +117,7 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite, onUp
     }
   }, [workflow.notes])
 
-  const sortedSimilarities = workflow.similarities.length > 0 
+  const sortedSimilarities = workflow.similarities?.length > 0 
     ? [...workflow.similarities].sort((a, b) => b.score - a.score)
     : [];
 
@@ -239,12 +239,12 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite, onUp
               <div className="flex items-center justify-center gap-2">
                   <div className="flex flex-col items-center text-center">
                       <span className='text-muted-foreground'>Origen</span>
-                      <span className="font-semibold">{workflow.dataOrigins[0] || 'N/A'}</span>
+                      <span className="font-semibold">{(workflow.dataOrigins && workflow.dataOrigins[0]) || 'N/A'}</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 mt-3" />
                   <div className="flex flex-col items-center text-center">
                       <span className='text-muted-foreground'>Destino</span>
-                      <span className="font-semibold">{workflow.automationDestinations[0] || 'N/A'}</span>
+                      <span className="font-semibold">{(workflow.automationDestinations && workflow.automationDestinations[0]) || 'N/A'}</span>
                   </div>
               </div>
           </div>
@@ -259,7 +259,7 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite, onUp
                   <InfoRow icon={<Briefcase className="mr-2 h-4 w-4"/>} label="Área Principal:">
                       <Badge variant="outline">{workflow.mainArea}</Badge>
                   </InfoRow>
-                   {workflow.secondaryAreas.length > 0 && (
+                   {workflow.secondaryAreas && workflow.secondaryAreas.length > 0 && (
                     <InfoRow icon={<Briefcase className="mr-2 h-4 w-4"/>} label="Áreas Secundarias:">
                        <div className="flex flex-wrap gap-1">
                           {workflow.secondaryAreas.map(area => <Badge key={area} variant="outline">{area}</Badge>)}
@@ -271,7 +271,7 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite, onUp
                   </InfoRow>
                   <InfoRow icon={<GitMerge className="mr-2 h-4 w-4"/>} label="Nodos Clave:">
                     <div className="flex flex-wrap gap-2">
-                      {workflow.keyNodes.map(node => <Badge key={node} variant="secondary">{node}</Badge>)}
+                      {workflow.keyNodes && workflow.keyNodes.map(node => <Badge key={node} variant="secondary">{node}</Badge>)}
                     </div>
                   </InfoRow>
                 </div>
@@ -287,6 +287,7 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite, onUp
                 )}
               
               {/* Casos de uso */}
+             {workflow.useCaseExamples && workflow.useCaseExamples.length > 0 && (
               <div>
                 <h3 className="font-semibold flex items-center mb-3"><Lightbulb className="mr-2 h-4 w-4"/>Casos de Uso</h3>
                 <div className='p-4 bg-background rounded-lg border'>
@@ -295,11 +296,12 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite, onUp
                   </ul>
                 </div>
               </div>
+              )}
 
               {/* Actions */}
               <div className="flex justify-between items-center pt-4 border-t">
                  {/* Botón de Similitudes */}
-                 {workflow.similarities.length > 0 ? (
+                 {workflow.similarities && workflow.similarities.length > 0 ? (
                   <Dialog>
                     <DialogTrigger asChild>
                       <Button variant="outline">
@@ -542,3 +544,5 @@ ${separator}`;
     </div>
   );
 }
+
+    
