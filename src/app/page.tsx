@@ -243,32 +243,29 @@ export default function Home() {
     });
   };
 
-  const handleSendToForm = async () => {
+  const handleSendToSupabase = async () => {
     setIsLoading(true);
     toast({
       title: 'Enviando datos a Supabase...',
       description: 'Enviando flujos de trabajo a la base de datos.',
     });
-    try {
-      const result = await sendToSupabase(workflows);
-      if (result.success) {
-        toast({
-          title: '¡Éxito!',
-          description: 'Los datos de los flujos de trabajo han sido enviados correctamente a Supabase.',
-        });
-      } else {
-        throw new Error(result.error || 'No se pudieron enviar los datos.');
-      }
-    } catch (error) {
-      console.error('Failed to send to Supabase:', error);
+
+    const result = await sendToSupabase(workflows);
+
+    if (result.success) {
+      toast({
+        title: '¡Éxito!',
+        description: 'Los datos de los flujos de trabajo han sido enviados correctamente a Supabase.',
+      });
+    } else {
       toast({
         variant: 'destructive',
         title: 'Error al Enviar a Supabase',
-        description: error instanceof Error ? error.message : 'No se pudieron enviar los datos.',
+        description: result.error || 'No se pudieron enviar los datos.',
       });
-    } finally {
-      setIsLoading(false);
     }
+    
+    setIsLoading(false);
   };
 
   const filteredWorkflows = useMemo(() => {
@@ -334,7 +331,7 @@ export default function Home() {
         hasWorkflows={workflows.length > 0}
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
-        onSendToForm={handleSendToForm}
+        onSendToForm={handleSendToSupabase}
         isLoading={isLoading}
       />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -437,5 +434,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
