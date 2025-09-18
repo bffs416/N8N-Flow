@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   Select,
   SelectContent,
@@ -12,11 +12,10 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Star, ChevronDown } from 'lucide-react';
-import { ScrollArea } from './ui/scroll-area';
+import { Input } from './ui/input';
 
 interface WorkflowFiltersProps {
   mainAreas: string[];
@@ -52,10 +51,10 @@ export function WorkflowFilters({
   }, [search, mainAreas]);
 
   const handleSelectArea = (area: string) => {
-    setSelectedMainAreas(
-      selectedMainAreas.includes(area)
-        ? selectedMainAreas.filter(a => a !== area)
-        : [...selectedMainAreas, area]
+    setSelectedMainAreas(prev =>
+      prev.includes(area)
+        ? prev.filter(a => a !== area)
+        : [...prev, area]
     );
   };
   
@@ -83,42 +82,35 @@ export function WorkflowFilters({
               <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-[300px] p-0" align="start">
-             <Command>
-                <CommandInput 
+          <PopoverContent className="w-[400px] p-4" align="start">
+             <div className='space-y-4'>
+                <Input 
                     placeholder="Buscar categoría..." 
                     value={search}
-                    onValueChange={setSearch}
+                    onChange={(e) => setSearch(e.target.value)}
                 />
-                <CommandList>
-                    <CommandEmpty>No se encontraron categorías.</CommandEmpty>
-                    <ScrollArea className="h-48">
-                      <CommandGroup>
-                      {filteredAreas.map(area => (
-                          <CommandItem
-                          key={area}
-                          onSelect={() => handleSelectArea(area)}
-                          className="cursor-pointer"
-                          >
-                          <Checkbox
-                              checked={selectedMainAreas.includes(area)}
-                              className="mr-2"
-                              onCheckedChange={() => handleSelectArea(area)}
-                          />
-                          {area}
-                          </CommandItem>
-                      ))}
-                      </CommandGroup>
-                    </ScrollArea>
-                </CommandList>
+                <div className="grid grid-cols-2 gap-2">
+                    {filteredAreas.map(area => (
+                        <Label key={area} className="flex items-center gap-2 font-normal p-2 rounded-md hover:bg-accent transition-colors cursor-pointer">
+                            <Checkbox
+                                checked={selectedMainAreas.includes(area)}
+                                onCheckedChange={() => handleSelectArea(area)}
+                            />
+                            <span>{area}</span>
+                        </Label>
+                    ))}
+                </div>
+                 {filteredAreas.length === 0 && (
+                    <p className="text-center text-sm text-muted-foreground py-4">No se encontraron categorías.</p>
+                )}
                 {selectedMainAreas.length > 0 && (
-                  <div className="p-2 border-t flex justify-end gap-2">
+                  <div className="pt-4 border-t flex justify-end">
                     <Button variant="ghost" size="sm" onClick={handleClear}>
-                          Limpiar
+                          Limpiar selección
                     </Button>
                   </div>
                 )}
-            </Command>
+             </div>
           </PopoverContent>
         </Popover>
 
