@@ -3727,5 +3727,422 @@
     "notes": "",
     "id": 100,
     "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0086-calendly-pipedrive-slack.json-1758172882278",
+    "fileName": "0086-calendly-pipedrive-slack.json",
+    "flowName": "Automatización de Seguimiento de Reuniones",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Operaciones",
+      "Gestión de Clientes"
+    ],
+    "mainFunction": "Automatizar la creación de actividades en Pipedrive y el envío de recordatorios por Slack después de que se crea una reunión en Calendly.",
+    "automationDestinations": [
+      "Pipedrive",
+      "Slack"
+    ],
+    "dataOrigins": [
+      "Calendly"
+    ],
+    "keyNodes": [
+      "Calendly Trigger",
+      "Pipedrive",
+      "Date & Time",
+      "Wait",
+      "Slack"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Registra reuniones de Calendly en Pipedrive, calcula un tiempo para feedback, y envía un recordatorio por Slack al final de la reunión.",
+    "useCaseExamples": [
+      "Un equipo de ventas que usa Calendly para programar demos de productos: Al finalizar la demo, se crea automáticamente una actividad en Pipedrive y el vendedor recibe un recordatorio en Slack 15 minutos después para registrar sus notas y acciones de seguimiento.",
+      "Un consultor que programa sesiones iniciales de descubrimiento con clientes potenciales a través de Calendly: El flujo de trabajo registra la llamada en Pipedrive y notifica al consultor en Slack poco después de que termina la llamada para documentar los requisitos del cliente.",
+      "Un gestor de éxito del cliente que organiza llamadas de incorporación para nuevos usuarios con Calendly: La herramienta crea una entrada en Pipedrive para la llamada y envía un mensaje de Slack al gestor para resumir los puntos clave y los próximos pasos.",
+      "Un reclutador que programa entrevistas con candidatos a través de Calendly: Una vez terminada la entrevista, se registra la actividad en Pipedrive y el reclutador recibe una alerta en Slack para que envíe sus comentarios sobre el candidato.",
+      "Un equipo de soporte técnico que utiliza Calendly para programar reuniones con clientes sobre problemas complejos: El sistema registra la reunión en Pipedrive y notifica al técnico asignado en Slack para que documente los detalles técnicos y los acuerdos de la llamada."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 101,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0087-github-backup-flujos.json-1758172902767",
+    "fileName": "0087-github-backup-flujos.json",
+    "flowName": "Copia de Seguridad y Sincronización de Flujos n8n a GitHub",
+    "mainArea": "IT Operations",
+    "secondaryAreas": [
+      "DevOps",
+      "Administración de Sistemas"
+    ],
+    "mainFunction": "Automatizar la copia de seguridad diaria y la sincronización de todos los flujos de trabajo de una instancia de n8n con un repositorio de GitHub, incluyendo la creación de nuevos archivos y la actualización de los existentes.",
+    "automationDestinations": [
+      "GitHub"
+    ],
+    "dataOrigins": [
+      "n8n Instance API",
+      "Cron"
+    ],
+    "keyNodes": [
+      "Cron",
+      "HTTP Request",
+      "Function",
+      "Merge",
+      "GitHub"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Realiza una copia de seguridad diaria de los flujos de trabajo de n8n en GitHub, actualizando los existentes y creando nuevos.",
+    "useCaseExamples": [
+      "Copia de seguridad diaria automatizada de todos los flujos de trabajo de n8n a un repositorio de GitHub para recuperación ante desastres y protección de datos.",
+      "Implementación de un sistema de control de versiones para flujos de trabajo de automatización, permitiendo a los equipos de desarrollo rastrear cambios, auditar modificaciones y revertir a versiones anteriores si es necesario.",
+      "Mantener un historial de cambios detallado y auditable de los flujos de trabajo de n8n en GitHub para cumplir con requisitos de conformidad y auditorías internas/externas.",
+      "Facilitar la migración y replicación de flujos de trabajo entre diferentes instancias de n8n (desarrollo, pruebas, producción) utilizando GitHub como fuente central de la verdad.",
+      "Automatizar la sincronización de las definiciones de flujos de trabajo entre la instancia de n8n y un repositorio de código, asegurando que cualquier modificación local se refleje automáticamente en el control de versiones."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 102,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0088-typeform-hubspot-email.json-1758172923162",
+    "fileName": "0088-typeform-hubspot-email.json",
+    "flowName": "Gestión de Leads de Typeform a HubSpot con Seguimiento por Email",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Marketing"
+    ],
+    "mainFunction": "Capturar envíos de formularios de Typeform, crear o actualizar contactos en HubSpot, y enviar correos electrónicos de seguimiento personalizados basándose en el interés del lead.",
+    "automationDestinations": [
+      "HubSpot",
+      "Gmail"
+    ],
+    "dataOrigins": [
+      "Typeform"
+    ],
+    "keyNodes": [
+      "Typeform Trigger",
+      "Set",
+      "HubSpot",
+      "IF",
+      "Gmail"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Automatiza la captura y calificación de leads desde Typeform, su registro en HubSpot y el envío de correos de seguimiento.",
+    "useCaseExamples": [
+      "Una empresa de SaaS utiliza un Typeform en su sitio web para que los visitantes soliciten una demo. El flujo crea el contacto en HubSpot, marca a los prospectos interesados en escalar su contenido visual como \"oportunidad\" y les envía un email con un enlace para agendar una demo.",
+      "Una organización sin fines de lucro usa un Typeform para que los voluntarios se registren. Si un voluntario expresa interés en liderar proyectos, el flujo lo clasifica como \"oportunidad\" en HubSpot y le envía un email con información adicional sobre roles de liderazgo y un enlace para programar una reunión.",
+      "Un consultor de marketing emplea un Typeform en sus landing pages para capturar leads que desean un diagnóstico gratuito. El flujo crea el contacto en HubSpot, actualiza la etapa a \"oportunidad\" si el lead manifiesta interés en sus servicios y le envía un email con un enlace para agendar la consulta.",
+      "Una plataforma de e-learning ofrece un curso gratuito y requiere que los usuarios se registren a través de un Typeform. Si el usuario indica interés en cursos avanzados o membresías premium, el flujo lo registra en HubSpot como \"oportunidad\" y le envía un email con enlaces a la oferta de pago y un calendario para una sesión informativa.",
+      "Una agencia de desarrollo web usa un Typeform para que las empresas soliciten una cotización para un nuevo proyecto. El flujo crea el contacto en HubSpot, categoriza a los que buscan activamente un socio de desarrollo como \"oportunidad\" y les envía un email de seguimiento con un portafolio y un enlace para discutir sus requisitos."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 103,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0089-hubspot-deals-processing.json-1758172936441",
+    "fileName": "0089-hubspot-deals-processing.json",
+    "flowName": "Automatización de Gestión de Deals de Hubspot",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Marketing",
+      "Operaciones"
+    ],
+    "mainFunction": "Automatizar la gestión de deals en Hubspot, incluyendo notificaciones en Slack, creación de presentaciones, registro de deals perdidos en Airtable y generación de tickets de seguimiento basados en el estado y valor del deal.",
+    "automationDestinations": [
+      "Slack",
+      "Google Slides",
+      "Airtable",
+      "Hubspot"
+    ],
+    "dataOrigins": [
+      "Hubspot Trigger"
+    ],
+    "keyNodes": [
+      "Hubspot Trigger",
+      "Hubspot",
+      "Set",
+      "Switch",
+      "IF"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Un flujo que reacciona a la creación de deals en Hubspot para automatizar notificaciones, la generación de documentos y la creación de tickets de seguimiento, basándose en el estado y valor del deal.",
+    "useCaseExamples": [
+      "Automatización de Notificaciones por Cierre de Ventas: Cuando una oportunidad de venta en Hubspot cambia a la etapa \"Cerrada y Ganada\", el equipo de ventas y marketing es notificado automáticamente en un canal de Slack para celebrar el éxito y mantener a todos informados.",
+      "Preparación de Materiales para Presentaciones: Al programar una presentación para un cliente (etapa \"Presentación Programada\" en Hubspot), se genera automáticamente una plantilla de presentación en Google Slides, prellenada con el nombre de la oportunidad, para que el equipo pueda empezar a trabajar en ella de inmediato.",
+      "Análisis de Oportunidades Perdidas: Cada vez que una oportunidad de venta en Hubspot es marcada como \"Cerrada y Perdida\", sus detalles clave (nombre, ID, tipo) se registran automáticamente en una base de datos de Airtable para un análisis posterior de las razones de la pérdida y la identificación de patrones.",
+      "Priorización Automática de Tareas para Nuevos Negocios de Alto Valor: Cuando se crea una nueva oportunidad de negocio en Hubspot con un valor superior a 500 y de tipo \"newbusiness\" (y aún no está cerrada), se crea automáticamente un ticket de \"alta prioridad\" en Hubspot para el equipo de soporte o implementación, asignado a un propietario específico.",
+      "Gestión de Seguimiento para Oportunidades Activas: Para cualquier nueva oportunidad de negocio creada en Hubspot que no cumpla los criterios de \"alto valor y nuevo negocio\" (y que aún no esté cerrada), se genera un ticket de \"prioridad media\" en Hubspot para asegurar un seguimiento adecuado por parte del equipo comercial o de customer success."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 104,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0090-GitHub-issue-autoassign (1).json-1758172946051",
+    "fileName": "0090-GitHub-issue-autoassign (1).json",
+    "flowName": "Automate assigning GitHub issues",
+    "mainArea": "Desarrollo de Software",
+    "secondaryAreas": [
+      "Gestión de Proyectos",
+      "Colaboración en Equipo",
+      "Automatización de Tareas"
+    ],
+    "mainFunction": "Automatiza la asignación de incidencias (issues) en GitHub, ya sea al creador de la incidencia si no tiene asignado a nadie, o a un comentarista que solicite la asignación.",
+    "automationDestinations": [
+      "GitHub"
+    ],
+    "dataOrigins": [
+      "GitHub"
+    ],
+    "keyNodes": [
+      "Github Trigger1",
+      "Switch",
+      "IF no assignee?",
+      "IF wants to work?",
+      "IF not assigned?",
+      "Assign Issue Creator",
+      "Assign Commenter",
+      "Add Comment"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Asigna automáticamente incidencias de GitHub a usuarios basándose en la creación de la incidencia o en comentarios específicos, facilitando la gestión de tareas.",
+    "useCaseExamples": [
+      "Un desarrollador crea un nuevo \"bug report\" en GitHub e incluye la frase \"assign me\" en la descripción del issue, lo que hace que el flujo de trabajo le asigne automáticamente el issue a él y le añada la etiqueta \"assigned\".",
+      "Un miembro del equipo ve un issue sin asignar en el repositorio del proyecto y comenta \"assign me\" para indicar que quiere trabajar en él. El flujo de trabajo detecta el comentario, le asigna el issue y añade la etiqueta \"assigned\".",
+      "Otro desarrollador intenta reclamar un issue que ya está asignado comentando \"assign me\". El flujo de trabajo reconoce que el issue ya tiene un responsable y responde con un comentario informándole que el issue ya está asignado.",
+      "Un project manager configura una plantilla de issue para nuevas tareas que incluye automáticamente \"assign me\" en el cuerpo. Cuando se crea un nuevo issue a partir de esta plantilla, el flujo de trabajo lo asigna inmediatamente al creador del issue.",
+      "En un proyecto de código abierto, un colaborador de la comunidad encuentra un issue de tipo \"good first issue\" sin asignar y comenta \"assign me\". El flujo de trabajo le asigna el issue automáticamente, facilitando la colaboración."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 105,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0090-GitHub-issue-autoassign.json-1758172957493",
+    "fileName": "0090-GitHub-issue-autoassign.json",
+    "flowName": "Automate assigning GitHub issues",
+    "mainArea": "Desarrollo de Software",
+    "secondaryAreas": [
+      "Gestión de Proyectos",
+      "Colaboración"
+    ],
+    "mainFunction": "Automatiza la asignación de issues de GitHub basándose en su creación/apertura o comentarios que soliciten la asignación, y añade comentarios cuando un issue ya está asignado.",
+    "automationDestinations": [
+      "GitHub"
+    ],
+    "dataOrigins": [
+      "GitHub"
+    ],
+    "keyNodes": [
+      "Switch",
+      "IF no assignee?",
+      "IF wants to work?",
+      "IF not assigned?",
+      "Github Trigger",
+      "Github (Assign Issue Creator)",
+      "Github (Add Comment)",
+      "Github (Assign Commenter)"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Asigna automáticamente issues de GitHub a usuarios cuando son creados/abiertos, o cuando un usuario comenta 'assign me' en un issue abierto.",
+    "useCaseExamples": [
+      "Un desarrollador abre un nuevo \"issue\" en GitHub y, para indicar que planea trabajar en él inmediatamente, incluye la frase \"assign me\" en la descripción. El flujo de trabajo asigna automáticamente el \"issue\" a ese desarrollador y le añade la etiqueta \"assigned\".",
+      "Un miembro de la comunidad de un proyecto de código abierto ve un \"issue\" sin asignar que le interesa resolver. Deja un comentario en el \"issue\" que dice \"assign me\" y el flujo de trabajo lo asigna automáticamente a sí mismo.",
+      "En un equipo de desarrollo, un \"manager\" de proyecto crea varios \"issues\" para nuevas características. Los desarrolladores pueden ir a los \"issues\" sin asignar y comentar \"assign me\" para autoasignarse una tarea, agilizando el proceso de asignación.",
+      "Un colaborador intenta autoasignarse un \"issue\" comentando \"assign me\", pero el \"issue\" ya ha sido asignado a otra persona. El flujo de trabajo detecta que ya hay un asignado y automáticamente añade un comentario al \"issue\" informando al colaborador que ya está asignado.",
+      "Un equipo de control de calidad abre un \"bug report\" en GitHub. Uno de los ingenieros de software revisa los \"bugs\" recién abiertos y, si quiere tomar uno sin asignar, simplemente edita la descripción del \"issue\" o deja un comentario con \"assign me\" para que se le asigne automáticamente."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 106,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0091-steam-cloudflare-phishing-monitor.json-1758172969621",
+    "fileName": "0091-steam-cloudflare-phishing-monitor.json",
+    "flowName": "Steam + CF Report",
+    "mainArea": "Seguridad",
+    "secondaryAreas": [
+      "IT",
+      "Operaciones"
+    ],
+    "mainFunction": "Detectar y reportar sitios web de phishing de Steam a Cloudflare (si usan sus servicios) y a Valve (Steam).",
+    "automationDestinations": [
+      "Mailgun",
+      "Cloudflare",
+      "Valve/Steam"
+    ],
+    "dataOrigins": [
+      "Webhook"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "IF",
+      "Execute Command",
+      "Mailgun"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo recibe un dominio vía webhook, verifica si es un dominio válido y si usa Cloudflare, y luego envía reportes de phishing a Cloudflare y a Steam según corresponda.",
+    "useCaseExamples": [
+      "Un analista de seguridad que monitorea foros y listas negras de dominios maliciosos puede usar este flujo para reportar automáticamente cualquier URL identificada como un posible sitio de phishing de Steam tan pronto como la detecta.",
+      "Un equipo de respuesta a incidentes que recibe numerosos reportes de usuarios sobre sitios web de phishing de Steam puede automatizar el proceso de verificación y notificación a Valve (Steam) y Cloudflare enviando las URLs sospechosas a este webhook.",
+      "Un investigador de ciberseguridad que compila bases de datos de amenazas puede integrar este flujo en su sistema para que, al encontrar un nuevo dominio de phishing de Steam, se genere un informe automático a las partes relevantes sin intervención manual.",
+      "Un desarrollador de una herramienta de inteligencia de amenazas puede configurar su software para que, al identificar un dominio que imita a Steam y tiene características de phishing, envíe la URL a este flujo de trabajo, automatizando el envío de alertas a los proveedores de servicios.",
+      "Una plataforma de monitoreo de marca puede utilizar este flujo para proteger a sus clientes (como Valve) contra el abuso de marca. Al detectar un dominio que suplanta a Steam con fines de phishing, el sistema puede invocar este webhook para iniciar el proceso de notificación y mitigación de forma proactiva."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 107,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0092-segment-track-event.json-1758172983409",
+    "fileName": "0092-segment-track-event.json",
+    "flowName": "Track an event in Segment",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Análisis de Datos",
+      "Producto"
+    ],
+    "mainFunction": "Registrar o rastrear un evento de usuario o sistema en Segment para análisis posterior.",
+    "automationDestinations": [
+      "Segment"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "manualTrigger",
+      "Segment"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Un flujo simple para enviar datos de eventos a Segment de forma manual.",
+    "useCaseExamples": [
+      "Cuando un administrador marca manualmente la finalización de un proceso de incorporación de usuario en un sistema interno, registrándolo en Segment.",
+      "Al cerrar manualmente un acuerdo de venta importante por un representante de ventas, se envía un evento 'Deal Closed' a Segment para el seguimiento de métricas.",
+      "Cuando un gestor de contenido publica manualmente un nuevo artículo en el blog y necesita registrar ese evento en Segment para análisis de rendimiento.",
+      "Al resolver manualmente un problema complejo de soporte al cliente, un agente registra el evento 'Problema Resuelto' en Segment para seguimiento de tickets.",
+      "Cuando un equipo de marketing lanza una campaña especial sin una integración directa, se activa manualmente un evento 'Campaña Lanzada' en Segment."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 108,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0093-pokemon-rate-limiter.json-1758173001052",
+    "fileName": "0093-pokemon-rate-limiter.json",
+    "flowName": "API Rate Limiter con Airtable",
+    "mainArea": "Gestión de APIs",
+    "secondaryAreas": [
+      "Operaciones de TI",
+      "Desarrollo de Software",
+      "Seguridad"
+    ],
+    "mainFunction": "Implementa un sistema de limitación de tasa (rate limiting) por minuto y por hora para una API. Si la solicitud está dentro de los límites, consulta y formatea datos de Airtable para devolverlos.",
+    "automationDestinations": [
+      "Cliente API"
+    ],
+    "dataOrigins": [
+      "Webhook"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "Redis",
+      "IF",
+      "Airtable",
+      "Function"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Controla el acceso a una API mediante límites de uso por minuto y hora, y recupera datos de Airtable para las solicitudes válidas.",
+    "useCaseExamples": [
+      "Un proveedor de API externa implementa límites de tasa por clave de API para proteger sus servicios y garantizar un uso justo. Este flujo verifica la clave de API entrante, incrementa los contadores de uso en Redis por minuto y por hora, y solo recupera datos de productos (simulados por \"Pokemon\" en Airtable) si el usuario no ha excedido su cuota.",
+      "Una empresa que ofrece acceso a datos especializados (por ejemplo, información de mercado, catálogos de productos) a través de una API. El flujo gestiona y aplica estrictos límites de tasa de consulta para cada suscriptor (usando su clave de API), asegurando que los recursos del servidor no se saturen y cobrando quizás por niveles de acceso basados en estas cuotas.",
+      "Un desarrollador construye una pasarela para microservicios internos donde diferentes equipos o aplicaciones (cada uno con una clave de API) acceden a datos compartidos (como configuraciones o activos). El flujo de trabajo impone límites de tasa para evitar que una aplicación sobrecargue el servicio de datos compartidos, sirviendo datos desde Airtable o denegando la solicitud si se exceden los límites.",
+      "Una plataforma de medios que ofrece un API para acceder a su contenido (artículos, imágenes). Utiliza este flujo para controlar la cantidad de peticiones que un socio o desarrollador puede hacer en un período determinado (minuto/hora) con su clave de API, devolviendo un mensaje de error cuando los límites son superados, y el contenido (metadatos de \"Pokemon\") cuando no.",
+      "Un sistema de gestión de recursos que proporciona una API para consultar el estado de equipos o reservas. Cada consulta se valida con una clave de API. El flujo utiliza Redis para monitorear las consultas por clave de API en intervalos de un minuto y una hora, permitiendo la recuperación de datos (de un Airtable simulado) solo si la cuota de peticiones no ha sido excedida por el usuario."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 109,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0094-zendesk-ticket-flow.json-1758173016265",
+    "fileName": "0094-zendesk-ticket-flow.json",
+    "flowName": "Create a ticket in Zendesk",
+    "mainArea": "Soporte al Cliente",
+    "secondaryAreas": [
+      "TI",
+      "Gestión de Proyectos",
+      "Ventas"
+    ],
+    "mainFunction": "Crear un ticket nuevo en Zendesk.",
+    "automationDestinations": [
+      "Zendesk"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "On clicking 'execute'",
+      "Zendesk"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo crea un ticket en Zendesk al ser ejecutado manualmente.",
+    "useCaseExamples": [
+      "Reporte manual de incidentes de TI: Un técnico de soporte de TI recibe una llamada telefónica sobre un problema de software y necesita crear rápidamente un ticket en Zendesk para registrarlo y asignarlo.",
+      "Registro de consultas de clientes complejas: Un agente de servicio al cliente completa una conversación telefónica larga con un cliente y necesita documentar manualmente los detalles y el problema en un nuevo ticket de Zendesk para su seguimiento.",
+      "Creación de tickets para seguimiento de ventas: Un representante de ventas identifica un problema potencial o una solicitud de soporte durante una llamada de ventas y crea un ticket manualmente para que el equipo de soporte al cliente se ponga en contacto con el prospecto.",
+      "Notificación de errores internos por empleados: Un empleado interno descubre un error en un sistema interno y utiliza este flujo de trabajo para generar manualmente un ticket en Zendesk para que el equipo de desarrollo lo investigue.",
+      "Documentación de problemas de QA: Un probador de control de calidad encuentra un defecto durante las pruebas manuales de un producto y necesita generar rápidamente un ticket en Zendesk para que el equipo de desarrollo lo aborde."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 110,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0095-sequential-http-post.json-1758173031350",
+    "fileName": "0095-sequential-http-post.json",
+    "flowName": "Procesamiento de Datos de Cliente y Envío a API",
+    "mainArea": "Gestión de Datos",
+    "secondaryAreas": [
+      "Ventas",
+      "Marketing",
+      "Integración de Sistemas"
+    ],
+    "mainFunction": "Recuperar datos de un almacén de clientes, procesarlos por lotes y enviarlos a un sistema externo a través de una petición HTTP.",
+    "automationDestinations": [
+      "Sistema Externo (via HTTP API)"
+    ],
+    "dataOrigins": [
+      "Disparador Manual",
+      "Customer Datastore"
+    ],
+    "keyNodes": [
+      "Customer Datastore",
+      "SplitInBatches",
+      "HTTP Request",
+      "Wait"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo recupera datos de clientes, los divide en lotes y los envía a una API externa, con una pausa entre envíos.",
+    "useCaseExamples": [
+      "Sincronizar perfiles de clientes desde una base de datos interna a una plataforma de email marketing, enviando los datos uno por uno para evitar exceder los límites de tasa de la API.",
+      "Registrar nuevos usuarios de una aplicación en un sistema de soporte al cliente externo, procesando cada registro individualmente con un retardo para gestionar la carga de la API.",
+      "Enviar detalles de empleados (ID y nombre) desde el sistema de RRHH a una herramienta de gestión de proyectos de terceros, asegurando que cada creación de usuario tenga una pausa entre sí.",
+      "Actualizar una lista de contactos en un CRM (Customer Relationship Management) basado en los datos de una base de datos de clientes, enviando cada contacto de forma secuencial para una sincronización controlada.",
+      "Publicar entradas en un registro de auditoría o sistema de monitoreo, donde cada \"persona\" de una base de datos se registra como un evento individual con su ID y nombre, con un retraso para no sobrecargar el sistema de logs."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 111,
+    "isFavorite": false
   }
 ]

@@ -10,7 +10,8 @@ export function ScrollToBottomButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
-    if (window.scrollY > 300) {
+    // Show button if page is not at the very bottom
+    if ((window.innerHeight + window.scrollY) < document.body.offsetHeight - 100) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
@@ -18,10 +19,10 @@ export function ScrollToBottomButton() {
   };
 
   const scrollToBottom = () => {
-    const footer = document.getElementById('footer');
-    if (footer) {
-        footer.scrollIntoView({ behavior: 'smooth' });
-    }
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    });
   };
 
   useEffect(() => {
@@ -46,5 +47,3 @@ export function ScrollToBottomButton() {
     </div>
   );
 }
-
-    
