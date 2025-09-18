@@ -2780,5 +2780,384 @@
     "notes": "",
     "id": 74,
     "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0061-flujo-buscar-empresa.json-1758170298346",
+    "fileName": "0061-flujo-buscar-empresa.json",
+    "flowName": "Get Company by Name",
+    "mainArea": "Inteligencia de Negocio",
+    "secondaryAreas": [
+      "Ventas",
+      "Marketing",
+      "Servicio al Cliente"
+    ],
+    "mainFunction": "Buscar y verificar la existencia de una empresa por su nombre y país utilizando una API externa.",
+    "automationDestinations": [
+      "Uproc API"
+    ],
+    "dataOrigins": [
+      "Disparador Manual"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Function",
+      "Uproc",
+      "IF"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo busca una empresa por nombre y país a través de una API y comprueba si los datos de la empresa fueron encontrados.",
+    "useCaseExamples": [
+      "Enriquecimiento de datos de clientes potenciales: Un nuevo cliente potencial envía un formulario web con el nombre de su empresa. El flujo de trabajo recupera automáticamente los detalles completos de la empresa (industria, tamaño, etc.) utilizando la función \"Get Company by Name\" y actualiza el registro del cliente potencial en el CRM.",
+      "Validación de información de proveedores: Antes de incorporar a un nuevo proveedor, el departamento de compras utiliza el flujo de trabajo para verificar y obtener información oficial de la empresa a partir de su nombre y país, asegurando que los datos sean correctos y actualizados.",
+      "Investigación de mercado de competidores: Un equipo de marketing ingresa el nombre de una empresa competidora y su país. El flujo de trabajo busca automáticamente información pública relevante sobre esa empresa, que luego puede ser utilizada para análisis competitivo.",
+      "Automatización del proceso de debida diligencia (due diligence): Para cumplir con normativas o políticas internas, el flujo de trabajo puede buscar automáticamente información básica de una empresa por su nombre y país, sirviendo como un primer paso en un proceso de debida diligencia más amplio.",
+      "Actualización de bases de datos de empresas: Una base de datos interna contiene nombres de empresas y sus países. El flujo de trabajo se ejecuta periódicamente para cada entrada, utilizando \"Get Company by Name\" para obtener los datos más recientes y corregir o actualizar la información desactualizada."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 75,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0062-active-campaign-account-trigger.json-1758170433889",
+    "fileName": "0062-active-campaign-account-trigger.json",
+    "flowName": "Receive updates when a new account is added by an admin in ActiveCampaign",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Marketing",
+      "Gestión de Clientes"
+    ],
+    "mainFunction": "Recibir actualizaciones cuando un administrador añade una nueva cuenta en ActiveCampaign.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "ActiveCampaign"
+    ],
+    "keyNodes": [
+      "ActiveCampaign Trigger"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo notifica cada vez que un administrador añade una nueva cuenta en ActiveCampaign.",
+    "useCaseExamples": [
+      "Notificar automáticamente al equipo de ventas a través de Slack o correo electrónico cada vez que un administrador añade una nueva cuenta clave en ActiveCampaign, permitiendo una acción rápida.",
+      "Sincronizar la información de la nueva cuenta añadida por un administrador en ActiveCampaign con un sistema CRM externo (como Salesforce o HubSpot) para mantener la base de datos centralizada actualizada.",
+      "Crear una tarea automática en Asana o Trello para el equipo de éxito del cliente para que revisen la nueva cuenta o inicien el proceso de incorporación después de que un administrador la haya añadido.",
+      "Registrar cada nueva cuenta añadida por un administrador en una hoja de cálculo de Google Sheets o una base de datos interna para fines de auditoría, seguimiento y generación de informes.",
+      "Enviar un correo electrónico de bienvenida interno al gerente de cuentas asignado con los detalles de la nueva cuenta tan pronto como un administrador la registra en ActiveCampaign."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 76,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0063-standup-bot-config.json-1758170447392",
+    "fileName": "0063-standup-bot-config.json",
+    "flowName": "Standup Bot - Read Config",
+    "mainArea": "Operaciones",
+    "secondaryAreas": [
+      "Gestión de Proyectos",
+      "IT"
+    ],
+    "mainFunction": "Leer y procesar un archivo de configuración local para un bot de standup.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "Manual Trigger",
+      "Sistema de Archivos"
+    ],
+    "keyNodes": [
+      "manualTrigger",
+      "readBinaryFile",
+      "moveBinaryData"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo lee un archivo de configuración local para un bot de standup y lo prepara como JSON para su uso posterior.",
+    "useCaseExamples": [
+      "Configurar un bot de stand-up diario: El flujo lee un archivo JSON que especifica los canales de Slack o Teams, los miembros del equipo a interrogar, las preguntas del stand-up y el horario de publicación, permitiendo al bot automatizar la recolección de actualizaciones diarias.",
+      "Gestión de credenciales para múltiples integraciones: Un flujo más amplio que interactúa con varias APIs (ej., Stripe, Mailchimp, CRM) puede leer un archivo de configuración JSON para obtener las claves API, tokens de autenticación y URLs de endpoints, centralizando la gestión de credenciales.",
+      "Definición de parámetros para la generación de informes automatizados: Un flujo que genera informes semanales o mensuales para diferentes departamentos puede leer un archivo JSON para obtener los filtros de datos específicos, los destinatarios de correo electrónico y el formato de salida deseado para cada informe.",
+      "Ajustes de reglas para el procesamiento de datos: En un pipeline de ETL (Extracción, Transformación, Carga), el flujo puede leer un archivo de configuración JSON que define las reglas de mapeo de columnas, las transformaciones de datos a aplicar y las rutas de archivos de origen/destino para un proceso de ingesta de datos.",
+      "Personalización de notificaciones de monitoreo de sistemas: Un flujo que monitorea el rendimiento de servidores o servicios puede leer un archivo de configuración JSON para especificar los umbrales de alerta, los canales de notificación (ej., Slack, correo electrónico) y la lista de contactos a quienes alertar en caso de un incidente."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 77,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0064-twitter-if-trigger (1).json-1758170489492",
+    "fileName": "0064-twitter-if-trigger (1).json",
+    "flowName": "Publicación Condicional en Twitter",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Comunicación",
+      "Redes Sociales"
+    ],
+    "mainFunction": "Publica un mensaje predefinido en Twitter solo si una condición numérica específica se cumple durante la ejecución del flujo.",
+    "automationDestinations": [
+      "Twitter"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "IF",
+      "Twitter"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo envía un tweet a Twitter si se cumple una condición numérica específica durante la ejecución.",
+    "useCaseExamples": [
+      "Publicación Rápida de Novedades o Anuncios: Un equipo de marketing puede usarlo para publicar instantáneamente un anuncio pre-redactado (por ejemplo, \"¡Oferta del día!\" o \"¡Nuevo artículo en el blog!\") en Twitter con solo un clic, asegurando el timing perfecto.",
+      "Confirmación de Finalización de Tarea o Hito: Después de completar una fase crítica de un proyecto o una tarea importante, un gestor puede activar el flujo para tuitear una confirmación estándar, informando a los seguidores sobre el progreso.",
+      "Alertas de Mantenimiento o Incidentes: Un equipo de operaciones puede tener un mensaje predefinido (\"Servicio X en mantenimiento\", \"Incidente resuelto\") listo para tuitear manualmente en Twitter, comunicando rápidamente el estado a los usuarios.",
+      "Activación de Contenido Programado en Eventos en Vivo: Durante un evento en vivo o un webinar, un moderador puede presionar un botón para lanzar un tuit predefinido con información clave, encuestas o recordatorios en el momento exacto.",
+      "Pruebas de Conectividad con Twitter: Desarrolladores o administradores de n8n pueden usar este flujo simplificado para verificar rápidamente que la integración y las credenciales con Twitter funcionan correctamente, enviando un tweet de prueba."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 78,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0064-twitter-if-trigger.json-1758170516758",
+    "fileName": "0064-twitter-if-trigger.json",
+    "flowName": "Publicación Condicional en Twitter",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Comunicación",
+      "Redes Sociales"
+    ],
+    "mainFunction": "Publicar un mensaje predefinido en Twitter, sujeto a una condición específica.",
+    "automationDestinations": [
+      "Twitter"
+    ],
+    "dataOrigins": [
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "Twitter",
+      "IF"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Un flujo simple que publica un mensaje en Twitter de forma condicional tras una ejecución manual.",
+    "useCaseExamples": [
+      "Un equipo de marketing lanza un tweet predefinido para anunciar rápidamente una oferta flash o un evento en vivo, asegurándose de que el mensaje sea siempre el mismo.",
+      "Un gestor de comunidad utiliza el flujo para publicar manualmente un recordatorio diario sobre el horario de atención al cliente o un 'buenos días' en las redes sociales.",
+      "Un creador de contenido quiere republicar manualmente un enlace a su último video o artículo cada cierto tiempo, usando un tweet estándar pre-escrito.",
+      "Una pequeña empresa desea anunciar la apertura de su tienda física o el inicio de un evento especial con un tweet listo para usar, activado con un solo clic por cualquier miembro del equipo autorizado.",
+      "Un desarrollador prueba la integración de Twitter en su cuenta de n8n enviando un mensaje de prueba estático para confirmar que las credenciales y la conexión funcionan correctamente."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 79,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0065-telegram-deploy-automation.json-1758170527883",
+    "fileName": "0065-telegram-deploy-automation.json",
+    "flowName": "Despliegue de Releases en GitHub via Telegram",
+    "mainArea": "Desarrollo de Software",
+    "secondaryAreas": [
+      "Operaciones IT",
+      "Automatización",
+      "Gestión de Proyectos"
+    ],
+    "mainFunction": "Automatizar la creación de nuevas releases en un repositorio de GitHub enviando un comando específico a través de Telegram.",
+    "automationDestinations": [
+      "GitHub"
+    ],
+    "dataOrigins": [
+      "Telegram"
+    ],
+    "keyNodes": [
+      "Telegram Trigger",
+      "IF",
+      "Set",
+      "GitHub"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo permite crear releases en GitHub controladas por mensajes enviados a través de Telegram, facilitando los despliegues.",
+    "useCaseExamples": [
+      "Un equipo de desarrollo puede usar este flujo para lanzar una nueva versión de su aplicación en GitHub (creando un \"release\" con un tag específico) simplemente enviando un mensaje como \"/deploy v1.0.0\" a un bot de Telegram.",
+      "Un administrador de contenido podría publicar una nueva versión de la documentación de un proyecto (almacenada en un repositorio de GitHub) creando un \"release\" con el tag correspondiente a través de Telegram, por ejemplo, \"/deploy docs-update-2023-10-27\".",
+      "En caso de una vulnerabilidad o error crítico, un ingeniero de operaciones puede iniciar un despliegue de emergencia de un parche (creando un release con la versión del hotfix) directamente desde su teléfono a través de Telegram, como \"/deploy hotfix-v1.0.1\".",
+      "Un equipo interno que mantiene varias herramientas o scripts en GitHub puede automatizar la creación de versiones etiquetadas para estas herramientas, facilitando el seguimiento y la distribución, usando comandos como \"/deploy tool-alpha-v2.3\".",
+      "Después de que un pipeline de integración continua (CI) haya completado sus pruebas con éxito, un gerente de proyecto o líder técnico puede dar el paso final de crear un release en GitHub para la versión probada, señalando que está lista para su despliegue en producción o para ser consumida, mediante un mensaje de Telegram \"/deploy production-ready-vX.Y.Z\"."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 80,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0066-pipedrive-crear-deal.json-1758170539327",
+    "fileName": "0066-pipedrive-crear-deal.json",
+    "flowName": "Create an deal in Pipedrive",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Gestión de Clientes"
+    ],
+    "mainFunction": "Crear una oportunidad de negocio en Pipedrive.",
+    "automationDestinations": [
+      "Pipedrive"
+    ],
+    "dataOrigins": [
+      "Manual"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Pipedrive"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Crea una nueva oportunidad de negocio en Pipedrive de forma manual.",
+    "useCaseExamples": [
+      "Creación manual de oportunidades de venta tras una llamada de calificación: Un vendedor ha tenido una llamada exitosa con un prospecto, ha calificado la oportunidad y necesita crear un nuevo trato en Pipedrive para iniciar el seguimiento formal.",
+      "Registro de un nuevo trato después de una feria comercial: Tras un evento o feria, un miembro del equipo de ventas revisa los contactos obtenidos y, de forma proactiva, crea tratos individuales en Pipedrive para las oportunidades más prometedoras.",
+      "Inicio de un proceso de renovación para clientes existentes: Cuando se acerca la fecha de renovación de un cliente, un gestor de cuentas puede ejecutar manualmente este flujo de trabajo para crear un trato de \"renovación\" en Pipedrive y comenzar el seguimiento.",
+      "Creación de un trato para un cliente referido por un socio: Un socio de canal ha enviado una referencia de un nuevo cliente. Un representante de ventas ejecuta el flujo para registrar rápidamente esta nueva oportunidad en Pipedrive con los datos iniciales.",
+      "Registro de una solicitud de presupuesto inesperada: Un cliente potencial contacta directamente por correo electrónico o teléfono solicitando un presupuesto. Un miembro del equipo de ventas ejecuta el flujo para transformar esta solicitud en un trato en Pipedrive y asignarlo para seguimiento."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 81,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0067-obtener-registros-dns.json-1758170554240",
+    "fileName": "0067-obtener-registros-dns.json",
+    "flowName": "Get DNS entries",
+    "mainArea": "IT y Operaciones",
+    "secondaryAreas": [
+      "Desarrollo Web",
+      "Seguridad de la Información"
+    ],
+    "mainFunction": "Obtener registros DNS para un dominio específico utilizando una herramienta externa.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "Manual",
+      "uproc API"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Function Item",
+      "uproc"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo obtiene los registros DNS para un dominio (n8n.io por defecto) a través de una llamada a una herramienta uproc.",
+    "useCaseExamples": [
+      "Un administrador de sistemas utiliza este flujo para monitorear periódicamente los registros DNS (A, CNAME, MX, TXT) de los dominios críticos de la empresa y asegurar que no hayan sido alterados o que estén configurados correctamente.",
+      "Un proveedor de servicios SSL lo emplea para validar automáticamente la propiedad de un dominio (obteniendo registros CNAME o TXT) antes de emitir un certificado, agilizando el proceso de verificación.",
+      "Un equipo de seguridad lo usa para auditar los registros DNS de múltiples dominios, buscando configuraciones incorrectas o vulnerabilidades que puedan ser explotadas para ataques de suplantación o phishing.",
+      "Un técnico de soporte lo implementa para diagnosticar rápidamente problemas de conectividad de sitios web o servicios de correo electrónico, obteniendo al instante los registros DNS relevantes de un dominio problemático.",
+      "Un especialista en marketing por correo electrónico lo configura para verificar que los registros SPF, DKIM y DMARC de su dominio estén correctamente implementados, mejorando la entregabilidad de los correos y evitando que sean marcados como spam."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 82,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0068-line-chatbot-config-override.json-1758170567808",
+    "fileName": "0068-line-chatbot-config-override.json",
+    "flowName": "Standup Bot - Override Config",
+    "mainArea": "Operaciones IT",
+    "secondaryAreas": [
+      "Desarrollo",
+      "Administración de Sistemas"
+    ],
+    "mainFunction": "Sobreescribir el archivo de configuración de un bot de standup guardando un nuevo archivo binario (JSON) en el sistema de archivos local.",
+    "automationDestinations": [
+      "Sistema de Archivos Local"
+    ],
+    "dataOrigins": [
+      "Activador Manual"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "Move Binary Data",
+      "Write Binary File"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Actualiza la configuración de un bot de standup escribiendo un nuevo archivo de configuración en el sistema de archivos.",
+    "useCaseExamples": [
+      "Un líder de equipo quiere actualizar la lista de miembros que participan en el standup diario, añadiendo o eliminando personas del archivo de configuración del bot.",
+      "El equipo decide cambiar las preguntas estándar que el bot formula en el standup, y este flujo se usa para sobrescribir las preguntas en el archivo de configuración del bot.",
+      "Se necesita ajustar el horario o la frecuencia con la que el bot solicita los informes de standup (por ejemplo, cambiar la hora del día o de diario a tres veces por semana).",
+      "El equipo migra a un nuevo canal de Slack o Microsoft Teams, y este flujo de trabajo se utiliza para actualizar el ID del canal de destino en la configuración del bot.",
+      "Se requiere activar o desactivar una función específica del bot, como los recordatorios automáticos para entregas tardías, modificando la bandera de configuración correspondiente."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 83,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0069-line-weather-kelvin.json-1758170578742",
+    "fileName": "0069-line-weather-kelvin.json",
+    "flowName": "Send daily weather updates via a message in Line",
+    "mainArea": "Productividad",
+    "secondaryAreas": [
+      "Información General",
+      "Comunicación"
+    ],
+    "mainFunction": "Obtener actualizaciones meteorológicas diarias de una ciudad específica y enviarlas como mensaje a través de Line.",
+    "automationDestinations": [
+      "Line"
+    ],
+    "dataOrigins": [
+      "Cron",
+      "OpenWeatherMap"
+    ],
+    "keyNodes": [
+      "Cron",
+      "OpenWeatherMap",
+      "Line"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Envía diariamente la temperatura actual de una ciudad por mensaje de Line.",
+    "useCaseExamples": [
+      "Un individuo que vive en Berlín configura el flujo para recibir la temperatura matutina diaria directamente en su aplicación Line, ayudándole a decidir qué ropa usar antes de salir de casa.",
+      "Una persona que planifica un viaje a Berlín para la próxima semana utiliza el flujo para obtener actualizaciones diarias de la temperatura en la ciudad, permitiéndole preparar su equipaje de manera adecuada.",
+      "El propietario de una pequeña cafetería en Berlín utiliza el flujo para recibir la temperatura a las 9 AM cada día, lo que le ayuda a decidir si debe instalar el mobiliario exterior o preparar bebidas frías/calientes especiales.",
+      "Un organizador de eventos al aire libre en Berlín programa el flujo para recibir la temperatura temprano cada mañana, lo que le permite hacer ajustes rápidos en la logística o el equipo necesario para el evento del día.",
+      "Un hijo configura el flujo para enviar la temperatura diaria de Berlín a su padre mayor que vive allí, asegurándose de que su padre esté informado sobre el clima y se vista apropiadamente, especialmente durante los meses más fríos."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 84,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0070-114_validar_telefono.json-1758170595909",
+    "fileName": "0070-114_validar_telefono.json",
+    "flowName": "Verify phone numbers",
+    "mainArea": "Gestión de Datos",
+    "secondaryAreas": [
+      "Marketing",
+      "Ventas",
+      "Atención al Cliente"
+    ],
+    "mainFunction": "Valida la estructura y existencia de números de teléfono utilizando un servicio externo de UProc.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "Activador Manual"
+    ],
+    "keyNodes": [
+      "Function Item",
+      "UProc",
+      "IF"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo verifica la validez de un número de teléfono específico usando un servicio UProc y evalúa el resultado.",
+    "useCaseExamples": [
+      "Limpieza de datos en CRM: Una empresa quiere asegurar la calidad de sus datos. Este flujo podría ejecutarse semanalmente para validar los números de teléfono de todos sus contactos en el CRM, marcando o eliminando los inválidos.",
+      "Validación de leads en formularios web: Antes de añadir un nuevo lead a la base de datos de ventas, el flujo verifica automáticamente el número de teléfono proporcionado en un formulario de contacto para descartar leads con información incorrecta.",
+      "Preparación para campañas de marketing por SMS/WhatsApp: Un equipo de marketing utiliza el flujo para validar una lista de miles de números de teléfono antes de enviar una campaña masiva, reduciendo la tasa de rebote y los costos asociados.",
+      "Registro de nuevos usuarios en una plataforma: Durante el proceso de registro, el número de teléfono ingresado por el usuario es validado instantáneamente para asegurar que es un número real capaz de recibir SMS de verificación o notificaciones.",
+      "Actualización y verificación de datos de proveedores: Una empresa gestiona una base de datos de sus proveedores. Este flujo se usa para verificar periódicamente que los números de contacto principales de los proveedores sigan siendo válidos para una comunicación fluida."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 85,
+    "isFavorite": false
   }
 ]
