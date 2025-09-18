@@ -148,7 +148,7 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite, onUp
      <Accordion type="single" collapsible className="w-full" value={openAccordion} onValueChange={setOpenAccordion}>
       <AccordionItem value="details" className="border-none">
         <div onClick={toggleAccordion} className="cursor-pointer hover:bg-secondary/30 transition-colors relative">
-         <div className="absolute top-3 right-3 z-10 flex flex-col items-center gap-2">
+         <div className="absolute top-3 right-3 z-0 flex flex-col items-center gap-2">
             <Button
               variant="ghost"
               size="icon"
