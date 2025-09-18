@@ -204,13 +204,15 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite, onUp
               {/* Main Info */}
               <div className="flex-grow">
                   <div className='flex items-start gap-3'>
-                      <span className="text-xl font-bold text-primary w-8 text-center">#{workflow.id}</span>
-                      <div className="flex-grow pr-16">
+                      <div className="w-12 text-center shrink-0">
+                        <span className="text-xl font-bold text-primary">#{workflow.id}</span>
+                      </div>
+                      <div className="flex-grow pr-16 min-w-0">
                         <div className='flex items-center gap-2'>
-                          {workflow.fileName.endsWith('.json') ? <FileJson className="h-5 w-5 text-accent" /> : <FileText className="h-5 w-5 text-accent" />}
-                          <h2 className="text-xl font-bold text-foreground">{workflow.flowName}</h2>
+                          {workflow.fileName.endsWith('.json') ? <FileJson className="h-5 w-5 text-accent shrink-0" /> : <FileText className="h-5 w-5 text-accent shrink-0" />}
+                          <h2 className="text-xl font-bold text-foreground truncate" title={workflow.flowName}>{workflow.flowName}</h2>
                            {isUnanalysed && (
-                            <Badge variant="outline" className="border-amber-500 text-amber-500">
+                            <Badge variant="outline" className="border-amber-500 text-amber-500 whitespace-nowrap">
                                 <Wand2 className="h-3 w-3 mr-1"/>
                                 Sin Analizar
                             </Badge>
@@ -542,5 +544,3 @@ ${separator}`;
     </div>
   );
 }
-
-    
