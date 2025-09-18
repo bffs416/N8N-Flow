@@ -208,17 +208,18 @@ const WorkflowCard = ({ workflow, onDelete, isUnanalysed, onToggleFavorite, onUp
                         <span className="text-xl font-bold text-primary">#{workflow.id}</span>
                       </div>
                       <div className="flex-grow pr-16 min-w-0">
-                        <div className='flex items-center gap-2'>
-                          {workflow.fileName.endsWith('.json') ? <FileJson className="h-5 w-5 text-accent shrink-0" /> : <FileText className="h-5 w-5 text-accent shrink-0" />}
-                          <h2 className="text-xl font-bold text-foreground truncate" title={workflow.flowName}>{workflow.flowName}</h2>
+                        <h2 className="text-xl font-bold text-foreground truncate" title={workflow.flowName}>{workflow.flowName}</h2>
+                        <div className='flex items-center gap-2 mt-1'>
+                          {workflow.fileName.endsWith('.json') ? <FileJson className="h-4 w-4 text-muted-foreground shrink-0" /> : <FileText className="h-4 w-4 text-muted-foreground shrink-0" />}
+                          <p className='text-xs text-muted-foreground truncate' title={workflow.fileName}>{workflow.fileName}</p>
                            {isUnanalysed && (
-                            <Badge variant="outline" className="border-amber-500 text-amber-500 whitespace-nowrap">
+                            <Badge variant="outline" className="border-amber-500 text-amber-500 whitespace-nowrap ml-2">
                                 <Wand2 className="h-3 w-3 mr-1"/>
                                 Sin Analizar
                             </Badge>
                            )}
                         </div>
-                        <p className="text-muted-foreground mt-1 text-sm">{workflow.shortDescription}</p>
+                        <p className="text-muted-foreground mt-2 text-sm">{workflow.shortDescription}</p>
                       </div>
                   </div>
                   
