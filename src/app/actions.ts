@@ -154,6 +154,7 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
     
+    // Sanitize workflows to ensure all fields have default values if they are undefined
     const sanitizedWorkflows = workflows.map(({ content, id, ...wf }) => ({
         ...wf,
         secondaryAreas: wf.secondaryAreas || [],
@@ -162,7 +163,7 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
         keyNodes: wf.keyNodes || [],
         useCaseExamples: JSON.stringify(wf.useCaseExamples || []),
         similarities: JSON.stringify(wf.similarities || []),
-        isFavorite: wf.isFavorite || false,
+        is_favorite: wf.isFavorite || false,
         notes: wf.notes || '',
     }));
 
@@ -172,7 +173,7 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
 
     if (error) {
       console.error('Supabase error:', error);
-      throw new Error(`Error de Supabase: ${error.message}`);
+      return { success: false, error: `Error de Supabase: ${error.message}` };
     }
     
     return { success: true };

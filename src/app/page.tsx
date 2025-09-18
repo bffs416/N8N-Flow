@@ -331,7 +331,7 @@ export default function Home() {
         hasWorkflows={workflows.length > 0}
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
-        onSendToForm={handleSendToSupabase}
+        onSendToSupabase={handleSendToSupabase}
         isLoading={isLoading}
       />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">

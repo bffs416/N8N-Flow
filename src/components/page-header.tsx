@@ -9,7 +9,7 @@ interface PageHeaderProps {
   hasWorkflows: boolean;
   onSave: () => void;
   hasUnsavedChanges: boolean;
-  onSendToForm: () => void;
+  onSendToSupabase: () => void;
   isLoading: boolean;
 }
 
@@ -18,7 +18,7 @@ export const PageHeader = ({
   hasWorkflows, 
   onSave, 
   hasUnsavedChanges, 
-  onSendToForm,
+  onSendToSupabase,
   isLoading,
 }: PageHeaderProps) => {
   return (
@@ -41,7 +41,7 @@ export const PageHeader = ({
                  <Button
                   variant="outline"
                   size="sm"
-                  onClick={onSendToForm}
+                  onClick={onSendToSupabase}
                   disabled={isLoading || !hasWorkflows}
                 >
                   <Send className="mr-2 h-4 w-4" />
