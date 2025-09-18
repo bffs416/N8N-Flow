@@ -154,14 +154,19 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
     
-    // Sanitize workflows to ensure all fields have default values if they are undefined
     const sanitizedWorkflows = workflows.map(({ content, id, ...wf }) => ({
-        ...wf,
-        secondaryAreas: wf.secondaryAreas || [],
-        automationDestinations: wf.automationDestinations || [],
-        dataOrigins: wf.dataOrigins || [],
-        keyNodes: wf.keyNodes || [],
-        useCaseExamples: JSON.stringify(wf.useCaseExamples || []),
+        workflow_uuid: wf.workflow_uuid,
+        file_name: wf.fileName,
+        flow_name: wf.flowName,
+        main_area: wf.mainArea,
+        secondary_areas: wf.secondaryAreas || [],
+        main_function: wf.mainFunction,
+        automation_destinations: wf.automationDestinations || [],
+        data_origins: wf.dataOrigins || [],
+        key_nodes: wf.keyNodes || [],
+        complexity: wf.complexity,
+        short_description: wf.shortDescription,
+        use_case_examples: JSON.stringify(wf.useCaseExamples || []),
         similarities: JSON.stringify(wf.similarities || []),
         is_favorite: wf.isFavorite || false,
         notes: wf.notes || '',
