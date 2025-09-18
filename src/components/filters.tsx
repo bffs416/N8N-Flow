@@ -9,13 +9,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { Star, ChevronDown } from 'lucide-react';
-import { Input } from './ui/input';
+import { Star } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Badge } from './ui/badge';
+
 
 interface WorkflowFiltersProps {
   mainAreas: string[];
@@ -40,15 +40,6 @@ export function WorkflowFilters({
   setShowFavorites,
   disabled,
 }: WorkflowFiltersProps) {
-  const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState('');
-
-  const filteredAreas = useMemo(() => {
-    if (!search) return mainAreas;
-    return mainAreas.filter(area =>
-      area.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [search, mainAreas]);
 
   const handleSelectArea = (area: string) => {
     setSelectedMainAreas(prev =>
@@ -58,94 +49,73 @@ export function WorkflowFilters({
     );
   };
   
-  const handleClear = () => {
-    setSelectedMainAreas([]);
-    setSearch('');
-  }
-
   return (
-    <div className="flex flex-col sm:flex-row items-center gap-4">
-      <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-        {/* Main Area Filter */}
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              role="combobox"
-              aria-expanded={open}
-              className="w-full justify-between"
+    <div className="flex flex-col gap-4">
+       {/* Filter Toggles */}
+      <div className="flex flex-col sm:flex-row items-center gap-4">
+        {/* Complexity Filter */}
+        <div className="w-full sm:w-1/3">
+           <Select
+              value={complexityFilter}
+              onValueChange={setComplexityFilter}
               disabled={disabled}
             >
-              {selectedMainAreas.length > 0
-                ? `Categorías (${selectedMainAreas.length})`
-                : "Todas las Categorías"}
-              <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              <SelectTrigger>
+                <SelectValue placeholder="Filtrar por dificultad..." />
+              </SelectTrigger>
+              <SelectContent>
+                {complexities.map(comp => (
+                  <SelectItem key={comp} value={comp}>
+                    {comp === 'all' ? 'Todas las Dificultades' : comp}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+        </div>
+
+        {/* Favorites Toggle */}
+        <div className="flex items-center space-x-2">
+          <Switch
+            id="favorites-only"
+            checked={showFavorites}
+            onCheckedChange={setShowFavorites}
+            disabled={disabled}
+          />
+          <Label htmlFor="favorites-only" className="flex items-center gap-2 cursor-pointer">
+            <Star className="h-4 w-4 text-yellow-500" />
+            <span>Solo Favoritos</span>
+          </Label>
+        </div>
+        
+        {selectedMainAreas.length > 0 && (
+            <Button 
+                variant="ghost" 
+                size="sm"
+                onClick={() => setSelectedMainAreas([])}
+                disabled={disabled}
+            >
+                Limpiar filtros ({selectedMainAreas.length})
             </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-[400px] p-4" align="start">
-             <div className='space-y-4'>
-                <Input 
-                    placeholder="Buscar categoría..." 
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <div className="grid grid-cols-2 gap-2">
-                    {filteredAreas.map(area => (
-                        <Label key={area} className="flex items-center gap-2 font-normal p-2 rounded-md hover:bg-accent transition-colors cursor-pointer">
-                            <Checkbox
-                                checked={selectedMainAreas.includes(area)}
-                                onCheckedChange={() => handleSelectArea(area)}
-                            />
-                            <span>{area}</span>
-                        </Label>
-                    ))}
-                </div>
-                 {filteredAreas.length === 0 && (
-                    <p className="text-center text-sm text-muted-foreground py-4">No se encontraron categorías.</p>
-                )}
-                {selectedMainAreas.length > 0 && (
-                  <div className="pt-4 border-t flex justify-end">
-                    <Button variant="ghost" size="sm" onClick={handleClear}>
-                          Limpiar selección
-                    </Button>
-                  </div>
-                )}
-             </div>
-          </PopoverContent>
-        </Popover>
+        )}
+      </div>
 
-        {/* Complexity Filter */}
-        <Select
-          value={complexityFilter}
-          onValueChange={setComplexityFilter}
-          disabled={disabled}
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Filtrar por dificultad..." />
-          </SelectTrigger>
-          <SelectContent>
-            {complexities.map(comp => (
-              <SelectItem key={comp} value={comp}>
-                {comp === 'all' ? 'Todas las Dificultades' : comp}
-              </SelectItem>
+       {/* Main Area Filter */}
+       {mainAreas.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+            {mainAreas.map(area => (
+                <Button
+                    key={area}
+                    variant={selectedMainAreas.includes(area) ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => handleSelectArea(area)}
+                    disabled={disabled}
+                    className="rounded-full"
+                >
+                    {area}
+                </Button>
             ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      {/* Favorites Toggle */}
-      <div className="flex items-center space-x-2">
-        <Switch
-          id="favorites-only"
-          checked={showFavorites}
-          onCheckedChange={setShowFavorites}
-          disabled={disabled}
-        />
-        <Label htmlFor="favorites-only" className="flex items-center gap-2 cursor-pointer">
-          <Star className="h-4 w-4 text-yellow-500" />
-          <span>Solo Favoritos</span>
-        </Label>
-      </div>
+        </div>
+       )}
     </div>
   );
 }
