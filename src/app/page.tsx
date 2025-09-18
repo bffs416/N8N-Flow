@@ -323,7 +323,7 @@ export default function Home() {
 
   const isAnalyzing = analysisProgress.total > 0;
   
-  const mainAreas = useMemo(() => [...Array.from(new Set(workflows.map(wf => wf.mainArea).filter(area => area !== 'Error')))], [workflows]);
+  const mainAreas = useMemo(() => [...Array.from(new Set(workflows.map(wf => wf.mainArea).filter(area => area !== 'Error')))].sort((a,b) => a.localeCompare(b)), [workflows]);
   const complexities = useMemo(() => ['all', 'Simple', 'Medio', 'Complejo'], []);
 
   const isFiltered = searchQuery || mainAreaFilters.length > 0 || complexityFilter !== 'all' || showFavorites;
@@ -435,3 +435,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

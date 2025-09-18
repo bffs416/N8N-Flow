@@ -14,7 +14,7 @@ import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Star, LayoutGrid } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from '@/components/ui/dialog';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -43,7 +43,7 @@ export function WorkflowFilters({
   disabled,
 }: WorkflowFiltersProps) {
   const [searchCategory, setSearchCategory] = useState('');
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const filteredAreas = useMemo(() => {
     return mainAreas.filter(area =>
@@ -62,8 +62,8 @@ export function WorkflowFilters({
   return (
     <div className="flex flex-col sm:flex-row items-center gap-4">
       {/* Category Filter */}
-       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogTrigger asChild>
+       <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+        <PopoverTrigger asChild>
           <Button
             variant="outline"
             className="w-full sm:w-auto justify-start"
@@ -77,12 +77,9 @@ export function WorkflowFilters({
               </span>
             )}
           </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[650px]">
-           <DialogHeader>
-             <DialogTitle>Filtrar por Categoría</DialogTitle>
-           </DialogHeader>
-            <div className="p-2 -mt-4">
+        </PopoverTrigger>
+        <PopoverContent className="w-[800px] p-0" align="start">
+            <div className="p-2 border-b">
                 <Input
                 placeholder="Buscar categoría..."
                 value={searchCategory}
@@ -90,12 +87,12 @@ export function WorkflowFilters({
                 className="h-9"
                 />
             </div>
-          <ScrollArea className="h-[350px] border rounded-md">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-1 p-4">
+          <ScrollArea className="h-[400px]">
+            <div className="grid grid-cols-5 gap-1 p-4">
               {filteredAreas.map(area => (
                 <Label
                   key={area}
-                  className="flex items-center gap-2 p-2 rounded-md hover:bg-accent cursor-pointer"
+                  className="flex items-center gap-2 p-2 rounded-md hover:bg-accent/50 cursor-pointer transition-colors"
                 >
                   <Checkbox
                     checked={selectedMainAreas.includes(area)}
@@ -107,20 +104,21 @@ export function WorkflowFilters({
               ))}
             </div>
           </ScrollArea>
-           <DialogFooter className='sm:justify-between'>
-                {selectedMainAreas.length > 0 && (
+           <div className='flex justify-between items-center p-2 border-t'>
+                {selectedMainAreas.length > 0 ? (
                     <Button 
                         variant="ghost" 
+                        size="sm"
                         onClick={() => setSelectedMainAreas([])}
                         disabled={disabled}
                     >
                         Limpiar filtros ({selectedMainAreas.length})
                     </Button>
-                )}
-                <Button onClick={() => setIsDialogOpen(false)}>Cerrar</Button>
-           </DialogFooter>
-        </DialogContent>
-      </Dialog>
+                ) : <div />}
+                <Button onClick={() => setIsPopoverOpen(false)} size="sm">Cerrar</Button>
+           </div>
+        </PopoverContent>
+      </Popover>
 
 
       {/* Complexity Filter */}
@@ -159,3 +157,5 @@ export function WorkflowFilters({
     </div>
   );
 }
+
+    
