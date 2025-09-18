@@ -149,7 +149,7 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
     const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
     if (!supabaseUrl || !supabaseAnonKey) {
-      return { success: false, error: 'Las credenciales de Supabase (URL y Anon Key) no están configuradas en el archivo .env.local.' };
+      return { success: false, error: 'Las credenciales de Supabase (URL y Anon Key) no están configuradas en el archivo .env.local. Es posible que necesites reiniciar el servidor de desarrollo.' };
     }
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
@@ -160,8 +160,8 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
         automationDestinations: wf.automationDestinations || [],
         dataOrigins: wf.dataOrigins || [],
         keyNodes: wf.keyNodes || [],
-        useCaseExamples: wf.useCaseExamples || [],
-        similarities: wf.similarities || [],
+        useCaseExamples: JSON.stringify(wf.useCaseExamples || []),
+        similarities: JSON.stringify(wf.similarities || []),
         isFavorite: wf.isFavorite || false,
         notes: wf.notes || '',
     }));
@@ -171,7 +171,8 @@ export async function sendToSupabase(workflows: Workflow[]): Promise<{success: b
       .upsert(sanitizedWorkflows, { onConflict: 'workflow_uuid' });
 
     if (error) {
-      throw error;
+      console.error('Supabase error:', error);
+      throw new Error(`Error de Supabase: ${error.message}`);
     }
     
     return { success: true };
