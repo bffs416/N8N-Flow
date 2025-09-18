@@ -3159,5 +3159,373 @@
     "notes": "",
     "id": 85,
     "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0071-pipedrive-change-monitor.json-1758171122401",
+    "fileName": "0071-pipedrive-change-monitor.json",
+    "flowName": "Receive updates for all changes in Pipedrive",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Gestión de Clientes",
+      "Operaciones"
+    ],
+    "mainFunction": "Monitorear y recibir notificaciones sobre todas las actualizaciones y cambios que ocurren en Pipedrive.",
+    "automationDestinations": [],
+    "dataOrigins": [
+      "Pipedrive"
+    ],
+    "keyNodes": [
+      "Pipedrive Trigger"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Recibe notificaciones instantáneas de cualquier cambio en tus datos de Pipedrive.",
+    "useCaseExamples": [
+      "Notificar a un canal de Slack cada vez que el estado de una oportunidad de venta cambia en Pipedrive para mantener al equipo informado.",
+      "Sincronizar automáticamente nuevos contactos o actualizaciones de organizaciones de Pipedrive a una lista de correo electrónico en Mailchimp o SendGrid.",
+      "Registrar todas las actividades completadas en Pipedrive (llamadas, reuniones) en una hoja de cálculo de Google Sheets para un seguimiento detallado y análisis.",
+      "Actualizar el estado de un proyecto en Asana o Trello cuando una oportunidad de venta relacionada en Pipedrive avanza a una etapa específica.",
+      "Enviar un correo electrónico automatizado al equipo de finanzas cuando el valor de una oportunidad de venta en Pipedrive supera un cierto umbral o se cierra como 'ganada'."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 86,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0072-medium-rss-feed.json-1758171141828",
+    "fileName": "0072-medium-rss-feed.json",
+    "flowName": "Agregador y Combinador de Feeds RSS",
+    "mainArea": "Marketing de Contenidos",
+    "secondaryAreas": [
+      "Análisis de Datos",
+      "Investigación",
+      "Gestión de Información"
+    ],
+    "mainFunction": "Recopilar y unificar publicaciones de diversas fuentes de feeds RSS en un solo conjunto de datos dentro del flujo.",
+    "automationDestinations": [
+      "Ninguna explícita (procesamiento interno)"
+    ],
+    "dataOrigins": [
+      "RSS Feed"
+    ],
+    "keyNodes": [
+      "Function",
+      "SplitInBatches",
+      "RSS Feed Read",
+      "IF",
+      "Merge Data"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo lee publicaciones de múltiples feeds RSS, las procesa en lotes y luego las combina en un único conjunto de datos para su posterior uso interno.",
+    "useCaseExamples": [
+      "Agregación de Noticias Diarias: Un usuario desea recibir un resumen diario de las últimas publicaciones de sus blogs tecnológicos favoritos y sitios de noticias para mantenerse actualizado, consolidando toda la información en un solo lugar.",
+      "Monitoreo de Competencia Industrial: Una empresa necesita rastrear las novedades y comunicados de prensa de sus principales competidores, recopilando las entradas de sus feeds RSS corporativos para un análisis rápido de la actividad del mercado.",
+      "Curación de Contenido para Redes Sociales: Un gestor de redes sociales busca artículos relevantes y de tendencia en su nicho, recolectando contenido de varios feeds RSS de la industria para programar publicaciones en sus perfiles sociales.",
+      "Compilación de Recursos para Investigación: Un investigador académico o estudiante necesita recopilar artículos y publicaciones recientes de múltiples revistas científicas y repositorios (que ofrecen feeds RSS) en un tema específico para su revisión bibliográfica.",
+      "Creación de una Lista de Lectura Personalizada: Un profesional desea tener una única lista consolidada de nuevos artículos de opinión, análisis de mercado y publicaciones de líderes de pensamiento de diferentes sitios web, para leer en su tiempo libre sin tener que visitar cada sitio individualmente."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 87,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0073-hubspot-pagination.json-1758171164508",
+    "fileName": "0073-hubspot-pagination.json",
+    "flowName": "Obtener Contactos de HubSpot con Paginación",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Ventas",
+      "Servicio al Cliente",
+      "Análisis de Datos"
+    ],
+    "mainFunction": "Recuperar todos los contactos de HubSpot, gestionando la paginación de la API para asegurar la extracción completa de los datos.",
+    "automationDestinations": [
+      "n8n (para procesamiento posterior)"
+    ],
+    "dataOrigins": [
+      "HubSpot API",
+      "Manual Trigger"
+    ],
+    "keyNodes": [
+      "HTTP Request",
+      "Config URL",
+      "Check if pagination?",
+      "Set next URL",
+      "Combine all data",
+      "Wait"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo extrae todos los contactos de HubSpot de forma paginada y los consolida para su uso posterior.",
+    "useCaseExamples": [
+      "Un equipo de ventas necesita extraer todos sus contactos de HubSpot, incluyendo todas las páginas de resultados, para realizar una migración a un nuevo sistema CRM, asegurando que no se pierda ningún registro.",
+      "Una agencia de marketing desea sincronizar diariamente su base de datos completa de contactos de HubSpot con una plataforma de marketing por correo electrónico externa para enviar campañas personalizadas, manejando grandes volúmenes de datos paginados.",
+      "Una empresa requiere generar informes mensuales de auditoría sobre todos sus contactos de clientes en HubSpot para cumplir con las normativas de privacidad de datos, extrayendo y consolidando todos los registros existentes.",
+      "Un analista de datos necesita obtener una copia completa de todos los contactos de HubSpot, incluyendo sus propiedades personalizadas, para realizar un análisis de segmentación avanzado y construir modelos predictivos, sin preocuparse por la limitación de registros por llamada a la API.",
+      "Para un proceso de respaldo y recuperación, una organización programa este flujo para descargar y almacenar periódicamente todos los contactos activos de HubSpot en una base de datos interna o un almacenamiento en la nube, garantizando la integridad de los datos ante cualquier eventualidad."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 88,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0074-getresponse-contact-update-flow.json-1758171180644",
+    "fileName": "0074-getresponse-contact-update-flow.json",
+    "flowName": "Get all the contacts from GetResponse and update them",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Ventas"
+    ],
+    "mainFunction": "Recuperar todos los contactos de GetResponse y actualizar la campaña de aquellos contactos que no pertenezcan a la campaña 'n8n'.",
+    "automationDestinations": [
+      "GetResponse"
+    ],
+    "dataOrigins": [
+      "Manual Trigger",
+      "GetResponse"
+    ],
+    "keyNodes": [
+      "GetResponse",
+      "IF"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Obtiene todos los contactos de GetResponse y cambia la campaña de los que no son de 'n8n' a otra específica.",
+    "useCaseExamples": [
+      "Migrar automáticamente a todos los contactos de GetResponse que no pertenecen a la campaña principal 'n8n' a una campaña específica de re-engagement (WRVXO), para iniciar un nuevo ciclo de comunicación.",
+      "Reorganizar contactos antiguos o desactualizados que no están en la campaña central 'n8n', moviéndolos a una campaña de 'segmentación especial' (WRVXO) para su posterior cualificación o eliminación.",
+      "Unificar los contactos dispersos de varias campañas secundarias en GetResponse, trasladando a todos los que no están en la campaña principal 'n8n' a una campaña unificada de 'clientes potenciales' (WRVXO).",
+      "Preparar una promoción especial para contactos no activos: mover todos los contactos que no se encuentran en la campaña de clientes activos ('n8n') a una campaña de 'ofertas exclusivas' (WRVXO) para reactivarlos.",
+      "Centralizar el seguimiento de contactos de eventos pasados: trasladar todos los asistentes a eventos anteriores que no han sido asignados a la campaña principal de seguimiento ('n8n') a una campaña de 'seguimiento de eventos' (WRVXO)."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 89,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0075-syncro-opsgenie-integration.json-1758171199125",
+    "fileName": "0075-syncro-opsgenie-integration.json",
+    "flowName": "Syncro Alert to OpsGenie",
+    "mainArea": "Operaciones TI",
+    "secondaryAreas": [
+      "Gestión de Incidentes",
+      "Soporte al Cliente"
+    ],
+    "mainFunction": "Gestionar automáticamente las alertas generadas en Syncro, creando nuevos incidentes o cerrando los existentes en OpsGenie basándose en el estado de la alerta.",
+    "automationDestinations": [
+      "OpsGenie"
+    ],
+    "dataOrigins": [
+      "Syncro",
+      "Webhook"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "Switch",
+      "IF",
+      "HTTP Request"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Automatiza la creación y el cierre de alertas en OpsGenie a partir de eventos de Syncro, específicamente las alertas de agentes.",
+    "useCaseExamples": [
+      "Una empresa de servicios gestionados (MSP) utiliza Syncro RMM para monitorear los servidores de sus clientes. Cuando el agente de Syncro en un servidor crítico se desconecta, este flujo de trabajo crea automáticamente una alerta de alta prioridad en OpsGenie para notificar al equipo de operaciones sobre la posible interrupción del servicio.",
+      "Un equipo de TI interno monitorea la disponibilidad de las estaciones de trabajo de empleados remotos. Si el agente de Syncro en el portátil de un empleado clave se desconecta, se genera una alerta en OpsGenie, permitiendo al equipo de soporte investigar problemas de conectividad o hardware de manera proactiva.",
+      "Para la supervisión de la infraestructura de puntos de venta (POS) en una cadena minorista, si el servidor local de una tienda se desconecta y el agente de Syncro reporta un 'agent_offline_trigger', el flujo de trabajo alerta inmediatamente a OpsGenie para movilizar al personal de soporte.",
+      "Cuando un agente de Syncro que previamente estaba desconectado vuelve a estar en línea (lo que Syncro marca como una alerta 'resuelto'), este flujo de trabajo detecta el cambio y cierra automáticamente la alerta correspondiente en OpsGenie, optimizando el ciclo de vida de la gestión de incidentes.",
+      "En un entorno industrial con dispositivos IoT o edge computing monitoreados por Syncro, si uno de estos dispositivos pierde su conexión a la red y su agente de Syncro se desconecta, el flujo de trabajo alerta a OpsGenie para que un técnico pueda investigar la causa y restaurar la operación."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 90,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0076-google-calendar-status-hue.json-1758171234764",
+    "fileName": "0076-google-calendar-status-hue.json",
+    "flowName": "Google Calendar to Slack Status & Philips Hue",
+    "mainArea": "Productividad Personal",
+    "secondaryAreas": [
+      "Automatización de Oficina",
+      "Comunicación Interna"
+    ],
+    "mainFunction": "Actualiza automáticamente el estado de Slack y las luces Philips Hue basándose en los eventos de tu Google Calendar, utilizando códigos de color para la categorización.",
+    "automationDestinations": [
+      "Slack",
+      "Philips Hue"
+    ],
+    "dataOrigins": [
+      "Google Calendar"
+    ],
+    "keyNodes": [
+      "Event Started",
+      "Google Calendar",
+      "Set CalColor",
+      "Switch",
+      "Slack - Status",
+      "Light - Busy",
+      "Light - Personal",
+      "Light - Available"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Actualiza tu estado de Slack y las luces Philips Hue automáticamente en función de tus eventos de Google Calendar.",
+    "useCaseExamples": [
+      "Un desarrollador marca bloques de tiempo en su Google Calendar como '4dw_doing' (trabajo concentrado). Al inicio de estos eventos, su estado de Slack se actualiza a \"Enfocado - No molestar\" con un emoji de auriculares, y la luz de su oficina cambia a rojo (indicando \"Ocupado\") para minimizar interrupciones.",
+      "Un gerente programa reuniones importantes de liderazgo como '4dw_leading' en su Google Calendar. Cuando comienza una de estas reuniones, su estado de Slack se actualiza a \"Liderando reunión del equipo\" y una luz inteligente en su espacio de trabajo se pone en ámbar (indicando \"Ocupado\"), alertando visualmente a su equipo sobre su enfoque actual.",
+      "Una persona asigna el color '4dw_living' a sus citas personales, pausas extendidas o tiempo libre en Google Calendar. Al activarse, su estado de Slack cambia a \"Tiempo Personal\" o \"En Pausa\", y la luz de su área de trabajo se vuelve verde suave (indicando \"Personal\") para señalar que no está disponible para temas laborales urgentes.",
+      "Un Project Manager designa bloques de tiempo para la gestión activa de proyectos con el color '4dw_managing' en su calendario. Durante estos períodos, su estado de Slack muestra \"Gestionando Proyecto: [Nombre del Proyecto]\" y la luz de su cubículo se ilumina en azul (indicando \"Ocupado\") para indicar que está inmerso en tareas de coordinación y seguimiento.",
+      "Para eventos de calendario generales o no categorizados (que no utilizan los colores '4dw_'), el flujo actualiza el estado de Slack del usuario a \"Disponible para consultas\" y sus luces de oficina se ajustan a un color blanco normal o neutro (indicando \"Disponible\"), comunicando que está abierto a interacciones no urgentes."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 91,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0077-conversor-json-a-xml.json-1758171249836",
+    "fileName": "0077-conversor-json-a-xml.json",
+    "flowName": "Webhook a XML Responder",
+    "mainArea": "Integración de Datos",
+    "secondaryAreas": [
+      "Desarrollo",
+      "Operaciones"
+    ],
+    "mainFunction": "Recibir datos por un webhook, transformar datos a formato XML y responder al mismo webhook con la salida XML.",
+    "automationDestinations": [
+      "Webhook Responder"
+    ],
+    "dataOrigins": [
+      "Webhook"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "Set",
+      "XML",
+      "Respond to Webhook"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Este flujo recibe una petición por webhook, manipula algunos datos y devuelve una respuesta en formato XML al originador.",
+    "useCaseExamples": [
+      "Simular una API para pruebas: Un equipo de desarrollo necesita un endpoint que siempre devuelva un XML específico para probar la integración de un sistema cliente que espera respuestas en formato XML, sin depender de un backend complejo.",
+      "Proporcionar un estado de servicio básico en XML: Un sistema heredado que solo puede consumir XML necesita un endpoint para verificar el estado de un microservicio, donde una respuesta XML simple indica 'activo' o 'disponible'.",
+      "Distribuir configuración estática en XML: Una aplicación cliente necesita descargar un archivo de configuración en formato XML desde una URL específica, y este flujo proporciona un XML predefinido para ese propósito.",
+      "Adaptar una interfaz moderna a un consumidor XML: Una herramienta interna genera datos en JSON, pero un sistema consumidor externo y antiguo requiere esos datos en un formato XML preestablecido para su procesamiento o validación.",
+      "Demostración de conversión JSON a XML para un PoC: Un equipo está evaluando la capacidad de n8n para la integración de datos y necesita un ejemplo rápido y funcional de cómo convertir un payload JSON estático a XML y servirlo a través de un webhook para un concepto de prueba."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 92,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0078-comida-diaria-recipe.json-1758171276605",
+    "fileName": "0078-comida-diaria-recipe.json",
+    "flowName": "What To Eat",
+    "mainArea": "Vida Personal",
+    "secondaryAreas": [
+      "Salud y Bienestar",
+      "Cocina"
+    ],
+    "mainFunction": "Automatizar la búsqueda y el envío diario de recetas de comida personalizadas por correo electrónico, basándose en criterios como la dieta, el recuento de ingredientes y los límites de calorías y tiempo de preparación.",
+    "automationDestinations": [
+      "Email"
+    ],
+    "dataOrigins": [
+      "Cron",
+      "Edamam API"
+    ],
+    "keyNodes": [
+      "Cron",
+      "Set",
+      "Function",
+      "HTTP Request",
+      "Email Send"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo busca diariamente recetas de comida personalizadas de la API de Edamam, aplicando diversos filtros de búsqueda, y luego envía los resultados por correo electrónico.",
+    "useCaseExamples": [
+      "Un usuario configura el flujo para recibir semanalmente (ej. los domingos a las 10 AM) 3 recetas basadas en \"pollo\", con una dieta \"equilibrada\" y requisitos de \"salud\" aleatorios, preparables en menos de 30 minutos y con un máximo de 1500 calorías, para facilitar su planificación semanal de comidas.",
+      "Un profesional que busca inspiración para sus almuerzos configura el flujo para recibir cada día 3 recetas \"bajas en carbohidratos\" y \"sin gluten\", utilizando \"verduras\" como ingrediente principal, con un límite de 400 calorías y 20 minutos de preparación, directamente en su bandeja de entrada.",
+      "Un nutricionista o cuidador de un paciente con restricciones dietéticas complejas (ej. \"sin lácteos\", \"baja en potasio\") usa el flujo para generar y enviar semanalmente 3 nuevas recetas de \"pescado\" o \"legumbres\", que se ajusten estrictamente a esos requisitos de salud y dietéticos, y que sean fáciles de preparar (tiempo máximo 45 minutos).",
+      "Un cocinero aficionado activa el flujo mensualmente para descubrir 3 recetas con opciones de \"dieta\" y \"salud\" totalmente \"aleatorias\", usando un ingrediente sorpresa (ej. \"tofu\" o \"cordero\"), sin límites estrictos de tiempo o calorías, con el fin de salir de su zona de confort y experimentar nuevos sabores.",
+      "Un blogger de comida saludable programa el flujo para que, una vez a la semana, le genere 3 ideas de recetas \"altas en fibra\" y \"veganas\", utilizando diferentes ingredientes de temporada como \"frutas\" o \"cereales integrales\", para tener siempre contenido fresco y relevante para sus publicaciones."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 93,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0079-sheets-to-dropbox.json-1758171289669",
+    "fileName": "0079-sheets-to-dropbox.json",
+    "flowName": "Automatización de Hoja de Cálculo a Dropbox",
+    "mainArea": "Operaciones",
+    "secondaryAreas": [
+      "Administración de Datos",
+      "TI"
+    ],
+    "mainFunction": "Automatizar la lectura periódica de datos de una hoja de cálculo de Google, su conversión a formato XLS y su posterior subida a Dropbox.",
+    "automationDestinations": [
+      "Dropbox"
+    ],
+    "dataOrigins": [
+      "Google Sheets",
+      "Interval (Disparador)"
+    ],
+    "keyNodes": [
+      "Trigger all 15 min",
+      "Read Sheet",
+      "Convert to XLS",
+      "Upload Dropbox"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Lee datos de Google Sheets, los convierte a XLS y los sube a Dropbox cada 15 minutos.",
+    "useCaseExamples": [
+      "Actualización de Lista de Precios: Una tienda online mantiene su lista de precios de productos en una hoja de Google Sheets. Este flujo de trabajo exporta automáticamente la lista actualizada cada 15 minutos como un archivo XLS a Dropbox, permitiendo que un sistema de un distribuidor o un ERP lo sincronice sin necesidad de intervención manual.",
+      "Sincronización de Inventario: Un almacén gestiona su inventario en tiempo real usando Google Sheets. El flujo de trabajo exporta el estado del inventario a un archivo XLS en Dropbox cada 15 minutos, que luego es recogido por un sistema de comercio electrónico o un software de gestión de pedidos para mantener el stock actualizado.",
+      "Reporte de Ventas para Socios: Un equipo de ventas registra sus resultados diarios en un Google Sheet. Cada 15 minutos, este flujo convierte el informe a XLS y lo carga a una carpeta compartida en Dropbox, asegurando que los socios externos siempre tengan acceso a los datos de ventas más recientes en un formato compatible.",
+      "Respaldo Automático de Datos Críticos: Una empresa utiliza Google Sheets para almacenar datos críticos de proyectos o clientes. El flujo de trabajo realiza un respaldo automático de estos datos cada 15 minutos, guardándolos como un archivo XLS en Dropbox, lo que proporciona una capa adicional de seguridad y acceso rápido en caso de necesitar una versión anterior o exportar los datos.",
+      "Alimentación de Datos para Sistemas Heredados: Una organización utiliza un sistema heredado que solo puede importar datos en formato XLS. Los datos de entrada para este sistema se mantienen en un Google Sheet para facilitar la edición y colaboración. El flujo de trabajo asegura que el sistema heredado siempre tenga disponible el archivo XLS más reciente en Dropbox para su importación periódica."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 94,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0080-shopify-product-alerts.json-1758171303323",
+    "fileName": "0080-shopify-product-alerts.json",
+    "flowName": "Publicar Nuevo Producto en Redes Sociales",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Ventas",
+      "Comunicación"
+    ],
+    "mainFunction": "Anunciar la creación de nuevos productos de Shopify en redes sociales como Twitter y Telegram.",
+    "automationDestinations": [
+      "Twitter",
+      "Telegram"
+    ],
+    "dataOrigins": [
+      "Shopify"
+    ],
+    "keyNodes": [
+      "product created",
+      "Twitter",
+      "Telegram"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Publica automáticamente información sobre nuevos productos de Shopify en Twitter y Telegram.",
+    "useCaseExamples": [
+      "Un diseñador de camisetas personalizadas utiliza Shopify para vender sus creaciones. Cada vez que sube un nuevo diseño de camiseta, el flujo de trabajo lo publica automáticamente en su cuenta de Twitter y en un grupo de Telegram para sus seguidores más leales, anunciando el nuevo producto y dónde comprarlo.",
+      "Una pequeña tienda de artículos hechos a mano en línea, que vende a través de Shopify, lanza regularmente nuevas colecciones. Con este flujo, cada vez que se añade un nuevo artículo artesanal al catálogo, se genera un tweet y un mensaje de Telegram para notificar a sus clientes sobre la última novedad.",
+      "Una marca de cosméticos independiente que gestiona su tienda en Shopify. Cuando lanzan un nuevo tono de lápiz labial o un nuevo producto para el cuidado de la piel, el flujo se activa para anunciarlo inmediatamente en Twitter y en su canal de Telegram, impulsando el interés y las ventas tempranas.",
+      "Un vendedor de productos digitales (como plantillas de diseño o presets de fotografía) en Shopify. Al crear un nuevo paquete de recursos digitales, el flujo difunde automáticamente un mensaje en sus redes sociales para informar a su comunidad de creativos sobre la disponibilidad de las nuevas herramientas.",
+      "Una librería independiente que utiliza Shopify para sus ventas online. Cuando un nuevo libro de un autor local se añade al inventario, el flujo publica un aviso en Twitter y en su grupo de Telegram, destacando el nuevo título y el autor, para fomentar la compra entre sus lectores."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 95,
+    "isFavorite": false
   }
 ]

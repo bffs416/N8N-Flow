@@ -349,7 +349,6 @@ export default function Home() {
         onSave={handleSaveChanges}
         hasUnsavedChanges={hasUnsavedChanges}
         onSendToSupabase={handleSendToSupabase}
-        onRunSimilarityAnalysis={handleRunSimilarityAnalysis}
         isLoading={isLoading}
       />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
