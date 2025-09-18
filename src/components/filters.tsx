@@ -14,7 +14,7 @@ import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Star, LayoutGrid } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -43,6 +43,7 @@ export function WorkflowFilters({
   disabled,
 }: WorkflowFiltersProps) {
   const [searchCategory, setSearchCategory] = useState('');
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const filteredAreas = useMemo(() => {
     return mainAreas.filter(area =>
@@ -61,8 +62,8 @@ export function WorkflowFilters({
   return (
     <div className="flex flex-col sm:flex-row items-center gap-4">
       {/* Category Filter */}
-      <Popover>
-        <PopoverTrigger asChild>
+       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogTrigger asChild>
           <Button
             variant="outline"
             className="w-full sm:w-auto justify-start"
@@ -76,18 +77,21 @@ export function WorkflowFilters({
               </span>
             )}
           </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[400px] p-0" align="start">
-          <div className="p-2">
-            <Input
-              placeholder="Buscar categoría..."
-              value={searchCategory}
-              onChange={(e) => setSearchCategory(e.target.value)}
-              className="h-9"
-            />
-          </div>
-          <ScrollArea className="h-[250px]">
-            <div className="grid grid-cols-2 gap-1 p-2">
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[650px]">
+           <DialogHeader>
+             <DialogTitle>Filtrar por Categoría</DialogTitle>
+           </DialogHeader>
+            <div className="p-2 -mt-4">
+                <Input
+                placeholder="Buscar categoría..."
+                value={searchCategory}
+                onChange={(e) => setSearchCategory(e.target.value)}
+                className="h-9"
+                />
+            </div>
+          <ScrollArea className="h-[350px] border rounded-md">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-1 p-4">
               {filteredAreas.map(area => (
                 <Label
                   key={area}
@@ -96,27 +100,28 @@ export function WorkflowFilters({
                   <Checkbox
                     checked={selectedMainAreas.includes(area)}
                     onCheckedChange={() => handleSelectArea(area)}
+                    id={`checkbox-${area}`}
                   />
                   <span className="text-sm font-normal">{area}</span>
                 </Label>
               ))}
             </div>
           </ScrollArea>
-           {selectedMainAreas.length > 0 && (
-             <div className='p-2 border-t'>
-                <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className='w-full'
-                    onClick={() => setSelectedMainAreas([])}
-                    disabled={disabled}
-                >
-                    Limpiar filtros ({selectedMainAreas.length})
-                </Button>
-             </div>
-           )}
-        </PopoverContent>
-      </Popover>
+           <DialogFooter className='sm:justify-between'>
+                {selectedMainAreas.length > 0 && (
+                    <Button 
+                        variant="ghost" 
+                        onClick={() => setSelectedMainAreas([])}
+                        disabled={disabled}
+                    >
+                        Limpiar filtros ({selectedMainAreas.length})
+                    </Button>
+                )}
+                <Button onClick={() => setIsDialogOpen(false)}>Cerrar</Button>
+           </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
 
       {/* Complexity Filter */}
       <div className="w-full sm:w-auto sm:min-w-[200px]">
