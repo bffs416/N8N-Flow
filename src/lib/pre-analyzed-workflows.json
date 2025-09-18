@@ -3527,5 +3527,205 @@
     "notes": "",
     "id": 95,
     "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0081-shopify-pedidos-trigger.json-1758172141179",
+    "fileName": "0081-shopify-pedidos-trigger.json",
+    "flowName": "Gestión Avanzada de Pedidos Shopify",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Marketing",
+      "Atención al Cliente",
+      "Gestión de Proyectos"
+    ],
+    "mainFunction": "Procesa automáticamente nuevos pedidos de Shopify para actualizar la información del cliente en el CRM (Zoho), generar facturas (Harvest), crear tareas en Trello, y enviar correos electrónicos personalizados (Gmail) con ofertas o agradecimientos, además de segmentar clientes en Mailchimp.",
+    "automationDestinations": [
+      "Zoho",
+      "Trello",
+      "Harvest",
+      "Gmail",
+      "Mailchimp"
+    ],
+    "dataOrigins": [
+      "Shopify"
+    ],
+    "keyNodes": [
+      "Set fields",
+      "IF",
+      "Zoho",
+      "Harvest",
+      "Trello",
+      "Gmail",
+      "Mailchimp"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Automatiza la gestión de pedidos Shopify: CRM, facturación, tareas, emails personalizados y segmentación de marketing.",
+    "useCaseExamples": [
+      "Una tienda de comercio electrónico utiliza el flujo para automatizar el procesamiento de pedidos de Shopify, actualizando los datos del cliente en Zoho CRM, generando facturas en Harvest y gestionando el seguimiento interno de pedidos en Trello, además de enviar emails de agradecimiento personalizados con ofertas si el valor de compra es alto.",
+      "Una empresa que vende productos físicos a través de Shopify integra este flujo para asegurar que cada nueva orden de un cliente se registre en su CRM (Zoho), se cree automáticamente una factura para contabilidad (Harvest), se genere una tarea para el equipo de empaque y envío (Trello) y se ofrezcan incentivos post-compra vía email a clientes de alto valor.",
+      "Un proveedor de servicios digitales o suscripciones que usa Shopify para procesar pagos, aprovecha el flujo para añadir automáticamente nuevos clientes a su base de datos de Zoho, emitir facturas, crear tickets de onboarding en Trello y segmentar a los suscriptores en Mailchimp basándose en el valor de su primera compra.",
+      "Un negocio de artesanías personalizado usa Shopify. Al recibir un pedido, el flujo actualiza la información del cliente en Zoho, genera una factura en Harvest, crea una tarjeta en Trello para seguir el proceso de creación y envío del artículo, y envía un cupón por Gmail si el pedido es de un valor considerable.",
+      "Una empresa B2B que permite pedidos online a través de Shopify utiliza el flujo para sincronizar los datos de sus clientes corporativos con Zoho, emitir facturas proforma en Harvest, gestionar el cumplimiento de pedidos complejos en Trello, y enviar agradecimientos con descuentos por volumen a sus clientes más valiosos."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 96,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0082-shopify-reportes-semanal.json-1758172175987",
+    "fileName": "0082-shopify-reportes-semanal.json",
+    "flowName": "Informe Semanal de Ventas de Shopify",
+    "mainArea": "Comercio Electrónico",
+    "secondaryAreas": [
+      "Análisis de Datos",
+      "Operaciones"
+    ],
+    "mainFunction": "Este flujo recopila los pedidos de Shopify semanalmente, los filtra por fecha, calcula el número total de pedidos y su valor total, y luego registra esta información en una hoja de cálculo de Google Sheets y la envía como notificación a Slack.",
+    "automationDestinations": [
+      "Google Sheets",
+      "Slack"
+    ],
+    "dataOrigins": [
+      "Cron",
+      "Shopify"
+    ],
+    "keyNodes": [
+      "Cron",
+      "Shopify",
+      "Date & Time",
+      "IF",
+      "Set price",
+      "Function",
+      "Google Sheets",
+      "Slack"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Analiza semanalmente los pedidos de Shopify, calculando el total de pedidos y ventas, y enviando un informe a Google Sheets y una notificación a Slack.",
+    "useCaseExamples": [
+      "Informe Semanal de Ventas Acumuladas: Una tienda de Shopify desea un informe semanal que resuma el número total de pedidos y los ingresos generados desde el inicio de un período fiscal o campaña específica (definido por la fecha del nodo IF) hasta la fecha actual. Este informe se publica en Slack y se guarda en una hoja de cálculo de Google para seguimiento financiero continuo.",
+      "Seguimiento Post-Lanzamiento de un Producto/Tienda: Una nueva tienda en línea o una nueva categoría de productos lanzada en una fecha concreta (la fecha del nodo IF) necesita un seguimiento semanal del rendimiento acumulado en términos de cantidad de pedidos y valor total. El flujo de trabajo automatiza el cálculo y la notificación al equipo de marketing a través de Slack, además de archivar los datos en Google Sheets.",
+      "Auditoría de Cumplimiento o Período Promocional: Para cumplir con requisitos de auditoría o para evaluar el impacto de una promoción de larga duración que comenzó en una fecha específica (la fecha del nodo IF), la empresa necesita un resumen semanal de todos los pedidos y su valor desde ese punto. Los datos se comparten con el equipo de cumplimiento/marketing en Slack y se registran en una hoja de cálculo maestra.",
+      "Monitoreo de Crecimiento de Negocio: Un emprendedor quiere tener una visión semanal del progreso general de su negocio, calculando el número total de pedidos y los ingresos totales desde un punto de partida relevante (representado por la fecha del nodo IF, por ejemplo, la fecha de inicio de la tienda o un hito importante). Esta información es vital para la motivación y la planificación estratégica, entregada convenientemente a Slack y a una hoja de cálculo de registro.",
+      "Consolidación de Datos para Inversores: Una startup de e-commerce que busca inversión necesita generar informes semanales automáticos sobre su tracción de ventas, mostrando el número total de pedidos y el valor monetario acumulado desde su ronda de financiación anterior o desde el inicio del negocio (la fecha del nodo IF). Estos datos son enviados a un canal privado de Slack para la dirección y a una hoja de cálculo para la preparación de presentaciones a inversores."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 97,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0083-harvest-cliente-ciclo.json-1758172190296",
+    "fileName": "0083-harvest-cliente-ciclo.json",
+    "flowName": "Create a client in Harvest",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Gestión de Proyectos",
+      "Contabilidad"
+    ],
+    "mainFunction": "Crear un nuevo cliente en el sistema Harvest.",
+    "automationDestinations": [
+      "Harvest"
+    ],
+    "dataOrigins": [
+      "Entrada Manual"
+    ],
+    "keyNodes": [
+      "Harvest"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Crea un nuevo cliente en Harvest de forma manual.",
+    "useCaseExamples": [
+      "Un nuevo cliente ha sido cerrado en el CRM y el equipo de ventas necesita crearlo rápidamente en Harvest para iniciar la facturación y el seguimiento del proyecto.",
+      "El departamento de contabilidad recibe una notificación de un nuevo contrato y debe añadir al cliente en Harvest para la gestión de proyectos y la emisión de facturas.",
+      "Después de que un prospecto acepta una propuesta, el gerente de cuentas utiliza este flujo de trabajo para registrar al nuevo cliente en Harvest antes de asignar los recursos del proyecto.",
+      "Una empresa necesita migrar manualmente un pequeño número de clientes de una hoja de cálculo a Harvest, y este flujo permite añadir cada uno individualmente de forma controlada.",
+      "Un consultor independiente adquiere un nuevo cliente para un proyecto a corto plazo y usa este flujo para crear un registro en Harvest sin tener que navegar por la interfaz completa."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 98,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0084-telegram-profanity-detector.json-1758172386807",
+    "fileName": "0084-telegram-profanity-detector.json",
+    "flowName": "Moderador de Mensajes de Telegram",
+    "mainArea": "Moderación de Contenido",
+    "secondaryAreas": [
+      "Comunidades Online",
+      "Soporte al Cliente",
+      "Comunicación Interna"
+    ],
+    "mainFunction": "Detecta y responde automáticamente a mensajes con contenido ofensivo o profano en Telegram utilizando la API de Google Perspective para el análisis de texto.",
+    "automationDestinations": [
+      "Telegram"
+    ],
+    "dataOrigins": [
+      "Telegram"
+    ],
+    "keyNodes": [
+      "Telegram Trigger",
+      "Google Perspective",
+      "IF"
+    ],
+    "complexity": "Simple",
+    "shortDescription": "Monitorea mensajes de Telegram, los analiza para detectar profanidades y responde automáticamente si el contenido es tóxico.",
+    "useCaseExamples": [
+      "Un equipo de desarrollo de software utiliza un grupo de Telegram para soporte técnico. El flujo de trabajo modera automáticamente los mensajes, respondiendo a aquellos con alto contenido de lenguaje soez para mantener un ambiente de ayuda constructivo y profesional.",
+      "Un administrador de una comunidad de videojuegos tiene un grupo de Telegram para que los jugadores interactúen. El flujo de trabajo ayuda a mantener el chat libre de insultos y lenguaje tóxico, enviando una advertencia automática cuando detecta un mensaje ofensivo.",
+      "Un medio de comunicación usa un canal de Telegram para compartir noticias y permite comentarios. El flujo de trabajo escanea los comentarios para identificar y señalar rápidamente el lenguaje inapropiado, asegurando que las discusiones se mantengan respetuosas.",
+      "Un grupo de estudiantes colabora en un proyecto universitario usando Telegram. El flujo de trabajo previene el uso de lenguaje vulgar o intimidatorio, respondiendo a mensajes con un alto nivel de profanidad para mantener el enfoque en el trabajo académico.",
+      "Un club de lectura organiza sus discusiones y anuncios en un grupo de Telegram. El flujo de trabajo garantiza que las conversaciones sobre los libros se mantengan civilizadas y libres de improperios, moderando automáticamente los mensajes que cruzan los límites de la decencia."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 99,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "0085-n8n_LinkedIn_Interactions_Automation.json-1758172408110",
+    "fileName": "0085-n8n_LinkedIn_Interactions_Automation.json",
+    "flowName": "Create Email Campaign From LinkedIn Post Interactions",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Ventas",
+      "Automatización de Datos",
+      "Gestión de Relaciones con Clientes (CRM)"
+    ],
+    "mainFunction": "Identificar y capturar prospectos que interactúan con publicaciones de LinkedIn, enriquecer su información de contacto y agregarlos o actualizar su perfil en una base de datos (Airtable), una plataforma de campañas de email (Lemlist) y un CRM (Hubspot) para iniciar campañas de correo electrónico dirigidas.",
+    "automationDestinations": [
+      "Airtable",
+      "Lemlist",
+      "Hubspot",
+      "Phantombuster"
+    ],
+    "dataOrigins": [
+      "Cron",
+      "LinkedIn",
+      "Phantombuster"
+    ],
+    "keyNodes": [
+      "Cron",
+      "Phantombuster",
+      "Dropcontact",
+      "Airtable",
+      "Exists ?",
+      "Lemlist",
+      "Hubspot"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Este flujo automatiza la captura de interacciones en publicaciones de LinkedIn para enriquecer la información de contactos y añadirlos a Airtable, Lemlist y Hubspot, facilitando campañas de email.",
+    "useCaseExamples": [
+      "Una empresa de SaaS lanza una nueva característica de producto y publica un post en LinkedIn. El flujo de trabajo identifica a los usuarios que comentan o reaccionan, encuentra sus correos electrónicos y los añade a una campaña de Lemlist para ofrecerles una demostración y una prueba gratuita.",
+      "Una consultoría de negocios comparte un informe de tendencias de la industria en LinkedIn. El flujo de trabajo rastrea a las personas que interactúan con la publicación, enriquece sus perfiles con Dropcontact y los añade a Airtable y Hubspot para un seguimiento personalizado, ofreciéndoles contenido adicional o una consulta gratuita.",
+      "Una agencia de marketing digital publica un estudio de caso exitoso en LinkedIn. El flujo de trabajo captura a los profesionales de marketing o líderes de negocio que reaccionan o comentan, recopila sus datos de contacto y empresa, y los incorpora a una secuencia de correos fríos personalizada a través de Lemlist, ofreciendo una auditoría gratuita.",
+      "Una organización sin fines de lucro promueve una campaña de recaudación de fondos o un evento benéfico en LinkedIn. El flujo de trabajo identifica a los interesados que interactúan con el post, obtiene sus detalles y los añade a una campaña de Lemlist para compartir más información, enlaces de donación o invitaciones directas.",
+      "Una empresa de reclutamiento publica un post en LinkedIn destacando una oportunidad de empleo para un perfil específico. El flujo de trabajo identifica a los candidatos potenciales que interactúan, enriquece sus datos de contacto y los añade a una campaña de Lemlist para invitarlos a aplicar o a una entrevista inicial."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 100,
+    "isFavorite": false
   }
 ]

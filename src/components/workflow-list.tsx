@@ -502,16 +502,14 @@ ${separator}`;
     <div className='space-y-4'>
        <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <div>
-              <CardTitle>{listTitle}</CardTitle>
+            <CardTitle>{listTitle}</CardTitle>
+            <div className="flex items-center gap-2">
               {unanalysedCount > 0 && (
-                <p className='text-sm text-amber-500 mt-1 flex items-center'>
+                <p className='text-sm text-amber-500 flex items-center'>
                     <Info className='h-4 w-4 mr-2' />
                     {unanalysedCount} flujo(s) nuevo(s) sin analizar para similitud.
                 </p>
               )}
-            </div>
-            <div className="flex items-center gap-2">
               <Button 
                 variant="outline" 
                 size="sm" 
@@ -524,7 +522,7 @@ ${separator}`;
             </div>
           </CardHeader>
         </Card>
-        {workflows.length === 0 && (
+        {workflows.length === 0 && searchQuery && (
           <Card>
             <CardContent className='p-6 text-center text-muted-foreground'>
               <p>No se encontraron resultados para "<strong>{searchQuery}</strong>".</p>

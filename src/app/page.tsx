@@ -10,11 +10,11 @@ import {analyzeSingleWorkflow, runBatchedSimilarityAnalysis, saveWorkflowsToFile
 import {useToast} from '@/hooks/use-toast';
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {UploadCloud, Loader2} from 'lucide-react';
-import {Progress} from '@/components/ui/progress';
 import preAnalyzedWorkflows from '@/lib/pre-analyzed-workflows.json';
 import {SearchInput} from '@/components/search-input';
 import { WorkflowFilters } from '@/components/filters';
 import { ScrollToBottomButton } from '@/components/scroll-to-bottom';
+import { Footer } from '@/components/footer';
 
 const BATCH_SIZE = 5;
 
@@ -79,7 +79,7 @@ export default function Home() {
 
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        setAnalysisProgress(prev => ({ ...prev, current: i + 1 }));
+        setAnalysisProgress(prev => ({ ...prev, current: i + 1, title: `Analizando flujo ${i + 1} de ${files.length}...` }));
 
         try {
             const analyzedData = await analyzeSingleWorkflow(file);
@@ -363,20 +363,6 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          {isAnalyzing && (
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-center gap-3 mb-2">
-                  <Loader2 className="h-5 w-5 animate-spin"/>
-                  <p className="font-medium text-foreground">
-                    {analysisProgress.title}
-                  </p>
-                </div>
-                <Progress value={(analysisProgress.current / analysisProgress.total) * 100} />
-              </CardContent>
-            </Card>
-          )}
-
           {workflows.length > 0 && (
             <div className="sticky top-[65px] z-10 bg-background/80 backdrop-blur-sm -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-2 space-y-4">
                 <SearchInput
@@ -444,9 +430,7 @@ export default function Home() {
           )}
         </div>
       </main>
-      <footer id="footer" className="py-4 text-center text-sm text-muted-foreground">
-        <p>Construido con Next.js y Genkit</p>
-      </footer>
+      <Footer analysisProgress={analysisProgress} />
       <ScrollToBottomButton />
     </div>
   );
