@@ -47,7 +47,7 @@ export const PageHeader = ({
                   <Send className="mr-2 h-4 w-4" />
                   Enviar a Supabase
                 </Button>
-                <Button variant="outline" size="sm" onClick={onSave} disabled={!hasUnsavedChanges || isLoading}>
+                <Button variant="outline" size="sm" onClick={onSave} disabled={!hasUnsavedChanges}>
                     <Save className="h-4 w-4 mr-2" />
                     Guardar Cambios
                 </Button>
