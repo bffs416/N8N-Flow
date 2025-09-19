@@ -99,8 +99,7 @@ export default function Home() {
 
     const newUuids = new Set(unanalysedUuids);
     const summary: AnalysisResult[] = [];
-    let currentWorkflows = [...workflows];
-    const existingFileNames = new Set(currentWorkflows.map(wf => wf.fileName));
+    const existingFileNames = new Set(workflows.map(wf => wf.fileName));
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -121,15 +120,17 @@ export default function Home() {
 
       try {
         const analyzedData = await analyzeSingleWorkflow(file);
-        const newId = getNextId(currentWorkflows);
+        const newId = getNextId([...workflows, ...summary.map((_, idx) => ({ id: workflows.length + idx + 1 })) as any]);
+        
         const newWorkflow: Workflow = {
           ...analyzedData,
           id: newId,
           isFavorite: false,
           notes: '',
         };
-        currentWorkflows = [...currentWorkflows, newWorkflow];
+
         setWorkflows(prev => [...prev, newWorkflow]);
+        setHasUnsavedChanges(true); // Set unsaved changes as soon as one workflow is added
 
         newUuids.add(newWorkflow.workflow_uuid);
         existingFileNames.add(newWorkflow.fileName);
@@ -137,7 +138,7 @@ export default function Home() {
 
       } catch (e: any) {
         console.error(e);
-        const newId = getNextId(currentWorkflows);
+        const newId = getNextId([...workflows, ...summary.map((_, idx) => ({ id: workflows.length + idx + 1 })) as any]);
         const failedWorkflow: Workflow = {
           id: newId,
           workflow_uuid: `${file.fileName}-${Date.now()}`,
@@ -156,8 +157,8 @@ export default function Home() {
           isFavorite: false,
           notes: '',
         };
-        currentWorkflows = [...currentWorkflows, failedWorkflow];
         setWorkflows(prev => [...prev, failedWorkflow]);
+        setHasUnsavedChanges(true); // Also here
         
         summary.push({
           fileName: file.fileName,
@@ -174,8 +175,6 @@ export default function Home() {
     }
 
     setUnanalysedUuids(newUuids);
-    setHasUnsavedChanges(true);
-
     setIsLoading(false);
     setAnalysisProgress({total: 0, current: 0, title: ''});
     
@@ -525,7 +524,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
-
-    

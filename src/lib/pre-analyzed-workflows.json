@@ -57424,5 +57424,808 @@
     "notes": "",
     "id": 1500,
     "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2598-shopware-multi-manufacturer-import.json-1758285431893",
+    "fileName": "2598-shopware-multi-manufacturer-import.json",
+    "flowName": "Import multiple Manufacturers from Google Sheets to Shopware 6",
+    "mainArea": "E-commerce",
+    "secondaryAreas": [
+      "Gestión de Datos",
+      "Operaciones"
+    ],
+    "mainFunction": "Importa datos de múltiples fabricantes, incluyendo nombres, sitios web, descripciones, y logotipos, desde Google Sheets hacia Shopware 6, manejando también traducciones y la subida de imágenes de logotipos.",
+    "automationDestinations": [
+      "Shopware 6"
+    ],
+    "dataOrigins": [
+      "Google Sheets"
+    ],
+    "keyNodes": [
+      "Google Sheets",
+      "Code",
+      "Split In Batches",
+      "HTTP Request",
+      "IF"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo importa automáticamente la información de fabricantes de Google Sheets a Shopware 6, incluyendo sus logotipos y traducciones.",
+    "useCaseExamples": [
+      "Una tienda en línea nueva necesita poblar su catálogo de productos con cientos de fabricantes. Utiliza una hoja de Google Sheets para recopilar todos los detalles y el flujo de trabajo para importarlos masivamente a Shopware 6, incluyendo sus logotipos y descripciones en varios idiomas.",
+      "Una empresa que migra de una plataforma de comercio electrónico antigua a Shopware 6 exporta todos sus datos de fabricantes existentes a una hoja de cálculo. Este flujo de trabajo automatiza la importación de esa información a su nueva instancia de Shopware 6.",
+      "Un minorista recibe actualizaciones periódicas (nuevos sitios web, descripciones o logotipos) de sus fabricantes a través de archivos CSV. Los datos se consolidan en Google Sheets y el flujo de trabajo sincroniza automáticamente estos cambios con Shopware 6 para mantener la información actualizada.",
+      "Una marca con presencia internacional necesita gestionar la información de sus fabricantes en múltiples idiomas. Utiliza columnas específicas en Google Sheets para cada idioma (nombre, descripción) y el flujo de trabajo se encarga de crear o actualizar los fabricantes con todas las traducciones en Shopware 6.",
+      "Un marketplace añade constantemente nuevas marcas. Su equipo de onboarding introduce la información del fabricante, incluyendo un enlace al logotipo, en una hoja de Google Sheets. El flujo de trabajo se dispara para crear automáticamente el nuevo fabricante en Shopware 6 y cargar su logotipo."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1501,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2599-workflow-nodes-update-check-template.json-1758285443544",
+    "fileName": "2599-workflow-nodes-update-check-template.json",
+    "flowName": "Addon for Workflow Nodes Update Check Template",
+    "mainArea": "Gestión de Automatización",
+    "secondaryAreas": [
+      "Administración de Sistemas",
+      "DevOps",
+      "Mantenimiento de Software"
+    ],
+    "mainFunction": "Verificar y actualizar automáticamente nodos obsoletos dentro de otros flujos de trabajo de n8n, marcándolos o añadiendo nuevas versiones, y enviar un resumen por correo electrónico de los cambios realizados.",
+    "automationDestinations": [
+      "n8n",
+      "Gmail"
+    ],
+    "dataOrigins": [
+      "n8n (otro flujo de trabajo)"
+    ],
+    "keyNodes": [
+      "Execute Workflow Trigger",
+      "Settings",
+      "Get Workflow",
+      "Modify Workflow (if required)",
+      "Update Workflow",
+      "Send Summary"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo de trabajo se conecta a otro para identificar, modificar y actualizar nodos obsoletos en flujos de trabajo de n8n, enviando una notificación por email con los cambios.",
+    "useCaseExamples": [
+      "En una gran empresa con cientos de flujos de trabajo de n8n, el equipo de operaciones puede ejecutar este flujo mensualmente para identificar y marcar automáticamente los nodos desactualizados en todos los flujos, recibiendo un resumen por correo electrónico para programar las actualizaciones necesarias.",
+      "Un equipo de desarrollo de integraciones utiliza este flujo para mantener la calidad del código. Después de una actualización importante de n8n, ejecutan este flujo para ver qué flujos de trabajo de sus clientes usan nodos de versiones anteriores, permitiéndoles priorizar y planificar las migraciones.",
+      "Un administrador de n8n desea asegurarse de que todos los nuevos flujos de trabajo o los existentes modificados cumplan con las últimas versiones de los nodos. Este flujo se integra en un proceso de revisión, marcando los nodos antiguos y añadiendo las nuevas versiones al lienzo para facilitar la actualización por parte de los desarrolladores.",
+      "Para cumplir con las políticas de seguridad y conformidad, una organización configura este flujo para auditar periódicamente sus flujos de trabajo de n8n. El sistema detecta y notifica si hay nodos con versiones potencialmente vulnerables o no aprobadas, enviando alertas al equipo de ciberseguridad.",
+      "Un desarrollador individual de n8n con muchos flujos de trabajo personales y de proyectos, que quiere mantener su instancia limpia y eficiente. Configura este flujo para que se ejecute semanalmente, identificando y marcando los nodos que podrían estar causando problemas de rendimiento o compatibilidad debido a su antigüedad, lo que le permite actualizarlos proactivamente."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1502,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2600-news-pipeline.json-1758285458156",
+    "fileName": "2600-news-pipeline.json",
+    "flowName": "News Extraction",
+    "mainArea": "Análisis de Medios",
+    "secondaryAreas": [
+      "Marketing",
+      "Inteligencia Competitiva",
+      "Gestión de Contenidos"
+    ],
+    "mainFunction": "Extraer automáticamente noticias de un sitio web sin feed RSS, obtener resúmenes y palabras clave usando IA, y almacenar la información procesada en una base de datos.",
+    "automationDestinations": [
+      "NocoDB"
+    ],
+    "dataOrigins": [
+      "Programador Semanal",
+      "Sitio Web (HTTP Request)"
+    ],
+    "keyNodes": [
+      "Schedule Trigger",
+      "HTTP Request",
+      "HTML",
+      "Code",
+      "Merge",
+      "OpenAI",
+      "NocoDB"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Este flujo automatiza la extracción semanal de noticias de un sitio web, generando resúmenes y palabras clave con IA para su almacenamiento en una base de datos.",
+    "useCaseExamples": [
+      "Una empresa de inteligencia de mercado necesita monitorear semanalmente las últimas noticias sobre sus competidores para identificar tendencias y movimientos estratégicos. El flujo extraería resúmenes y palabras clave técnicas de los sitios web de noticias de los competidores.",
+      "Un analista financiero busca información actualizada sobre sectores específicos (ej. energías renovables) de sitios web que no ofrecen feeds RSS. El flujo recopilaría y resumiría los artículos recientes, destacando los conceptos técnicos clave para un análisis rápido.",
+      "Un editor de un boletín informativo semanal sobre tecnología desea curar contenido relevante. El flujo le permitiría obtener resúmenes y palabras clave de los artículos más recientes de blogs especializados y portales de noticias tecnológicas, facilitando la selección.",
+      "Un equipo de investigación académica necesita recopilar de forma automatizada las publicaciones más recientes de ciertas revistas o conferencias científicas que solo publican en su sitio web. El flujo procesaría el contenido para generar resúmenes y extraer términos clave de investigación.",
+      "Un especialista en marketing digital requiere mantenerse al tanto de las novedades y menciones de su marca o productos en la prensa especializada. El flujo extraería y resumiría las noticias relevantes de los últimos siete días, identificando los temas principales para una estrategia de contenido."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1503,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2601-facturacion-automatizada.json-1758285479174",
+    "fileName": "2601-facturacion-automatizada.json",
+    "flowName": "Attachments Gmail to drive and google sheets",
+    "mainArea": "Finanzas",
+    "secondaryAreas": [
+      "Administración",
+      "Contabilidad",
+      "Gestión Documental"
+    ],
+    "mainFunction": "Automatiza la gestión de facturas recibidas por correo electrónico, guardando los archivos adjuntos PDF en Google Drive, extrayendo datos clave con IA y registrándolos en una hoja de cálculo de Google Sheets.",
+    "automationDestinations": [
+      "Google Drive",
+      "Google Sheets",
+      "Gmail"
+    ],
+    "dataOrigins": [
+      "Gmail"
+    ],
+    "keyNodes": [
+      "Gmail Trigger",
+      "If",
+      "HTTP Request",
+      "Google Drive",
+      "Extract from File",
+      "Apply Data Extraction Rules",
+      "Structured Output Parser",
+      "Google Sheets",
+      "OpenAI Model"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Guarda automáticamente adjuntos PDF de Gmail (facturas) en Google Drive, extrae información relevante con IA y la registra en Google Sheets.",
+    "useCaseExamples": [
+      "Gestión automatizada de facturas de proveedores: Una empresa recibe facturas en formato PDF por correo electrónico. El flujo de trabajo las guarda automáticamente en Google Drive, extrae la fecha, descripción y el precio total de cada factura usando IA, y registra esta información junto con un enlace al documento en una hoja de cálculo de Google Sheets para seguimiento contable.",
+      "Procesamiento de recibos de gastos de empleados: Los empleados envían sus recibos de gastos (en formato PDF) a una dirección de correo electrónico dedicada. El flujo archiva los recibos en Google Drive, extrae la fecha, la descripción del gasto y el monto total, y los añade a una hoja de cálculo de Google Sheets para la conciliación de gastos.",
+      "Registro de estados de cuenta mensuales de servicios: Una organización recibe facturas o estados de cuenta recurrentes (ej. servicios públicos, software) en PDF por correo electrónico. El flujo guarda estos documentos en Drive, extrae la fecha de facturación, la descripción del servicio y el importe total, y los registra en un Google Sheet para auditoría y control de gastos.",
+      "Archivo y extracción de notas de crédito de proveedores: Cuando los proveedores envían notas de crédito o confirmaciones de reembolso en PDF, el flujo las almacena automáticamente en Google Drive, extrae la fecha, el motivo de la nota de crédito y el monto correspondiente, y las registra en una hoja de cálculo para la gestión de cuentas por pagar.",
+      "Digitalización de confirmaciones de pago con detalles: Después de realizar un pago, se recibe una confirmación en PDF por correo electrónico. El flujo guarda esta confirmación en Google Drive, extrae la fecha del pago, la descripción del servicio/producto pagado y el importe total, y actualiza un registro en Google Sheets para mantener un historial financiero."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1504,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2602-kling-try-on-video-generator.json-1758285507607",
+    "fileName": "2602-kling-try-on-video-generator.json",
+    "flowName": "Generate 360° Virtual Try-on Videos for Clothing with Kling API",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "E-commerce",
+      "Moda",
+      "Publicidad"
+    ],
+    "mainFunction": "Generar videos de prueba virtual de ropa en 360 grados utilizando la API de Kling, permitiendo a los usuarios previsualizar prendas en modelos de forma inmersiva.",
+    "automationDestinations": [
+      "Kling API"
+    ],
+    "dataOrigins": [
+      "Manual Trigger",
+      "User Input (Preset Parameters)"
+    ],
+    "keyNodes": [
+      "HTTP Request",
+      "Switch",
+      "IF",
+      "Wait",
+      "Set"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Crea videos de prueba virtual de ropa en 360° para modelos usando la API de Kling, ideal para e-commerce y marketing de moda.",
+    "useCaseExamples": [
+      "Una tienda de ropa en línea integra el flujo de trabajo para generar automáticamente videos de \"prueba virtual 360\" para cada nueva prenda cargada en su catálogo de productos, mejorando la experiencia del cliente y reduciendo la necesidad de sesiones de fotos costosas.",
+      "Un influencer de moda utiliza el flujo para crear contenido dinámico en redes sociales, mostrando diferentes atuendos en videos de 360 grados sin tener que filmar o posar físicamente con cada conjunto, lo que permite una mayor variedad y frecuencia de publicaciones.",
+      "Una marca de ropa lanza una campaña de marketing interactiva donde los clientes pueden subir una imagen de un modelo (o una imagen de sí mismos) y \"probarse\" virtualmente prendas nuevas en un video 360 antes de realizar una compra.",
+      "Diseñadores de moda emplean el flujo para visualizar prototipos de ropa en modelos virtuales en 360 grados, acelerando el proceso de diseño y permitiendo iteraciones rápidas sin la necesidad de producir muestras físicas.",
+      "Una plataforma de estilismo personal basado en IA genera recomendaciones de atuendos para sus usuarios y utiliza este flujo de trabajo para crear videos personalizados de \"prueba virtual\" de las prendas sugeridas, permitiendo a los clientes ver cómo les quedarían las opciones antes de decidirse."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1505,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2603-suspicious-login-detection.json-1758285526803",
+    "fileName": "2603-suspicious-login-detection.json",
+    "flowName": "Suspicious_login_detection",
+    "mainArea": "Ciberseguridad",
+    "secondaryAreas": [
+      "Operaciones de TI",
+      "Atención al Cliente"
+    ],
+    "mainFunction": "Detectar y priorizar intentos de inicio de sesión sospechosos, analizando la IP y el agente de usuario para identificar anomalías, alertando a los equipos de seguridad y notificando a los usuarios afectados.",
+    "automationDestinations": [
+      "Slack",
+      "Gmail"
+    ],
+    "dataOrigins": [
+      "Webhook",
+      "Postgres"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "Set",
+      "HTTP Request",
+      "Postgres",
+      "If",
+      "Merge",
+      "Switch",
+      "Slack",
+      "Gmail"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Detecta inicios de sesión sospechosos analizando IP y agente de usuario, compara con historial, prioriza amenazas y alerta a equipos y usuarios por Slack y email.",
+    "useCaseExamples": [
+      "Un empleado inicia sesión en la aplicación interna de la empresa desde una dirección IP y un dispositivo que no corresponden a su ubicación o equipo habituales, lo que activa una alerta de \"prioridad alta\" en Slack para el equipo de seguridad y un correo electrónico de verificación al usuario.",
+      "Una plataforma de comercio electrónico detecta un inicio de sesión de un cliente desde una red Tor o un IP clasificado como malicioso por GreyNoise, lo que desencadena una revisión manual de la cuenta antes de permitir transacciones de alto valor.",
+      "Un usuario de una aplicación SaaS accede a su cuenta desde una ciudad o país inusual, y con un navegador diferente al de sus últimos 10 inicios de sesión, provocando que el flujo envíe una notificación por correo electrónico al usuario para confirmar la actividad.",
+      "Un sistema de banca en línea identifica un intento de inicio de sesión desde una dirección IP con bajo nivel de confianza o asociada a actividad de \"ruido\" según GreyNoise, resultando en un bloqueo temporal de la cuenta y una alerta para el equipo de fraude.",
+      "Una universidad detecta el inicio de sesión de un estudiante en su portal académico desde un nuevo dispositivo y una ubicación geográfica muy distante de sus patrones de acceso habituales, lo que genera una notificación para el equipo de TI y un correo electrónico al estudiante para verificar la autenticidad."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1506,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2604-discord-chat-agent.json-1758285541439",
+    "fileName": "2604-discord-chat-agent.json",
+    "flowName": "Discord MCP Chat Agent",
+    "mainArea": "Comunicación y Soporte",
+    "secondaryAreas": [
+      "Desarrollo de IA",
+      "Automatización de Tareas",
+      "Gestión de Comunidades"
+    ],
+    "mainFunction": "Habilitar un agente de IA conversacional en Discord que responde a los mensajes de chat utilizando un modelo de lenguaje de OpenAI y un cliente MCP para la interacción.",
+    "automationDestinations": [
+      "Discord"
+    ],
+    "dataOrigins": [
+      "Discord"
+    ],
+    "keyNodes": [
+      "When chat message received",
+      "AI Agent",
+      "OpenAI Chat Model",
+      "Discord MCP Client"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Un flujo de n8n que configura un agente de IA en Discord para responder automáticamente a los mensajes de chat mediante un modelo de lenguaje de OpenAI.",
+    "useCaseExamples": [
+      "Un moderador de Discord utiliza el chat para solicitar al agente de IA que expulse a un usuario problemático o silencie a alguien por un período determinado, simplificando la gestión sin salir del canal.",
+      "Un miembro de la comunidad pregunta al bot de Discord sobre las reglas del servidor o cómo obtener un rol específico, y el agente de IA responde con información relevante y, si es necesario, asigna el rol solicitado a través del MCP Client.",
+      "Los administradores de un servidor de juegos usan comandos de lenguaje natural en Discord para programar automáticamente un evento, crear canales de voz temporales para equipos y asignar roles a los participantes.",
+      "Un equipo de desarrollo de software utiliza el agente para obtener un resumen de la actividad reciente en canales de soporte, identificar preguntas frecuentes o generar un informe sobre las menciones de errores específicos.",
+      "Un community manager automatiza tareas como la limpieza de mensajes antiguos en un canal, el envío de anuncios programados a grupos específicos o la modificación de permisos de canales mediante instrucciones de texto en el chat."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1507,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2605-Colombian-Invoices-Processor.json-1758285555317",
+    "fileName": "2605-Colombian-Invoices-Processor.json",
+    "flowName": "Colombian Invoices Processing",
+    "mainArea": "Finanzas",
+    "secondaryAreas": [
+      "Contabilidad",
+      "Administración",
+      "Gestión Documental"
+    ],
+    "mainFunction": "Automatiza la extracción, validación y organización de datos de facturas electrónicas colombianas (PDF y XML) recibidas por correo electrónico, almacenando los documentos en Google Drive y los detalles en Google Sheets.",
+    "automationDestinations": [
+      "Google Drive",
+      "Google Sheets"
+    ],
+    "dataOrigins": [
+      "Gmail"
+    ],
+    "keyNodes": [
+      "On Email receipt",
+      "Unzip Invoice",
+      "Filter",
+      "Split",
+      "Extract Data from PDF and XML",
+      "OpenAI Chat Model",
+      "Calculator",
+      "Google Drive",
+      "Google Sheets",
+      "Merge",
+      "Aggregate",
+      "Loop Over Items"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Automatiza la extracción de datos de facturas electrónicas colombianas (PDF/XML) recibidas por Gmail, validando la información con IA y almacenándola en Google Drive y Google Sheets.",
+    "useCaseExamples": [
+      "Un trabajador independiente (freelancer) en Colombia recibe facturas electrónicas (PDF y XML en ZIP) de sus proveedores de software, herramientas y servicios. El flujo de trabajo extrae automáticamente los datos, renombra y guarda los PDFs en Google Drive, y registra la información clave en una hoja de cálculo para su contabilidad y declaración de impuestos.",
+      "Una pequeña empresa consultora en Medellín recibe semanalmente facturas de servicios públicos, telecomunicaciones y alquiler de oficinas por correo electrónico. Este flujo de trabajo automatiza la extracción de la información esencial de cada factura, su almacenamiento organizado en la nube y la actualización de un libro de gastos en Google Sheets.",
+      "Un individuo desea llevar un control exhaustivo de sus facturas de servicios (luz, agua, internet), compras online y suscripciones mensuales en Colombia. El flujo procesa las facturas recibidas por correo, extrae valores, fechas y detalles, y los centraliza en una hoja de cálculo personal, guardando los documentos originales.",
+      "Un administrador de propiedades que maneja múltiples unidades residenciales recibe facturas por mantenimiento, reparaciones y servicios para cada una. El flujo organiza automáticamente estas facturas, extrae los datos relevantes (emisor, total, descripción) y los registra en Google Sheets, facilitando la asignación de costos y el reporte a los propietarios.",
+      "Un emprendedor con una tienda en línea en Bogotá recibe facturas de sus proveedores de productos, servicios de envío y plataformas de pago. El flujo de trabajo captura estos documentos, extrae automáticamente los costos y detalles, los almacena de forma ordenada en Google Drive y los añade a una hoja de cálculo para el seguimiento de costos operativos y la reconciliación financiera."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1508,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2606-youtube-trend-analysis-memory.json-1758285573187",
+    "fileName": "2606-youtube-trend-analysis-memory.json",
+    "flowName": "Complete Youtube",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Creación de Contenido",
+      "Análisis de Datos",
+      "Redes Sociales"
+    ],
+    "mainFunction": "Ayudar a creadores de contenido de YouTube a identificar tendencias y obtener información valiosa sobre videos populares en un nicho específico, utilizando un agente de IA.",
+    "automationDestinations": [
+      "Usuario/Chat",
+      "YouTube (Enlaces a Videos/Canales)"
+    ],
+    "dataOrigins": [
+      "Usuario (Mensaje de Chat)",
+      "YouTube"
+    ],
+    "keyNodes": [
+      "AI Agent",
+      "chat_message_received",
+      "youtube_search",
+      "get_videos1",
+      "find_video_data1",
+      "if_longer_than_3_",
+      "save_data_to_memory1",
+      "retrieve_data_from_memory1"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Un agente de IA conversacional que busca y analiza videos de YouTube para encontrar tendencias en un nicho específico, ofreciendo insights a los creadores de contenido.",
+    "useCaseExamples": [
+      "Un creador de contenido de videojuegos quiere identificar qué nuevos lanzamientos, parches de juegos populares o tendencias de esports están generando más interés en YouTube en los últimos dos días para planificar sus próximos videos y transmisiones en vivo, asegurando que su contenido sea oportuno y relevante.",
+      "Un canal de cocina vegana busca descubrir qué recetas específicas, ingredientes de temporada o técnicas de preparación (por ejemplo, freidoras de aire, fermentación) están en auge para captar nuevas audiencias y ofrecer contenido fresco a sus suscriptores.",
+      "Un vlogger de tecnología que se enfoca en reseñas de smartphones necesita saber qué características, comparaciones de modelos o controversias sobre dispositivos móviles están siendo las más comentadas y vistas para informar su análisis y generar discusión en su comunidad.",
+      "Un influencer de fitness y bienestar quiere encontrar las últimas rutinas de ejercicios (ej. HIIT, yoga para principiantes), desafíos de entrenamiento o consejos de nutrición que están ganando tracción para crear videos que aborden directamente las necesidades e intereses actuales de su audiencia.",
+      "Un experto en marketing digital que asesora a pequeñas empresas desea comprender qué estrategias de redes sociales, herramientas de automatización o tácticas de SEO están generando más conversación y resultados en los últimos días para educar a su audiencia y posicionarse como líder de pensamiento."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1509,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2608-youtube-transcript-extractor.json-1758285587573",
+    "fileName": "2608-youtube-transcript-extractor.json",
+    "flowName": "Youtube Video Transcript Extraction",
+    "mainArea": "Análisis de Contenido",
+    "secondaryAreas": [
+      "Educación",
+      "Marketing de Contenidos",
+      "Investigación"
+    ],
+    "mainFunction": "Extraer y limpiar transcripciones de videos de YouTube usando una URL.",
+    "automationDestinations": [
+      "Datos procesados (salida interna del flujo)"
+    ],
+    "dataOrigins": [
+      "Formulario de n8n",
+      "YouTube (a través de API de transcripción)"
+    ],
+    "keyNodes": [
+      "Form Trigger",
+      "HTTP Request",
+      "Function",
+      "Set"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo permite introducir una URL de YouTube a través de un formulario, extraer la transcripción del video mediante una API externa y luego limpiar el texto de la transcripción para su uso posterior.",
+    "useCaseExamples": [
+      "Un creador de contenido de YouTube utiliza el flujo para extraer las transcripciones de sus videos, que luego edita y publica como artículos de blog o guiones en su sitio web, ampliando así su alcance y la reutilización de contenido.",
+      "Un especialista en marketing digital emplea el flujo para obtener las transcripciones de videos de la competencia o de su propio nicho, analizando las palabras clave utilizadas para mejorar las descripciones, etiquetas y estrategia de contenido SEO.",
+      "Un estudiante o investigador introduce la URL de videos de conferencias, seminarios o entrevistas para obtener rápidamente el texto completo, facilitando la toma de apuntes, la búsqueda de información específica o la citación precisa.",
+      "Una institución educativa o una empresa con un canal de YouTube usa el flujo para generar transcripciones de todos sus videos instructivos o de capacitación, proporcionando así un recurso textual para personas con discapacidad auditiva o para aquellos que prefieren leer el contenido.",
+      "Un equipo de soporte al cliente o ventas procesa videos de demostración de productos para extraer descripciones detalladas de características y beneficios, que luego se pueden usar en guiones de ventas, FAQs o bases de conocimiento."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1510,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2609-monitor-precios-competicion.json-1758285598485",
+    "fileName": "2609-monitor-precios-competicion.json",
+    "flowName": "Monitor Competitor Pricing",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Marketing",
+      "Estrategia"
+    ],
+    "mainFunction": "Monitoriza y compara los precios de la competencia utilizando URLs de una hoja de cálculo, procesa la información con IA, actualiza los datos en la hoja de cálculo y notifica los cambios significativos vía Slack.",
+    "automationDestinations": [
+      "Google Sheets",
+      "Slack"
+    ],
+    "dataOrigins": [
+      "Google Sheets"
+    ],
+    "keyNodes": [
+      "Google Sheets",
+      "Airtop",
+      "Merge",
+      "Code",
+      "Filter",
+      "Slack"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo monitoriza los precios de la competencia de forma automatizada, detecta cambios y notifica al equipo relevante.",
+    "useCaseExamples": [
+      "Una tienda de comercio electrónico minorista quiere asegurar que sus precios son competitivos. El flujo de trabajo le permite monitorear automáticamente los precios de sus 50 productos más vendidos de la competencia, actualizando una hoja de cálculo con los cambios y alertando al equipo de marketing sobre cualquier desviación significativa.",
+      "Una empresa de SaaS necesita hacer un seguimiento de los modelos de precios y las características de los planes de suscripción de sus 10 competidores clave para informar su propia estrategia de precios. El flujo automatiza la extracción de esta información de las páginas de precios y notifica al gerente de producto sobre las actualizaciones importantes.",
+      "Un analista de mercado está investigando el panorama de precios en la industria de la energía renovable. Utiliza el flujo de trabajo para rastrear y comparar los costos de instalación de paneles solares de diferentes proveedores regionales, recopilando datos para informes trimestrales y análisis de tendencias.",
+      "Un director de ventas en una empresa de servicios B2B quiere estar al tanto de las tarifas de los competidores por sus servicios de consultoría. El flujo le proporciona resúmenes actualizados semanalmente de las estructuras de precios de los rivales, incluyendo los planes y características principales, ayudándole a preparar propuestas más competitivas.",
+      "Una pequeña editorial de libros electrónicos desea asegurarse de que sus precios siguen siendo atractivos en comparación con otras editoriales independientes. El flujo de trabajo monitorea automáticamente los precios de géneros de libros similares en plataformas selectas y envía alertas si hay grandes fluctuaciones o nuevas ofertas de la competencia."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1511,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2610-icp_linkedin_scoring.json-1758285609515",
+    "fileName": "2610-icp_linkedin_scoring.json",
+    "flowName": "ICP Company Scoring",
+    "mainArea": "Ventas",
+    "secondaryAreas": [
+      "Marketing",
+      "Desarrollo de Negocio",
+      "Análisis de Datos"
+    ],
+    "mainFunction": "Obtiene información de empresas de Google Sheets, utiliza una IA para analizar sus perfiles de LinkedIn y calcular un score de Perfil de Cliente Ideal (ICP), y luego actualiza los resultados en la hoja de cálculo.",
+    "automationDestinations": [
+      "Google Sheets"
+    ],
+    "dataOrigins": [
+      "Google Sheets"
+    ],
+    "keyNodes": [
+      "Google Sheets",
+      "Airtop",
+      "Code"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Automatiza la calificación de empresas extrayendo datos de LinkedIn vía IA y actualizando su score ICP en Google Sheets.",
+    "useCaseExamples": [
+      "Un equipo de ventas quiere priorizar su lista de prospectos. El flujo toma URLs de LinkedIn de una hoja de Google, calcula la puntuación ICP para cada empresa y actualiza la hoja, permitiendo a los vendedores concentrarse en los leads de mayor calidad.",
+      "Una agencia de marketing busca segmentar su base de datos de empresas para campañas dirigidas. Utiliza el flujo para analizar perfiles de LinkedIn, identificando empresas con un alto enfoque en IA o una sofisticación técnica avanzada para personalizar sus mensajes.",
+      "Un analista de negocios necesita evaluar el panorama competitivo. El flujo le permite ingresar URLs de LinkedIn de competidores y obtener un análisis estructurado de su tamaño, enfoque tecnológico, estatus de agencia y financiamiento, para una mejor inteligencia de mercado.",
+      "Una startup busca socios estratégicos o integradores. El flujo ayuda a calificar posibles agencias de automatización o empresas con un alto nivel técnico extrayendo y puntuando automáticamente la información de sus perfiles de LinkedIn.",
+      "Un gerente de producto quiere entender mejor los perfiles técnicos de sus clientes existentes. El flujo procesa una lista de empresas clientes desde una hoja de cálculo, enriqueciendo sus datos con el nivel de sofisticación técnica y el enfoque en IA para informar el desarrollo de productos."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1512,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2611-github-workflow-restore.json-1758285623029",
+    "fileName": "2611-github-workflow-restore.json",
+    "flowName": "Restore your workflows from GitHub",
+    "mainArea": "Administración de TI",
+    "secondaryAreas": [
+      "DevOps",
+      "Automatización de Procesos"
+    ],
+    "mainFunction": "Restaura todos los flujos de trabajo de una instancia de n8n desde copias de seguridad almacenadas en GitHub.",
+    "automationDestinations": [
+      "n8n"
+    ],
+    "dataOrigins": [
+      "GitHub"
+    ],
+    "keyNodes": [
+      "Set",
+      "HTTP Request",
+      "Split Out",
+      "GitHub",
+      "Extract From File",
+      "n8n"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Este flujo de trabajo permite restaurar tus flujos de n8n desde un repositorio de GitHub.",
+    "useCaseExamples": [
+      "Recuperación ante desastres: Restaurar rápidamente todos los flujos de trabajo de n8n desde un respaldo en GitHub después de una falla de la instancia o pérdida accidental de datos.",
+      "Migración de instancia n8n: Transferir de forma eficiente todos los flujos de trabajo desde una instancia n8n antigua a una nueva, utilizando los respaldos guardados en un repositorio de GitHub.",
+      "Despliegue de flujos de trabajo en múltiples entornos: Sincronizar y desplegar un conjunto estándar de flujos de trabajo desde un repositorio de GitHub a entornos de n8n de desarrollo, staging y producción para asegurar la consistencia.",
+      "Reversión a una versión anterior: Revertir la configuración de los flujos de trabajo de n8n a un estado previo y funcional, restaurándolos desde una versión específica almacenada en GitHub.",
+      "Configuración rápida de entorno de desarrollo: Permitir que un nuevo desarrollador configure su instancia local de n8n importando instantáneamente todos los flujos de trabajo del proyecto desde el repositorio de GitHub."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1513,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2612-zammad-roles-excel.json-1758285636899",
+    "fileName": "2612-zammad-roles-excel.json",
+    "flowName": "Update Roles by Excel",
+    "mainArea": "Administración de Usuarios",
+    "secondaryAreas": [
+      "Recursos Humanos",
+      "IT Operations"
+    ],
+    "mainFunction": "Automatiza la actualización de roles de usuarios en el sistema Zammad basándose en la información proporcionada en un archivo Excel.",
+    "automationDestinations": [
+      "Zammad"
+    ],
+    "dataOrigins": [
+      "Manual Trigger",
+      "Excel File",
+      "HTTP Request"
+    ],
+    "keyNodes": [
+      "Manual Trigger",
+      "HTTP Request",
+      "Extract from File",
+      "Merge",
+      "Set"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Actualiza roles de usuarios en Zammad utilizando un archivo Excel como fuente de datos.",
+    "useCaseExamples": [
+      "Actualización masiva de roles de empleados en Zammad después de una reestructuración organizacional, donde un archivo Excel contiene los correos electrónicos y los nuevos roles asignados.",
+      "Sincronización semanal de roles de usuario entre un sistema de gestión de personal (HRIS) y Zammad, utilizando un informe exportado en formato de hoja de cálculo.",
+      "Asignación o revocación de roles temporales para equipos de proyecto, cargando un archivo Excel con los correos electrónicos de los miembros del equipo y los roles específicos para el proyecto.",
+      "Corrección y estandarización de roles de usuarios en Zammad según una auditoría de cumplimiento, donde un archivo proporciona el listado de usuarios y los roles correctos que deben tener.",
+      "Ajuste de niveles de acceso o licencias en Zammad para un gran número de usuarios, basándose en un archivo que detalla el correo electrónico de cada usuario y el rol de licencia correspondiente."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1514,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2613-airflow-dag-monitor.json-1758285657638",
+    "fileName": "2613-airflow-dag-monitor.json",
+    "flowName": "airflow dag_run",
+    "mainArea": "DevOps",
+    "secondaryAreas": [
+      "Data Engineering",
+      "Automatización de Procesos",
+      "Monitoreo de Sistemas"
+    ],
+    "mainFunction": "Automatizar el inicio y monitoreo del estado de ejecución de un DAG (Directed Acyclic Graph) en Apache Airflow, incluyendo la espera y obtención de resultados.",
+    "automationDestinations": [
+      "Apache Airflow"
+    ],
+    "dataOrigins": [
+      "Flujo de Trabajo Interno"
+    ],
+    "keyNodes": [
+      "HTTP Request",
+      "Switch",
+      "If",
+      "Wait",
+      "Code"
+    ],
+    "complexity": "Medio",
+    "shortDescription": "Inicia un DAG de Airflow, espera a que finalice monitoreando su estado, y opcionalmente recupera los resultados.",
+    "useCaseExamples": [
+      "Automatización de Ingesta y Procesamiento de Datos: Cuando un nuevo archivo de datos (CSV, JSON, etc.) es subido a un bucket de almacenamiento en la nube (ej. S3, Google Cloud Storage), n8n detecta el evento y dispara un DAG de Airflow que ingiere, limpia y transforma los datos, cargándolos en un data warehouse. n8n espera la finalización del DAG para confirmar el éxito o alertar sobre fallos.",
+      "Generación de Informes Programada o Bajo Demanda: Un equipo de ventas necesita un informe mensual o semanal de rendimiento. n8n puede configurarse para ejecutar un DAG de Airflow en un horario específico o al recibir una solicitud vía un formulario web/API. Este DAG genera el informe con datos actualizados y, una vez completado exitosamente, n8n lo envía automáticamente por correo electrónico o lo sube a un sistema de gestión documental.",
+      "Orquestación de Pipelines de Machine Learning: Al final de cada ciclo de sprint o cuando se acumula una cantidad significativa de nuevos datos, n8n inicia un DAG de Airflow para reentrenar un modelo de Machine Learning. El DAG se encarga de la preparación de datos, el entrenamiento del modelo y su despliegue en un entorno de producción. n8n monitorea el estado del DAG y notifica a los ingenieros de ML si el proceso falla o excede el tiempo de espera.",
+      "Sincronización de Datos entre Sistemas Empresariales: Tras una actualización importante en el sistema CRM (ej. creación de un nuevo cliente o cambio de estado), n8n captura el evento y desencadena un DAG de Airflow que sincroniza la información relevante del cliente con otros sistemas internos, como un ERP o una base de datos de marketing. n8n asegura que la sincronización se complete o reporta cualquier problema.",
+      "Procesamiento de Eventos de Log y Alertas: Un sistema de monitoreo externo detecta una anomalía o un evento crítico en la infraestructura. n8n recibe esta alerta y activa un DAG de Airflow que ejecuta un análisis más profundo de los logs, correlaciona eventos de diferentes fuentes y genera un diagnóstico inicial. n8n espera a que el análisis del DAG termine y, basándose en los resultados, puede disparar acciones de remediación o escalar la alerta."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1515,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2614-custom-ai-agent-memory.json-1758285668000",
+    "fileName": "2614-custom-ai-agent-memory.json",
+    "flowName": "Build Custom AI Agent with LangChain & Gemini (Self-Hosted)",
+    "mainArea": "Inteligencia Artificial",
+    "secondaryAreas": [
+      "Desarrollo de Software",
+      "Asistentes Virtuales",
+      "Comunicación"
+    ],
+    "mainFunction": "Construir y operar un agente de IA personalizado utilizando LangChain y Google Gemini para interactuar en un chat, manteniendo una personalidad y un historial de conversación definidos.",
+    "automationDestinations": [
+      "Chat Interface"
+    ],
+    "dataOrigins": [
+      "Chat Interface"
+    ],
+    "keyNodes": [
+      "When chat message received",
+      "Google Gemini Chat Model",
+      "Store conversation history",
+      "Construct & Execute LLM Prompt"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Crea un agente de IA personalizado con LangChain y Google Gemini que interactúa en un chat, manteniendo una personalidad y memoria de conversación.",
+    "useCaseExamples": [
+      "Un agente de soporte al cliente que adopta la personalidad de marca de una empresa para responder preguntas frecuentes y guiar a los usuarios de manera coherente.",
+      "Un tutor de idiomas personalizado que mantiene la personalidad de un hablante nativo de un idioma específico (ej. un guía turístico francés) para practicar conversaciones.",
+      "Un bot de marketing interactivo que asume un rol carismático para cualificar leads, presentar productos y captar el interés de clientes potenciales en un sitio web.",
+      "Un asistente virtual interno para recursos humanos o TI, configurado con una personalidad profesional y servicial para responder consultas comunes de los empleados.",
+      "Un compañero de escritura creativa o role-playing que mantiene un personaje y una historia definidos, ayudando a los usuarios a desarrollar tramas o explorar escenarios imaginativos."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1516,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2615-jira-notion-sync.json-1758285688006",
+    "fileName": "2615-jira-notion-sync.json",
+    "flowName": "Sync Jira issues with subsequent comments to Notion database",
+    "mainArea": "Gestión de Proyectos",
+    "secondaryAreas": [
+      "Desarrollo de Software",
+      "IT Support",
+      "Gestión de Tareas"
+    ],
+    "mainFunction": "Sincroniza incidencias de Jira (creadas, actualizadas o eliminadas) con una base de datos de Notion, manteniendo los datos actualizados y el estado mapeado.",
+    "automationDestinations": [
+      "Notion"
+    ],
+    "dataOrigins": [
+      "Jira"
+    ],
+    "keyNodes": [
+      "On issues created/updated/deleted",
+      "Lookup table",
+      "IF",
+      "Create custom Notion filters",
+      "Find database page",
+      "Switch",
+      "Create database page",
+      "Update issue",
+      "Delete issue"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Sincroniza automáticamente las incidencias de Jira, incluyendo su creación, actualización y eliminación, con una base de datos de Notion para una gestión centralizada.",
+    "useCaseExamples": [
+      "Un equipo de desarrollo de software utiliza Jira para gestionar errores y nuevas funcionalidades. Quieren que los directores de producto y los stakeholders, que trabajan principalmente en Notion, tengan una vista simplificada y actualizada del estado de las tareas sin necesidad de acceder a Jira.",
+      "Un equipo de soporte utiliza Jira Service Management para gestionar tickets de clientes. Este flujo sincronizaría el estado y un resumen de los tickets con una base de datos en Notion, permitiendo que los gerentes de cuenta o los equipos de éxito del cliente puedan consultar el progreso de los problemas sin acceder directamente a Jira.",
+      "Una agencia de marketing gestiona proyectos para sus clientes en Jira. Para las reuniones de actualización con el cliente o para una visión interna de alto nivel, replican los hitos y tareas principales en una base de datos de Notion, asegurando que ambas herramientas estén siempre en sintonía.",
+      "Un equipo editorial utiliza Jira para organizar la creación de artículos, publicaciones de blog y otros contenidos. Sincronizan estos elementos con una base de datos de Notion que sirve como calendario editorial y tablero de progreso para redactores, editores y diseñadores que prefieren trabajar en Notion.",
+      "Dos departamentos, como ingeniería (que usa Jira intensamente) y operaciones (que prefiere Notion para la planificación estratégica), necesitan estar sincronizados. Este flujo asegura que las tareas críticas de ingeniería en Jira se reflejen automáticamente en el tablero de Notion de operaciones, facilitando la coordinación y el seguimiento."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1517,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2616-medium_linkedin_automation.json-1758285702304",
+    "fileName": "2616-medium_linkedin_automation.json",
+    "flowName": "Linkedin Automation",
+    "mainArea": "Marketing",
+    "secondaryAreas": [
+      "Social Media Management",
+      "Gestión de Contenidos",
+      "Automatización de Contenidos"
+    ],
+    "mainFunction": "Automatiza la publicación de artículos de Medium en LinkedIn dos veces al día, asegurando que no se repitan y enviando alertas de éxito a Telegram.",
+    "automationDestinations": [
+      "LinkedIn",
+      "Airtable",
+      "Telegram"
+    ],
+    "dataOrigins": [
+      "Schedule Trigger",
+      "Medium (API)",
+      "Airtable"
+    ],
+    "keyNodes": [
+      "Schedule Trigger",
+      "HTTP Request",
+      "Airtable",
+      "Code",
+      "Filter",
+      "If",
+      "LinkedIn",
+      "Telegram"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Publica automáticamente artículos de Medium en LinkedIn en un horario fijo, evita duplicados y notifica por Telegram.",
+    "useCaseExamples": [
+      "Un blogger de tecnología que publica regularmente en Medium desea automatizar la difusión de sus nuevos artículos en su perfil de LinkedIn para llegar a una audiencia profesional, ahorrando tiempo y asegurando una presencia constante.",
+      "El equipo de marketing de una startup tecnológica quiere promocionar automáticamente los artículos de su blog corporativo (alojado en Medium o de temas relevantes para su industria) en la página de LinkedIn de la empresa, aumentando el tráfico y el engagement.",
+      "Un consultor de TI busca posicionarse como líder de pensamiento en su nicho. Utiliza el flujo para compartir automáticamente noticias relevantes de la industria y artículos de Medium sobre las últimas tendencias tecnológicas con su red de LinkedIn.",
+      "Una agencia de reclutamiento especializada en desarrollo de software configura el flujo para publicar automáticamente artículos de Medium sobre tecnologías específicas (como Kotlin, Jetpack Compose) en su página de LinkedIn, atrayendo a desarrolladores calificados y demostrando conocimiento del sector.",
+      "Una organización sin fines de lucro que publica informes y estudios en Medium quiere asegurarse de que su contenido llegue a una audiencia más amplia en LinkedIn, utilizando la automatización para mantener a sus seguidores informados sobre sus investigaciones y proyectos."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1518,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2617-woocommerce-ai-product-importer.json-1758285724091",
+    "fileName": "2617-woocommerce-ai-product-importer.json",
+    "flowName": "AI-Driven WooCommerce Product Importer with SEO",
+    "mainArea": "E-commerce",
+    "secondaryAreas": [
+      "Marketing",
+      "Gestión de Datos"
+    ],
+    "mainFunction": "Importa productos desde Google Sheets a WooCommerce, generando automáticamente títulos y descripciones SEO optimizados con IA, y actualizando la información de seguimiento en la hoja de cálculo.",
+    "automationDestinations": [
+      "WooCommerce",
+      "Google Sheets",
+      "Telegram"
+    ],
+    "dataOrigins": [
+      "Google Sheets"
+    ],
+    "keyNodes": [
+      "Get products",
+      "Loop products",
+      "Create product",
+      "SEO Expert",
+      "Set SEO meta",
+      "OpenRouter Chat Model",
+      "Structured Output Parser"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Este flujo de trabajo importa productos de Google Sheets a WooCommerce, genera meta títulos y descripciones SEO con IA y actualiza el estado en la hoja de cálculo.",
+    "useCaseExamples": [
+      "Lanzamiento de una nueva tienda online: Una empresa que lanza su primera tienda online en WooCommerce tiene un catálogo inicial de 300 productos en un Google Sheet. El flujo permite importar todos los productos automáticamente, generando las descripciones, imágenes y los metadatos SEO de forma optimizada, reduciendo drásticamente el tiempo de configuración inicial.",
+      "Carga masiva de productos estacionales o colecciones: Una tienda de moda con WooCommerce necesita añadir rápidamente una nueva colección de ropa de primavera/verano que incluye 150 artículos. Los detalles de cada prenda se han compilado en un Google Sheet, y el flujo se encarga de la creación, asignación de categorías y generación de SEO para cada artículo.",
+      "Actualización de inventario de un proveedor con nuevos productos: Un minorista que trabaja con múltiples proveedores recibe regularmente listados de nuevos productos. En lugar de introducirlos manualmente, el personal añade los detalles a una hoja de cálculo centralizada, y el flujo procesa esta hoja para añadir los nuevos artículos a WooCommerce con metadatos SEO generados automáticamente.",
+      "Creación de productos para un catálogo de dropshipping: Un emprendedor de dropshipping necesita poblar su tienda WooCommerce con cientos de productos de un nuevo nicho de mercado. Utiliza el flujo para importar los datos masivamente desde un Google Sheet proporcionado por el mayorista, asegurando que cada producto esté listo para venderse con SEO optimizado.",
+      "Migración de productos de una plataforma antigua a WooCommerce: Una empresa decide migrar de una plataforma de e-commerce antigua a WooCommerce. Exportan sus datos de producto a un Google Sheet, y el flujo es utilizado para importar todos los productos a la nueva tienda, generando o actualizando los metadatos SEO en el proceso."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1519,
+    "isFavorite": false
+  },
+  {
+    "workflow_uuid": "2618-gemini-image-data-extractor.json-1758285738578",
+    "fileName": "2618-gemini-image-data-extractor.json",
+    "flowName": "Image-Based Data Extraction API using Gemini AI",
+    "mainArea": "Procesamiento de Documentos",
+    "secondaryAreas": [
+      "Gestión de Datos",
+      "Automatización de Tareas",
+      "Servicios al Cliente"
+    ],
+    "mainFunction": "Proporcionar un endpoint API para extraer datos estructurados de imágenes utilizando la IA de Gemini, facilitando la automatización del procesamiento de documentos y formularios.",
+    "automationDestinations": [
+      "Aplicación Solicitante (vía Webhook)"
+    ],
+    "dataOrigins": [
+      "Webhook",
+      "URL de Imagen"
+    ],
+    "keyNodes": [
+      "Webhook",
+      "HTTP Request",
+      "Transform image to base64",
+      "Call Gemini API (Flash Lite) with Image",
+      "Set",
+      "Respond to Webhook"
+    ],
+    "complexity": "Complejo",
+    "shortDescription": "Crea un endpoint API que extrae datos estructurados de imágenes (como documentos de identidad o facturas) usando la IA de Gemini, convirtiendo imágenes a base64 y devolviendo resultados formateados.",
+    "useCaseExamples": [
+      "Procesamiento automatizado de facturas: Extraer automáticamente el número de factura, el total, los artículos y el nombre del proveedor de imágenes de facturas escaneadas para la contabilidad.",
+      "Digitalización de recibos para informes de gastos: Capturar y extraer la fecha, el comerciante, el total y los detalles de los artículos de las fotos de los recibos de compra para generar informes de gastos de forma eficiente.",
+      "Verificación de documentos de identidad para KYC: Extraer el nombre, la fecha de nacimiento, el número de documento y la fecha de vencimiento de imágenes de pasaportes, licencias de conducir o tarjetas de identidad nacionales para procesos de Conozca a su Cliente (KYC).",
+      "Conversión de tarjetas de presentación a contactos digitales: Escanear tarjetas de presentación físicas para extraer automáticamente el nombre, el cargo, la empresa, el correo electrónico y el número de teléfono, y convertirlos en contactos digitales.",
+      "Extracción de información de productos de etiquetas: Obtener el nombre del producto, ingredientes, peso y código de barras de imágenes de etiquetas de productos para inventario, comercio electrónico o bases de datos de productos."
+    ],
+    "similarities": [],
+    "notes": "",
+    "id": 1520,
+    "isFavorite": false
   }
 ]
